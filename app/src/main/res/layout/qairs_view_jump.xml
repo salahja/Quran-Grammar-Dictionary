@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+
+    android:theme="@android:style/Theme.NoTitleBar"
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/toolbar_height"
+
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_margin="10.0dip"
+            android:background="@drawable/jump_to_bg_2"
+            android:orientation="horizontal"
+            android:weightSum="100.0">
+
+            <EditText
+                android:id="@id/jumpToChapterNoEditText"
+                android:layout_width="0.0dip"
+                android:layout_height="fill_parent"
+
+                android:layout_weight="49.8"
+                android:background="@color/transparent"
+                android:gravity="center"
+                android:hint="@string/chapter_no"
+                android:imeOptions="actionNext"
+                android:inputType="number"
+                android:maxLength="3"
+                android:paddingStart="5.0dip"
+                android:paddingEnd="5.0dip" />
+
+            <View
+                style="@style/VerticalLine"
+                android:layout_width="0.0dip"
+                android:layout_marginTop="5.0dip"
+                android:layout_marginBottom="5.0dip"
+                android:layout_weight="0.4" />
+
+            <EditText
+                android:id="@id/jumpToVerseNoEditText"
+                android:layout_width="0.0dip"
+                android:layout_height="fill_parent"
+                android:layout_weight="49.8"
+                android:background="@color/transparent"
+                android:gravity="center"
+                android:hint="@string/verse_no"
+                android:imeOptions="actionSearch"
+                android:inputType="number"
+                android:paddingStart="5.0dip"
+                android:paddingEnd="5.0dip" />
+        </LinearLayout>
+    </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@id/chaptersList"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_gravity="bottom" />
+
+
+    </LinearLayout>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

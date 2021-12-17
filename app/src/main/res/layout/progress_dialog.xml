@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ProgressBar
+        android:id="@+id/simpleProgressBar"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/languagename"
+        android:indeterminate="true"
+        android:max="100"
+
+
+        android:progress="60"
+        android:progressDrawable="@drawable/custom_progress"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/textViewdialog"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <!--custom progress drawable for progress mode-->
+    <TextView
+        android:id="@+id/textViewdialog"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/languagename"
+        android:layout_toEndOf="@+id/simpleProgressBar"
+        android:text="TextView"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/simpleProgressBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/simpleProgressBar" />
+</androidx.constraintlayout.widget.ConstraintLayout>

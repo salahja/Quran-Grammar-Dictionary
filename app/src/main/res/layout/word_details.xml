@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="12dip">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@id/ivClose"
+                android:layout_width="wrap_content"
+                android:layout_height="24dip"
+                app:srcCompat="@drawable/ic_action_close"
+                app:tint="?colorAccent" />
+
+            <android.widget.Space
+                android:layout_width="40.0dip"
+                android:layout_height="24.0dip" />
+
+            <TextView
+                android:id="@id/tvTitle"
+                android:layout_width="0.0dip"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:textSize="14.0sp" />
+
+            <ImageView
+                android:id="@id/ivShare"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/icon_size"
+                android:paddingLeft="@dimen/space_3"
+                android:paddingRight="@dimen/space_3"
+                app:srcCompat="@mipmap/ic_share"
+                app:tint="?colorAccent" />
+
+            <ImageView
+                android:id="@id/ivReport"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/icon_size"
+                app:srcCompat="@drawable/ic_report"
+                app:tint="?colorAccent" />
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@id/recyclerView"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@id/verbconjugationbtn"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="@string/click_more"
+            app:icon="@drawable/ic_action_jump" />
+    </LinearLayout>
+</ScrollView>

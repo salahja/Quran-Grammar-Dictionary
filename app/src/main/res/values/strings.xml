@@ -1,0 +1,272 @@
+<!--
+~ Copyright (C) 2019 The Android Open Source Project
+~
+~ Licensed under the Apache License, Version 2.0 (the "License");
+~ you may not use this file except in compliance with the License.
+~ You may obtain a copy of the License at
+~
+~      http://www.apache.org/licenses/LICENSE-2.0
+~
+~ Unless required by applicable law or agreed to in writing, software
+~ distributed under the License is distributed on an "AS IS" BASIS,
+~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+~ See the License for the specific language governing permissions and
+~ limitations under the License.
+-->
+
+<resources>
+    <string name="app_name"></string>
+
+    <!--Main-->
+
+    <!--Instructions-->
+
+    <!--Component-->
+
+
+    <!--Theme Summary-->
+
+
+    <!-- Strings used for fragments for navigation -->
+
+    <!-- TODO: Remove or change this placeholder text -->
+
+    <!-- Shrine backdrop menu labels -->
+    <string name="drawer_open">drawer_open</string>
+    <string name="drawer_close">drawer_close</string>
+    <string name="surahspinner" />
+    <string name="header_msg" translatable="false">\"بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ\"</string>
+
+    <string name="start">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</string>
+    <string name="ayahno">AyahNumber</string>
+    <string name="ayahtext">AyahText</string>
+    <string name="ayahword">AyahWords</string>
+    <string name="ayahtranslation">AyahTranslation</string>
+    <string name="ayahtafseer">ayahtafseer</string>
+    <string name="Rukuinfo">Rukuinfo</string>
+    <string name="more_action" />
+    <string name="textview" />
+    <string name="chapter_no">chapter_no</string>
+    <string name="verse_no">verse no</string>
+    <string name="jump" />
+    <string name="to_page" />
+    <string name="go_to" />
+    <string name="OK" />
+    <string name="nahi_amr" />
+    <string name="no_translation_downloaded">Your downloaded translations will appear here</string>
+    <string name="id_downloaded">Downloaded</string>
+    <string name="id_ready_to_download">Ready to Download</string>
+    <string name="id_tab_settings">Setting</string>
+
+
+    <string name="id_quran_script" />
+    <string name="id_arabic_style_font" />
+    <string name="id_show_arabic">Show Arabic</string>
+    <string name="id_show_irab">Show Erab</string>
+    <string name="id_show_translations">Show Translation</string>
+    <string name="id_select_translations">Select Translation</string>
+    <string name="prefs_select_quran_text">qurantext</string>
+    <string name="prefs_select_translaton">selecttranslation</string>
+    <string name="id_setup_translation_detail">Download translations of your choice</string>
+    <string name="downloadtext">Download</string>
+    <string name="title_activity_load_translation">LoadTranslation</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="fragment_settings_key">startfragment</string>
+    <string name="backbutton">Back Button</string>
+    <string name="Done">Done</string>
+    <string name="failed">Failed</string>
+    <string name="app_folder_path">/Mushafapplication</string>
+    <string name="copydata">Copying Database</string>
+    <string name="permission">he application can not start without this permission.</string>
+    <string name="download_failed">Download Failed</string>
+    <string name="download_complete">Download Completed</string>
+
+
+    <string name="Alert">Alert</string>
+    <string name="Cancel">Cancel</string>
+    <string name="yes">yes</string>
+    <string name="no_internet_alert">No internet</string>
+    <string name="Ok">OK</string>
+    <string name="download">Downloading</string>
+
+    <string name="failed_download">Download Failed</string>
+
+    <string name="success_download_canceled">Download canceled</string>
+    <string name="normal_download_alert">Application need to download mandatory files. Do you accept?</string>
+    <string name="mobile_data_alert">Application need to download mandatory files. Do you accept?</string>
+    <string name="extract">Extracting</string>
+
+    <string name="removeTranslationAlertNegative">CANCEL</string>
+    <string name="removeTranslationAlertPositive">REMOVE</string>
+    <string name="mb">MB</string>
+    <string name="search_with_dots">Search…</string>
+    <string name="id_tab_search">Search</string>
+    <string name="toolbar_title">SEARCH</string>
+    <string name="action_search">search</string>
+    <string name="id_chapters">Chapters</string>
+    <string name="id_juzzs">Juz</string>
+    <string name="prefs_show_translitration">showtransliterationKey</string>
+    <string name="prefs_show_en_jalalayn">showEnglishJalalayn</string>
+
+    <string name="title_activity_main2">MainActivity</string>
+    <string name="seek_title">English Font Selection</string>
+    <string name="seek_summary">Summary</string>
+    <string name="title_activity_settings">Setting</string>
+
+    <!--website titles> -->
+    <string name="google_title">Google</string>
+    <string name="google_summary">Google search</string>
+    <string name="google_link" translatable="false">https://google.com</string>
+
+    <string name="ddg_title">DuckDuckGo</string>
+    <string name="ddg_summary">DuckDuckGo search</string>
+    <string name="ddg_link" translatable="false">https://duckduckgo.com/</string>
+    <string name="seek_titles">Arabic Font Size</string>
+    <string name="id_translations">translation</string>
+    <string name="sample_translation">In the name of Allah</string>
+    <string name="id_arabic_font_size">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْم</string>
+    <string name="sample_arabic">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْم</string>
+    <string name="arabic_font_style"><![CDATA[Arabic Font Style<]]></string>
+    <string name="id_font_info">Adjust text font and size on screen</string>
+
+
+    <string-array name="encase">
+
+        <item>Nom.</item>
+        <item>Acc.</item>
+        <item>Gen.</item>
+
+    </string-array>
+    <string-array name="arabicpronouns">
+
+        <item>هو </item>
+        <item>"هما(مذ)" </item>
+        <item>هم </item>
+        <item>هي </item>
+        <item>"هما(مؤ)" </item>
+        <item>هن </item>
+        <item>أنت</item>
+        <item>أنتما </item>
+        <item>أنتم </item>
+        <item>أنت </item>
+        <item>أنتما </item>
+        <item>أنتن </item>
+        <item>أنا  </item>
+        <item>نحن  </item>
+    </string-array>
+    <string-array name="arcase">
+
+        <item>الرفع </item>
+        <item>النصب</item>
+        <item>الجر  </item>
+
+    </string-array>
+
+
+    <string name="faelmazi">Past Activeٍ</string>
+    <string name="faelmudhary">Present Active</string>
+    <string name="faelmadimajhool">Past Passive </string>
+    <string name="faelmudharymajhol">Present Passive</string>
+    <string name="faelamr">Command</string>
+    <string name="lang">Conjugation Headers</string>
+    <string name="click_more">Click for Verb Conjugation</string>
+
+
+    <string-array name="lang_names">
+
+        <item>English</item>
+        <item>Arabic</item>
+    </string-array>
+
+    <string-array name="lang_codes">
+
+        <item>en</item>
+        <item>ar</item>
+    </string-array>
+
+
+    <string name="ismmafool">الاسم المفعول</string>
+    <string name="ismfael">الاسم الفاعل</string>
+    <string name="ismalaone">مِفْعَلٌ</string>
+    <string name="ismalatwo">مِفْعَلَةٌ</string>
+    <string name="ismalthree">مِفْعَالٌ</string>
+
+
+    <string name="zarfmafalun">مَفْعَلٌ</string>
+    <string name="zarfmafilun">مَفْعِلٌ</string>
+    <string name="zarfmafalatun">مَفْعَلةٌ</string>
+    <string name="title_activity_main">MainActivity</string>
+    <!--
+    This string is used for square devices and overridden by hello_world in
+    values-round/strings.xml for round devices.
+    -->
+    <string name="hello_world">Hello Square World!</string>
+    <string name="listing">Select</string>
+    <string name="mujarradlist">Mujarrad </string>
+    <string name="title_activity_verb_conjugation">VerbConjugationAct</string>
+    <string name="verb_conjugator">Conjugation</string>
+    <string name="conjugator">Verb Conjugator</string>
+    <string name="mazeed_list">Mazeed</string>
+    <string name="quranactivity">Quran</string>
+    <string name="spinner_title">Thulathi</string>
+    <string name="title_activity_verb_listing">VerbListing</string>
+    <string name="settings_conjugator">Settings </string>
+    <string name="cancel">Cancel</string>
+    <string name="confirm">Confirm</string>
+    <string name="ToolbarColorPickerPreference">colorpreference</string>
+    <string name="color_default_title">sifamousuf</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_colorsettingactivity">Colorsettingactivity</string>
+    <string name="test_text">"بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ   "</string>
+    <string name="colortitile">Pick Grammer Phrases COlors</string>
+    <string name="prefs_show_mausoof">mausoof</string>
+    <string name="prefs_show_mudhaf">mudhaf</string>
+    <string name="prefs_show_harfnasb">harfnasb</string>
+
+    <string name="number_picker_formatter" />
+    <string name="quran_sura">Enter Surah No</string>
+    <string name="quran_ayah">Enter Ayah</string>
+    <string name="bookmarks">BookMarks</string>
+    <string name="colon_mark">:</string>
+    <string name="all">All</string>
+    <string name="bookmark_last_read">Last Read</string>
+    <string name="quick_links">Quick Links</string>
+<string name="quran_hizb">Hizb</string>
+<string name="quran_juz2">Juz</string>
+<string name="quran_page">Page</string>
+
+    <string name="text_ayatul_kursi">Ayatul Kursi</string>
+    <string name="text_kahaf">Al-Kahaf</string>
+    <string name="lemma">lemma</string>
+    <string name="root_word">Root Word</string>
+    <string name="prefs_show_shart">shart</string>
+    <string name="prefs_grammar_sentence">grammarsentence</string>
+    <string name="prefs_show_kana">kana</string>
+    <string name="prefs_show_grammar_fragments">fragments</string>
+    <string name="tooltip_hello_world">hellothere</string>
+    <string name="prefs_wbw">wbw</string>
+    <string name="prefs_show_colortag">colortag</string>
+    <string name="show_kana_markups">kanamarkup</string>
+    <string name="show_harfnasb_markups">nasabmarkup</string>
+    <string name="exit">Back</string>
+    <string name="muttadi">متعد/Transitive</string>
+    <string name="lazim">لازم/Intransitive</string>
+    <string name="muttadilazim">لازم ومتعد/Intransitive Transitive -</string>
+    <string name="linkkahaf">Surah Kahaf</string>
+    <string name="mudhafsummary">Surah 1 to 8 and 59 to 114</string>
+    <string name="harfnasbsummary">Valid only from Surah 1 to 8 and 59 to 114</string>
+    <string name="ok">Ok</string>
+    <string name="notfound">not found</string>
+
+
+</resources>

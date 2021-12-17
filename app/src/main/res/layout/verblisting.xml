@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="bottom"
+    android:layout_alignParentEnd="true">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/headertoolbar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+
+
+        android:gravity="end"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.ActionBar" />
+
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginTop="50dp"
+
+
+        android:id="@+id/sarfrecview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
+
+</RelativeLayout>

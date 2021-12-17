@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+
+
+    <RelativeLayout
+        android:id="@+id/textlayout"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:paddingTop="10dp">
+
+        <TextView
+            android:id="@+id/translationid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="@string/id_select_translations"
+            android:textColor="@color/white"
+            android:textSize="18.0sp" />
+
+        <TextView
+            android:id="@+id/authorname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/translationid"
+
+            android:text="@string/id_select_translations"
+            android:textColor="@color/white"
+            android:textSize="18.0sp" />
+
+        <TextView
+            android:id="@+id/languagename"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/authorname"
+            android:text="@string/id_select_translations"
+            android:textColor="@color/white"
+            android:textSize="18.0sp" />
+
+        <ImageView
+            android:id="@+id/readtytodownload"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_below="@id/translationid"
+            android:layout_alignParentEnd="true"
+            android:foregroundGravity="right"
+            app:srcCompat="@drawable/ic_translation_download"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/download"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_below="@id/translationid"
+            android:layout_alignParentEnd="true"
+            app:srcCompat="@drawable/baseline_delete_red_900_48dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foregroundGravity="right"
+            android:visibility="gone" />
+
+        <ProgressBar
+            android:id="@+id/simpleProgressBar"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/languagename"
+            android:layout_marginTop="100dp"
+            android:indeterminate="true"
+            android:max="100"
+
+           android:visibility="gone"
+            android:progress="60"
+            android:progressDrawable="@drawable/custom_progress" />
+        <!--custom progress drawable for progress mode-->
+        <TextView
+            android:id="@+id/textViewdialog"
+            android:layout_toEndOf="@+id/simpleProgressBar"
+            android:layout_below="@+id/languagename"
+            android:layout_width="wrap_content"
+            android:visibility="gone"
+            android:layout_height="wrap_content"
+            android:text="TextView" />
+
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1.0dip"
+            android:layout_below="@+id/languagename"
+            android:layout_marginBottom="2.0dip"
+            android:background="?attr/colorPrimary" />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@id/recyclerViewAdapterTranslation"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" />
+    </RelativeLayout>
+</LinearLayout>

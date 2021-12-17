@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="200dp"
+        android:text="Pick Colors"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/muausoof"
+        android:layout_width="47dp"
+        android:layout_height="41dp"
+
+        android:background="@drawable/roundedbutton"
+        android:text="Button" />
+
+    <Button
+        android:id="@+id/mushaf"
+        android:layout_width="47dp"
+        android:layout_height="41dp"
+        android:background="@drawable/roundedbutton"
+        android:text="Button" />
+
+    <Button
+        android:id="@+id/sifa"
+        android:layout_width="47dp"
+        android:layout_height="41dp"
+        android:background="@drawable/roundedbutton"
+        android:text="Button" />
+
+    <Button
+        android:id="@+id/broken"
+        android:layout_width="47dp"
+        android:layout_height="41dp"
+        android:background="@drawable/roundedbutton"
+        android:text="Button" />
+</LinearLayout>

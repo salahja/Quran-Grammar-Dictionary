@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+android:background="@color/primaryColorBlackLight"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:padding="16dp"
+    android:gravity="center"
+    android:layout_height="380dp">
+
+    <TextView
+        android:id="@+id/lblsurah"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Surah" />
+
+    <EditText
+        android:id="@+id/suraIndex"
+        android:layout_width="40dp"
+
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lblsurah"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="60dp"
+        android:hint="2"
+        android:inputType="number"
+
+        android:maxLength="3" />
+
+    <TextView
+        android:id="@+id/lblayah"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="240dp"
+        android:layout_toRightOf="@+id/lblsurah"
+        android:text="ayah" />
+
+    <EditText
+        android:id="@+id/ayahInput"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+
+        android:layout_below="@+id/lblayah"
+        android:layout_marginStart="-34dp"
+        android:layout_marginTop="12dp"
+
+
+        android:layout_toEndOf="@+id/lblayah"
+        android:hint="2"
+        android:inputType="number"
+        android:maxLength="10"
+        android:text="@string/go_to" />
+
+    <TextView
+        android:id="@+id/ayahlabel"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="40dp"
+        android:layout_toRightOf="@+id/lblayah"
+
+
+        android:hint="2"
+        android:inputType="none"
+        android:text="@string/go_to" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/suraIndex"
+        android:orientation="horizontal">
+
+
+        <Spinner
+            android:id="@+id/suras"
+
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp" />
+
+        <Spinner
+            android:id="@+id/verses"
+
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="8dp"
+            android:layout_toEndOf="@id/suras"
+            />
+
+        <Button
+            android:id="@+id/ok"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/verses"
+            android:layout_alignParentEnd="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="8dp"
+
+            android:elevation="@dimen/cardview_default_elevation"
+            android:hint="Ok"
+            android:shadowRadius="@integer/config_navAnimTime"
+
+            android:text="@string/OK"
+
+            />
+
+    </RelativeLayout>
+
+
+
+
+
+</RelativeLayout>

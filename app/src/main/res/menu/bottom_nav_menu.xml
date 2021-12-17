@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+
+
+    <item
+        android:id="@+id/surah"
+        android:icon="@drawable/baseline_api_black_36dp"
+        android:title="Surah" />
+
+
+    <item
+        android:id="@+id/mushaf"
+
+
+        android:title="Mushaf" />
+
+    <item
+
+        android:title="Mufradat"
+        android:id="@+id/mufradat"
+        android:icon="@drawable/baseline_bookmarks_teal_700_36dp"
+          />
+
+
+
+
+    <item
+        android:id="@+id/bookmark"
+        android:icon="@drawable/baseline_addchart_black_36dp"
+        android:title="@string/more_action"
+
+        app:srcCompat="@drawable/ic_brightness"
+        android:tint="?attr/colorSecondary"
+
+
+
+        app:showAsAction="always" />
+
+
+    <item
+        android:id="@+id/setting"
+        android:icon="@drawable/ic_action_setting"
+        android:title="Setting" />
+
+
+
+</menu>

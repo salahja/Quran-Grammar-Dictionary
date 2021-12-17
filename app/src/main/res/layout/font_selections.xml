@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <include
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/toolbar_height"
+        layout="@layout/default_toolbar" />
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:gravity="center"
+                android:orientation="vertical"
+                android:background="@color/white"
+                android:padding="30.0dip"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30.0dip">
+
+                <LinearLayout
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:id="@id/arabicFontStyleContainer"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="0.0dip"
+                        android:layout_height="wrap_content"
+                        android:text="@string/arabic_font_style"
+                        android:layout_weight="1.0"
+                       />
+
+                    <TextView
+                        android:textColor="@color/extremely_dark_gray"
+                        android:ellipsize="end"
+                        android:id="@id/arabicSelectedFontStyleView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:lines="1"
+                        android:layout_marginStart="30.0dip" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20.0dip"
+                    android:text="@string/id_font_info" />
+
+                <TextView
+                    android:gravity="center"
+                    android:id="@id/arabicSampleView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="85.0dip"
+                    android:text="@string/sample_arabic" />
+
+                <LinearLayout
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20.0dip">
+
+                    <TextView
+                        android:layout_width="0.0dip"
+                        android:layout_height="wrap_content"
+                        android:text="@string/id_arabic_font_size"
+                        android:layout_weight="1.0"
+                    />
+
+                    <TextView
+                        android:textColor="@color/extremely_dark_gray"
+                        android:id="@id/arabicFontSizeSelectedView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <androidx.appcompat.widget.AppCompatSeekBar
+                    android:id="@id/arabicFontSizeSeekBar"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20.0dip"
+                    android:max="100"
+                    android:thumb="@drawable/ic_radio_selected_accent"
+                    android:thumbTint="@color/colorAccent" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:gravity="center"
+                android:orientation="vertical"
+                android:background="@color/white"
+                android:padding="30.0dip"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30.0dip"
+                android:layout_marginBottom="30.0dip">
+
+                <TextView
+                    android:gravity="center"
+                    android:id="@id/translationSampleView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="75.0dip"
+                    android:text="@string/sample_translation" />
+
+                <LinearLayout
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20.0dip">
+
+                    <TextView
+                        android:layout_width="0.0dip"
+                        android:layout_height="wrap_content"
+                        android:text="@string/id_translations"
+                        android:layout_weight="1.0"
+                        />
+
+                    <TextView
+                        android:textColor="@color/tab_deselected_color"
+                        android:id="@id/translationFontSizeSelectedView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <androidx.appcompat.widget.AppCompatSeekBar
+                    android:id="@id/translationFontSizeSeekBar"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20.0dip"
+                    android:max="100"
+                    android:thumb="@drawable/ic_radio_selected_accent"
+                    android:thumbTint="@color/colorAccent" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

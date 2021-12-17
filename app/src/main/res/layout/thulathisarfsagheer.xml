@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+
+    app:shapeAppearance="@dimen/cardview_default_elevation"
+    app:cardUseCompatPadding="true"
+    app:cardCornerRadius="4dp"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <TextView
+            android:id="@+id/ismfail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="5dp"
+            android:text="ifail        "
+            android:textSize="24sp" />
+
+
+        <TextView
+            android:id="@+id/masdar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginLeft="54dp"
+            android:layout_toRightOf="@id/ismfail"
+            android:text="masda"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/mumaroof"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="47dp"
+            android:layout_toRightOf="@id/masdar"
+            android:text="mumroo"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/mamaroof"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="10dp"
+            android:text="madi"
+            android:layout_toRightOf="@id/mumaroof"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/ismmafool"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ismfail"
+            android:paddingLeft="5dp"
+            android:text="imafool"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/masdar2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/masdar"
+            android:layout_marginStart="50dp"
+            android:layout_toEndOf="@id/ismmafool"
+            android:text="masdar"
+            android:textSize="24sp" />
+
+
+        <TextView
+            android:id="@+id/mumajhool"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/mumaroof"
+            android:layout_marginLeft="32dp"
+            android:layout_marginTop="1dp"
+            android:layout_toRightOf="@id/masdar2"
+            android:text="mumajoo"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/mamajhool"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/mamaroof"
+            android:layout_alignParentRight="true"
+
+            android:layout_marginTop="-1dp"
+
+            android:layout_toRightOf="@id/mumajhool"
+            android:layout_marginLeft="10dp"
+            android:paddingRight="5dp"
+            android:text="mama"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/ismalatitle"
+            android:layout_marginTop="50dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ism Aala"
+            android:layout_below="@id/zarftitle"/>
+
+        <TextView
+            android:id="@+id/ismaala"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/zarf"
+            android:layout_marginStart="22dp"
+            android:layout_marginTop="36dp"
+            android:layout_toEndOf="@id/ismalatitle"
+            android:paddingLeft="5dp"
+            android:text="ism aal"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/zarftitle"
+            android:layout_marginTop="50dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ZARF"
+            android:layout_below="@id/nahiamr"/>
+
+
+
+        <TextView
+            android:id="@+id/zarf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/masdar2"
+            android:layout_marginStart="68dp"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="73dp"
+            android:layout_toEndOf="@id/zarftitle"
+            android:text="zarf"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/nahiamr"
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+            android:layout_below="@id/mumajhool"
+            android:layout_marginLeft="110dp"
+            android:text="@string/nahi_amr"
+
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/amr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/mamajhool"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="1dp"
+            android:layout_toRightOf="@id/nahiamr"
+            android:hint="amr comman"
+            android:textSize="24sp" />
+
+
+    </RelativeLayout>
+
+    <View
+    android:layout_width="match_parent"
+    android:layout_height="1dp"
+    android:background="@color/colorAccent">
+
+</View>
+
+
+</com.google.android.material.card.MaterialCardView>

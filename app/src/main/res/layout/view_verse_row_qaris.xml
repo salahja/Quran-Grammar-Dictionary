@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical"
+    android:paddingTop="12.0dip"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:id="@id/topItemsContainer"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_below="@+id/toolbar"
+        android:layout_alignParentTop="true"
+
+        android:gravity="center"
+        android:layout_gravity="center">
+        <TextView
+
+
+            android:layout_marginTop="6dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/bimillah"
+            android:textSize="20sp"
+            android:gravity="center_horizontal"
+            android:paddingTop="1dp"
+            android:text="@string/header_msg"
+            android:layout_alignParentStart="true"
+            >
+
+        </TextView>
+    </RelativeLayout>
+    <RelativeLayout
+        android:orientation="horizontal"
+        android:id="@id/topItemsContainer"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5.0dip">
+
+        <ImageView
+            android:id="@id/bookmarkView"
+            android:layout_width="25.0dip"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_bookmark"
+            android:layout_alignTop="@id/referenceView"
+            android:layout_alignBottom="@id/referenceView"
+            android:layout_centerVertical="true"
+            android:contentDescription="@null"
+            android:rotation="180.0"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+
+            android:textSize="13.0sp"
+            android:id="@id/referenceView"
+            android:background="@color/dark_gray"
+            android:paddingTop="3.0dip"
+            android:paddingBottom="3.0dip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:paddingStart="5.0dip"
+            android:paddingEnd="5.0dip"
+            android:layout_marginStart="10.0dip"
+            android:layout_toEndOf="@id/bookmarkView" />
+        <TextView
+            android:textSize="30.0sp"
+            android:id="@id/chaptername"
+
+            android:paddingTop="3.0dip"
+            android:paddingBottom="3.0dip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_centerVertical="true"
+            android:paddingStart="5.0dip"
+            android:paddingEnd="5.0dip"
+            android:layout_marginStart="10.0dip"
+            android:layout_toEndOf="@id/referenceView" />
+
+
+        <ImageView
+            android:id="@id/verseOptionsView"
+            android:paddingTop="3.0dip"
+            android:paddingBottom="3.0dip"
+            android:layout_width="20.0dip"
+            android:layout_height="40.0dip"
+            app:srcCompat="@drawable/ic_more"
+            android:layout_centerVertical="true"
+            android:contentDescription="@null"
+            android:paddingStart="3.0dip"
+            android:layout_marginEnd="10.0dip"
+            android:layout_alignParentEnd="true"
+            app:tint="@color/black" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:orientation="horizontal"
+        android:id="@id/topItemsContainer"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5.0dip">
+
+        <TextView
+            android:id="@id/verseView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_marginBottom="5.0dip"
+            android:gravity="start"
+            android:paddingStart="10.0dip"
+            android:paddingEnd="10.0dip"
+
+            android:textSize="25.0sp" />
+
+
+        <TextView
+            android:id="@+id/translate_textViewnote"
+            android:layout_below="@+id/verseView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lineSpacingExtra="@dimen/lineSpacingExtra"
+            android:padding="@dimen/textViewPadding"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:visibility="gone" />
+        <TextView
+            android:textSize="16.0sp"
+
+            android:id="@id/verse_en_translation"
+            android:layout_below="@+id/translate_textViewnote"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15.0dip"
+            android:visibility="gone"
+            android:paddingStart="10.0dip"
+            android:paddingEnd="10.0dip"
+            />
+
+        <TextView
+            android:id="@+id/quran_jalalaynnote"
+            android:layout_below="@+id/verse_en_translation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lineSpacingExtra="@dimen/lineSpacingExtra"
+            android:padding="@dimen/textViewPadding"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:visibility="gone" />
+        <TextView
+            android:id="@+id/quran_jalalayn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/quran_jalalaynnote"
+            android:lineSpacingExtra="@dimen/lineSpacingExtra"
+            android:padding="@dimen/textViewPadding"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:visibility="gone" />
+
+
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <ImageView
+            android:id="@+id/expandImageButton"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+
+            android:layout_centerInParent="true"
+            android:adjustViewBounds="true"
+            android:contentDescription="@null"
+            android:foregroundGravity="center_horizontal"
+            android:scaleType="fitCenter"
+            android:visibility="visible"
+            app:srcCompat="@drawable/ic_drop_down"
+            android:tooltipText="@string/Alert" />
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/erab_textViewnote"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:lineSpacingExtra="@dimen/lineSpacingExtra"
+            android:padding="@dimen/textViewPadding"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:visibility="gone" />
+        <TextView
+            android:textSize="16.0sp"
+            android:id="@+id/erab_verse"
+            android:layout_below="@+id/erab_textViewnote"
+
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15.0dip"
+            android:paddingStart="10.0dip"
+            android:paddingEnd="10.0dip"
+            />
+    </RelativeLayout>
+    <View
+    android:id="@id/divider"
+    style="@style/HorizontalLine" />
+</LinearLayout>

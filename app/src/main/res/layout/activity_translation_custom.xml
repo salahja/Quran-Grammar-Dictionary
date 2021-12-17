@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+
+    android:orientation="vertical">
+ 
+
+    <RelativeLayout
+        android:orientation="vertical"
+        android:layout_gravity="left"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@id/languagename"
+            android:orientation="vertical"
+            android:layout_marginLeft="20dp"
+            android:layout_gravity="left"
+            android:layout_alignLeft="@+id/tobedownloadedlist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_above="@+id/recyclerViewAdapterTranslation"
+            android:textSize="25sp"
+            android:visibility="visible" />
+        <TextView
+            android:id="@id/authorname"
+            android:orientation="vertical"
+            android:layout_marginLeft="20dp"
+            android:layout_gravity="left"
+          android:layout_below="@+id/languagename"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_above="@+id/recyclerViewAdapterTranslation"
+            android:textSize="25sp"/>
+        <TextView
+            android:id="@id/englishname"
+            android:orientation="vertical"
+            android:layout_marginLeft="20dp"
+            android:layout_gravity="left"
+          android:layout_below="@+id/authorname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_above="@+id/recyclerViewAdapterTranslation"
+            android:textSize="25sp"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@id/languagenametob"
+            android:orientation="vertical"
+            android:layout_marginLeft="20dp"
+            android:layout_gravity="left"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_above="@+id/recyclerViewAdapterTranslation"
+            android:textSize="25sp"
+            android:visibility="visible" />
+        <TextView
+            android:id="@id/authornametobe"
+            android:orientation="vertical"
+            android:layout_marginLeft="20dp"
+            android:layout_gravity="left"
+            android:layout_below="@+id/languagenametob"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_above="@+id/recyclerViewAdapterTranslation"
+            android:textSize="25sp"/>
+        <TextView
+            android:id="@id/englishnametobe"
+            android:orientation="vertical"
+            android:layout_marginLeft="20dp"
+
+            android:layout_below="@+id/authornametobe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_above="@+id/recyclerViewAdapterTranslation"
+            android:textSize="25sp"
+            android:visibility="visible" />
+
+
+
+
+
+
+ 
+    </RelativeLayout>
+</LinearLayout>

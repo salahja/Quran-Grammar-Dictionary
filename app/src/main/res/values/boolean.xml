@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <bool name="show_sura_names_translation">false</bool>
+    <bool name="immersive_in_portrait">false</bool>
+</resources>

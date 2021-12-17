@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+
+
+    <RelativeLayout
+        android:id="@+id/textlayout"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:paddingTop="10dp">
+
+        <TextView
+            android:id="@+id/arabicroot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="@string/id_select_translations"
+            android:layout_alignParentLeft="true"
+            android:textColor="@color/white"
+            android:textSize="24.0sp" />
+
+        <TextView
+            android:id="@+id/buckwaterroot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:text="@string/id_select_translations"
+
+            android:textColor="@color/white"
+            android:textSize="24.0sp" />
+
+
+
+
+
+
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_gravity="bottom"
+
+        android:layout_height="fill_parent">
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@id/recyclerViewAdapterTranslation"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:foregroundGravity="bottom" />
+    </RelativeLayout>
+</LinearLayout>

@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:cardCornerRadius="5dp"
+    app:cardUseCompatPadding="true"
+
+    app:cardMaxElevation="10dp"
+    style="style/ShapeAppearance.MyApp.MediumComponent.Rounded"
+
+ >
+
+
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content">
+
+
+       <TextView
+           android:id="@id/ChapterNameEnTextView"
+           app:itemBackground="?attr/colorSurface"
+           app:itemTextColor="?attr/colorOnBackground"
+           app:itemIconTint="@drawable/bottom_nav_item_background"
+
+           android:layout_width="220dp"
+           android:layout_height="wrap_content"
+           android:layout_weight="0.4"
+           android:gravity="center_vertical"
+           android:paddingLeft="5.0dip"
+           android:paddingRight="10.0dip"
+           android:text="THE FAMILY OF IMRAN"
+           android:textSize="20dp" />
+
+
+       <TextView
+           android:id="@id/ChapterNameArTextView"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+
+           android:layout_marginLeft="47dp"
+
+           android:layout_toRightOf="@id/ChapterNameEnTextView"
+           android:layout_weight="0.4"
+           android:gravity="center_vertical"
+           android:text="Chapter"
+           android:textSize="20dp" />
+
+       <TextView
+           android:id="@+id/reveleationtxt"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_below="@id/ChapterNameEnTextView"
+           android:paddingLeft="5.0dip"
+           android:text="Revelation: "
+           android:textSize="20dp"
+           />
+
+       <TextView
+           android:id="@id/RevelationNoTextView"
+           android:layout_below="@id/ChapterNameEnTextView"
+           android:layout_toRightOf="@id/reveleationtxt"
+           android:layout_width="40dp"
+           android:layout_height="wrap_content"
+           android:textSize="20dp"/>
+
+
+       <TextView
+           android:id="@id/rukutext"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_below="@id/ChapterNameEnTextView"
+           android:layout_marginLeft="120dp"
+           android:layout_marginTop="0dp"
+           android:layout_toRightOf="@id/RevelationNoTextView"
+           android:text="Rukus: "
+           android:textSize="20dp" />
+
+       <TextView
+           android:id="@id/RukusCountTextView"
+           android:layout_width="fill_parent"
+           android:layout_below="@id/ChapterNameArTextView"
+           android:layout_toRightOf="@id/rukutext"
+           android:layout_height="wrap_content"
+           android:textSize="20dp"
+           />
+       <TextView
+           android:id="@+id/versestext"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_below="@id/reveleationtxt"
+           android:paddingLeft="5.0dip"
+           android:text="Verses: "
+           android:textSize="20dp"
+
+
+           tools:ignore="HardcodedText" />
+
+       <TextView
+           android:id="@id/VersesCountTextView"
+           android:layout_width="100dp"
+           android:layout_height="wrap_content"
+           android:layout_below="@id/reveleationtxt"
+           android:layout_toRightOf="@id/versestext"
+
+           android:textSize="20dp" />
+
+
+       <TextView
+           android:id="@+id/parahtext"
+           android:layout_below="@id/RevelationNoTextView"
+           android:layout_toRightOf="@id/VersesCountTextView"
+           android:layout_marginLeft="91dp"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="Paras: "
+           android:textSize="20dp"
+           />
+
+       <TextView
+           android:layout_below="@id/RevelationNoTextView"
+           android:id="@id/ParahsFallTextView"
+           android:layout_toRightOf="@id/parahtext"
+           android:layout_width="50dp"
+           android:layout_height="wrap_content"
+           android:textSize="20dp"
+           />
+
+       <TextView
+           android:id="@+id/cumtext"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:paddingLeft="5.0dip"
+           android:layout_below="@id/parahtext"
+           android:text="Cum. Verses: "
+           android:textSize="20dp"
+           />
+
+
+       <TextView
+           android:id="@id/CVersesCountTextView"
+           android:layout_below="@id/VersesCountTextView"
+         android:layout_toRightOf="@id/cumtext"
+           android:layout_width="50dp"
+           android:layout_height="wrap_content"
+           android:textSize="20dp"
+           />
+       <TextView
+           android:id="@+id/sajdatxt"
+           android:layout_below="@id/parahtext"
+           android:layout_toEndOf="@id/CVersesCountTextView"
+           android:layout_marginLeft="70dp"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:paddingLeft="5.0dip"
+           android:text="Sajdah Verses: "
+           android:textSize="20dp"
+           />
+
+
+       <TextView
+           android:id="@+id/sajdahverse"
+           android:layout_below="@id/ParahsFallTextView"
+         android:layout_toRightOf="@id/sajdatxt"
+           android:layout_width="50dp"
+           android:layout_height="wrap_content"
+           android:gravity="center_vertical"
+           android:textSize="20dp"
+           />
+
+
+
+   </RelativeLayout>
+
+
+</com.google.android.material.card.MaterialCardView>

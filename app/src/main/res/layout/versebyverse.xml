@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom"
+
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/word_trans_textView"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="20dp"
+        android:autoSizeMaxTextSize="@dimen/fontSizeArabic"
+        android:gravity="start"
+   />
+
+    <TextView
+        android:id="@+id/word_arabic_textView"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+
+        android:layout_gravity="end"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="20dp"
+
+        android:layout_toEndOf="@+id/word_trans_textView"
+        android:gravity="end"
+        />
+
+
+
+</RelativeLayout>

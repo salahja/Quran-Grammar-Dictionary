@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:paddingStart="15.0dip"
+    android:paddingEnd="15.0dip"
+    android:fitsSystemWindows="true"
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <include layout="@layout/toolbar"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:isScrollContainer="true"
+        android:scrollbarSize="5dp"
+        android:fillViewport="true"
+        android:orientation="vertical"
+        android:layout_weight="3" />
+        <LinearLayout android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+    <TextView
+        android:textSize="@dimen/textSizeNormal"
+        android:id="@id/starttext"
+
+        android:paddingTop="10dp"
+        android:paddingBottom="3.0dip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:autoSizeMaxTextSize="25sp"
+        android:layout_marginTop="10.0dip"
+        android:paddingStart="5.0dip"
+
+        android:paddingEnd="5.0dip"
+        />
+    <TextView
+        android:textSize="@dimen/textSizeNormal"
+        android:id="@id/chaptername"
+
+        android:paddingTop="10dp"
+        android:paddingBottom="3.0dip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10.0dip"
+        android:paddingStart="5.0dip"
+
+        android:paddingEnd="5.0dip"
+         />
+
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+
+            android:id="@id/wordTranslationView"
+            android:layout_width="0.0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:textSize="@dimen/textSizeNormal"
+             android:fontFamily="sans-serif-condensed-medium" />
+
+        <TextView
+            android:id="@id/wordView"
+            android:textSize="@dimen/textSizeNormal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:fontFamily="sans-serif" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@id/englishGrammarView"
+
+        android:textSize="@dimen/textSizeNormal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15.0dip" />
+
+    <TextView
+
+
+        android:textSize="@dimen/textSizeNormal"
+        android:id="@id/wordoccurance"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15.0dip"
+        android:layout_marginBottom="10.0dip"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:textFontWeight="@android:integer/config_longAnimTime" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/arabic_grammar_color">
+
+    </View>
+
+        </LinearLayout>
+
+
+</LinearLayout>

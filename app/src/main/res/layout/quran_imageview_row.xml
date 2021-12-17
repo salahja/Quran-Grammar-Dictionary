@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <RelativeLayout
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_gravity="top">
+
+
+        <ImageView
+            android:visibility="gone"
+            android:id="@id/bookmarkView"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:background="@drawable/border"
+            android:cropToPadding="true"
+            android:elevation="10dp"
+            android:padding="1dp"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/baseline_bookmarks_red_900_36dp" />
+
+        <ImageView
+            android:id="@id/jumpto"
+            android:visibility="gone"
+
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginEnd="10dp"
+            android:layout_toEndOf="@+id/bookmarkView"
+            android:background="@drawable/border"
+            android:cropToPadding="true"
+            android:elevation="10dp"
+            android:padding="1dp"
+            android:scaleType="centerCrop"
+
+
+            app:srcCompat="@drawable/ic_baseline_open_in_browser_36" />
+
+        <TextView
+            android:id="@id/chaptername"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="20.0dip"
+            android:layout_toEndOf="@+id/jumpto"
+            android:gravity="center_horizontal"
+            android:paddingStart="100dp"
+            android:paddingTop="3.0dip"
+            android:paddingEnd="5.0dip"
+            android:paddingBottom="3.0dip"
+            android:textSize="18.0sp" />
+
+        <ImageView
+            android:id="@id/ivActionOverflow"
+            android:layout_width="wrap_content"
+            android:layout_height="40.0dip"
+            android:layout_alignParentEnd="true"
+            android:layout_toEndOf="@id/chaptername"
+            android:backgroundTint="@color/white"
+            android:paddingLeft="@dimen/space_2"
+            android:scaleType="fitEnd"
+            android:visibility="visible"
+            app:srcCompat="@drawable/ic_more_horiz_black_24dp" />
+
+
+    </RelativeLayout>
+</RelativeLayout>

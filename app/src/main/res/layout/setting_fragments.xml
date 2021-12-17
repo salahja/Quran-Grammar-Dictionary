@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/toolbar_height"
+        android:paddingStart="10.0dip"
+        android:paddingEnd="10.0dip">
+
+        <TextView
+            android:textSize="18.0sp"
+
+            android:gravity="center_vertical"
+            android:layout_width="0.0dip"
+            android:layout_height="fill_parent"
+            android:text="@string/id_tab_settings"
+            android:layout_weight="1.0" />
+
+
+    </LinearLayout>
+
+    <ScrollView
+
+
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:id="@id/settingsContainer"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+           >
+            <View style="@style/HorizontalLine" />
+
+            <LinearLayout
+                android:orientation="vertical"
+
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:id="@id/showArabicView"
+                    style="@style/SettingsItemRow.WithSwitch">
+
+                    <ImageView
+                        android:layout_height="22.0dip"
+                        app:srcCompat="@drawable/ic_show_arabic"
+                        android:contentDescription="@null"
+                        style="@style/SettingsItemIcon" />
+
+                    <TextView
+                        android:id="@id/showArabicViewText"
+                        android:textSize="15.0sp"
+                        android:layout_width="0.0dip"
+                        android:layout_height="wrap_content"
+                        android:text="@string/id_show_arabic"
+                        android:layout_weight="1.0" />
+
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@id/showArabicSwitch"
+                        style="@style/SettingsItemSwitch" />
+                </LinearLayout>
+
+                <View style="@style/HorizontalLine" />
+                <LinearLayout
+                    android:id="@id/showErabview"
+                    style="@style/SettingsItemRow.WithSwitch">
+
+                    <ImageView
+                        android:layout_height="22.0dip"
+                        app:srcCompat="@drawable/baseline_addchart_black_36dp"
+                        android:contentDescription="@null"
+                        style="@style/SettingsItemIcon" />
+
+                    <TextView
+                        android:id="@id/showErabviewText"
+                        android:textSize="15.0sp"
+                        android:layout_width="0.0dip"
+                        android:layout_height="wrap_content"
+                        android:text="@string/id_show_irab"
+                        android:layout_weight="1.0" />
+
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@id/showErabSwitch"
+                        style="@style/SettingsItemSwitch" />
+                </LinearLayout>
+                <View style="@style/HorizontalLine" />
+                <LinearLayout
+                    android:id="@id/showTranslationsView"
+                    style="@style/SettingsItemRow.WithSwitch">
+
+                    <ImageView
+                        android:layout_height="22.0dip"
+                        app:srcCompat="@drawable/ic_show_translations"
+                        android:contentDescription="@null"
+                        style="@style/SettingsItemIcon" />
+
+                    <TextView
+                        android:id="@id/showTranslationsViewText"
+                        android:textSize="15.0sp"
+                        android:layout_width="0.0dip"
+                        android:layout_height="wrap_content"
+                        android:text="@string/id_show_translations"
+                        android:layout_weight="1.0" />
+
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@id/showTranslationsSwitch"
+                        style="@style/SettingsItemSwitch" />
+                </LinearLayout>
+
+                <View style="@style/HorizontalLine" />
+
+                <LinearLayout
+                    android:id="@id/translationsView"
+                    style="@style/SettingsItemRow">
+
+                    <ImageView
+                        app:srcCompat="@drawable/ic_translations"
+                        android:contentDescription="@null"
+                        style="@style/SettingsItemIcon" />
+
+                    <TextView
+                        android:id="@+id/selecttranslation"
+                        android:textSize="15.0sp"
+                        android:layout_width="0.0dip"
+                        android:layout_height="wrap_content"
+                        android:text="@string/id_select_translations"
+                        android:layout_weight="1.0"
+                        android:layout_marginEnd="5.0dip" />
+
+                    <ImageView
+                        android:contentDescription="@null"
+                        style="@style/SettingsItemArrow" />
+                </LinearLayout>
+
+                <View style="@style/HorizontalLine" />
+
+                <LinearLayout
+                    android:id="@id/arabicScriptView"
+                    style="@style/SettingsItemRow">
+
+                    <ImageView
+                        app:srcCompat="@drawable/ic_arabic_font"
+                        android:contentDescription="@null"
+                        style="@style/SettingsItemIcon" />
+
+                    <RelativeLayout
+                        android:layout_width="0.0dip"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.0">
+
+                        <TextView
+                            android:textSize="15.0sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/download"
+                            android:layout_centerVertical="true"
+                            android:layout_alignParentStart="true" />
+
+                        <TextView
+                            android:textSize="15.0sp"
+                            android:textColor="@color/dark_gray"
+                            android:ellipsize="end"
+                            android:id="@id/selectedScriptNameView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:lines="1"
+                            android:layout_centerVertical="true"
+                            android:layout_alignParentEnd="true" />
+                    </RelativeLayout>
+
+                    <ImageView
+                        android:contentDescription="@null"
+                        style="@style/SettingsItemArrow" />
+                </LinearLayout>
+
+                <View style="@style/HorizontalLine" />
+
+                <LinearLayout
+                    android:id="@id/arabicFontView"
+                    style="@style/SettingsItemRow">
+
+                    <ImageView
+                        app:srcCompat="@drawable/ic_font_size"
+                        android:contentDescription="@null"
+                        style="@style/SettingsItemIcon" />
+
+                    <TextView
+                        android:textSize="15.0sp"
+                        android:layout_width="0.0dip"
+                        android:layout_height="wrap_content"
+                        android:text="@string/id_arabic_style_font"
+                        android:layout_weight="1.0" />
+
+                    <ImageView
+                        android:contentDescription="@null"
+                        style="@style/SettingsItemArrow" />
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@id/arabicFontView"
+                    style="@style/SettingsItemRow">
+
+                    <ImageView
+                        app:srcCompat="@drawable/ic_baseline_open_in_new_red_24"
+                        android:contentDescription="@null"
+                        style="@style/SettingsItemIcon" />
+
+                    <SeekBar
+                        android:layout_width="0.0dip"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.0"
+                        android:text="Select Fonts"
+                        android:textSize="15.0sp" />
+
+                    <ImageView
+                        android:contentDescription="@null"
+                        style="@style/SettingsItemArrow" />
+                </LinearLayout>
+                <View style="@style/HorizontalLine" />
+
+
+            </LinearLayout>
+
+
+
+
+
+            <View
+                android:layout_marginBottom="30.0dip"
+                style="@style/HorizontalLine" />
+        </LinearLayout>
+
+
+
+    </ScrollView>
+
+
+</LinearLayout>
