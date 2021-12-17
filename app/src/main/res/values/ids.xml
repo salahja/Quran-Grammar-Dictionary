@@ -15,69 +15,23 @@
     <item type="id" name="divider" />
     <item type="id" name="englishGrammarView" />
     <item type="id" name="header" />
-    <item type="id" name="recyclerView" />
     <item type="id" name="chaptername" />
     <item type="id" name="text" />
-    <item type="id" name="time" />
 
     <item type="id" name="topItemsContainer" />
-    <item type="id" name="verseOptionsView" />
     <item type="id" name="wordByWordRecyclerView" />
-    <item type="id" name="wordTranslationView" />
 
-
-
-
-    <item name="ChaptersListView" type="id" />
-        <item name="ChapterNameEnTextView" type="id" />
-        <item name="ChapterNameArTextView" type="id" />
-        <item name="ChapterNoTextView" type="id" />
-        <item name="RevelationNoTextView" type="id" />
-        <item name="RukusCountTextView" type="id" />
-        <item name="VersesCountTextView" type="id" />
-        <item name="ParahsFallTextView" type="id" />
-        <item name="CVersesCountTextView" type="id" />
 
     <item name="toolbar" type="id" />
 
 
     <item name="chapterno" type="id"></item>
     <item name="verseno" type="id"></item>
-    <item name="ayah_separator" type="id" />
-    <item name="ayah_number" type="id" />
-    <item name="left_separator" type="id" />
-    <item name="right_separator" type="id" />
-    <item name="ayah_text" type="id" />
-    <item name="ayah_words" type="id" />
-    <item name="ayah_translation" type="id" />
-    <item name="translation_separator" type="id" />
-    <item name="ayah_tafseer" type="id" />
-    <item name="tafseer_separator" type="id" />
-    <item name="ruku_info_text" type="id" />
-    <item name="ruku_info_text_separator" type="id" />
-    <item name="tool_bar" type="id" />
-    <item name="translation_card_view" type="id" />
-    <item name="words_card_view" type="id" />
-    <item name="start_card" type="id" />
-    <item name="ayah_card_view" type="id" />
-    <item name="start_text" type="id" />
-    <item name="tafseer_card_view" type="id" />
-    <item name="surahinfo" type="id"/>
-    <item name="jumpToChapterNoEditText" type="id" />
-    <item name="jumpToVerseNoEditText" type="id" />
-    <item name="chaptersList" type="id" />
     <item name="referenceView" type="id" />
     <item name="translationView" type="id" />
     <item name="rootView" type="id" />
     <item type="id" name="wordView" />
-    <item name="starttext" type="id" />
-    <item name="rukutext" type="id" />
-    <item name="mushaf" type="id" />
-    <item name="Fail" type="id" />
-    <item name="splashBackground" type="id" />
     <item name="backButtonView" type="id" />
-    <item name="titleView" type="id" />
-    <item name="emptyView" type="id" />
     <item name="bottomButtonsContainer" type="id" />
     <item name="progressBar" type="id" />
     <item name="translationTypeIndicatorView" type="id" />
@@ -85,55 +39,9 @@
     <item name="downloadedLabel" type="id" />
     <item name="readyToDownloadView" type="id" />
     <item name="downloadedCountView" type="id" />
-    <item name="settingsContainer" type="id" />
-    <item name="showTranslationsView" type="id" />
-    <item name="showTranslationsSwitch" type="id" />
-    <item name="translationsView" type="id" />
-    <item name="selectedScriptNameView" type="id" />
-    <item name="arabicFontView" type="id" />
-    <item name="showArabicView" type="id" />
-    <item name="showArabicSwitch" type="id" />
-    <item name="arabicScriptView" type="id" />
-    <item name="settingfragmentrec" type="id" />
-    <item name="downloadedlist" type="id" />
-    <item name="tobedownloadedlist" type="id" />
-    <item name="showArabicViewText" type="id" />
-    <item name="showErabviewText" type="id" />
-    <item name="showErabview" type="id" />
-    <item name="showTranslationsViewText" type="id" />
-    <item name="showErabSwitch" type="id" />
-    <item name="authorname" type="id" />
-    <item name="englishname" type="id" />
-    <item name="languagename" type="id" />
-    <item name="languagenametob" type="id" />
-    <item name="authornametobe" type="id" />
-    <item name="englishnametobe" type="id" />
     <item name="translationDownloaded" type="id" />
     <item name="translationReadytoDownload" type="id" />
-    <item name="rootlayout" type="id" />
-    <item name="title_main" type="id" />
-    <item name="right_text" type="id" />
-    <item name="txt_empty" type="id" />
-    <item name="center_text" type="id" />
-    <item name="ll" type="id" />
-    <item name="title_main4" type="id" />
-    <item name="imgPage" type="id" />
-    <item name="tit_l1" type="id" />
-    <item name="left_text" type="id" />
-    <item name="tit_l2" type="id" />
-    <item name="imgShare" type="id" />
-    <item name="imgTitMenu" type="id" />
-    <item name="ll3" type="id" />
-    <item name="imgBkmrk" type="id" />
-    <item name="searchview" type="id" />
-    <item name="searchView" type="id" />
-    <item name="clearAllContainer" type="id" />
-    <item name="toolbarsearchview" type="id" />
-    <item name="searchViewRoot" type="id" />
 
-
-    <item name="landscape" type="id" />
-    <item name="readingViewPager" type="id" />
 
     <item name="overlayView" type="id" />
 
@@ -148,32 +56,14 @@
 
     <item name="devIndicatorView" type="id" />
     <item name="chapterNameView" type="id" />
-    <item name="partNoView" type="id" />
-    <item name="partDetailsView" type="id" />
-    <item name="partNameView" type="id" />
 
-    <item name="rootview" type="id" />
-    <item name="partview" type="id" />
-    <item name="chapterview" type="id" />
-    <item name="juzRecyclerView" type="id" />
-
-    <item name="noteView" type="id" />
-    <item name="verseView" type="id" />
-
-    <item name="verselogo" type="id" />
     <item name="overlayTypeChapterView" type="id" />
     <item name="jumpto" type="id" />
-    <item name="delete" type="id" />
     <item name="deleteAllBookmarks" type="id" />
 
     <item name="ismalaheader" type="id" />
 
     <item name="verbconjugationbtn" type="id" />
-    <item name="ivReport" type="id" />
-    <item name="ivShare" type="id" />
-    <item name="tvTitle" type="id" />
-    <item name="ivClose" type="id" />
-    <item name="textv" type="id" />
     <item name="wordDetails" type="id" />
     <item name="lemma" type="id" />
     <item name="verbdetails" type="id" />
@@ -183,16 +73,6 @@
     <item name="pdmsfont" type="id" />
     <item name="pronoundetails" type="id" />
     <item name="mushafview" type="id" />
-    <item name="tvAyahNumber" type="id" />
-    <item name="tvPageNo" type="id" />
-    <item name="translationFontSizeSeekBar" type="id" />
-    <item name="translationFontSizeSelectedView" type="id" />
-    <item name="translationSampleView" type="id" />
-    <item name="arabicFontSizeSeekBar" type="id" />
-    <item name="arabicFontSizeSelectedView" type="id" />
-    <item name="arabicSampleView" type="id" />
-    <item name="arabicSelectedFontStyleView" type="id" />
-    <item name="arabicFontStyleContainer" type="id" />
     <item name="isone" type="id" />
     <item name="isfour" type="id" />
     <item name="isseven" type="id" />
@@ -208,11 +88,6 @@
     <item name="imafoolfemseven" type="id" />
     <item name="nahiamranta" type="id" />
     <item name="nahiamranti" type="id" />
-    <item name="verbroot" type="id" />
-
-    <item name="conjugatedverb" type="id" />
-
-    <item name="verbmeaning" type="id" />
 
     <item name="babno" type="id" />
     <item name="weaknesstype" type="id" />
@@ -285,10 +160,6 @@
     <item name="amr" type="id" />
     <item name="conjugateall" type="id" />
 
-    <item name="verbform" type="id" />
-    <item name="verbfrequency" type="id" />
-    <item name="thulathibab" type="id" />
-    <item name="verbtype" type="id" />
     <item name="verb" type="id" />
     <item name="pastactive" type="id" />
     <item name="negcommand" type="id" />
@@ -333,49 +204,30 @@
     <item name="mifalfour" type="id" />
     <item name="mifalone" type="id" />
     <item name="verboccurance" type="id" />
-    <item name="verbview" type="id" />
     <item name="chapterverse" type="id" />
     <item name="arabicword" type="id" />
     <item name="gendernumber" type="id" />
     <item name="meaning" type="id" />
     <item name="tense" type="id" />
-    <item name="propone" type="id" />
     <item name="containertop" type="id" />
     <item name="nounname" type="id" />
     <item name="cases" type="id" />
     <item name="participles" type="id" />
-    <item name="fragment_menu_items" type="id" />
     <item name="ayah" type="id" />
     <item name="translation" type="id" />
     <item name="harftv" type="id" />
     <item name="stringlength" type="id" />
     <item name="lengths" type="id" />
     <item name="RecyclerView" type="id" />
-    <item name="etSura" type="id" />
-    <item name="etAyah" type="id" />
     <item name="surahpicker" type="id" />
-    <item name="ayahpicker" type="id" />
-    <item name="tiSura" type="id" />
-    <item name="tiPage" type="id" />
-    <item name="tiJuz" type="id" />
-    <item name="tiHizb" type="id" />
     <item name="llQuickLinks" type="id" />
     <item name="tvLabelQuickLink" type="id" />
-    <item name="llLastRead" type="id" />
-    <item name="tvLabelLastRead" type="id" />
     <item name="tvArabic" type="id" />
     <item name="tvSuraright" type="id" />
-    <item name="ivIcon" type="id" />
-    <item name="tvArabicright" type="id" />
     <item name="surahicon" type="id" />
-    <item name="tvSurahleftarabic" type="id" />
     <item name="makkimadaniicon" type="id" />
-    <item name="tvSurahrightarabic" type="id" />
-    <item name="ivIconright" type="id" />
     <item name="quranverseShart" type="id" />
     <item name="spannableverse" type="id" />
-    <item name="etSuraSelected" type="id" />
-    <item name="etAyahSelected" type="id" />
     <item name="wordDictionary" type="id" />
     <item name="wordDictionaryUrdu" type="id" />
     <item name="rootward" type="id" />
@@ -383,17 +235,12 @@
     <item name="paradigm" type="id" />
     <item name="triroot" type="id" />
     <item name="wazanlist" type="id" />
-    <item name="arabicwordpcpl" type="id" />
     <item name="rdtwo" type="id" />
     <item name="kahaf" type="id" />
-    <item name="yasin" type="id" />
-    <item name="kahafmakkimadaniicon" type="id" />
-    <item name="kahaficon" type="id" />
     <item name="tvSura" type="id" />
     <item name="ivSurahIcon" type="id" />
     <item name="linearLayout4" type="id" />
     <item name="ivBismillah" type="id" />
-    <item name="ivLocation" type="id" />
     <item name="tvVerses" type="id" />
     <item name="tvSerial" type="id" />
     <item name="tvRukus" type="id" />
@@ -401,13 +248,9 @@
     <item name="ivLocationmadani" type="id" />
     <item name="ivLocationmakki" type="id" />
     <item name="tvNumber" type="id" />
-    <item name="cvBg" type="id" />
-    <item name="llBookmark" type="id" />
     <item name="ivActionOverflow" type="id" />
-    <item name="tvTranslation" type="id" />
     <item name="tabLayout" type="id" />
     <item name="mazeedmeaning" type="id" />
-    <item name="jussive" type="id" />
     <item name="emphasized" type="id" />
     <item name="rootword" type="id" />
     <item name="tvKovNumber" type="id" />
@@ -415,6 +258,7 @@
     <item name="subjunctive" type="id" />
     <item name="rdsubjunctive" type="id" />
     <item name="rdjussive" type="id" />
+    <item name="lastread" type="id" />
 
 
 </resources>

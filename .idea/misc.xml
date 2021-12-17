@@ -39,8 +39,11 @@
         <entry key="app/src/main/res/layout/thulathilistingnotoolbar.xml" value="0.1" />
         <entry key="app/src/main/res/layout/thulathitable.xml" value="0.67" />
         <entry key="app/src/main/res/layout/wordbottomsheetismfaelmafoolsktraditional.xml" value="0.33064516129032256" />
+        <entry key="app/src/main/res/menu/fragment_menu_items.xml" value="1.0642857142857143" />
         <entry key="app/src/main/res/menu/main.xml" value="0.6214285714285714" />
         <entry key="app/src/main/res/menu/menu.xml" value="0.67" />
+        <entry key="app/src/main/res/menu/navigation_drawer_menu.xml" value="1.0642857142857143" />
+        <entry key="app/src/main/res/menu/popup_menu.xml" value="1.0642857142857143" />
         <entry key="app/src/main/res/xml/preferences.xml" value="0.7892857142857143" />
         <entry key="app/src/main/res/xml/verbpreferences.xml" value="0.6571428571428571" />
       </map>

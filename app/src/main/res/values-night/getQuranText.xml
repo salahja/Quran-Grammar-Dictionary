@@ -1,14 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="action_list">
-        <item>IndoPak</item>
-        <item>Uthmani</item>
-
-    </string-array>
-    <string-array name="action_values">
-        <item>indopak</item>
-        <item>uthmani</item>
-
-    </string-array>
 
 </resources>

@@ -117,10 +117,7 @@ public class FragmentIsmIsmAla extends Fragment {
 
         super.onCreateOptionsMenu(menu, inflater);
         Log.d(TAG, "ONCREATE OPTION MENU verse ");
-        inflater.inflate(R.menu.thulathi_menu_spinner, menu);
-        inflater.inflate(R.menu.navigation_drawer_menu, menu);
-        MenuItem spint = menu.findItem(R.id.verbspinnerthulathi);
-        MenuItem spintwo = menu.findItem(R.id.verbspinnermazeed);
+
 
 
     }

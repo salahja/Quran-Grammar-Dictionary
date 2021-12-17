@@ -21,8 +21,6 @@
         android:title="Colorize"
         app:showAsAction="always" />
 
-    <item
-        android:id="@+id/react_native"
-        android:title="React Native" />
+    <item android:title="React Native" />
 
 </menu>

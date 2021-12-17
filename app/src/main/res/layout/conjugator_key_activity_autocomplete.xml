@@ -238,7 +238,6 @@
             app:strokeWidth="1dp">
 
             <TextView
-                android:id="@+id/labelmazeed"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
 
                 android:layout_width="match_parent"

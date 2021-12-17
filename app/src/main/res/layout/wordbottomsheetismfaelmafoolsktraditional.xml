@@ -24,7 +24,6 @@
 
     <RelativeLayout
 
-        android:id="@+id/top"
         android:layout_width="wrap_content"
         android:layout_height="match_parent">
 
@@ -348,7 +347,6 @@
             app:strokeColor="@color/color_primary_variant"
             app:strokeWidth="1dp">
             <com.google.android.material.card.MaterialCardView
-                android:id="@+id/sarfsagheerview"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_below="@+id/grammar"

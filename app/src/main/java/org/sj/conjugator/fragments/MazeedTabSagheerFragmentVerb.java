@@ -64,54 +64,15 @@ private Context context;
 
 
 
-    // --Commented out by Inspection (31/1/21 5:51 AM):ArrayList<String> getall = new ArrayList<>();
-
-    // --Commented out by Inspection (31/1/21 5:53 AM):boolean regularverb;
-
 
 
     private ArrayList<ArrayList> skabeer = new ArrayList<>();
 
-    private int verbformmazeed;
-    private String verbformthulathi;
 
 
 
 
 
-    @Override
-    public void onCreateOptionsMenu(@NotNull Menu menu, @NotNull MenuInflater inflater) {
-
-
-        super.onCreateOptionsMenu(menu, inflater);
-        Log.d(TAG, "ONCREATE OPTION MENU verse ");
-        inflater.inflate(R.menu.thulathi_menu_spinner, menu);
-        inflater.inflate(R.menu.navigation_drawer_menu, menu);
-
-
-    }
-
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        switch (item.getItemId()) {
-
-            case R.id.verbspinnerthulathi:
-
-                //       setuptoolbar();
-                return true;
-            case R.id.verbspinnermazeed:
-
-                //       setuptoolbar();
-                return true;
-
-
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-
-    }
 
 
 

@@ -200,7 +200,7 @@ public class ConjugatorAct extends BaseActivity implements View.OnClickListener 
     }
 
 
-    editText = findViewById(R.id.editText);
+
 
     keyboard = findViewById(R.id.arabic_keyboard);
 
