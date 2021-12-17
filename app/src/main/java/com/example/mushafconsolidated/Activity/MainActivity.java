@@ -397,14 +397,6 @@ public class MainActivity extends BaseActivity {
 
         } else {
 
-
-
-
-
-        //   FragmentTransaction transactions = getSupportFragmentManager().beginTransaction()
-       //         .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-       //    transactions.replace(R.id.frame_container, frag).addToBackStack("mujarrad");
-       //   transactions.commit();
         Intent homeactivity = new Intent(MainActivity.this, newreadactivity.class);
          //   Intent homeactivity = new Intent(MainActivity.this, ReadingSurahPartActivity.class);
            startActivity(homeactivity);

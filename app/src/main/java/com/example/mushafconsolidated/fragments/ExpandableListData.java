@@ -857,9 +857,11 @@ public class ExpandableListData {
     String jumlashart = "جملة شرطية";
     StringBuilder sb = new StringBuilder();
     StringBuilder sbjawab = new StringBuilder();
-    //   String verse = jumlashart.concat(":" + quranverses);
-    //  this.spannable = new SpannableStringBuilder(quranverses);
-    Typeface mequran = Typeface.createFromAsset(DarkThemeApplication.getContext().getAssets(), SharedPref.quranFont());
+    SharedPreferences sharedPreferences =
+            androidx.preference.PreferenceManager.getDefaultSharedPreferences(DarkThemeApplication.getContext());
+    String quranFont = sharedPreferences.getString("quranFont", "kitab.ttf");
+    Typeface mequran = Typeface.createFromAsset(DarkThemeApplication.getContext().getAssets(), quranFont);
+
 
     for (NewShartEntity shartEntity : shart) {
       String harfofverse = "";

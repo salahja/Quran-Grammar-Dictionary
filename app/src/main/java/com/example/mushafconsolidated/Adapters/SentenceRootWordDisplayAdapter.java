@@ -2,6 +2,7 @@ package com.example.mushafconsolidated.Adapters;
 
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils.TruncateAt;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
+import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.Constant;
@@ -89,7 +91,11 @@ public class SentenceRootWordDisplayAdapter extends RecyclerView.Adapter<Sentenc
 
   @Override
   public void onBindViewHolder(@NonNull ItemViewAdapter holder, int position) {
-    Typeface mequran = Typeface.createFromAsset(context.getAssets(), SharedPref.quranFont());
+    SharedPreferences sharedPreferences =
+            PreferenceManager.getDefaultSharedPreferences(context);
+    String quranFont = sharedPreferences.getString("quranFont", "kitab.ttf");
+    Typeface mequran = Typeface.createFromAsset(context.getAssets(), quranFont);
+
     Log.d(TAG, "onBindViewHolder: called");
     Typeface arabicTypeface = Typeface.createFromAsset(context.getAssets(), SharedPref.arabicFontSelection());
     if (SharedPref.themePreferences().equals("dark")) {

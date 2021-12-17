@@ -30,14 +30,7 @@
     <PreferenceCategory
         android:title="Functions"
         app:iconSpaceReserved="true" />
-    <SwitchPreference
-        android:defaultValue="false"
-        android:key="@string/show_kana_markups"
-        android:title="KanaMarkup" />
-    <SwitchPreference
-        android:defaultValue="false"
-        android:key="@string/show_harfnasb_markups"
-        android:title="HarfNasb-Markup" />
+
 
 
     <SwitchPreference
@@ -91,46 +84,46 @@
 
 
 
-        <PreferenceCategory
+    <PreferenceCategory
 
-            android:title="Grmmatical Syntax" />
+        android:title="Grmmatical Syntax" />
 
-        <SwitchPreference
-            android:defaultValue="true"
-            android:key="@string/prefs_show_mausoof"
-            android:title="Adjectival Phrases/مرکب توصیفی" />
-        <SwitchPreference
-            android:defaultValue="true"
-            android:key="@string/prefs_show_mudhaf"
-            app:summaryOn="@string/mudhafsummary"
-            android:title="إضافَة/Possessive " />
-        <SwitchPreference
-            android:defaultValue="false"
-            android:key="@string/prefs_show_harfnasb"
-            app:summaryOn="@string/harfnasbsummary"
-            android:title="Accusative/ان واخواتها" />
+    <SwitchPreference
+        android:defaultValue="true"
+        android:key="@string/prefs_show_mausoof"
+        android:title="Adjectival Phrases/مرکب توصیفی" />
+    <SwitchPreference
+        android:defaultValue="true"
+        android:key="@string/prefs_show_mudhaf"
+        app:summaryOn="@string/mudhafsummary"
+        android:title="إضافَة/Possessive " />
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="@string/prefs_show_harfnasb"
+        app:summaryOn="@string/harfnasbsummary"
+        android:title="Accusative/ان واخواتها" />
 
-        <SwitchPreference
-            android:defaultValue="false"
-            android:key="@string/prefs_show_shart"
-            app:summaryOn="@string/harfnasbsummary"
-            android:title="Conditional/جملة شرطية" />
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="@string/prefs_show_shart"
+        app:summaryOn="@string/harfnasbsummary"
+        android:title="Conditional/جملة شرطية" />
 
-        <SwitchPreference
-            android:defaultValue="false"
-            android:key="@string/prefs_show_kana"
-            app:summaryOn="@string/harfnasbsummary"
-            android:title=" Verb kāna/كان واخواتها " />
-        <SwitchPreference
-            android:defaultValue="false"
-            android:key="@string/prefs_show_grammar_fragments"
-            android:title="Gramatial Phrases "
-            app:icon="@drawable/ic_baseline_construction_24" />
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="@string/prefs_show_kana"
+        app:summaryOn="@string/harfnasbsummary"
+        android:title=" Verb kāna/كان واخواتها " />
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="@string/prefs_show_grammar_fragments"
+        android:title="Gramatial Phrases "
+        app:icon="@drawable/ic_baseline_construction_24" />
 
-        <SwitchPreference
-            android:defaultValue="false"
-            android:key="@string/prefs_grammar_sentence"
-            android:title="Grammitica Analysis-Sentence wise    " />
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="@string/prefs_grammar_sentence"
+        android:title="Grammitica Analysis-Sentence wise    " />
 
 
 
@@ -159,31 +152,31 @@
             app:useSimpleSummaryProvider="true" />/>
     </PreferenceCategory>
 
-        <SeekBarPreference
-            android:max="60"
-            app:defaultValue="22"
-            app:key="pref_font_arabic_key"
-            app:min="18"
-            app:showSeekBarValue="true"
-            app:summary="@string/seek_summary"
-            app:title="@string/seek_titles" />
+    <SeekBarPreference
+        android:max="60"
+        app:defaultValue="22"
+        app:key="pref_font_arabic_key"
+        app:min="18"
+        app:showSeekBarValue="true"
+        app:summary="@string/seek_summary"
+        app:title="@string/seek_titles" />
 
-        <SeekBarPreference
-            android:max="60"
-            app:defaultValue="22"
-            app:key="pref_font_englsh_key"
-            app:min="18"
-            app:showSeekBarValue="true"
-            app:summary="@string/seek_summary"
-            app:title="@string/seek_title" />
+    <SeekBarPreference
+        android:max="60"
+        app:defaultValue="22"
+        app:key="pref_font_englsh_key"
+        app:min="18"
+        app:showSeekBarValue="true"
+        app:summary="@string/seek_summary"
+        app:title="@string/seek_title" />
 
 
-        <Preference
-            android:defaultValue="kitab.ttf"
-            android:title="Select Fonts"
-            app:fragment="com.example.mushafconsolidated.fragments.ActivitySettings$SelectQuranFronts"
-            app:icon="@drawable/ic_baseline_web_24"
-            app:key="quranFont" />
+    <Preference
+        android:defaultValue="kitab.ttf"
+        android:title="Select Fonts"
+        app:fragment="com.example.mushafconsolidated.fragments.ActivitySettings$SelectQuranFronts"
+        app:icon="@drawable/ic_baseline_web_24"
+        app:key="quranFont" />
 
 
 

@@ -70,7 +70,7 @@ public class NounVerbOccuranceListAdapter extends BaseExpandableListAdapter {
       convertView = layoutInflater.inflate(R.layout.list_grammar_item, null);
     }
     Typeface mequran = Typeface.createFromAsset(DarkThemeApplication.getContext().getAssets(), "Taha.ttf");
-  //  Typeface mequran = Typeface.createFromAsset(DarkThemeApplication.getContext().getAssets(), SharedPref.quranFont());
+  //  Typeface mequran = Typeface.createFromAsset(DarkThemeApplication.getContext().getAssets(), quranfont);
     TextView expandedListTextView = (TextView) convertView
           .findViewById(R.id.expandedListItem);
     TextView expandedListTextViewlane = (TextView) convertView

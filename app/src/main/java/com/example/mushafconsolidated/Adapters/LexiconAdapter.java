@@ -68,7 +68,7 @@ public class LexiconAdapter extends RecyclerView.Adapter<LexiconAdapter.ItemView
 
     @Override
     public void onBindViewHolder(@NonNull ItemViewAdapter holder, int position) {
-        Typeface typeface = Typeface.createFromAsset(context.getAssets(), SharedPref.quranFont());
+      //  Typeface typeface = Typeface.createFromAsset(context.getAssets(), quranfont);
    //   Typeface mequran = Typeface.createFromAsset(DarkThemeApplication.getContext().getAssets(), "Roboto.ttf");
       Typeface mequran= Typeface.createFromAsset(DarkThemeApplication.getContext().getAssets(), "Taha.ttf");
       String lanes = lanesdictionary.get(position);

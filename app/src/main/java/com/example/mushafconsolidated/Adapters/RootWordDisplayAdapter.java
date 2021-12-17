@@ -118,8 +118,10 @@ public class RootWordDisplayAdapter extends RecyclerView.Adapter<RootWordDisplay
     //  VerbsTriliteralDictEntity dictEntity = wazannumberslist.get(position);
       SharedPreferences sharedPreferences =
             PreferenceManager.getDefaultSharedPreferences(context);
+        String quranFont = sharedPreferences.getString("quranFont", "kitab.ttf");
       String theme = sharedPreferences.getString("theme", "dark");
-      if (theme.equals("dark")) {
+
+        if (theme.equals("dark")) {
     //    holder.darkThemeBacground.setBackground(context.getResources().getDrawable(R.drawable.activatedbackgroundblack));
      holder.darkThemeBacground.setCardBackgroundColor(context.getResources().getColor(R.color.odd_item_bg_black));
 
@@ -178,7 +180,7 @@ public class RootWordDisplayAdapter extends RecyclerView.Adapter<RootWordDisplay
         }
 
       }
-      Typeface mequran = Typeface.createFromAsset(context.getAssets(), SharedPref.quranFont());
+      Typeface mequran = Typeface.createFromAsset(context.getAssets(), quranFont);
         Log.d(TAG, "onBindViewHolder: called");
 
       if (theme.equals("dark") || theme.equals("blue")) {
@@ -840,7 +842,10 @@ public class RootWordDisplayAdapter extends RecyclerView.Adapter<RootWordDisplay
 
 
     private void Fonttypeface(ItemViewAdapter holder) {
-        Typeface typeface = Typeface.createFromAsset(context.getAssets(), SharedPref.quranFont());
+        SharedPreferences sharedPreferences =
+                PreferenceManager.getDefaultSharedPreferences(context);
+        String quranFont = sharedPreferences.getString("quranFont", "kitab.ttf");
+        Typeface typeface = Typeface.createFromAsset(context.getAssets(), quranFont);
         if (isverbconjugation) {
             holder.mamaroof.setTypeface(typeface);
             holder.mumaroof.setTypeface(typeface);

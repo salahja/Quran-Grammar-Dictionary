@@ -100,25 +100,15 @@ public class newreadactivity extends BaseActivity implements PassdataInterface, 
   ChipNavigationBar chipNavigationBar;
   FloatingActionButton btnBottomSheet;
   private OrignalFlowAyahWordAdapter flowAyahWordAdapter;
-  CustomAdapter customAdapter;
-  private HarbNasbMarkupFlowAyahWordAdapter nasbMarkupFlowAyahWordAdapter;
+
+
 
   String partname;
   boolean jumptostatus = false;
   int surah_id = 0;
   private boolean mausoof, mudhaf, harfnasb, shart;
-  private ImageView surahImage;
-  private View tvHeader;
   private ArrayList<ChaptersAnaEntity> soraList;
   private EditText ayahIndex;
-
-  public int getTotalversus() {
-    return totalversus;
-  }
-
-  public void setTotalversus(int totalversus) {
-    this.totalversus = totalversus;
-  }
 
   public int getRukucount() {
     return rukucount;
@@ -128,15 +118,14 @@ public class newreadactivity extends BaseActivity implements PassdataInterface, 
     this.rukucount = rukucount;
   }
 
-  int verseNumber, suraNumber, pageNumber = 2;
+  int verseNumber, suraNumber;
+
   int rukucount,totalverses;
   String surahname;
-  private ImageView mushafview;
+
   private boolean kana;
   private List<QuranEntity> allofQuran;
   private ArrayList<QuranEntity> colorerab;
-  private String[] surahDetails;
-  private int currentsurah, totalversus;
   private SharedPreferences shared;
   // --Commented out by Inspection (14/08/21, 7:26 PM):ChipNavigationBar chipNavigationBar;
 
@@ -144,29 +133,16 @@ public class newreadactivity extends BaseActivity implements PassdataInterface, 
     this.surahorpart = surahorpart;
   }
 
-  boolean harfnasbmarkup, harfkanamarku;
-  // --Commented out by Inspection (14/08/21, 7:23 PM):private List<QuranEntity> allVerses;
 
-  boolean ismausoofbrokenplural;
+
   int surahorpart = 0;
 
-  public void setIsmousoofsifa(boolean ismousoofsifa) {
-    this.ismousoofsifa = ismousoofsifa;
-  }
-
-  private View newarrow;
-
-  public void setIsmausoofbrokenplural(boolean ismausoofbrokenplural) {
-    this.ismausoofbrokenplural = ismausoofbrokenplural;
-  }
 
   private ArrayList<CorpusAyahWord> corpusayahWordArrayList;
-  private boolean ismousoofsifa;
 
   Button settingchip, bookmarkchip, conjugatorchip, searchchip, shartchip;
   TextView tvsurah, tvayah, tvrukus;
   int currentSelectSurah;
-  ImageView ivLocationmakki, ivLocationmadani;
   RelativeLayout layoutBottomSheet;
 
   public int getCurrentSelectSurah() {
@@ -182,19 +158,14 @@ public class newreadactivity extends BaseActivity implements PassdataInterface, 
   BottomSheetBehavior sheetBehavior;
 
 
-  private StringBuilder surahdetails;
-  private View bookmarkView;
   //  private OnClickListener onClickListener;
 
 
-  private View deleteAllBookmarks;
 
-  private ImageView chapterTypeImageView;
-  private ImageView devIndicatorView;
-  private View jumpto;
+
   private Utils utils;
-  private View surahpartview;
-  private ArrayList<String> values;
+
+
 
   public String getPartname() {
     return partname;
@@ -204,10 +175,6 @@ public class newreadactivity extends BaseActivity implements PassdataInterface, 
     this.partname = partname;
   }
 
-
-  public int getSurah_id() {
-    return surah_id;
-  }
 
   public void setSurah_id(int surah_id) {
     this.surah_id = surah_id;
@@ -219,10 +186,6 @@ public class newreadactivity extends BaseActivity implements PassdataInterface, 
 
   public void setVersescount(int versescount) {
     this.versescount = versescount;
-  }
-
-  public int getVerse_no() {
-    return verse_no;
   }
 
   public void setVerse_no(int verse_no) {
@@ -255,64 +218,17 @@ public class newreadactivity extends BaseActivity implements PassdataInterface, 
   String suraharabicname;
   private static final String TAG = "fragment";
 
-  String chapterdetails;
-  public int adapterposition;
 
-  public int getAdapterposition() {
-    return adapterposition;
-  }
-
-  public void setAdapterposition(int adapterposition) {
-    this.adapterposition = adapterposition;
-  }
-
-  public String getChapterdetails() {
-    return chapterdetails;
-  }
-
-  public void setChapterdetails(String chapterdetails) {
-    this.chapterdetails = chapterdetails;
-  }
-
-
-  boolean isSurahfragmentshowing = true;
   final boolean isPartfragmentshowing = false;
-  // private View overlayView;
-  private TextView chapterview, partview, chapternameview, chapterDetailsView;
-  private View cardview;
+
+
+
 
   private int chapterno;
-  private boolean wordByWord;
-  int currentsura;
-  private Spinner filterspinner;
-
-  public boolean isPartfragmentshowing() {
-    return isPartfragmentshowing;
-  }
-
-  public static final int STARTUP_DELAY = 300;
-
-  public void setCurrentsura(int currentsura) {
-    this.currentsura = currentsura;
-  }
-
-  private FragmentManager fragmentManager;
-  //  private float overlayViewHiddenPosition;
-
-
-  public boolean isSurahfragmentshowing() {
-    return isSurahfragmentshowing;
-  }
-
-  public void setSurahfragmentshowing(boolean surahfragmentshowing) {
-    this.isSurahfragmentshowing = surahfragmentshowing;
-  }
 
 
   CoordinatorLayout coordinatorLayout;
   private RecyclerView parentRecyclerView;
-
-  NewSurahDisplayFrag surahFragment;
 
 
   public int getChapterno() {
@@ -341,7 +257,7 @@ public class newreadactivity extends BaseActivity implements PassdataInterface, 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     shared =
-          androidx.preference.PreferenceManager.getDefaultSharedPreferences(newreadactivity.this);
+            androidx.preference.PreferenceManager.getDefaultSharedPreferences(newreadactivity.this);
 
     String preferences = shared.getString("themePref", "dark");
     if (preferences.equals("white")) {
@@ -365,9 +281,17 @@ public class newreadactivity extends BaseActivity implements PassdataInterface, 
     super.onCreate(savedInstanceState);
     requestWindowFeature(Window.FEATURE_NO_TITLE);
     this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-          WindowManager.LayoutParams.FLAG_FULLSCREEN);
+            WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
     setContentView(R.layout.new_fragment_reading);
+
+    if (isFirstTime()) {
+
+      Intent intents = new Intent(newreadactivity.this, ActivitySettings.class);
+      startActivity(intents);
+
+    }
+
     getpreferences();
     chipNavigationBar = findViewById(R.id.bottom_nav_bar);
     tvsurah = findViewById(R.id.tvRukus);
@@ -378,7 +302,7 @@ public class newreadactivity extends BaseActivity implements PassdataInterface, 
     chipNavigationBar.setOnItemSelectedListener(new ChipNavigationBar.OnItemSelectedListener() {
       @Override
       public void onItemSelected(int i) {
-        int selectedItemId = chipNavigationBar.getSelectedItemId();
+
         if(i==R.id.settingnav){
           chipNavigationBar.setVisibility(View.GONE);
           Intent intents = new Intent(newreadactivity.this, ActivitySettings.class);
@@ -399,7 +323,7 @@ public class newreadactivity extends BaseActivity implements PassdataInterface, 
 
         }else if(i==R.id.conjugationnav){
           chipNavigationBar.setVisibility(View.GONE);
-        //  Intent conjugatorintent = new Intent(newreadactivity.this, VerbConjugationAct.class);
+          //  Intent conjugatorintent = new Intent(newreadactivity.this, VerbConjugationAct.class);
           Intent conjugatorintent = new Intent(newreadactivity.this, ConjugatorAct.class);
           //   Intent conjugatorintent = new Intent(newreadactivity.this, VerbConjugationAct.class);
 
@@ -422,13 +346,8 @@ public class newreadactivity extends BaseActivity implements PassdataInterface, 
     PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
 
 
-   // PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
 
-    //  SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(DarkThemeApplication.getContext());
 
-    harfnasbmarkup = shared.getBoolean("kanamarkup", false);
-
-    harfkanamarku = shared.getBoolean("nasabmarkup", false);
 
 
     mausoof = shared.getBoolean("mausoof", true);
@@ -437,32 +356,13 @@ public class newreadactivity extends BaseActivity implements PassdataInterface, 
     shart = shared.getBoolean("shart", true);
     kana = shared.getBoolean("kana", true);
 
-    SharedPref sharedPref = new SharedPref(newreadactivity.this);
-    wordByWord = SharedPref.showWordByword();
 
-    boolean showTranslation = SharedPref.showTranslation();
-    //  int fsie = prefs.getInt("SeekarabicFontsize", 20);
 
-    if (SharedPref.quranFont().length() == 1) {
-      SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(newreadactivity.this).edit();
-      //     SharedPreferences.Editor editor = getActivity().getSharedPreferences("properties", 0).edit();
-      editor.putString("quranFont", "me_quran.ttf");
-      editor.apply();
-    }
 
-/*
 
-    final View decor = getWindow().getDecorView();
-    decor.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
-      @Override
-      public boolean onPreDraw() {
-        decor.getViewTreeObserver().removeOnPreDrawListener(this);
-        startPostponedEnterTransition();
-        return true;
-      }
-    });
 
- */
+
+
 
     Intent bundle = getIntent();
     if (!(bundle.getExtras() == null)) {
@@ -488,41 +388,8 @@ public class newreadactivity extends BaseActivity implements PassdataInterface, 
         setIsMakkiMadani(bundle.getIntExtra(MAKKI_MADANI, 1));
         setSuraharabicname(bundle.getStringExtra(SURAH_ARABIC_NAME));
         setRukucount(bundle.getIntExtra(RUKUCOUNT, 1));
-        //   StringBuilder vc=new StringBuilder();
-        ///   vc.append("aya's:").append(getVersescount());
-//        tvayah.setText(vc.toString());
-        //    tvsurah.setText(getSuraharabicname());
-        //    StringBuilder vvccc=new StringBuilder();
-        //     vvccc.append("Ruku's: ").append(getRukucount());
-        //  tvrukus.setText(vvccc);
-        //  ivLocationmakki=findViewById(R.id.ivLocationmakki);
-        //  ivLocationmadani=findViewById(R.id.ivLocationmadani);
-        //  surahImage = findViewById(R.id.ivSurahIcon);
-        //  ivLocationmadani.setColorFilter(BCYAN);
-        //  ivLocationmakki.setColorFilter(BCYAN);
 
-
-        //  TypedArray imgs = getResources().obtainTypedArray(R.array.sura_imgs);
-
-
-        // final Drawable drawable = imgs.getDrawable(cno);
-        //    final int id = imgs.getResourceId((getChapterno()- 1), 2);
-        //    tvHeader.setVisibility(View.VISIBLE);
-        //  SetHeaderSurahImagr(id);
-        //   surahImage.setImageTintList(ColorStateList.valueOf(Color.WHITE));
-        //   imgs.recycle();
-        //  SetDropDownChapter(getSuraharabicname());
-        //   if(isMakkiMadani==1)
-        //    {
-        //  ivLocationmakki.setVisibility(View.VISIBLE);
-        //    ivLocationmadani.setVisibility(View.GONE);
-        //   }else{
-        //   ivLocationmadani.setVisibility(View.VISIBLE);
-        //   ivLocationmakki.setVisibility(View.GONE);
-        //  }
-
-
-        setUpOnCLicks(utils);
+        setUpOnCLicks();
 
         ArrayList<ChaptersAnaEntity> surahArray;
 
@@ -534,7 +401,7 @@ public class newreadactivity extends BaseActivity implements PassdataInterface, 
 //      tvHeader.setVisibility(View.GONE);
       NewSurahDisplayFrag frag = new NewSurahDisplayFrag();
       FragmentTransaction transactions = getSupportFragmentManager().beginTransaction()
-            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+              .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
       transactions.replace(R.id.frame_container, frag).addToBackStack("mujarrad");
       transactions.commit();
 
@@ -542,6 +409,20 @@ public class newreadactivity extends BaseActivity implements PassdataInterface, 
     }
 
 
+  }
+
+  private boolean isFirstTime() {
+    SharedPreferences preferences = getPreferences(MODE_PRIVATE);
+    boolean ranBefore = preferences.getBoolean("RanBefore", false);
+    if (!ranBefore) {
+
+      // first time
+      SharedPreferences.Editor editor = preferences.edit();
+      editor.putBoolean("RanBefore", true);
+      editor.apply();
+    }
+
+    return !ranBefore;
   }
 
   private void getpreferences() {
@@ -554,88 +435,9 @@ public class newreadactivity extends BaseActivity implements PassdataInterface, 
 
 
   @RequiresApi(api = Build.VERSION_CODES.Q)
-  private void setUpOnCLicks(Utils utils) {
-
- /*
-    bookmarkView.setOnClickListener(new OnClickListener() {
-      int position;
-      int chapter_no;
-      int verse;
-      // --Commented out by Inspection (14/08/21, 7:28 PM):String name;
-
-      @Override
-      public void onClick(View v) {
-        if (!wordByWord || !chapterorpart) {
-          position = flowAyahWordAdapter.getAdapterposition();
-          //      name = getSuraharabicname();
-
-        }
-        position = flowAyahWordAdapter.getAdapterposition();
-        chapter_no = corpusayahWordArrayList.get(position).getWord().get(0).getSurahId();
-        verse = corpusayahWordArrayList.get(position).getWord().get(0).getVerseId();
+  private void setUpOnCLicks() {
 
 
-        BookMarks en = new BookMarks();
-
-        if (wordByWord && chapterorpart) {
-          en.setHeader(WBWSURAHHEADER);
-
-        } else if (wordByWord) {
-          en.setHeader(WBWPARTHEADER);
-        } else if (chapterorpart) {
-          en.setHeader(NOWBWSURAHHEADER);
-        } else {
-          en.setHeader(NOWBWPARTHEADER);
-        }
-
-        en.setChapterno(String.valueOf(chapter_no));
-        en.setVerseno(String.valueOf(verse));
-        en.setSurahname(getSuraharabicname());
-        //     Utils utils = new Utils(ReadingSurahPartActivity.this);
-        utils.insertBookMark(en);
-
-        Snackbar snackbar = Snackbar
-              .make(coordinatorLayout, "BookMark Created", Snackbar.LENGTH_LONG);
-        snackbar.setActionTextColor(Color.BLUE);
-        snackbar.setTextColor(Color.MAGENTA);
-        snackbar.setBackgroundTint(Color.BLACK);
-        snackbar.show();
-
-
-      }
-    });
-
-
-
-
-    filterspinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-      @Override
-      public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        switch (position) {
-
-
-          case 1:
-            // Whatever you want to happen when the second item gets selected
-            break;
-          case 2:
-            utils.getCorpusWbwBySurah(2);
-            // Whatever you want to happen when the thrid item gets selected
-            break;
-          default:
-            break;
-
-        }
-
-      }
-
-      @Override
-      public void onNothingSelected(AdapterView<?> parent) {
-
-      }
-    });
-    jumpto.setOnClickListener(v -> initDialogComponents());
-
-   */
 
   }
 
@@ -645,7 +447,7 @@ public class newreadactivity extends BaseActivity implements PassdataInterface, 
 
 
     Dialog jumpDialog;
-    MaterialDialog materialDialog;
+
 
     Spinner suraNames, verses;
     EditText surahIndex;
@@ -658,15 +460,15 @@ public class newreadactivity extends BaseActivity implements PassdataInterface, 
     List<String> sorasShow;
 
 
- //   jumpDialog = new Dialog(this,R.style.Base_Theme_AppCompat_Dialog);
-   jumpDialog = new Dialog(this) ;
+    //   jumpDialog = new Dialog(this,R.style.Base_Theme_AppCompat_Dialog);
+    jumpDialog = new Dialog(this) ;
 
     jumpDialog.setContentView(R.layout.backupjumb_to_popup);
-    suraNames = (Spinner) jumpDialog.findViewById(R.id.suras);
-    verses = (Spinner) jumpDialog.findViewById(R.id.verses);
+    suraNames = jumpDialog.findViewById(R.id.suras);
+    verses = jumpDialog.findViewById(R.id.verses);
     util = new Utils(this);
-    surahIndex = (EditText) jumpDialog.findViewById(R.id.suraIndex);
-    ayahIndex=(EditText) jumpDialog.findViewById(R.id.ayahInput);
+    surahIndex = jumpDialog.findViewById(R.id.suraIndex);
+    ayahIndex= jumpDialog.findViewById(R.id.ayahInput);
     ayahlabel=jumpDialog.findViewById(R.id.ayahlabel);
 
     jumpDialog.show();
@@ -678,12 +480,12 @@ public class newreadactivity extends BaseActivity implements PassdataInterface, 
 
 
 
-    ok = (Button) jumpDialog.findViewById(R.id.ok);
+    ok = jumpDialog.findViewById(R.id.ok);
     //    ArrayList<ChaptersAnaEntity> surahArray = utils.getSingleChapter(surah_id);
 
     sorasShow = new ArrayList<>();
     verseNumber = verse_no;
-    currentsurah = surah_id;
+    int currentsurah = surah_id;
     int count = 0;
     soraList = util.getAllAnaChapters();
 
@@ -701,9 +503,9 @@ public class newreadactivity extends BaseActivity implements PassdataInterface, 
     ArrayAdapter<String> verseAdapter;
 
     adapter = new ArrayAdapter<>(this,
-          R.layout.myspinner, show);
+            R.layout.myspinner, show);
     verseAdapter = new ArrayAdapter<>(this,
-          R.layout.spinner_layout_larg, verse_no);
+            R.layout.spinner_layout_larg, verse_no);
 
     suraNames.setAdapter(adapter);
 
@@ -730,7 +532,7 @@ public class newreadactivity extends BaseActivity implements PassdataInterface, 
         }
 
         verseAdapter = new ArrayAdapter<>(newreadactivity.this,
-              R.layout.spinner_layout_larg, numbers);
+                R.layout.spinner_layout_larg, numbers);
 
         verses.setAdapter(verseAdapter);
         if (verseNumber <= numbers.length) {
@@ -777,7 +579,7 @@ public class newreadactivity extends BaseActivity implements PassdataInterface, 
       if(! ayahIndex.getText().toString().trim().equals("") ) {
         jumpDialog.dismiss();
         soraList.get(suraNumber).getAbjadname();
-        ;
+
         StringBuilder sb=new StringBuilder();
         sb.append(suraNumber).append("-").append(soraList.get(suraNumber-1).getNameenglish()).append("-").append(soraList.get(suraNumber-1).getAbjadname());
         setSuraharabicname(sb.toString());
@@ -791,7 +593,7 @@ public class newreadactivity extends BaseActivity implements PassdataInterface, 
         setRukucount(soraList.get(suraNumber-1).getRukucount());
 
         setCurrentSelectSurah(suraNumber);
-      //  setVerse_no(verseNumber);
+        //  setVerse_no(verseNumber);
         setChapterno(suraNumber);
         parentRecyclerView = findViewById(R.id.overlayViewRecyclerView);
         if (currentSelectSurah == surah_id) {
@@ -810,10 +612,10 @@ public class newreadactivity extends BaseActivity implements PassdataInterface, 
       }else   if (          surahIndex.getText().toString().trim().equals("") || surahIndex.getText() == null) {
         jumpDialog.dismiss();
         soraList.get(suraNumber).getAbjadname();
-        ;
+
         StringBuilder sb=new StringBuilder();
         sb.append(suraNumber).append("-").append(soraList.get(suraNumber-1).getNameenglish()).append("-").append(soraList.get(suraNumber-1).getAbjadname());
-       setSuraharabicname(sb.toString());
+        setSuraharabicname(sb.toString());
         setPartname(soraList.get(suraNumber-1).getAbjadname());
         setVerse_no(verseNumber);
         setVersescount(soraList.get(suraNumber-1).getVersescount());
@@ -936,7 +738,7 @@ public class newreadactivity extends BaseActivity implements PassdataInterface, 
           StringBuilder sb = new StringBuilder();
           sb.append(wbw.get(verseglobal).getAraone()).append(wbw.get(verseglobal).getAratwo());
           CharSequence sequence = concat(wbw.get(verseglobal).getAraone() + wbw.get(verseglobal).getAratwo() +
-                wbw.get(verseglobal).getArathree() + wbw.get(verseglobal).getArafour());
+                  wbw.get(verseglobal).getArathree() + wbw.get(verseglobal).getArafour());
           //   Object o4 = wbw.get(verseglobal).getWord();
           Object en = wbw.get(verseglobal).getEn();
           Object bn = wbw.get(verseglobal).getBn();
@@ -995,7 +797,7 @@ public class newreadactivity extends BaseActivity implements PassdataInterface, 
 
       ayahWord.setWord(wordArrayList);
 
-      String verser = String.valueOf(ayahWord.getSpannableverse());
+
 
 
       corpusayahWordArrayList.add(ayahWord);
@@ -1041,24 +843,10 @@ public class newreadactivity extends BaseActivity implements PassdataInterface, 
 
 
       if (jumptostatus) {
-     //   chapternameview.setText(getSuraharabicname());
-      //  chapterDetailsView.setText(getChapterdetails());
-      //  final String[] surahArray = getResources().getStringArray(R.array.suraharabic);
-      //  final String namearabic = surahArray[getCurrentSelectSurah()];
-      //  setSuraharabicname(namearabic);
-//        chapternameview.setText(getSuraharabicname());
-      //  chapterDetailsView.setText(getChapterdetails());
 
-      //  TypedArray imgs = getResources().obtainTypedArray(R.array.sura_imgs);
 
-       setSurahorpart(chapterno);
-        // final Drawable drawable = imgs.getDrawable(cno);
-       // final int id = imgs.getResourceId((getCurrentSelectSurah() - 1), 2);
+        setSurahorpart(chapterno);
 
-       // SetHeaderSurahImagr(id);
-       // devIndicatorView.setImageTintList(ColorStateList.valueOf(Color.WHITE));
-       // imgs.recycle();
-      //  SetDropDownChapter(getSuraharabicname());
       }
       OnItemClickListenerOnLong listener = this;
       ArrayList<String> header = new ArrayList<>();
@@ -1066,15 +854,7 @@ public class newreadactivity extends BaseActivity implements PassdataInterface, 
       header.add(String.valueOf(getVersescount()));
       header.add(String.valueOf(getChapterno()));
       header.add(getPartname());
-/*
- customAdapter = new CustomAdapter(header, colorerab, allofQuran, corpusayahWordArrayList, newreadactivity.this, surah_id, suraharabicname, isMakkiMadani, listener);
 
-      parentRecyclerView.setHasFixedSize(true);
-
-      parentRecyclerView.setAdapter(customAdapter);
-      customAdapter.notifyDataSetChanged();
-      parentRecyclerView.post(() -> parentRecyclerView.scrollToPosition(verse_no));
- */
 
       flowAyahWordAdapter = new OrignalFlowAyahWordAdapter(header,colorerab, allofQuran, corpusayahWordArrayList, newreadactivity.this, surah_id, partname, isMakkiMadani, listener);
 
@@ -1084,144 +864,16 @@ public class newreadactivity extends BaseActivity implements PassdataInterface, 
 
 
 
-        flowAyahWordAdapter.addContext(newreadactivity.this);
+      flowAyahWordAdapter.addContext(newreadactivity.this);
 
-        parentRecyclerView.setHasFixedSize(true);
+      parentRecyclerView.setHasFixedSize(true);
 
-         parentRecyclerView.setAdapter(flowAyahWordAdapter);
-       flowAyahWordAdapter.notifyDataSetChanged();
-       parentRecyclerView.post(() -> parentRecyclerView.scrollToPosition(verse_no));
+      parentRecyclerView.setAdapter(flowAyahWordAdapter);
+      flowAyahWordAdapter.notifyDataSetChanged();
+      parentRecyclerView.post(() -> parentRecyclerView.scrollToPosition(verse_no));
 
 
     });
-  }
-
-
-  public void GetSurahAyahWOrd(ArrayList<CorpusExpandWbwPOJO> wbw, int versesnumbers) {
-    int verseglobal = 0;
-    int tempVerseWord;
-    int verseexit = wbw.size();
-    for (int indexv = 1; indexv <= versesnumbers; indexv++) {
-      tempVerseWord = indexv;
-
-      CorpusAyahWord ayahWord = new CorpusAyahWord();
-
-
-      ArrayList<CorpusWbwWord> wordArrayList = new ArrayList<>();
-      while (tempVerseWord == indexv) {
-
-        if (verseexit == verseglobal) {
-          break;
-        }
-
-        for (; verseglobal < wbw.size(); verseglobal++) {
-          CorpusWbwWord word = new CorpusWbwWord();
-
-
-          tempVerseWord = wbw.get(verseglobal).getAyah();
-
-          if (tempVerseWord != indexv) {
-            break;
-          }
-
-
-          //    final Object o6 = wbwa.get(verseglobal).get(0);
-          int o1 = wbw.get(verseglobal).getSurah();
-          int o2 = wbw.get(verseglobal).getAyah();
-          Object o3 = wbw.get(verseglobal).getWordno();
-          int wcount = wbw.get(verseglobal).getWordcount();
-          CharSequence sequence = concat(wbw.get(verseglobal).getAraone() + wbw.get(verseglobal).getAratwo() +
-                wbw.get(verseglobal).getArathree() + wbw.get(verseglobal).getArafour());
-          //   Object o4 = wbw.get(verseglobal).getWord();
-          Object en = wbw.get(verseglobal).getEn();
-          Object bn = wbw.get(verseglobal).getBn();
-          Object ind = wbw.get(verseglobal).getIn();
-          String ur = wbw.get(verseglobal).getUr();
-          wbw.get(verseglobal).getUr();
-          word.setSurahId(o1);
-          word.setVerseId(o2);
-          word.setWordno((int) Long.parseLong(o3.toString()));
-          word.setWordcount(wcount);
-          if (o1 == 6 && o2 == 56) {
-
-            //       //System.out.println("CHECK");
-          }
-          word.setWordsAr(sequence.toString());
-          //  word.setWordindex(getIndex(wbw.get(verseglobal).getQuranverses()));
-          word.setTranslateEn(en.toString());
-          word.setTranslateBn(bn.toString());
-          word.setTranslateIndo(ind.toString());
-          word.setTranslationUrdu(ur);
-          word.setAraone(wbw.get(verseglobal).getAraone());
-          word.setAratwo(wbw.get(verseglobal).getAratwo());
-          word.setArathree(wbw.get(verseglobal).getArathree());
-          word.setArafour(wbw.get(verseglobal).getArafour());
-          word.setArafive(wbw.get(verseglobal).getArafive());
-
-          word.setTagone(wbw.get(verseglobal).getTagone());
-          word.setTagtwo(wbw.get(verseglobal).getTagtwo());
-          word.setTagthree(wbw.get(verseglobal).getTagthree());
-          word.setTagfour(wbw.get(verseglobal).getTagfour());
-          word.setTagfive(wbw.get(verseglobal).getTagfive());
-
-          word.setDetailsone(wbw.get(verseglobal).getDetailsone());
-          word.setDetailstwo(wbw.get(verseglobal).getDetailstwo());
-          word.setDetailsthree(wbw.get(verseglobal).getDetailsthree());
-          word.setDetailsfour(wbw.get(verseglobal).getDetailsfour());
-          word.setDetailsfive(wbw.get(verseglobal).getDetailsfive());
-
-          word.setCorpusSpnnableQuranverse(SpannableStringBuilder.valueOf(wbw.get(verseglobal).getQurantext()));
-          //    word.setQuranversestr(wbw.get(verseglobal).getQuranverses());
-          word.setQuranversestr(wbw.get(verseglobal).getQurantext());
-          word.setTranslations(wbw.get(verseglobal).getTranslation());
-          word.setSurahId((wbw.get(verseglobal).getSurah()));
-          word.setVerseId((wbw.get(verseglobal).getAyah()));
-          word.setWordno(wbw.get(verseglobal).getWordno());
-          word.setWordcount((wbw.get(verseglobal).getWordcount()));
-
-          //  ayahWord.setSpannableverse(SpannableStringBuilder.valueOf(wbw.get(verseglobal).getQuranverses()));
-          ayahWord.setSpannableverse(SpannableString.valueOf(wbw.get(verseglobal).getQurantext()));
-          wordArrayList.add(word);
-
-        }
-
-
-      }
-
-      ayahWord.setWord(wordArrayList);
-
-      String verser = String.valueOf(ayahWord.getSpannableverse());
-      if (harfnasbmarkup) {
-        String[] words = verser.split("\\s+");
-        int lastindex = 0;
-        for (int i = 0; i < words.length; i++) {
-
-          String ss = words[i];
-          int indexof;
-          if (i == 0) {
-            indexof = verser.indexOf(ss);
-          } else {
-
-            indexof = verser.indexOf(ss, lastindex + 1);
-
-          }
-
-
-          lastindex = indexof;
-          try {
-            ayahWord.getWord().get(i).setWordindex(indexof);
-          } catch (IndexOutOfBoundsException e) {
-            System.out.println("indexoutofbound");
-          }
-
-
-        }
-      }
-
-
-      corpusayahWordArrayList.add(ayahWord);
-
-    }
   }
 
 
@@ -1230,26 +882,19 @@ public class newreadactivity extends BaseActivity implements PassdataInterface, 
     AlertDialog.Builder builder = new AlertDialog.Builder(this);
     builder.setCancelable(false); // if you want user to wait for some process to finish,
     builder.setView(R.layout.layout_loading_dialog);
-    AlertDialog dialog = builder.create();
+
 
     GrammerFragmentsBottomSheet item = new GrammerFragmentsBottomSheet();
 
     FragmentManager fragmentManager = getSupportFragmentManager();
 
     item.setArguments(dataBundle);
-    String data[] = {String.valueOf(word.getSurah()), String.valueOf(word.getAyah()), word.getTranslation(), String.valueOf((1))};
+    String[] data = {String.valueOf(word.getSurah()), String.valueOf(word.getAyah()), word.getTranslation(), String.valueOf((1))};
     FragmentTransaction transactions = fragmentManager.beginTransaction().setCustomAnimations(R.anim.abc_slide_in_top, android.R.anim.fade_out);
     transactions.show(item);
 
     GrammerFragmentsBottomSheet.newInstance(data).show(getSupportFragmentManager(), WordAnalysisBottomSheet.TAG);
 
-  }
-
-
-
-  private View.OnClickListener onItemClickListener;
-   public void setItemClickListener(View.OnClickListener clickListener) {
-    onItemClickListener = clickListener;
   }
 
 
@@ -1259,8 +904,8 @@ public class newreadactivity extends BaseActivity implements PassdataInterface, 
     View overflow=                   view.findViewById(R.id.ivActionOverflow);
     View jumptosurah = view.findViewById(R.id.jumpto);
     View bookmark = view.findViewById(R.id.bookmarkView);
-    Object tag1 = view.getTag(R.id.bookmarkView);
-    //  View viewWithTag = v.findViewWithTag(bookmark);
+
+
     View qurantext = view.findViewById(R.id.quran_textView);
 
     if(overflow!=null){
@@ -1278,19 +923,9 @@ public class newreadactivity extends BaseActivity implements PassdataInterface, 
       View gotobookmarsk=                          view.findViewById(R.id.gotobookmarks);
 
       builder.setView(view);
-      if(colortag){
-        colorized.setChecked(true);
+      colorized.setChecked(colortag);
 
-      }else{
-        colorized.setChecked(false);
-      }
-
-      if(issentencesanalysis){
-        sentencesana.setChecked(true);
-
-      }else{
-        sentencesana.setChecked(false);
-      }
+      sentencesana.setChecked(issentencesanalysis);
 
 
       builder.setNeutralButton("Exit", new DialogInterface.OnClickListener() {
@@ -1301,7 +936,7 @@ public class newreadactivity extends BaseActivity implements PassdataInterface, 
       });
       int[] location = new int[2];
       overflow.getLocationOnScreen(location);
-      ContextThemeWrapper ctw = new ContextThemeWrapper( this, R.style.Theme_MaterialDialog );
+
       AlertDialog dialog = builder.create();
       dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
@@ -1311,7 +946,7 @@ public class newreadactivity extends BaseActivity implements PassdataInterface, 
       wmlp.gravity = Gravity.TOP | Gravity.LEFT;
       wmlp.x = location[0];   //x position
       wmlp.y = location[1] ;  //y position
-      AlertDialog alertDialog = builder.create();
+
       dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation; //style id
 
       dialog.show();
@@ -1321,7 +956,7 @@ public class newreadactivity extends BaseActivity implements PassdataInterface, 
           BookmarkFragment bookmarkFragment = new BookmarkFragment();
 
           FragmentTransaction transactions = getSupportFragmentManager().beginTransaction()
-                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+                  .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
           transactions.replace(R.id.frame_container, bookmarkFragment).addToBackStack("mujarrad");
           transactions.commit();
           dialog.dismiss();
@@ -1345,12 +980,12 @@ public class newreadactivity extends BaseActivity implements PassdataInterface, 
       colorized.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-           //colortag
+          //colortag
 
           if(colortag){
             SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(newreadactivity.this).edit();
             //     SharedPreferences.Editor editor = getActivity().getSharedPreferences("properties", 0).edit();
-             editor.putBoolean("colortag",false);
+            editor.putBoolean("colortag",false);
 
             editor.apply();
             RefreshActivity();
@@ -1369,7 +1004,7 @@ public class newreadactivity extends BaseActivity implements PassdataInterface, 
         private void RefreshActivity() {
           Log.e(TAG, "onClick called");
           final Intent intent = getIntent().putExtra("chapter", chapterno).putExtra("chapterorpart", chapterorpart).putExtra(SURAH_ARABIC_NAME, partname)
-                .putExtra(VERSESCOUNT, getVersescount()).putExtra(RUKUCOUNT, rukucount).putExtra(MAKKI_MADANI, isMakkiMadani);
+                  .putExtra(VERSESCOUNT, getVersescount()).putExtra(RUKUCOUNT, rukucount).putExtra(MAKKI_MADANI, isMakkiMadani);
           overridePendingTransition(0, 0);
           startActivity(intent);
           finish();
@@ -1402,11 +1037,11 @@ public class newreadactivity extends BaseActivity implements PassdataInterface, 
 
     }
 
-   else if(jumptosurah!=null){
+    else if(jumptosurah!=null){
       initDialogComponents();
 
     }
-   else if(bookmark!=null){
+    else if(bookmark!=null){
       bookMarkSelected();
 
     }else if(qurantext!=null) {
@@ -1415,8 +1050,6 @@ public class newreadactivity extends BaseActivity implements PassdataInterface, 
       dataBundle.putInt(SURAH_ID, word.getSurah());
       dataBundle.putInt(AYAHNUMBER, Math.toIntExact(word.getAyah()));
 
-      // dataBundle.putInt(WORDNUMBER, Math.toIntExact(word.getw()));
-      //  dataBundle.putString(SURAH_ARABIC_NAME, SurahName);
       LoadItemList(dataBundle, word);
     }
 
@@ -1439,7 +1072,7 @@ public class newreadactivity extends BaseActivity implements PassdataInterface, 
     utils.insertBookMark(en);
 
     Snackbar snackbar = Snackbar
-          .make(coordinatorLayout, "BookMark Created", Snackbar.LENGTH_LONG);
+            .make(coordinatorLayout, "BookMark Created", Snackbar.LENGTH_LONG);
     snackbar.setActionTextColor(Color.BLUE);
     snackbar.setTextColor(Color.MAGENTA);
     snackbar.setBackgroundTint(Color.BLACK);
@@ -1510,15 +1143,12 @@ public class newreadactivity extends BaseActivity implements PassdataInterface, 
     tvsurah = findViewById(R.id.tvRukus);
     tvayah = findViewById(R.id.tvVerses);
     tvrukus = findViewById(R.id.tvSura);
-    tvHeader = findViewById(R.id.tvHeader);
+
 
 
     coordinatorLayout = findViewById(R.id.coordinatorLayout);
 
-    bookmarkView = findViewById(R.id.bookmarkView);
 
-    jumpto = findViewById(R.id.jumpto);
-    //  ArrayList<ParentModel> parentModelArrayList = new ArrayList<>();
     RecyclerView verlayViewRecyclerView = findViewById(R.id.overlayViewRecyclerView);
 
     verlayViewRecyclerView.setLayoutManager(linearLayoutManager);
@@ -1527,7 +1157,7 @@ public class newreadactivity extends BaseActivity implements PassdataInterface, 
     conjugatorchip.setOnClickListener(v -> {
       //   storepreferences();
       Intent conjugatorintent = new Intent(newreadactivity.this, ConjugatorAct.class);
-   //   Intent conjugatorintent = new Intent(newreadactivity.this, VerbConjugationAct.class);
+      //   Intent conjugatorintent = new Intent(newreadactivity.this, VerbConjugationAct.class);
 
 
       finish();
@@ -1570,20 +1200,18 @@ public class newreadactivity extends BaseActivity implements PassdataInterface, 
 
 
       FragmentTransaction transactions = getSupportFragmentManager().beginTransaction()
-            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+              .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
       transactions.replace(R.id.frame_container, frag).addToBackStack("mujarrad");
       transactions.commit();
 
-      // NewSurahDisplayFragOrig sIfaDisplayFrag = new NewSurahDisplayFragOrig();
-      //fragmentManager.beginTransaction().add(R.id.frame_container, sIfaDisplayFrag).addToBackStack(null).commit();
 
     });
 
 
     sheetBehavior = BottomSheetBehavior.from(layoutBottomSheet);
     btnBottomSheet.setOnClickListener(v -> {
- //     toggleBottomSheet();
-       toggleHideSeek();
+      //     toggleBottomSheet();
+      toggleHideSeek();
     });
     sheetBehavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
       @Override
@@ -1610,7 +1238,7 @@ public class newreadactivity extends BaseActivity implements PassdataInterface, 
   }
 
   private void toggleHideSeek() {
-  //  chipNavigationBar
+    //  chipNavigationBar
     int visibility = chipNavigationBar.getVisibility();
     if(visibility==0) {
       chipNavigationBar.setVisibility(View.GONE);
@@ -1632,36 +1260,22 @@ public class newreadactivity extends BaseActivity implements PassdataInterface, 
   }
 
 
-  private void loadFragment(Fragment fragment) {
-    // load fragment
-    FragmentTransaction transaction = getSupportFragmentManager().beginTransaction()
-          .setCustomAnimations(R.anim.left_slide, android.R.anim.fade_out);
-    transaction.replace(R.id.frame_container, fragment);
-    transaction.addToBackStack(com.example.Constant.BOOKMARKTAG);
-    transaction.commit();
-  }
-
-
   @Override
   public void ondatarecevied(int chapterno, String partname, int totalverses, int rukucount, int makkimadani) {
 
 
     Log.e(TAG, "onClick called");
     final Intent intent = getIntent().putExtra("chapter", chapterno).putExtra("chapterorpart", chapterorpart).putExtra(SURAH_ARABIC_NAME, partname)
-          .putExtra(VERSESCOUNT, totalverses).putExtra(RUKUCOUNT, rukucount).putExtra(MAKKI_MADANI, makkimadani);
+            .putExtra(VERSESCOUNT, totalverses).putExtra(RUKUCOUNT, rukucount).putExtra(MAKKI_MADANI, makkimadani);
 
 
-    //   ReadingSurahPartActivity activity = ReadingSurahPartActivity.this;
-    //  activity.recreate();
-    //  overridePendingTransition(0, 0);
-    //  intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-    //  finish();
     overridePendingTransition(0, 0);
     startActivity(intent);
     finish();
     overridePendingTransition(android.R.anim.slide_out_right, android.R.anim.slide_in_left);
 
   }
+
 
 
 }
