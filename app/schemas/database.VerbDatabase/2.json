@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 2,
-    "identityHash": "3adb270fed7f0fd1a8dce7dfd9b88482",
+    "identityHash": "0b6885ceb98f334c811debac3d4fec5d",
     "entities": [
       {
         "tableName": "mazeed",
@@ -307,50 +307,6 @@
         "foreignKeys": []
       },
       {
-        "tableName": "mazeeddictionary",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`root` TEXT NOT NULL, `form` TEXT NOT NULL, `verbtype` TEXT NOT NULL, `id` INTEGER NOT NULL, `babname` TEXT NOT NULL, PRIMARY KEY(`id`))",
-        "fields": [
-          {
-            "fieldPath": "root",
-            "columnName": "root",
-            "affinity": "TEXT",
-            "notNull": true
-          },
-          {
-            "fieldPath": "form",
-            "columnName": "form",
-            "affinity": "TEXT",
-            "notNull": true
-          },
-          {
-            "fieldPath": "verbtype",
-            "columnName": "verbtype",
-            "affinity": "TEXT",
-            "notNull": true
-          },
-          {
-            "fieldPath": "id",
-            "columnName": "id",
-            "affinity": "INTEGER",
-            "notNull": true
-          },
-          {
-            "fieldPath": "babname",
-            "columnName": "babname",
-            "affinity": "TEXT",
-            "notNull": true
-          }
-        ],
-        "primaryKey": {
-          "columnNames": [
-            "id"
-          ],
-          "autoGenerate": false
-        },
-        "indices": [],
-        "foreignKeys": []
-      },
-      {
         "tableName": "buckwater",
         "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`decimel` INTEGER NOT NULL, `hex` TEXT NOT NULL, `ascii` TEXT NOT NULL, `orthography` TEXT NOT NULL, `arabic` TEXT, PRIMARY KEY(`decimel`))",
         "fields": [
@@ -516,7 +472,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '3adb270fed7f0fd1a8dce7dfd9b88482')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '0b6885ceb98f334c811debac3d4fec5d')"
     ]
   }
 }

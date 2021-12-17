@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "0d0dcb6bf39669cca37b7d13c8b34f1c",
+    "identityHash": "3a3bcb3f2ddddea30f851a3989959ba5",
     "entities": [
       {
         "tableName": "hansdictionary",
@@ -690,50 +690,6 @@
             "id"
           ],
           "autoGenerate": true
-        },
-        "indices": [],
-        "foreignKeys": []
-      },
-      {
-        "tableName": "mazeeddictionary",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`root` TEXT NOT NULL, `form` TEXT NOT NULL, `verbtype` TEXT NOT NULL, `id` INTEGER NOT NULL, `babname` TEXT NOT NULL, PRIMARY KEY(`id`))",
-        "fields": [
-          {
-            "fieldPath": "root",
-            "columnName": "root",
-            "affinity": "TEXT",
-            "notNull": true
-          },
-          {
-            "fieldPath": "form",
-            "columnName": "form",
-            "affinity": "TEXT",
-            "notNull": true
-          },
-          {
-            "fieldPath": "verbtype",
-            "columnName": "verbtype",
-            "affinity": "TEXT",
-            "notNull": true
-          },
-          {
-            "fieldPath": "id",
-            "columnName": "id",
-            "affinity": "INTEGER",
-            "notNull": true
-          },
-          {
-            "fieldPath": "babname",
-            "columnName": "babname",
-            "affinity": "TEXT",
-            "notNull": true
-          }
-        ],
-        "primaryKey": {
-          "columnNames": [
-            "id"
-          ],
-          "autoGenerate": false
         },
         "indices": [],
         "foreignKeys": []
@@ -1625,7 +1581,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '0d0dcb6bf39669cca37b7d13c8b34f1c')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '3a3bcb3f2ddddea30f851a3989959ba5')"
     ]
   }
 }

@@ -45,12 +45,9 @@ import com.example.mushafconsolidated.Entities.wbwentity;
 
 import java.io.File;
 
-import database.Dao.VerbsTriMazeedDictDao;
-import database.entity.VerbsTriMazeedDictEntity;
-
 
 //@Database(entities= {VerseEntit.class,ErabEntity.class,ChaptersAnaEntity.class},version= 1)
-@Database(entities = {hanslexicon.class, qurandictionary.class,lanelexicon.class, lughat.class,NewNasbEntity.class,NewShartEntity.class, NewKanaEntity.class, NewMudhafEntity.class,   SifaEntity.class,  VerbsTriMazeedDictEntity.class,wbwentity.class,NounCorpus.class,VerbCorpus.class,QuranEntity.class, CorpusEntity.class,BookMarks.class,      ChaptersAnaEntity.class }, version = 1)
+@Database(entities = {hanslexicon.class, qurandictionary.class,lanelexicon.class, lughat.class,NewNasbEntity.class,NewShartEntity.class, NewKanaEntity.class, NewMudhafEntity.class,   SifaEntity.class,   wbwentity.class,NounCorpus.class,VerbCorpus.class,QuranEntity.class, CorpusEntity.class,BookMarks.class,      ChaptersAnaEntity.class }, version = 1)
 public abstract class QuranAppDatabase extends RoomDatabase {
 
     public static QuranAppDatabase quranAppDatabaseInstance;
@@ -108,7 +105,7 @@ public abstract class QuranAppDatabase extends RoomDatabase {
 
         }
  return     quranAppDatabaseInstance;
-// return quranAppDatabaseInstanceasset;
+ // return quranAppDatabaseInstanceasset;
     }
 
 
@@ -142,7 +139,7 @@ public abstract class QuranAppDatabase extends RoomDatabase {
     public abstract wbwDao wbwDao();
 
 
-    public abstract VerbsTriMazeedDictDao VerbsTriMazeedDictDao();
+
 
    ;
     public abstract SifaDao SifaDao();

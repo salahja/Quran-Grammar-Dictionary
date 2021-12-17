@@ -43,8 +43,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import database.entity.VerbsTriMazeedDictEntity;
-
 //import com.example.mushafconsolidated.Entities.JoinVersesTranslationDataTranslation;
 
 public class Utils {

@@ -129,10 +129,10 @@ public class ConjugatorAct extends BaseActivity implements View.OnClickListener 
 
 
 
-    isautocomplete = SharedPref.AutoComplete();
-    setIsautocomplete(isautocomplete);
 
-isautocomplete=true;
+
+
+
 
       setContentView(R.layout.conjugator_key_activity_autocomplete);
 
@@ -159,16 +159,12 @@ isautocomplete=true;
 
 
     InputConnection ic;
-    if (isautocomplete) {
+
 
       SetUpAutoComplete();
       ic = editTextAuto.onCreateInputConnection(new EditorInfo());
 
 
-    } else {
-      SetUpEditText();
-      ic = editText.onCreateInputConnection(new EditorInfo());
-    }
 
 
     // InputConnection ic = editTextAuto.onCreateInputConnection(new EditorInfo());
@@ -707,11 +703,9 @@ mujarradbtn.setOnClickListener(this);
 
   private void InitSelecton(String roots) {
     keyboard.setVisibility(LinearLayout.GONE);
-    if (isautocomplete) {
+
       editTextAuto.clearFocus();
-    } else {
-      editText.clearFocus();
-    }
+
     String[] split = roots.split(",");
     String root = split[0];
     SharedPref pref = new SharedPref(this);
@@ -824,11 +818,8 @@ mujarradbtn.setOnClickListener(this);
       mazeed.add(dict.getBabname() + "," + dict.getForm());
     }
     if (thulathia.size() == 0 & mazeed.size() == 0) {
-      if (isautocomplete) {
+
         editTextAuto.setText(R.string.notfound);
-      } else {
-        editText.setText(R.string.notfound);
-      }
 
     }
 

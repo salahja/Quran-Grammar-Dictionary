@@ -5,7 +5,6 @@ import com.example.utility.DarkThemeApplication;
 
 import org.sj.verbConjugation.trilateral.augmented.AugmentedTrilateralRoot;
 import org.sj.verbConjugation.trilateral.unaugmented.UnaugmentedTrilateralRoot;
-import org.sj.conjugator.utilities.VerbConjugaorApp;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -14,7 +13,6 @@ import java.util.List;
 import database.DatabaseUtils;
 import database.entity.Mazeed;
 import database.entity.MujarradVerbs;
-import database.entity.VerbsTriMazeedDictEntity;
 
 public class SarfDictionary {
   private SarfDictionary() {
@@ -35,13 +33,13 @@ public class SarfDictionary {
           AugmentedTrilateralRoot();
     //  AugmentedTrilateralRootTree augmentedRootsTree = DatabaseManager.getInstance().getAugmentedTrilateralRootTree(c1);
     DatabaseUtils utils = new DatabaseUtils(DarkThemeApplication.getContext());
-    final ArrayList<VerbsTriMazeedDictEntity> triVerbMazeed = utils.getTriVerbMazeed(rootText);
-
-    for (VerbsTriMazeedDictEntity root : triVerbMazeed) {
-      roots.add(root.getRoots());
-      augroot.setC1(root.getRoots().charAt(0));
-      augroot.setC2(root.getRoots().charAt(1));
-      augroot.setC3(root.getRoots().charAt(2));
+  //  final ArrayList<VerbsTriMazeedDictEntity> triVerbMazeed = utils.getTriVerbMazeed(rootText);
+    final ArrayList<Mazeed> triVerbMazeed = utils.getMazeedRoot(rootText);
+    for (Mazeed root : triVerbMazeed) {
+      roots.add(root.getRoot());
+      augroot.setC1(root.getRoot().charAt(0));
+      augroot.setC2(root.getRoot().charAt(1));
+      augroot.setC3(root.getRoot().charAt(2));
       augroot.setForm(root.getForm());
       augroot.setBabname(root.getBabname());
       augroot.setVerbtype(root.getVerbtype());

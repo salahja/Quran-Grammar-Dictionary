@@ -19,19 +19,17 @@ import database.entity.Mazeed;
 import database.entity.MujarradVerbs;
 import database.entity.QuranVerbsEntity;
 import database.entity.QuranicVerbsEntity;
-import database.entity.VerbsTriMazeedDictEntity;
 
 import database.Dao.BuckwaterDao;
 import database.Dao.QuranVerbsDao;
 import database.Dao.QuranicVerbsDao;
-import database.Dao.VerbsTriMazeedDictDao;
 
 import database.entity.kov;
 import database.entity.verbcorpus;
 
 
 //@Database(entities= {VerseEntit.class,ErabEntity.class,ChaptersAnaEntity.class},version= 1)
-@Database(entities = {Mazeed.class,MujarradVerbs.class,kov.class,verbcorpus.class,VerbsTriMazeedDictEntity.class,  BuckwaterEntitiy.class, QuranVerbsEntity.class, QuranicVerbsEntity.class}, version = 2)
+@Database(entities = {Mazeed.class,MujarradVerbs.class,kov.class,verbcorpus.class,  BuckwaterEntitiy.class, QuranVerbsEntity.class, QuranicVerbsEntity.class}, version = 2)
 
 public abstract class VerbDatabase extends RoomDatabase {
 
@@ -79,7 +77,7 @@ public abstract class VerbDatabase extends RoomDatabase {
 
 
 
-    public abstract VerbsTriMazeedDictDao VerbsTriMazeedDictDao();
+
     public abstract verbcorpusDao verbcorpusDao();
 
 

@@ -171,11 +171,7 @@ public class ExpandableListData {
       int jawabEword = nasbEntity.getKhabarendwordno();
       StringBuilder sb = new StringBuilder();
       StringBuilder khabarsb = new StringBuilder();
-      boolean kanawithkhabar = indexstart > 0 && indexend > 0 && khabarstartindex > 0 && khabarendindex > 0;
-      boolean kanwithismnkhabar = indexstart > 0 && indexend > 0 && khabarstartindex > 0 && khabarendindex > 0 && ismstartindex > 0 && ismendindex > 0;
-      FrameSpan frameshartharf = new FrameSpan(GREEN, 2, OVAL);
-      FrameSpan frameshart = new FrameSpan(CYAN, 2f, OVAL);
-      FrameSpan framejawabshart = new FrameSpan(YELLOW, 2f, OVAL);
+
       TextBorderSpan tb = new TextBorderSpan();
       boolean iscolored = false;
 
@@ -484,11 +480,7 @@ public class ExpandableListData {
       int ismEword = kana.getIsmendword();
       int khabarSword = kana.getKhabarstartwordno();
       int habarEword = kana.getKhabarendwordno();
-      boolean kanawithkhabar = start > 0 && end > 0 && khabarstart > 0 && khabarend > 0;
-      boolean kanwithismnkhabar = start > 0 && end > 0 && khabarstart > 0 && khabarend > 0 && isstart > 0 && issend > 0;
-      FrameSpan frameshartharf = new FrameSpan(GREEN, 2, OVAL);
-      FrameSpan frameshart = new FrameSpan(CYAN, 2f, OVAL);
-      FrameSpan framejawabshart = new FrameSpan(YELLOW, 2f, OVAL);
+
       TextBorderSpan tb = new TextBorderSpan();
       boolean iscolored = false;
 

@@ -13,7 +13,6 @@ import database.entity.QuranVerbsEntity;
 import database.entity.QuranicVerbsEntity;
 import database.entity.kov;
 import database.entity.verbcorpus;
-import database.entity.VerbsTriMazeedDictEntity;
 
 import java.util.ArrayList;
 
@@ -146,18 +145,8 @@ return updadateRoots;
         ArrayList<Mazeed> triverbsall = (ArrayList<Mazeed>) database.mazeedDao().getMazeedWeakness(kov);
         return triverbsall;
     }
-    public ArrayList<VerbsTriMazeedDictEntity> getTriVerbMazeed(String root) {
-        ArrayList<VerbsTriMazeedDictEntity> triverbsmazeed = (ArrayList<VerbsTriMazeedDictEntity>) database.VerbsTriMazeedDictDao().getverbMazeedTri(root);
-        return triverbsmazeed;
-
-    }
 
 
-    public ArrayList<VerbsTriMazeedDictEntity> getTriVerbMazeedAll() {
-        ArrayList<VerbsTriMazeedDictEntity> triverbsmazeed = (ArrayList<VerbsTriMazeedDictEntity>) database.VerbsTriMazeedDictDao().getverbMazeedTriAll();
-        return triverbsmazeed;
-
-    }
 
     public ArrayList<Mazeed> getMazeedAll() {
         ArrayList<Mazeed> triverbsmazeed = (ArrayList<Mazeed>) database.mazeedDao().getMazeedAll();
