@@ -40,7 +40,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -49,7 +48,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.view.ContextThemeWrapper;
 import androidx.appcompat.widget.PopupMenu;
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
@@ -60,8 +58,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.JustJava.InputFilterMinMax;
-import com.example.mushafconsolidated.Adapters.CustomAdapter;
-import com.example.mushafconsolidated.Adapters.HarbNasbMarkupFlowAyahWordAdapter;
 import com.example.mushafconsolidated.Adapters.OrignalFlowAyahWordAdapter;
 import com.example.mushafconsolidated.Entities.BookMarks;
 import com.example.mushafconsolidated.Entities.ChaptersAnaEntity;
@@ -79,12 +75,10 @@ import com.example.mushafconsolidated.intrface.PassdataInterface;
 import com.example.mushafconsolidated.model.CorpusAyahWord;
 import com.example.mushafconsolidated.model.CorpusWbwWord;
 import com.example.utility.CorpusUtilityorig;
-import com.example.utility.SharedPref;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.ismaeldivita.chipnavigation.ChipNavigationBar;
-import com.shreyaspatil.MaterialDialog.MaterialDialog;
 
 import org.sj.conjugator.activity.ConjugatorAct;
 

@@ -3,7 +3,6 @@ package com.example.mushafconsolidated.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.mushafconsolidated.Adapters.HarbNasbMarkupFlowAyahWordAdapter;
 import com.example.mushafconsolidated.Adapters.MufradatPagerAdapter;
 import com.example.mushafconsolidated.Adapters.MushafAdapter;
 import com.example.mushafconsolidated.Entities.MufradatEntity;
@@ -15,5 +14,5 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class ReadingSurahPartActivity extends AppCompatActivity implements PassdataInterface, OnItemClickListener {
     FloatingActionButton btnBottomSheet;
-    private HarbNasbMarkupFlowAyahWordAdapter harbNasbMarkupFlowAyahWordAdapter;
+
     */

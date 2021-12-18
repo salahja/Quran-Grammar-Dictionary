@@ -25,7 +25,6 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.mushafconsolidated.Adapters.HarbNasbMarkupFlowAyahWordAdapter;
 import com.example.mushafconsolidated.Adapters.NewSurahDisplayAdapter;
 import com.example.mushafconsolidated.Entities.ChaptersAnaEntity;
 import com.example.mushafconsolidated.Entities.NasbPOJO;
@@ -54,7 +53,7 @@ public class MainActivity extends BaseActivity {
     private static final int REQUEST_WRITE_Settings = 113;
     private static final int READ_EXTERNAL_STORAGE = 114;
 
-    private HarbNasbMarkupFlowAyahWordAdapter harbNasbMarkupFlowAyahWordAdapter;
+
 
     private File newquran;
 
