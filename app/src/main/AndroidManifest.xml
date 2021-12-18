@@ -112,13 +112,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.mushafconsolidated.Activity.MainActivity" />
         </activity>
-        <activity
-            android:name=".Activity.UnZipFIleActivity"
-            android:parentActivityName="Activity.MainActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Activity.MainActivity" />
-        </activity>
 
     </application>
 

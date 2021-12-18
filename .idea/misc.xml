@@ -29,7 +29,7 @@
         <entry key="app/src/main/res/layout/new_fragment_reading.xml" value="0.43617021276595747" />
         <entry key="app/src/main/res/layout/newsarfkabeercolumn.xml" value="0.43214285714285716" />
         <entry key="app/src/main/res/layout/orignalsurarowlinear.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/popup_layout.xml" value="1.0642857142857143" />
+        <entry key="app/src/main/res/layout/popup_layout.xml" value="0.25" />
         <entry key="app/src/main/res/layout/qaris_view_word_details.xml" value="0.25" />
         <entry key="app/src/main/res/layout/refactacon_key_activity_autocomplete.xml" value="0.1" />
         <entry key="app/src/main/res/layout/round_arabic_keyboard.xml" value="0.1" />
@@ -37,6 +37,7 @@
         <entry key="app/src/main/res/layout/sarfsagheerheader.xml" value="1.0642857142857143" />
         <entry key="app/src/main/res/layout/sentence_word_details.xml" value="0.4714285714285714" />
         <entry key="app/src/main/res/layout/settting_pref.xml" value="0.14285714285714285" />
+        <entry key="app/src/main/res/layout/switch_layouts.xml" value="1.0642857142857143" />
         <entry key="app/src/main/res/layout/thulathilistingnotoolbar.xml" value="0.1" />
         <entry key="app/src/main/res/layout/thulathitable.xml" value="0.67" />
         <entry key="app/src/main/res/layout/wordbottomsheetismfaelmafoolsktraditional.xml" value="0.33064516129032256" />
@@ -44,7 +45,7 @@
         <entry key="app/src/main/res/menu/main.xml" value="0.6214285714285714" />
         <entry key="app/src/main/res/menu/menu.xml" value="0.67" />
         <entry key="app/src/main/res/menu/navigation_drawer_menu.xml" value="1.0642857142857143" />
-        <entry key="app/src/main/res/menu/popup_menu.xml" value="1.0642857142857143" />
+        <entry key="app/src/main/res/menu/popup_menu.xml" value="1.0" />
         <entry key="app/src/main/res/xml/preferences.xml" value="0.7892857142857143" />
         <entry key="app/src/main/res/xml/verbpreferences.xml" value="0.6571428571428571" />
       </map>

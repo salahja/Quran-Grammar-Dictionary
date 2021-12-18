@@ -1,7 +1,9 @@
 package com.example.mushafconsolidated.Activity;
 
 
-import org.sj.verbs.sarf.thulathi.verbs.UnaugmentedTrilateralRoot;
+
+
+import org.sj.verbConjugation.trilateral.unaugmented.UnaugmentedTrilateralRoot;
 
 import java.util.ArrayList;
 import java.util.List;

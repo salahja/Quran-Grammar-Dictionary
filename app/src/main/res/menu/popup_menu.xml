@@ -10,15 +10,15 @@
     <item
         android:id="@+id/jumpto"
         android:icon="@drawable/ic_baseline_open_in_browser_36"
-        android:title="Go to Surah/Ayah"
-        app:showAsAction="always" />
+        android:title="@string/go_to_surah_ayah"
+        app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/colorized"
-        android:icon="@drawable/ic_baseline_color_lens_24"
-        app:actionViewClass="android.widget.Switch"
 
-        android:title="Colorize"
+
+        app:actionLayout="@layout/switch_layout"
+        android:title="@string/colorize"
         app:showAsAction="always" />
 
     <item android:title="React Native" />

@@ -43,15 +43,6 @@ public interface RawDao {
     @RawQuery
     int insertRecords(SupportSQLiteQuery query);
 
-    @RawQuery
-    List<BookMarks> getBookmarks(SupportSQLiteQuery query);
-
-    @RawQuery
-    List<CorpusEntity> getayahcount(SupportSQLiteQuery query);
-
-
-    @RawQuery
-    List<CorpusVerbWbwOccurance> getCombinedCorpusVerbWbw(SupportSQLiteQuery query);
 
     @RawQuery
     List<CorpusNounWbwOccurance> getnounoccurance(SupportSQLiteQuery query);

@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:background="@drawable/round"
 
-    android:layout_height="100dp">
+    android:layout_height="wrap_content">
 
 
     <ImageView
@@ -15,14 +15,7 @@
         android:layout_height="wrap_content"
         android:src="@drawable/ic_baseline_bookmark_add_36" />
 
-    <ImageView
-        android:id="@+id/gotobookmarks"
-        android:layout_marginStart="40dp"
 
-        android:layout_gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_baseline_collections_bookmark_36" />
 
     <ImageView
         android:id="@+id/fileopen"
@@ -38,13 +31,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Gramatical Colors"
-        android:layout_marginStart="40dp"/>
-    <androidx.appcompat.widget.SwitchCompat
-        android:id="@+id/sentences"
-        android:layout_gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Sentence Wise"
         android:layout_marginStart="40dp"/>
 
 

@@ -180,6 +180,8 @@
     <string name="harfnasbsummary">Valid only from Surah 1 to 8 and 59 to 114</string>
     <string name="ok">Ok</string>
     <string name="notfound">not found</string>
+    <string name="colorize">Colorize</string>
+    <string name="go_to_surah_ayah">Go to Surah/Ayah</string>
 
 
 </resources>
