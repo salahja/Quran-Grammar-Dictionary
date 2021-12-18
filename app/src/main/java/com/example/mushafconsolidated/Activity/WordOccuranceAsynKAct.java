@@ -247,7 +247,7 @@ public class WordOccuranceAsynKAct extends BaseActivity {
             StringBuilder sb = new StringBuilder();
             SpannableString spanDark = new SpannableString(vers.getQurantext());
             Spannable spannableVerses = CorpusUtilityorig.getSpannableVerses(vers.getAraone() + vers.getAratwo() + vers.getArathree() + vers.getArafour() + vers.getArafive(),
-                  vers.getQurantext(), true);
+                  vers.getQurantext());
 
             sb.append(vers.getSurah()).append(":").append(vers.getAyah()).append(":").append(vers.getWordno()).append("-").append(vers.getEn()).append("-");
 
@@ -473,7 +473,7 @@ public class WordOccuranceAsynKAct extends BaseActivity {
                           StringBuilder sb = new StringBuilder();
                           SpannableString spanDark = new SpannableString(vers.getQurantext());
                           Spannable spannableVerses = CorpusUtilityorig.getSpannableVerses( vers.getAraone() + vers.getAratwo() + vers.getArathree() + vers.getArafour() + vers.getArafive(),
-                                vers.getQurantext(), true);
+                                vers.getQurantext());
 
                           sb.append(vers.getSurah()).append(":").append(vers.getAyah()).append(":").append(vers.getWordno()).append("-").append(vers.getEn()).append("-");
 
@@ -533,7 +533,7 @@ public class WordOccuranceAsynKAct extends BaseActivity {
                           StringBuilder sb = new StringBuilder();
                           SpannableString spanDark = new SpannableString(vers.getQurantext());
                           Spannable spannableVerses = CorpusUtilityorig.getSpannableVerses(vers.getAraone() + vers.getAratwo() + vers.getArathree() + vers.getArafour() + vers.getArafive(),
-                                vers.getQurantext(), true);
+                                vers.getQurantext());
                           //  SpannableString spannableString = CorpusUtilityorig.SetWordSpanNew(vers.getTagone(), vers.getTagtwo(), vers.getTagthree(), vers.getTagfour(), vers.getTagfive(),
                           //     vers.getAraone(), vers.getAratwo(), vers.getArathree(), vers.getArafour(), vers.getArafive());
 

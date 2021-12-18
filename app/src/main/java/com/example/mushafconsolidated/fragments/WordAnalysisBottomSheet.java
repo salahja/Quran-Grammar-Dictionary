@@ -29,10 +29,6 @@ import static com.example.Constant.shartspanDark;
 import static com.example.Constant.sifaspansDark;
 import static com.example.utility.CorpusUtilityorig.getSpancolor;
 
-import static Utility.ArabicLiterals.Damma;
-import static Utility.ArabicLiterals.Fatha;
-import static Utility.ArabicLiterals.Kasra;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -118,10 +114,6 @@ public class WordAnalysisBottomSheet extends BottomSheetDialogFragment {
     private String mujarradwazan, mazeedwazan;
     private String verbmood;
 
-    public boolean isQuadrilateral() {
-        return quadrilateral;
-    }
-
     public void setQuadrilateral(boolean quadrilateral) {
         this.quadrilateral = quadrilateral;
     }
@@ -158,7 +150,6 @@ public class WordAnalysisBottomSheet extends BottomSheetDialogFragment {
     private ArrayList<NewCorpusExpandWbwPOJO> corpusSurahWord;
     private AlertDialog dialog;
     private View selectedview;
-    private ArrayList<lughat> dictionary;
 
     public boolean isNoun() {
         return noun;
@@ -172,25 +163,17 @@ public class WordAnalysisBottomSheet extends BottomSheetDialogFragment {
     private VerbWazan vb;
     private VerbWazan arabicword;
     protected RootWordDisplayAdapter rwAdapter;
-    ArrayList<SarfSagheer> sarfSagheerList=new ArrayList<>();
-
-    public boolean isIsroot() {
-        return isroot;
-    }
+    final ArrayList<SarfSagheer> sarfSagheerList=new ArrayList<>();
 
     public void setIsroot(boolean isroot) {
         this.isroot = isroot;
-    }
-
-    public boolean isIsarabicword() {
-        return isarabicword;
     }
 
     public void setIsarabicword(boolean isarabicword) {
         this.isarabicword = isarabicword;
     }
 
-    ArrayList<String> wazannumberslist = new ArrayList<>();
+    final ArrayList<String> wazannumberslist = new ArrayList<>();
     SarfSagheerPOJO sarf;
     boolean isroot, isarabicword, quadrilateral,isnoun,ismujarradparticple;
     private SentenceRootWordDisplayAdapter sentenceRootWordDisplayAdapter;
@@ -288,8 +271,6 @@ public class WordAnalysisBottomSheet extends BottomSheetDialogFragment {
                 corpusSurahWord = utils.getCorpusWbwBySurahAyahWordid(chapterid, ayanumber, wordno);
                 ArrayList<NounCorpus> corpusNounWord = utils.getQuranNouns(chapterid, ayanumber, wordno);
                 ArrayList<VerbCorpus> verbCorpusRootWord = utils.getQuranRoot(chapterid, ayanumber, wordno);
-                //   ArrayList<VerbCorpus> verbCorpusRootAYAH = utils.getQuranRootaAyah(chapterid, ayanumber);
-              //  SarfSagheerMazeedFihi sarfSagheerMazeedFihi = new SarfSagheerMazeedFihi(getActivity());
                 QuranMorphologyDetails am = new QuranMorphologyDetails(corpusSurahWord, corpusNounWord, verbCorpusRootWord, getContext());
            vb=new VerbWazan();
                 wordbdetail = am.getWordDetails();
@@ -306,7 +287,7 @@ public class WordAnalysisBottomSheet extends BottomSheetDialogFragment {
                 isconjugation = ismujarrad || ismazeed || isparticple;
                 isroot = wordbdetail.get("root") != null;
                 if(isroot){
-                    vb.setRoot(String.valueOf(wordbdetail.get("root")));;
+                    vb.setRoot(String.valueOf(wordbdetail.get("root")));
                 }
 
                isnoun = wordbdetail.get("noun") != null;
@@ -369,7 +350,7 @@ public class WordAnalysisBottomSheet extends BottomSheetDialogFragment {
                     setThulathiSarfSagheer(true);
                     setMazeedSarfSagheer(false);
                     setIsverbconjugaton(true);
-                    char[] chars = vb.getRoot().toCharArray();
+
 
                     boolean first = root.startsWith("أ");
                     int second = root.indexOf("أ");
@@ -378,17 +359,8 @@ public class WordAnalysisBottomSheet extends BottomSheetDialogFragment {
                     } else if (second != -1) {
                         root = root.replace("أ", "ء");
                     }
-                    Character C1 = chars[0];
-                    Character C2 = chars[1];
-                    Character C3 = chars[2];
-                    C1.toString();
 
-                    String madhiharakah;
-                    String muhdarayharakah;
-                    ArrayList<String> harakah = new ArrayList<>();
-                    if (harakah.size() > 0)
 
-                        harakah.clear();
                     DatabaseUtils dutils = new DatabaseUtils(getActivity());
                     final ArrayList<MujarradVerbs> triVerb = dutils.getMujarradVerbs(root);
                     verbDictList = new ArrayList<>();
@@ -453,14 +425,10 @@ public class WordAnalysisBottomSheet extends BottomSheetDialogFragment {
                         vb.setWazan(form1);
                         ismfaelmafool = GatherAll.getInstance().buildAugmenteParticiples(root, form1);
                         setNoun(false);
-                   //     setIsverbconjugaton(true);
-                        // setParticiples(false);
-                  //      SarfKabeerMazeed skmazeed = new SarfKabeerMazeed(root, Integer.parseInt(form1));
-                     //   ismfaelmafool = skmazeed.SarfKabeerMazeed();
                         String tafeel = mazeedsignificance.get("II");
                         vbdetail.put("mazeed", tafeel);
                     }else {
-                        char[] chars = vb.getRoot().toCharArray();
+
                       String root=vb.getRoot();
                         boolean first = root.startsWith("أ");
                         int second = root.indexOf("أ");
@@ -469,14 +437,7 @@ public class WordAnalysisBottomSheet extends BottomSheetDialogFragment {
                         } else if (second != -1) {
                             root = root.replace("أ", "ء");
                         }
-                        Character C1 = chars[0];
-                        Character C2 = chars[1];
-                        Character C3 = chars[2];
-                        C1.toString();
 
-                        String madhiharakah;
-                        String muhdarayharakah;
-                        ArrayList<String> harakah = new ArrayList<>();
 
                         DatabaseUtils databaseUtils=new DatabaseUtils(getActivity());
 
@@ -533,8 +494,6 @@ public class WordAnalysisBottomSheet extends BottomSheetDialogFragment {
                 }
 
 
-              //  setIsverbconjugaton(false);
-           //     setParticiples(false);
                 corpusNounWord.size();
                 try {
                     //   if (corpusNounWord.get(0).getTag().equals("ACC") || corpusNounWord.get(0).equals("T") || corpusNounWord.get(0).equals("LOC")) {
@@ -595,15 +554,11 @@ public class WordAnalysisBottomSheet extends BottomSheetDialogFragment {
                     String quranverses = corpusSurahWord.get(0).getQurantext();
                     spannable = new SpannableStringBuilder(quranverses);
 
-                    ////  this.chapterid = chapterid;
-                    //  this.ayanumber = ayanumber;
-                    //  this.corpusSurahWord = corpusSurahWord;
-
                     SetShart(utils, corpusSurahWord);
                     setHarfNasb(utils, corpusSurahWord);
                     SetMausoofSifa(utils, corpusSurahWord);
                     SetMudhaf(utils, corpusSurahWord);
-                    SetKana(utils, corpusSurahWord);
+                    SetKana(utils);
 
 
                 }
@@ -664,9 +619,6 @@ public class WordAnalysisBottomSheet extends BottomSheetDialogFragment {
         ArrayList<NewNasbEntity> harfnasb = utils.getHarfNasbIndSurahAyahSnew(chapterid, ayanumber);
 
         for (NewNasbEntity nasb : harfnasb) {
-            //   harfinnaspanDark = new ForegroundColorSpan(GREEN);
-            //    harfismspanDark = new ForegroundColorSpan(BCYAN);
-            //   harfkhabarspanDark = new ForegroundColorSpan(YELLOW);
 
             if (themepreference.equals("dark") || themepreference.equals("blue")) {
                 harfinnaspanDark = new ForegroundColorSpan(GREEN);
@@ -700,9 +652,6 @@ public class WordAnalysisBottomSheet extends BottomSheetDialogFragment {
 
         String jumlashart = "جملة شرطية";
 
-
-        //  this.spannable = new SpannableStringBuilder(quranverses);
-        //  this.spannableHarf = new SpannableStringBuilder(quranverses);
 
         for (NewMudhafEntity mudhafEntity : mudhafSurahAyah) {
             mudhafspansDark = getSpancolor(themepreference, true);
@@ -755,7 +704,7 @@ public class WordAnalysisBottomSheet extends BottomSheetDialogFragment {
         }
     }
 
-    protected void SetKana(Utils utils, ArrayList<NewCorpusExpandWbwPOJO> corpusSurahWord) {
+    protected void SetKana(Utils utils) {
         ArrayList<NewKanaEntity> kana = utils.getKanaSurahAyahnew(chapterid, ayanumber);
 
         //  this.spannable = new SpannableStringBuilder(quranverses);
@@ -798,10 +747,10 @@ public class WordAnalysisBottomSheet extends BottomSheetDialogFragment {
                     String mform = "";
                     if (formnumber == null) {
                         String verbform = vbdetail.get("formnumber");
-                        mform = String.valueOf(verbform).replaceAll("\\(|\\)", "");
+                        mform = String.valueOf(verbform).replaceAll("[()]", "");
                     } else {
                         mform = String.valueOf(wordbdetail.get("formnumber"));
-                        mform = String.valueOf(mform).replaceAll("\\(|\\)", "");
+                        mform = mform.replaceAll("[()]", "");
                     }
 
                     int color = getResources().getColor(R.color.background_color_light_brown);
@@ -878,29 +827,6 @@ public class WordAnalysisBottomSheet extends BottomSheetDialogFragment {
 
                         Toast.makeText(getContext(), "not found", Toast.LENGTH_SHORT).show();
                     }
-          /*
-
-                 int color = getActivity().getResources().getColor(R.color.background_color);
-          String display="";
-           if(!vbdetail.isEmpty()){
-            display= dictionary.get(0).getEn_lughat();
-           }else        if(!wordbdetail.isEmpty()){
-             display= dictionary.get(0).getEn_lughat();
-           }else{
-             display="not found";
-           }
-          Tooltip.Builder builder = new Tooltip.Builder(v,R.style.ayah_translation )
-                .setCancelable(true)
-                .setDismissOnClick(false)
-                .setCornerRadius(20f)
-                .setGravity(Gravity.TOP)
-                .setArrowEnabled(true)
-
-                .setBackgroundColor(color)
-
-                .setText(display);
-          builder.show();
-           */
 
                 } else if (verse != null) {
                     GrammerFragmentsBottomSheet item = new GrammerFragmentsBottomSheet();
@@ -912,10 +838,8 @@ public class WordAnalysisBottomSheet extends BottomSheetDialogFragment {
                     dataBundle.putInt(AYAHNUMBER, ayanumber);
 
 
-                    //   dataBundle.putInt(WORDNUMBER, Math.toIntExact(word.getWordno()));
-                    //   dataBundle.putString(SURAH_ARABIC_NAME, SurahName);
                     item.setArguments(dataBundle);
-                    String data[] = {String.valueOf(chapterid), String.valueOf(ayanumber)};
+                    String[] data = {String.valueOf(chapterid), String.valueOf(ayanumber)};
                     FragmentTransaction transactions = fragmentManager.beginTransaction().setCustomAnimations(R.anim.abc_slide_in_top, android.R.anim.fade_out);
                     //   transactions.show(item);
                     GrammerFragmentsBottomSheet.newInstance(data).show((getActivity().getSupportFragmentManager()), WordAnalysisBottomSheet.TAG);
@@ -987,29 +911,13 @@ public class WordAnalysisBottomSheet extends BottomSheetDialogFragment {
 
             private String getFormDetails(String form) {
 
-                final String s = mazeedsignificance.get(form);
-                return s;
+                return mazeedsignificance.get(form);
             }
 
         });
 
 
     }
-
-
-
-
-/*
-
-    @Override
-    public void onItemClick(View v, int position) {
-         v.findViewById(R.id.dismissView);
-         if(v.findViewById(R.id.dismissView)!=null){
-             getActivity().finish();
-
-         }
-    }
-*/
 
 
 }

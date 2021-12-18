@@ -126,21 +126,30 @@ public class SentenceRootWordDisplayAdapter extends RecyclerView.Adapter<Sentenc
       holder.translationView.setText(worddetailsmap.get(wordposition).get("wordtranslation"));
 
     }
-    holder.wordView.setText(worddetailsmap.get(wordposition).get("word"));
+ //   holder.wordView.setText(worddetailsmap.get(wordposition).get("word"));
     if (!(worddetailsmap.get(wordposition).get("PRON") == null)) {
       holder.pronoundetails.setText(worddetailsmap.get(wordposition).get("PRON"));
 
     }
 
-    if (!(worddetailsmap.get(wordposition).get("noun") == null)) {
-      holder.noun.setText(worddetailsmap.get(wordposition).get("noun"));
-      holder.nounoccurancebtn.setVisibility(View.VISIBLE);
-      holder.verbconjugationbtn.setVisibility(View.GONE);
-      holder.verbOccurancebtn.setVisibility(View.GONE);
+    if(worddetailsmap.get("form")!=null)
+    {
+      holder.verbconjugationbtn.setVisibility(View.VISIBLE);
+      holder.wordoccurancebtn.setVisibility(View.VISIBLE);
 
-    } else {
-      holder.nounoccurancebtn.setVisibility(View.GONE);
+    }else if(worddetailsmap.get("wazan")!=null){
+      holder.verbconjugationbtn.setVisibility(View.VISIBLE);
+      holder.wordoccurancebtn.setVisibility(View.VISIBLE);
+    }else if (!(worddetailsmap.get(wordposition).get("noun") == null)) {
+      holder.noun.setText(worddetailsmap.get(wordposition).get("noun"));
+      holder.wordoccurancebtn.setVisibility(View.VISIBLE);
+      holder.verbconjugationbtn.setVisibility(View.GONE);
+
+
     }
+
+
+
 
     Integer wordd = null;
     Integer verb = null;
@@ -343,7 +352,7 @@ public class SentenceRootWordDisplayAdapter extends RecyclerView.Adapter<Sentenc
     public final TextView mafalunone, mafaluntwo, mafalunthree, mafalunfour, mafalunfive, mafalunsix, mafalunseven,
           mafaluneight, mafalunnine;
 
-    TextView apmas, apfem, ppmas, ppfem, verbconjugationbtn, verbOccurancebtn, nounoccurancebtn;
+    TextView apmas, apfem, ppmas, ppfem, verbconjugationbtn, verbOccurancebtn, wordoccurancebtn;
     public final TextView sin1, dual1, plu1, sin2, dual2, plu2, sin3, dual3, plu3;
     public final TextView sin4, dual4, plu4;
     public final TextView nom, acc, gen;
@@ -357,7 +366,7 @@ public class SentenceRootWordDisplayAdapter extends RecyclerView.Adapter<Sentenc
       quranverseShart = view.findViewById(R.id.quranverseShart);
       verbconjugationbtn = view.findViewById(R.id.verbconjugationbtn);
       verbOccurancebtn = view.findViewById(R.id.verboccurance);
-      nounoccurancebtn = view.findViewById(R.id.wordoccurance);
+      wordoccurancebtn = view.findViewById(R.id.wordoccurance);
       babname = view.findViewById(R.id.babno);
       rootword = view.findViewById(R.id.weaknesstype);
       ismzarfheader = view.findViewById(R.id.ismzarfheader);
@@ -406,17 +415,17 @@ public class SentenceRootWordDisplayAdapter extends RecyclerView.Adapter<Sentenc
       if (isverbconjugation || particples) {
         verbconjugationbtn.setOnClickListener(this);
         verbOccurancebtn.setOnClickListener(this);
-        nounoccurancebtn.setOnClickListener(this);
+        wordoccurancebtn.setOnClickListener(this);
 
       } else if (isnoun) {
         //  verbOccurancebtn.setEnabled(false);
         verbconjugationbtn.setOnClickListener(this);
         verbOccurancebtn.setOnClickListener(this);
-        nounoccurancebtn.setOnClickListener(this);
+        wordoccurancebtn.setOnClickListener(this);
       }
 
       verbOccurancebtn.setOnClickListener(this);
-      nounoccurancebtn.setOnClickListener(this);
+      wordoccurancebtn.setOnClickListener(this);
       sin4 = view.findViewById(R.id.singular4);
       dual4 = view.findViewById(R.id.dual4);
       plu4 = view.findViewById(R.id.plural4);
