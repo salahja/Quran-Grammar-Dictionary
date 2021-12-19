@@ -52,7 +52,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mushafconsolidated.Activity.LughatWordDetailsAct;
-import com.example.mushafconsolidated.Activity.WordOccuranceAsynKAct;
+import com.example.mushafconsolidated.Activity.WordOccuranceAct;
 import com.example.mushafconsolidated.Adapters.RootWordDisplayAdapter;
 import com.example.mushafconsolidated.Adapters.SentenceRootWordDisplayAdapter;
 import com.example.mushafconsolidated.Entities.NewCorpusExpandWbwPOJO;
@@ -848,7 +848,7 @@ public class WordAnalysisBottomSheet extends BottomSheetDialogFragment {
                 } else if (nouns != null) {
                     Bundle bundle = new Bundle();
                     //   Intent intent = new Intent(getActivity(), NounOccuranceAsynKAct.class);
-                    Intent intent = new Intent(getActivity(), WordOccuranceAsynKAct.class);
+                    Intent intent = new Intent(getActivity(), WordOccuranceAct.class);
 
                     try {
                         if (vb.getRoot() != null) {
@@ -897,7 +897,7 @@ public class WordAnalysisBottomSheet extends BottomSheetDialogFragment {
                     {
                         if (!(vb == null)) {
                             Bundle bundle = new Bundle();
-                            Intent intent = new Intent(getActivity(), WordOccuranceAsynKAct.class);
+                            Intent intent = new Intent(getActivity(), WordOccuranceAct.class);
                             bundle.putString(QURAN_VERB_ROOT, vb.getRoot());
                             intent.putExtras(bundle);
                             //   intent.putExtra(QURAN_VERB_ROOT,vb.getRoot());

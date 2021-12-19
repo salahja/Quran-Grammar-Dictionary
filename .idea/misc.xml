@@ -16,6 +16,7 @@
         <entry key="app/src/main/res/layout/bottom.xml" value="0.14" />
         <entry key="app/src/main/res/layout/conjugator_bottom_menu.xml" value="0.67" />
         <entry key="app/src/main/res/layout/conjugator_key_activity_autocomplete.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/expand_list.xml" value="0.24866310160427807" />
         <entry key="app/src/main/res/layout/fragment_reading.xml" value="0.1" />
         <entry key="app/src/main/res/layout/ismalacolumkabeer.xml" value="0.37857142857142856" />
         <entry key="app/src/main/res/layout/ismalasktraditional.xml" value="0.37857142857142856" />
@@ -40,10 +41,12 @@
         <entry key="app/src/main/res/layout/switch_layouts.xml" value="1.0642857142857143" />
         <entry key="app/src/main/res/layout/thulathilistingnotoolbar.xml" value="0.1" />
         <entry key="app/src/main/res/layout/thulathitable.xml" value="0.67" />
+        <entry key="app/src/main/res/layout/user_row_item.xml" value="0.6" />
         <entry key="app/src/main/res/layout/wordbottomsheetismfaelmafoolsktraditional.xml" value="0.33064516129032256" />
         <entry key="app/src/main/res/menu/fragment_menu_items.xml" value="1.0642857142857143" />
         <entry key="app/src/main/res/menu/main.xml" value="0.6214285714285714" />
         <entry key="app/src/main/res/menu/menu.xml" value="0.67" />
+        <entry key="app/src/main/res/menu/menu_main.xml" value="0.9" />
         <entry key="app/src/main/res/menu/navigation_drawer_menu.xml" value="1.0642857142857143" />
         <entry key="app/src/main/res/menu/popup_menu.xml" value="1.0" />
         <entry key="app/src/main/res/xml/preferences.xml" value="0.7892857142857143" />

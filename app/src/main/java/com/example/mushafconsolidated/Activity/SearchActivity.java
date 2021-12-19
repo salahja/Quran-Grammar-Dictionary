@@ -148,14 +148,6 @@ public class SearchActivity extends AppCompatActivity implements OnItemClickList
 
   }
 
-  public void validateFilesAndDownload(String updatestatus, View view) {
-
-    Bundle dataBundle = new Bundle();
-
-
-
-  }
-
   @Override
   public boolean onCreateOptionsMenu(Menu menu) {
     getMenuInflater().inflate(R.menu.menu_main, menu);
@@ -199,17 +191,20 @@ public class SearchActivity extends AppCompatActivity implements OnItemClickList
       return true;
     }
     if(id==R.id.backButtonView){
+
+      Intent rintent=new Intent(SearchActivity.this,newreadactivity.class);
+      startActivity(rintent);
       finish();
-      SettingsFragment fragment = new SettingsFragment();
-      FragmentTransaction transactions = getSupportFragmentManager().beginTransaction()
-            .setCustomAnimations(R.anim.left_slide, android.R.anim.fade_out);
-      transactions.replace(R.id.frame_container, fragment);
-      transactions.addToBackStack("SETTINGFRAGTAG");
-      transactions.commit();
+
 
     }
+    Intent rintent=new Intent(SearchActivity.this,newreadactivity.class);
+    startActivity(rintent);
+    finish();
 
-    return super.onOptionsItemSelected(item);
+     //return super.onOptionsItemSelected(item);
+    return true;
+
   }
 
   @Override

@@ -292,8 +292,11 @@ public class newreadactivity extends BaseActivity implements PassdataInterface, 
         chipNavigationBar.setOnItemSelectedListener(new ChipNavigationBar.OnItemSelectedListener() {
             @Override
             public void onItemSelected(int i) {
-
-                if (i == R.id.settingnav) {
+                if (i == R.id.searchnav) {
+                    chipNavigationBar.setVisibility(View.GONE);
+                    Intent searchintent = new Intent(newreadactivity.this,SearchActivity. class);
+                    startActivity(searchintent);
+                }  if (i == R.id.settingnav) {
                     chipNavigationBar.setVisibility(View.GONE);
                     Intent intents = new Intent(newreadactivity.this, ActivitySettings.class);
                     startActivity(intents);

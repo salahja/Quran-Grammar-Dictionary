@@ -41,17 +41,5 @@
 
     </RelativeLayout>
 
-    <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_gravity="bottom"
 
-        android:layout_height="fill_parent">
-
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@id/recyclerViewAdapterTranslation"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:foregroundGravity="bottom" />
-    </RelativeLayout>
 </LinearLayout>

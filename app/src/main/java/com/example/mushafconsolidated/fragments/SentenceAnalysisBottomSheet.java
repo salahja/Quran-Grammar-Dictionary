@@ -46,7 +46,7 @@ import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.mushafconsolidated.Activity.WordOccuranceAsynKAct;
+import com.example.mushafconsolidated.Activity.WordOccuranceAct;
 import com.example.mushafconsolidated.Adapters.RootWordDisplayAdapter;
 import com.example.mushafconsolidated.Adapters.SentenceRootWordDisplayAdapter;
 import com.example.mushafconsolidated.Entities.NewCorpusExpandWbwPOJO;
@@ -575,7 +575,7 @@ public class SentenceAnalysisBottomSheet extends BottomSheetDialogFragment {
 
                 } else if (!(wordoccurance == null) && !(root == null)) {
                     Bundle bundle = new Bundle();
-                    Intent intent = new Intent(getActivity(), WordOccuranceAsynKAct.class);
+                    Intent intent = new Intent(getActivity(), WordOccuranceAct.class);
 
                     try {
                         bundle.putString(QURAN_VERB_ROOT, vb.getRoot());

@@ -54,7 +54,7 @@
             android:layout_width="0.0dip"
             android:layout_height="2.0dip"
             android:layout_above="@id/bottomButtonsContainer"
-            android:visibility="visible"
+            android:visibility="gone"
             android:background="@color/colorAccent" />
 
         <View
@@ -62,7 +62,7 @@
             android:layout_width="0.0dip"
             android:layout_height="2.0dip"
             android:layout_alignParentRight="true"
-            android:visibility="visible"
+            android:visibility="gone"
             android:layout_above="@id/bottomButtonsContainer"
             android:background="@color/colorAccent" />
 
@@ -87,7 +87,7 @@
                     android:layout_weight="49.8">
 
                     <TextView
-                        android:id="@id/downloadedLabel"
+                        android:visibility="gone"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
@@ -99,7 +99,7 @@
                         android:textSize="17.0sp" />
 
                     <TextView
-                        android:id="@id/downloadedCountView"
+                       android:visibility="gone"
                         android:layout_width="12.0dip"
                         android:layout_height="12.0dip"
                         android:layout_alignTop="@id/downloadedLabel"
@@ -128,7 +128,7 @@
                       />
 
                 <TextView
-                    android:id="@id/readyToDownloadView"
+                   android:visibility="gone"
                     android:layout_width="0.0dip"
                     android:layout_height="wrap_content"
                     android:layout_weight="49.8"

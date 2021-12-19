@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 
-public class SearchResult extends WordOccuranceAsynKAct{
+public class SearchResult extends WordOccuranceAct {
   List<String> expandLexconTitle;
   LinkedHashMap<String, List<SpannableString>> expandlexicon = new LinkedHashMap<>();
 
@@ -29,8 +29,8 @@ public class SearchResult extends WordOccuranceAsynKAct{
 
 
 
-        ArrayList<lanelexicon> lanesDifinition = utils.getLanesDifinition(root);
-        ArrayList<SpannableString> lanesdifinition ;
+      //  ArrayList<lanelexicon> lanesDifinition = utils.getLanesDifinition(root);
+      //  ArrayList<SpannableString> lanesdifinition ;
         List list = new ArrayList();
         StringBuilder lanessb=new StringBuilder();
       //  for (lanelexicon lanes : lanesDifinition) {
@@ -45,13 +45,11 @@ public class SearchResult extends WordOccuranceAsynKAct{
 
 
         expandlexicon.put("lanes Lexicon", list);
-        String Lemma = "";
-        int incexofgroup = 0;
-        List alist = new ArrayList();
+      expandlexicon.put("Hans", list);
 
 
         List<String> expandLexconTitle;
-        List<String> expandLexcon;
+
 
 
 
