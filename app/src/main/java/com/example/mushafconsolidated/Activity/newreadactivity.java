@@ -11,6 +11,10 @@ import static com.example.Constant.RUKUCOUNT;
 import static com.example.Constant.SURAH_ARABIC_NAME;
 import static com.example.Constant.SURAH_ID;
 import static com.example.Constant.VERSESCOUNT;
+import static com.example.mushafconsolidated.R.color.odd_item_bg_brown;
+import static com.example.mushafconsolidated.R.drawable.activatedbackgroundblack;
+import static com.example.mushafconsolidated.R.drawable.activatedbackgroundbrown;
+import static com.example.mushafconsolidated.R.drawable.activatedbackgrounddarkblue;
 
 
 import android.app.Dialog;
@@ -18,6 +22,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
@@ -287,7 +293,16 @@ public class newreadactivity extends BaseActivity implements PassdataInterface, 
         tvsurah = findViewById(R.id.tvRukus);
         tvayah = findViewById(R.id.tvVerses);
         tvrukus = findViewById(R.id.tvSura);
+        chipNavigationBar.setBackgroundColor(Color.LTGRAY);
         int selectedItemId = chipNavigationBar.getSelectedItemId();
+        chipNavigationBar.setBackground(getResources().getDrawable(activatedbackgroundbrown));
+
+        Resources.Theme theme = getTheme();
+        try {
+            int themeResource = getPackageManager().getActivityInfo(getComponentName(), 0).getThemeResource();
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
 
         chipNavigationBar.setOnItemSelectedListener(new ChipNavigationBar.OnItemSelectedListener() {
             @Override
@@ -407,6 +422,9 @@ public class newreadactivity extends BaseActivity implements PassdataInterface, 
         SharedPreferences pref = getApplicationContext().getSharedPreferences("lastread", MODE_PRIVATE);
         chapterno = pref.getInt("surah", 1);
         verse_no = pref.getInt("ayah", 1);
+        surahname=pref.getString("surahname","");
+        setSuraharabicname(surahname);
+
 
 
     }
@@ -1022,7 +1040,7 @@ public class newreadactivity extends BaseActivity implements PassdataInterface, 
 
         en.setChapterno(String.valueOf(chapter_no));
         en.setVerseno(String.valueOf(verse));
-        en.setSurahname(getSuraharabicname());
+        en.setSurahname(surahname);
         //     Utils utils = new Utils(ReadingSurahPartActivity.this);
         utils.insertBookMark(en);
 

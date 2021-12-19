@@ -41,6 +41,7 @@ import androidx.fragment.app.FragmentTransaction;
 import com.example.mushafconsolidated.Activity.newreadactivity;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -91,7 +92,7 @@ public class ConjugatorAct extends BaseActivity implements View.OnClickListener 
   private ArrayList<Mazeed> mazeedVerb = new ArrayList<>();
   Chip nasara, zaraba, samia, fataha, karuma, haseeba;
   Chip tafeel, mufala, ifal, tafaul, tafaaul, infala, iftiala, istifala;
- Chip mujarradbtn,mazeedbtn;
+ MaterialButton mujarradbtn,mazeedbtn;
 
   public void setIsautocomplete(boolean isautocomplete) {
     this.isautocomplete = isautocomplete;

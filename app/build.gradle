@@ -99,7 +99,7 @@ dependencies {
     implementation "androidx.room:room-runtime:2.3.0"
     annotationProcessor  "androidx.room:room-compiler:2.3.0"
 
-    // implementation 'com.bartoszlipinski.recyclerviewheader:library:1.2.0'
+
     implementation 'androidx.recyclerview:recyclerview:1.2.1'
     implementation "androidx.tonyodev.fetch2:xfetch2:3.1.6"
 

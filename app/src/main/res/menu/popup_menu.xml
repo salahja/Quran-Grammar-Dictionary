@@ -6,6 +6,9 @@
         android:id="@+id/bookmark"
         android:icon="@drawable/ic_baseline_bookmark_add_24"
         android:title="Bookmark"
+        app:cnb_iconColor="@color/DarkGreen"
+        app:cnb_iconTintMode="src_in"
+        app:cnb_backgroundColor="@color/DeepPink"
         app:showAsAction="always" />
     <item
         android:id="@+id/jumpto"

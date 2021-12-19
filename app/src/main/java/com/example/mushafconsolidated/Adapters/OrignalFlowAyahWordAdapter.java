@@ -545,7 +545,7 @@ public class OrignalFlowAyahWordAdapter extends RecyclerView.Adapter<OrignalFlow
 
 
         spannedword = getSpannedWords(word);
-        arabic.setText(fixArabic(String.valueOf(spannedword)));
+     //   arabic.setText(fixArabic(String.valueOf(spannedword)));
         spannedword.toString().replaceAll(" ", "");
 
 
@@ -664,7 +664,7 @@ public class OrignalFlowAyahWordAdapter extends RecyclerView.Adapter<OrignalFlow
             FragmentManager fragmentManager = ((AppCompatActivity) context).getSupportFragmentManager();
 
             item.setArguments(dataBundle);
-            String[] data = {String.valueOf(word.getSurahId()), String.valueOf(word.getVerseId()), word.getTranslateEn(), String.valueOf((word.getWordno()))};
+            String[] data = {String.valueOf(word.getSurahId()), String.valueOf(word.getVerseId()), word.getTranslateEn(), String.valueOf((word.getWordno())),SurahName};
             FragmentTransaction transactions = fragmentManager.beginTransaction().setCustomAnimations(R.anim.abc_slide_in_top, android.R.anim.fade_out);
             //   transactions.show(item);
             WordAnalysisBottomSheet.newInstance(data).show(((AppCompatActivity) context).getSupportFragmentManager(), WordAnalysisBottomSheet.TAG);
@@ -704,6 +704,8 @@ public class OrignalFlowAyahWordAdapter extends RecyclerView.Adapter<OrignalFlow
     SharedPreferences.Editor editor = pref.edit();
     editor.putInt("surah", entity.getSurah());
     editor.putInt("ayah", entity.getAyah());
+    editor.putString("surahname",SurahName);
+
     editor.apply();
     editor.commit();
 

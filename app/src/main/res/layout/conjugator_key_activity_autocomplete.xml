@@ -373,7 +373,7 @@
 
             app:layout_constraintTop_toBottomOf="@+id/mazeedsecondrow" />
 
-        <com.google.android.material.chip.Chip
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/mujarradbtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -382,7 +382,7 @@
             app:layout_constraintEnd_toStartOf="@+id/action_buttons"
             app:layout_constraintTop_toBottomOf="@+id/mazeedsecondrow" />
 
-        <com.google.android.material.chip.Chip
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/mazeedbtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -250,7 +250,9 @@ public class WordAnalysisBottomSheet extends BottomSheetDialogFragment {
         ayanumber = Integer.parseInt(stringArray[1]);
         String wbwtranslation = stringArray[2];
         int wordno = Integer.parseInt(stringArray[3]);
-        storepreferences(chapterid, ayanumber);
+        if(stringArray.length>4) {//ignore if the call is from wordoccurance
+            storepreferences(chapterid, ayanumber, stringArray[4]);
+        }
         Utils utils = new Utils(getActivity());
         ExecutorService ex = Executors.newSingleThreadExecutor();
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
@@ -600,12 +602,13 @@ public class WordAnalysisBottomSheet extends BottomSheetDialogFragment {
 
     }
 
-    private void storepreferences(int chapterid, int ayanumber) {
+    private void storepreferences(int chapterid, int ayanumber, String s) {
 
         SharedPreferences pref = getContext().getSharedPreferences("lastread", MODE_PRIVATE);
         SharedPreferences.Editor editor = pref.edit();
         editor.putInt("surah", chapterid);
         editor.putInt("ayah", ayanumber);
+        editor.putString("surahname", s);
         editor.apply();
         editor.commit();
 
