@@ -4,8 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/transparent"
+
     android:orientation="horizontal"
+    android:background="?selectableItemBackground"
     tools:context="org.sj.conjugator.activity.ConjugatorAct">
     <FrameLayout
         android:id="@+id/frame_container"
@@ -23,7 +24,7 @@
         android:id="@+id/firstrow"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="right"
+        android:layout_gravity="end"
         android:layout_marginTop="10dp"
         android:orientation="horizontal"
 
@@ -36,7 +37,7 @@
             android:layout_alignParentStart="true"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="50dp"
-            android:hint="Root Word"
+            android:hint="@string/root_word"
             android:padding="5dp"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="30sp"
@@ -48,7 +49,7 @@
             android:id="@+id/verbcase"
             android:layout_width="wrap_content"
             android:layout_height="83dp"
-            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="4dp"
             android:layout_toEndOf="@+id/autoCompleteTextView"
             android:paddingTop="3dp"
@@ -65,7 +66,7 @@
 
                 android:layout_height="20dp"
                 android:checked="true"
-                android:text="Indicative" />
+                android:text="@string/indicative" />
 
             <RadioButton
                 android:id="@id/rdsubjunctive"
@@ -73,7 +74,7 @@
                 android:layout_width="119dp"
                 android:layout_height="20dp"
 
-                android:text="Subjunctive"
+                android:text="@string/subjunctive"
 
                 android:visibility="visible" />
 
@@ -83,7 +84,7 @@
                 android:layout_width="119dp"
                 android:layout_height="20dp"
 
-                android:text="Jussive"
+                android:text="@string/jussive"
 
                 android:visibility="visible" />
 
@@ -93,7 +94,7 @@
                 android:layout_width="119dp"
                 android:layout_height="20dp"
 
-                android:text="Emphasized"
+                android:text="@string/emphasized"
 
                 android:visibility="visible" />
         </RadioGroup>
@@ -104,8 +105,8 @@
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_weight="1.0"
-            android:hint="Mujarrad/Augmented"
-            android:paddingStart="5dp"
+            android:hint="@string/mujarrad_augmented"
+            android:paddingEnd="5dp"
             android:textAlignment="center"
             android:textSize="20sp"
 
@@ -131,8 +132,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1.0"
-                android:hint="Nasara"
-                android:paddingStart="5dp"
+                android:hint="@string/nasara"
+                android:paddingEnd="5dp"
 
                 android:textAlignment="center"
                 android:textSize="24sp"
@@ -336,7 +337,7 @@
 
                 android:layout_height="wrap_content"
                 android:layout_weight="1.0"
-                android:hint="Iftiala" />
+                android:hint="@string/iftiala" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/istifala"
@@ -345,7 +346,7 @@
                 android:layout_height="wrap_content"
 
                 android:layout_weight="1.0"
-                android:hint="Istifala"
+                android:hint="@string/istifala"
                 android:textAlignment="center" />
 
         </LinearLayout>
@@ -362,31 +363,45 @@
             android:background="?selectableItemBackground"
 
             android:foregroundGravity="bottom"
-            app:floating_background_color="?colorPrimaryVariant"
+
 
 
             app:floating_left_icon="@drawable/baseline_history_black_48dp"
             app:floating_title="Back    "
             app:floating_title_color="@color/colorOnPrimary"
 
+
+            app:floating_background_color="@color/color_surface"
+
+
+
+
+
             app:layout_constraintEnd_toEndOf="parent"
 
             app:layout_constraintTop_toBottomOf="@+id/mazeedsecondrow" />
 
         <com.google.android.material.button.MaterialButton
+
+
             android:id="@+id/mujarradbtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="?attr/colorOnSurface"
-            android:hint="Mujarrad Listing"
+
+            android:hint="@string/mujarrad_listing"
             app:layout_constraintEnd_toStartOf="@+id/action_buttons"
             app:layout_constraintTop_toBottomOf="@+id/mazeedsecondrow" />
 
         <com.google.android.material.button.MaterialButton
+            android:layout_margin="5.0dip"
+
             android:id="@+id/mazeedbtn"
+            app:elevation="7dp"
+
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Maeec Listing"
+            android:hint="@string/mazeed_listing"
             app:layout_constraintEnd_toStartOf="@+id/mujarradbtn"
             app:layout_constraintTop_toBottomOf="@+id/mazeedsecondrow" />
 

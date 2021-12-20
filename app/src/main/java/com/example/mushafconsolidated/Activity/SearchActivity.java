@@ -23,7 +23,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -31,7 +30,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.mushafconsolidated.Entities.qurandictionary;
 import com.example.mushafconsolidated.R;
 import com.example.mushafconsolidated.Utils;
-import com.example.mushafconsolidated.fragments.SettingsFragment;
 import com.example.mushafconsolidated.intrface.OnItemClickListener;
 
 import java.util.ArrayList;
@@ -192,13 +190,13 @@ public class SearchActivity extends AppCompatActivity implements OnItemClickList
     }
     if(id==R.id.backButtonView){
 
-      Intent rintent=new Intent(SearchActivity.this,newreadactivity.class);
+      Intent rintent=new Intent(SearchActivity.this, QuranGrammarAct.class);
       startActivity(rintent);
       finish();
 
 
     }
-    Intent rintent=new Intent(SearchActivity.this,newreadactivity.class);
+    Intent rintent=new Intent(SearchActivity.this, QuranGrammarAct.class);
     startActivity(rintent);
     finish();
 

@@ -1,7 +1,6 @@
 package com.example.mushafconsolidated.Activity;
 
 
-import static com.example.Constant.mazeedsignificance;
 import static com.example.mushafconsolidated.settings.Constants.DATABASENAME;
 import static com.example.mushafconsolidated.settings.Constants.DATABASEZIP;
 
@@ -188,7 +187,7 @@ public class MainActivity extends BaseActivity {
 
         } else {
 
-        Intent homeactivity = new Intent(MainActivity.this, newreadactivity.class);
+        Intent homeactivity = new Intent(MainActivity.this, QuranGrammarAct.class);
          //   Intent homeactivity = new Intent(MainActivity.this, ReadingSurahPartActivity.class);
            startActivity(homeactivity);
         MainActivity.this.finish();
@@ -204,7 +203,7 @@ public class MainActivity extends BaseActivity {
            ex.execute(new Runnable() {
                @Override
                public void run() {
-                   runOnUiThread(() -> dialog.show());
+                   runOnUiThread(dialog::show);
                    boolean canWrie = canWriteInSDCard();
                    if(canWrie) {
                        try {
@@ -305,7 +304,7 @@ public class MainActivity extends BaseActivity {
                        ex.shutdown();
                        dialog.dismiss();
 
-                       Intent zipintent = new Intent(MainActivity.this, newreadactivity.class);
+                       Intent zipintent = new Intent(MainActivity.this, QuranGrammarAct.class);
 
                        startActivity(zipintent);
                        MainActivity.this.finish();

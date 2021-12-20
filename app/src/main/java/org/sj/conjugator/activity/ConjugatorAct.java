@@ -18,28 +18,23 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.util.SparseArray;
 import android.view.View;
-import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.ExtractedTextRequest;
 import android.view.inputmethod.InputConnection;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.mushafconsolidated.Activity.newreadactivity;
-import com.google.android.material.appbar.MaterialToolbar;
+import com.example.mushafconsolidated.Activity.QuranGrammarAct;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.chip.Chip;
@@ -143,7 +138,7 @@ public class ConjugatorAct extends BaseActivity implements View.OnClickListener 
 
     callButton.setOnClickListener(view -> {
       ConjugatorAct.super.finish();
-        Intent quranintnt = new Intent(ConjugatorAct.this, newreadactivity.class);
+        Intent quranintnt = new Intent(ConjugatorAct.this, QuranGrammarAct.class);
         //      finish();
 
         finish();
@@ -528,7 +523,7 @@ mujarradbtn.setOnClickListener(this);
         case R.id.qurangrammar:
 
 
-            Intent intent = new Intent(ConjugatorAct.this, newreadactivity.class);
+            Intent intent = new Intent(ConjugatorAct.this, QuranGrammarAct.class);
 
             finish();
             startActivity(intent);

@@ -1,8 +1,6 @@
 package com.example.mushafconsolidated.model;
 
-/**
- * Created by Sadmansamee on 7/19/15.
- */
+
 public class Word {
     private long id;
     private long surahId;

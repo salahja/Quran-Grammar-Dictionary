@@ -19,7 +19,7 @@ import com.example.mushafconsolidated.Entities.ShartPOJO;
 import com.example.mushafconsolidated.Entities.SifaEntityPojo;
 import com.example.mushafconsolidated.Entities.SifaPOJO;
 import com.example.mushafconsolidated.Entities.VerbCorpusBreakup;
-import com.example.mushafconsolidated.fragments.Surah;
+
 
 import java.util.List;
 
@@ -27,21 +27,6 @@ import java.util.List;
 
 @Dao
 public interface RawDao {
-
-
-
-
-
-
-    //part-juz list
-    @RawQuery
-    List<Surah> getAllSora(SupportSQLiteQuery query);
-
-
-
-
-    @RawQuery
-    int insertRecords(SupportSQLiteQuery query);
 
 
     @RawQuery
@@ -91,13 +76,5 @@ public interface RawDao {
 
 
 
-    /*
 
-    select verbcorpus.root_a,verbcorpus.chapterno,verbcorpus.verseno,
-  verbcorpus.form ,verbcorpus.thulathibab, wbw.araone||  wbw.aratwo||wbw.arathree||wbw.arafour||wbw.arafive ,
-wbw.en from verbcorpus , wbw where verbcorpus.root_a
-  like "عبد"  and verbcorpus.chapterno=wbw.surah and verbcorpus.verseno=wbw.ayah
-   and verbcorpus.wordno=wbw.wordno order by wbw.araone||  wbw.aratwo||wbw.arathree||wbw.arafour||wbw.arafive
-     */
-    ;
 }

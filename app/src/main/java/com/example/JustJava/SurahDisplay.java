@@ -12,7 +12,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.mushafconsolidated.Adapters.OrignalFlowAyahWordAdapter;
+import com.example.mushafconsolidated.Adapters.FlowAyahWordAdapter;
 import com.example.mushafconsolidated.Entities.ChaptersAnaEntity;
 import com.example.mushafconsolidated.Entities.CorpusExpandWbwPOJO;
 import com.example.mushafconsolidated.Entities.QuranEntity;
@@ -235,7 +235,7 @@ public class SurahDisplay  {
 
                 ArrayList<String> header = new ArrayList<>();
                 ArrayList<QuranEntity> colorerab = new ArrayList<>();
-                OrignalFlowAyahWordAdapter flowAyahWordAdapter = new OrignalFlowAyahWordAdapter(header,colorerab, allofQuran, corpusayahWordArrayList, context, surahid, suraharabicname, ismakki, listener);
+                FlowAyahWordAdapter flowAyahWordAdapter = new FlowAyahWordAdapter(header,colorerab, allofQuran, corpusayahWordArrayList, context, surahid, suraharabicname, ismakki, listener);
                 flowAyahWordAdapter.addContext(context);
                 parentRecyclerView =context.findViewById(R.id.overlayViewRecyclerView);
                 parentRecyclerView.setHasFixedSize(true);

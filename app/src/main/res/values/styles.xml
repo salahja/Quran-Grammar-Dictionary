@@ -255,9 +255,7 @@
         <item name="textColorLight">@color/neutral3</item>
         <item name="colorCardBackground">@style/AppCardBlue</item>
         <item name="popupTheme">@style/ThemeOverlay.MaterialComponents.Dark</item>
-        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.dark.SmallComponent</item>
-        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.dark.MediumComponent</item>
-        <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.dark.LargeComponent</item>
+
 
 
 

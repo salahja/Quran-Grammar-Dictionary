@@ -22,7 +22,7 @@ import androidx.fragment.app.DialogFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.mushafconsolidated.Activity.newreadactivity;
+import com.example.mushafconsolidated.Activity.QuranGrammarAct;
 import com.example.mushafconsolidated.Adapters.KanaAdapter;
 import com.example.mushafconsolidated.Entities.KanaPOJO;
 import com.example.mushafconsolidated.R;
@@ -259,7 +259,7 @@ public class KanaDisplayFrag extends DialogFragment implements IOnBackPressed {
 
     @Override
     public boolean onBackPressed() {
-        Intent in=new Intent(getActivity(), newreadactivity.class);
+        Intent in=new Intent(getActivity(), QuranGrammarAct.class);
         startActivity(in);
         return true;
 

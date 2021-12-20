@@ -23,7 +23,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.mushafconsolidated.Activity.newreadactivity;
+import com.example.mushafconsolidated.Activity.QuranGrammarAct;
 import com.example.mushafconsolidated.Adapters.NewSurahDisplayAdapter;
 import com.example.mushafconsolidated.Entities.ChaptersAnaEntity;
 import com.example.mushafconsolidated.R;
@@ -173,7 +173,7 @@ public class NewSurahDisplayFrag extends Fragment {
       @Override
       public void onClick(View v) {
 //
-       Intent intent = new Intent(DarkThemeApplication.getContext(), newreadactivity.class);
+       Intent intent = new Intent(DarkThemeApplication.getContext(), QuranGrammarAct.class);
      //  Intent intent = new Intent(DarkThemeApplication.getContext(), ReadingSurahPartActivity.class);
         intent.putExtra("chapter", lastreadchapterno);
         intent.putExtra("chapterorpart",true);
@@ -189,7 +189,7 @@ public class NewSurahDisplayFrag extends Fragment {
       @Override
       public void onClick(View v) {
 
-     Intent intent = new Intent(DarkThemeApplication.getContext(), newreadactivity.class);
+     Intent intent = new Intent(DarkThemeApplication.getContext(), QuranGrammarAct.class);
     //  Intent intent = new Intent(DarkThemeApplication.getContext(), ReadingSurahPartActivity.class);
         intent.putExtra("chapter", 18);
         intent.putExtra("chapterorpart",true);

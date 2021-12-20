@@ -36,7 +36,7 @@
                 android:value="com.example.mushafconsolidated.Activity.MainActivity" />
         </activity>
         <activity
-            android:name="com.example.mushafconsolidated.Activity.newreadactivity"
+            android:name="com.example.mushafconsolidated.Activity.QuranGrammarAct"
             android:parentActivityName=".Activity.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -81,7 +81,7 @@
 
         <activity
             android:name="org.sj.conjugator.activity.SarfSagheerActivity"
-            android:parentActivityName=".Activity.newreadactivity">
+            android:parentActivityName=".Activity.QuranGrammarAct">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.mushafconsolidated.Activity.MainActivity" />
@@ -90,7 +90,7 @@
 
         <activity
             android:name="org.sj.conjugator.activity.ConjugatorTabsActivity"
-            android:parentActivityName=".Activity.newreadactivity">
+            android:parentActivityName=".Activity.QuranGrammarAct">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.mushafconsolidated.Activity.MainActivity" />
@@ -98,7 +98,7 @@
 
         <activity
             android:name="org.sj.conjugator.activity.ConjugatorAct"
-            android:parentActivityName=".Activity.newreadactivity">
+            android:parentActivityName=".Activity.QuranGrammarAct">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.mushafconsolidated.Activity.MainActivity" />
@@ -107,7 +107,7 @@
 
         <activity
             android:name=".Activity.ActivitySettings"
-            android:parentActivityName=".Activity.newreadactivity">
+            android:parentActivityName=".Activity.QuranGrammarAct">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.mushafconsolidated.Activity.MainActivity" />

@@ -2,9 +2,6 @@ package com.example.mushafconsolidated.model;
 
 import android.text.SpannableString;
 
-/**
- * Created by Sadmansamee on 7/19/15.
- */
 public class WordSpan {
     private long id;
     private long surahId;

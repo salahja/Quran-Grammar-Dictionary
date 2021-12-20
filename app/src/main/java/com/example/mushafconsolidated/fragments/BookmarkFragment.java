@@ -26,7 +26,7 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.mushafconsolidated.Activity.newreadactivity;
+import com.example.mushafconsolidated.Activity.QuranGrammarAct;
 import com.example.mushafconsolidated.Adapters.BookmarksShowAdapter;
 import com.example.mushafconsolidated.Entities.BookMarks;
 import com.example.mushafconsolidated.R;
@@ -157,7 +157,7 @@ public class BookmarkFragment extends Fragment implements AdapterView.OnItemClic
              //   frag.setArguments(dataBundle);
                 String header = bmark.getHeader();
                 Fragment fragment;
-              Intent readingintent = new Intent(getActivity(), newreadactivity.class);
+              Intent readingintent = new Intent(getActivity(), QuranGrammarAct.class);
               readingintent.putExtra(MUFRADATFRAGTAG, false);
               readingintent.putExtra(CHAPTER, Integer.parseInt(bmark.getChapterno()));
               readingintent.putExtra(AYAHNUMBER, Integer.parseInt(bmark.getVerseno()));

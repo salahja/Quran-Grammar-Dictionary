@@ -16,7 +16,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import org.sj.conjugator.interfaces.OnItemClickListener;
 import org.sj.conjugator.utilities.SharedPref;
 
-import com.example.mushafconsolidated.Activity.newreadactivity;
 import com.example.mushafconsolidated.R;
 import com.example.utility.DarkThemeApplication;
 
@@ -37,12 +36,8 @@ public class VerbSarfKabeerAdapter extends RecyclerView.Adapter<VerbSarfKabeerAd
     private int bookVerseno;
     private Integer ayahNumber;
     private String urdu_font_selection;
-    private int arabic_font_size;
 
-
-    private int urdu_font_size;
-    private String arabic_font_selection;
-    private ArrayList<ArrayList> sarfSagheer = new ArrayList<>();
+    private ArrayList<ArrayList> sarfSagheer  ;
     private Typeface arabicTypeface;
 
 

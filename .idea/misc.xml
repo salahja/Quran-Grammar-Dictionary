@@ -4,6 +4,8 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../../layout/custom_preview.xml" value="0.13854166666666667" />
+        <entry key="app/src/main/res/drawable/activatedbackgroundbrown.xml" value="1.2821428571428573" />
+        <entry key="app/src/main/res/drawable/apperance.xml" value="1.2821428571428573" />
         <entry key="app/src/main/res/drawable/ic_baseline_bookmark_add_24.xml" value="1.175" />
         <entry key="app/src/main/res/drawable/ic_baseline_collections_bookmark_36.xml" value="1.175" />
         <entry key="app/src/main/res/drawable/ic_baseline_history_pink_24.xml" value="1.2285714285714286" />
@@ -14,8 +16,8 @@
         <entry key="app/src/main/res/layout/activity_verb_conjugation.xml" value="0.939209726443769" />
         <entry key="app/src/main/res/layout/backupjumb_to_popup.xml" value="0.75" />
         <entry key="app/src/main/res/layout/bottom.xml" value="0.14" />
-        <entry key="app/src/main/res/layout/conjugator_bottom_menu.xml" value="0.67" />
-        <entry key="app/src/main/res/layout/conjugator_key_activity_autocomplete.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/conjugator_bottom_menu.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/conjugator_key_activity_autocomplete.xml" value="0.22397476340694006" />
         <entry key="app/src/main/res/layout/expand_list.xml" value="0.24866310160427807" />
         <entry key="app/src/main/res/layout/fragment_reading.xml" value="0.1" />
         <entry key="app/src/main/res/layout/ismalacolumkabeer.xml" value="0.37857142857142856" />
@@ -25,7 +27,7 @@
         <entry key="app/src/main/res/layout/ismzarfcolumnkabeer.xml" value="0.43214285714285716" />
         <entry key="app/src/main/res/layout/ismzarfkbtraditional.xml" value="0.5464285714285714" />
         <entry key="app/src/main/res/layout/layout_loading_dialog.xml" value="0.6285714285714286" />
-        <entry key="app/src/main/res/layout/list_surah_juz.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/list_surah_juz.xml" value="0.33" />
         <entry key="app/src/main/res/layout/mujarrad_bottom_fragment.xml" value="0.43214285714285716" />
         <entry key="app/src/main/res/layout/new_fragment_reading.xml" value="0.43617021276595747" />
         <entry key="app/src/main/res/layout/newsarfkabeercolumn.xml" value="0.43214285714285716" />
@@ -63,7 +65,7 @@
   <component name="VisualizationToolProject">
     <option name="state">
       <ProjectState>
-        <option name="scale" value="0.18" />
+        <option name="scale" value="0.5" />
       </ProjectState>
     </option>
   </component>

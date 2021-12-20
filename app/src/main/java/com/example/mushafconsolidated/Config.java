@@ -5,9 +5,6 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
-/**
- * Created by Sadmansamee on 7/25/15.
- */
 public class Config {
 
     public static final int FONT_QALAM_MAJEED = 0;

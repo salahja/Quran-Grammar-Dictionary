@@ -86,7 +86,7 @@ public class ActivitySettings extends BaseActivity implements
        // Intent intent = getIntent();
      //   startActivity(intent);
      //   finish();
-        Intent intents = new Intent(this, newreadactivity.class);
+        Intent intents = new Intent(this, QuranGrammarAct.class);
       //  Intent intents = new Intent(this, ReadingSurahPartActivity.class);
         finish();
         startActivity(intents);
@@ -127,7 +127,7 @@ public class ActivitySettings extends BaseActivity implements
 
 
         }else if(pref.getKey().equals("Exit")) {
-            Intent intents = new Intent(this, newreadactivity.class);
+            Intent intents = new Intent(this, QuranGrammarAct.class);
          //   Intent intent = getIntent();
             //   Intent intents = new Intent(this, ReadingSurahPartActivity.class);
     finish();
@@ -152,7 +152,7 @@ public class ActivitySettings extends BaseActivity implements
 
                     @Override
                     public boolean onPreferenceClick(Preference arg0) {
-                        Intent intents = new Intent(getActivity(), newreadactivity.class);
+                        Intent intents = new Intent(getActivity(), QuranGrammarAct.class);
                      //  finish();
                         startActivity(intents);
 

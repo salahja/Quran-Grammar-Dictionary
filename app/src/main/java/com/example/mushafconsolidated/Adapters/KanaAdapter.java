@@ -1,7 +1,7 @@
 package com.example.mushafconsolidated.Adapters;
 
 
-import static com.example.mushafconsolidated.Adapters.NewAyahAdapter.fontSizeTranslation;
+
 import static com.example.utility.SharedPref.arabicFontSelection;
 
 import android.app.Activity;
@@ -36,6 +36,7 @@ public class KanaAdapter extends RecyclerView.Adapter<KanaAdapter.ItemViewAdapte
     OnItemClickListener mItemClickListener;
     private Context context;
     private boolean conjugate;
+    private Integer fontSizeTranslation;
 
     public int getForm() {
         return form;
