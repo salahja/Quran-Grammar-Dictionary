@@ -16,9 +16,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import org.jetbrains.annotations.NotNull;
 import org.sj.conjugator.interfaces.OnItemClickListener;
-import org.sj.conjugator.utilities.SharedPref;
+
 import com.example.mushafconsolidated.R;
-import com.example.utility.DarkThemeApplication;
+import com.example.utility.QuranGrammarApplication;
 
 import java.util.ArrayList;
 
@@ -76,7 +76,7 @@ public class rulesbottomsheetadapter extends RecyclerView.Adapter<rulesbottomshe
             //  final List sarf = sarfSagheer.get(position);
 //        final String[] array = (String[]) sarfSagheer.get(position).toArray.get();
 
-            SharedPreferences shared =getDefaultSharedPreferences(DarkThemeApplication.getContext());
+            SharedPreferences shared =getDefaultSharedPreferences(QuranGrammarApplication.getContext());
 
             String preferences = shared.getString("theme", "dark");
             int cweakness = 0;
@@ -92,11 +92,11 @@ public class rulesbottomsheetadapter extends RecyclerView.Adapter<rulesbottomshe
 
 
             
-            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(DarkThemeApplication.getContext());
+            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(QuranGrammarApplication.getContext());
         String fonts=      prefs.getString("Arabic_Font_Size", "25");
           //  String arabic_font_category = prefs.getString("arabic_font_category", "kitab.tff");
 
-            Typeface mequran= Typeface.createFromAsset(DarkThemeApplication.getContext().getAssets(), "Taha.ttf");
+            Typeface mequran= Typeface.createFromAsset(QuranGrammarApplication.getContext().getAssets(), "Taha.ttf");
 
 
             final Integer arabicFontsize = Integer.valueOf(fonts);

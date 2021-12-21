@@ -22,10 +22,10 @@
         <entry key="app/src/main/res/layout/fragment_reading.xml" value="0.1" />
         <entry key="app/src/main/res/layout/ismalacolumkabeer.xml" value="0.37857142857142856" />
         <entry key="app/src/main/res/layout/ismalasktraditional.xml" value="0.37857142857142856" />
-        <entry key="app/src/main/res/layout/ismfaelmafoolcolumkabeer.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/ismfaelmafoolcolumkabeer.xml" value="0.5654008438818565" />
         <entry key="app/src/main/res/layout/ismfaelmafoolsktraditional.xml" value="0.7928571428571428" />
         <entry key="app/src/main/res/layout/ismzarfcolumnkabeer.xml" value="0.43214285714285716" />
-        <entry key="app/src/main/res/layout/ismzarfkbtraditional.xml" value="0.5464285714285714" />
+        <entry key="app/src/main/res/layout/ismzarfkbtraditional.xml" value="0.15" />
         <entry key="app/src/main/res/layout/layout_loading_dialog.xml" value="0.6285714285714286" />
         <entry key="app/src/main/res/layout/list_surah_juz.xml" value="0.33" />
         <entry key="app/src/main/res/layout/mujarrad_bottom_fragment.xml" value="0.43214285714285716" />
@@ -34,6 +34,7 @@
         <entry key="app/src/main/res/layout/orignalsurarowlinear.xml" value="0.1" />
         <entry key="app/src/main/res/layout/popup_layout.xml" value="0.25" />
         <entry key="app/src/main/res/layout/qaris_view_word_details.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/quran_list_dialog.xml" value="1.1714285714285715" />
         <entry key="app/src/main/res/layout/refactacon_key_activity_autocomplete.xml" value="0.1" />
         <entry key="app/src/main/res/layout/round_arabic_keyboard.xml" value="0.1" />
         <entry key="app/src/main/res/layout/rules.xml" value="0.43214285714285716" />
@@ -44,6 +45,8 @@
         <entry key="app/src/main/res/layout/thulathilistingnotoolbar.xml" value="0.1" />
         <entry key="app/src/main/res/layout/thulathitable.xml" value="0.67" />
         <entry key="app/src/main/res/layout/user_row_item.xml" value="0.6" />
+        <entry key="app/src/main/res/layout/verbsarfkabeertraditional.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/verbscolumnkabeer.xml" value="0.1" />
         <entry key="app/src/main/res/layout/wordbottomsheetismfaelmafoolsktraditional.xml" value="0.33064516129032256" />
         <entry key="app/src/main/res/menu/fragment_menu_items.xml" value="1.0642857142857143" />
         <entry key="app/src/main/res/menu/main.xml" value="0.6214285714285714" />

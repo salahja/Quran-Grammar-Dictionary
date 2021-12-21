@@ -25,7 +25,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.mushafconsolidated.Entities.ChaptersAnaEntity;
 import com.example.mushafconsolidated.R;
 import com.example.mushafconsolidated.intrface.OnItemClickListener;
-import com.example.utility.DarkThemeApplication;
+import com.example.utility.QuranGrammarApplication;
 import com.example.utility.SharedPref;
 
 import java.util.ArrayList;
@@ -73,7 +73,7 @@ public class NewSurahDisplayAdapter extends RecyclerView.Adapter<NewSurahDisplay
     Log.d(TAG, "onBindViewHolder: called");
 
     final ChaptersAnaEntity surah = listonearray.get(position);
-    Context context = DarkThemeApplication.getContext();
+    Context context = QuranGrammarApplication.getContext();
     SharedPreferences pref = context.getSharedPreferences("lastread", MODE_PRIVATE);
 
 

@@ -23,7 +23,7 @@ import com.example.mushafconsolidated.Entities.lanelexicon;
 import com.example.mushafconsolidated.Entities.lughat;
 import com.example.mushafconsolidated.R;
 import com.example.mushafconsolidated.Utils;
-import com.example.utility.DarkThemeApplication;
+import com.example.utility.QuranGrammarApplication;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -130,7 +130,7 @@ public class FragmentEnglish_lughat extends Fragment {
 
 
     assert dataBundle != null;
-    Utils utils = new Utils(DarkThemeApplication.getContext());
+    Utils utils = new Utils(QuranGrammarApplication.getContext());
     verbroot = dataBundle.getString(QURAN_VERB_ROOT);
     arabicword = dataBundle.getString("arabicword");
     vocabroot = dataBundle.getString(QURAN_VERB_ROOT);

@@ -24,7 +24,7 @@ import androidx.core.content.ContextCompat;
 
 import com.example.mushafconsolidated.R;
 
-import com.example.utility.DarkThemeApplication;
+import com.example.utility.QuranGrammarApplication;
 
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -131,16 +131,16 @@ public class MainActivity extends BaseActivity {
 
 
     private boolean checkPermission() {
-        int result = ContextCompat.checkSelfPermission(DarkThemeApplication.getContext(), android.
+        int result = ContextCompat.checkSelfPermission(QuranGrammarApplication.getContext(), android.
                 Manifest.permission.WRITE_EXTERNAL_STORAGE);
         return result == PackageManager.PERMISSION_GRANTED;
     }
 
     private void requestPermission() {
-        if (ActivityCompat.shouldShowRequestPermissionRationale((Activity) DarkThemeApplication.getContext(), android.Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-            Toast.makeText((Activity) DarkThemeApplication.getContext(), "Write External Storage permission allows us to create files. Please allow this permission in App Settings.", Toast.LENGTH_LONG).show();
+        if (ActivityCompat.shouldShowRequestPermissionRationale((Activity) QuranGrammarApplication.getContext(), android.Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+            Toast.makeText((Activity) QuranGrammarApplication.getContext(), "Write External Storage permission allows us to create files. Please allow this permission in App Settings.", Toast.LENGTH_LONG).show();
         } else {
-            ActivityCompat.requestPermissions((Activity) DarkThemeApplication.getContext(), new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE}, PERMISSION_REQUEST_CODE);
+            ActivityCompat.requestPermissions((Activity) QuranGrammarApplication.getContext(), new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE}, PERMISSION_REQUEST_CODE);
         }
     }
 
@@ -210,7 +210,7 @@ public class MainActivity extends BaseActivity {
 
 
                            File databaseDirectory = new File(Environment.getExternalStorageDirectory()
-                                   .getAbsolutePath() + "/" + DarkThemeApplication.getContext().getResources().getString(R.string.app_folder_path));
+                                   .getAbsolutePath() + "/" + QuranGrammarApplication.getContext().getResources().getString(R.string.app_folder_path));
                            if (!databaseDirectory.exists()) {
                                databaseDirectory.mkdirs();
                            }

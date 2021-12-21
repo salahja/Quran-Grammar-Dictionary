@@ -17,7 +17,7 @@ import androidx.core.content.ContextCompat;
 import androidx.core.text.HtmlCompat;
 
 import com.example.mushafconsolidated.R;
-import com.example.utility.DarkThemeApplication;
+import com.example.utility.QuranGrammarApplication;
 
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -69,7 +69,7 @@ public class NounVerbOccuranceListAdapter extends BaseExpandableListAdapter {
             .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
       convertView = layoutInflater.inflate(R.layout.list_grammar_item, null);
     }
-    Typeface mequran = Typeface.createFromAsset(DarkThemeApplication.getContext().getAssets(), "Taha.ttf");
+    Typeface mequran = Typeface.createFromAsset(QuranGrammarApplication.getContext().getAssets(), "Taha.ttf");
   //  Typeface mequran = Typeface.createFromAsset(DarkThemeApplication.getContext().getAssets(), quranfont);
     TextView expandedListTextView = (TextView) convertView
           .findViewById(R.id.expandedListItem);
@@ -125,12 +125,12 @@ public class NounVerbOccuranceListAdapter extends BaseExpandableListAdapter {
           .findViewById(R.id.listTitle);
     listTitleTextView.setTypeface(null, Typeface.BOLD);
 
-    SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(DarkThemeApplication.getContext());
+    SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(QuranGrammarApplication.getContext());
     String preferences = prefs.getString("theme", "dark");
     if(preferences.equals("dark")|| preferences.equals("blue")){
       listTitleTextView.setTextColor(CYAN);
     }else{
-      listTitleTextView.setTextColor(ContextCompat.getColor(DarkThemeApplication.getContext(), R.color.burntamber));
+      listTitleTextView.setTextColor(ContextCompat.getColor(QuranGrammarApplication.getContext(), R.color.burntamber));
 
     }
 

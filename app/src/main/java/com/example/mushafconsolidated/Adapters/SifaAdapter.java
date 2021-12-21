@@ -22,7 +22,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.mushafconsolidated.Entities.SifaPOJO;
 import com.example.mushafconsolidated.R;
 import com.example.mushafconsolidated.intrface.OnItemClickListener;
-import com.example.utility.DarkThemeApplication;
+import com.example.utility.QuranGrammarApplication;
 import com.example.utility.FlowLayout;
 import com.example.utility.SharedPref;
 
@@ -159,7 +159,7 @@ public class SifaAdapter extends RecyclerView.Adapter<SifaAdapter.ItemViewAdapte
 
 
     private void FontSizeSelection(@NonNull ItemViewAdapter holder) {
-        SharedPreferences sharedPreferences = androidx.preference.PreferenceManager.getDefaultSharedPreferences(DarkThemeApplication.getContext());
+        SharedPreferences sharedPreferences = androidx.preference.PreferenceManager.getDefaultSharedPreferences(QuranGrammarApplication.getContext());
         final Integer fontsize = sharedPreferences.getInt("pref_font_arabic_key",20);
         holder.chapterverse.setTextSize(fontsize);
 

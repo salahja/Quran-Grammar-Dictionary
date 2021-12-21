@@ -30,7 +30,7 @@ import com.example.mushafconsolidated.R;
 import com.example.mushafconsolidated.Utils;
 import com.example.mushafconsolidated.intrface.OnItemClickListener;
 import com.example.mushafconsolidated.intrface.PassdataInterface;
-import com.example.utility.DarkThemeApplication;
+import com.example.utility.QuranGrammarApplication;
 import com.google.android.material.button.MaterialButton;
 
 import java.util.ArrayList;
@@ -173,7 +173,7 @@ public class NewSurahDisplayFrag extends Fragment {
       @Override
       public void onClick(View v) {
 //
-       Intent intent = new Intent(DarkThemeApplication.getContext(), QuranGrammarAct.class);
+       Intent intent = new Intent(QuranGrammarApplication.getContext(), QuranGrammarAct.class);
      //  Intent intent = new Intent(DarkThemeApplication.getContext(), ReadingSurahPartActivity.class);
         intent.putExtra("chapter", lastreadchapterno);
         intent.putExtra("chapterorpart",true);
@@ -189,7 +189,7 @@ public class NewSurahDisplayFrag extends Fragment {
       @Override
       public void onClick(View v) {
 
-     Intent intent = new Intent(DarkThemeApplication.getContext(), QuranGrammarAct.class);
+     Intent intent = new Intent(QuranGrammarApplication.getContext(), QuranGrammarAct.class);
     //  Intent intent = new Intent(DarkThemeApplication.getContext(), ReadingSurahPartActivity.class);
         intent.putExtra("chapter", 18);
         intent.putExtra("chapterorpart",true);

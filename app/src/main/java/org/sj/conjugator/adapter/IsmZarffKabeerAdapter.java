@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import org.sj.conjugator.interfaces.OnItemClickListener;
 import org.sj.conjugator.utilities.SharedPref;
 import com.example.mushafconsolidated.R;
-import com.example.utility.DarkThemeApplication;
+import com.example.utility.QuranGrammarApplication;
 
 import java.util.ArrayList;
 
@@ -288,7 +288,7 @@ public class IsmZarffKabeerAdapter extends RecyclerView.Adapter<IsmZarffKabeerAd
 
     }
     private void FontSIzeSelection(ViewHolder holder) {
-        SharedPreferences sharedPreferences = androidx.preference.PreferenceManager.getDefaultSharedPreferences(DarkThemeApplication.getContext());
+        SharedPreferences sharedPreferences = androidx.preference.PreferenceManager.getDefaultSharedPreferences(QuranGrammarApplication.getContext());
         final Integer arabicFontsize = sharedPreferences.getInt("pref_font_arabic_key",20);
         //     Integer arabicFontsize=40;
         //     Integer arabicFontsize=70;
@@ -374,7 +374,7 @@ public class IsmZarffKabeerAdapter extends RecyclerView.Adapter<IsmZarffKabeerAd
 
     private void SetTypeface(ViewHolder holder) {
         SharedPreferences sharedPreferences =
-                PreferenceManager.getDefaultSharedPreferences(DarkThemeApplication.getContext());
+                PreferenceManager.getDefaultSharedPreferences(QuranGrammarApplication.getContext());
         //  String theme = sharedPreferences.getString("theme", 1);
         String indictive = sharedPreferences.getString("Arabic_Font_Selection", "kitab.ttf");
         Typeface arabicTypeface = Typeface.createFromAsset(context.getAssets(), indictive);

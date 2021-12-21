@@ -17,7 +17,7 @@ import org.sj.conjugator.interfaces.OnItemClickListener;
 import org.sj.conjugator.utilities.SharedPref;
 
 import com.example.mushafconsolidated.R;
-import com.example.utility.DarkThemeApplication;
+import com.example.utility.QuranGrammarApplication;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,23 +49,9 @@ public class VerbSarfKabeerAdapter extends RecyclerView.Adapter<VerbSarfKabeerAd
     }
 
 
-    public VerbSarfKabeerAdapter(boolean mazeedregular, ArrayList sarfSagheer, FragmentActivity activity) {
-        this.context = activity;
-        this.sarfSagheer = sarfSagheer;
-        this.mazeedregular = mazeedregular;
-
-    }
-
-    public VerbSarfKabeerAdapter(ArrayList<String> madhi, ArrayList<ArrayList> skabeer, FragmentActivity activity) {
-        this.context = activity;
-        this.sarfSagheer = skabeer;
-        this.madhi = madhi;
-
-    }
-
 
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(DarkThemeApplication.getContext());
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(QuranGrammarApplication.getContext());
         Boolean aBoolean = prefs.getBoolean("sarfkabeer_format_verb",true);
         //      View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.sarfkabeercolumn, parent, false);
 
@@ -105,7 +91,7 @@ public class VerbSarfKabeerAdapter extends RecyclerView.Adapter<VerbSarfKabeerAd
 //        final String[] array = (String[]) sarfSagheer.get(position).toArray();
         //   ArrayList list = sarfSagheer.get(position);
         //    position++;
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(DarkThemeApplication.getContext());
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(QuranGrammarApplication.getContext());
         String  font_category = prefs.getString("Arabic_Font_Selection", "kitab.tff");
         // String quranverses = corpusSurahWord.get(0).getQurantext();
         String jumlashart = "جملة شرطية";
@@ -113,9 +99,10 @@ public class VerbSarfKabeerAdapter extends RecyclerView.Adapter<VerbSarfKabeerAd
         StringBuilder sbjawab = new StringBuilder();
         //   String verse = jumlashart.concat(":" + quranverses);
         //  this.spannable = new SpannableStringBuilder(quranverses);
-        Typeface arabicTypeface = Typeface.createFromAsset(DarkThemeApplication.getContext().getAssets(), font_category);
-
-
+        SharedPreferences sharedPreferences =
+                androidx.preference.PreferenceManager.getDefaultSharedPreferences(QuranGrammarApplication.getContext());
+        String indictive = sharedPreferences.getString("Arabic_Font_Selection", "kitab.ttf");
+        arabicTypeface = Typeface.createFromAsset(context.getAssets(), indictive);
 
       //  SharedPref sharedPref=new SharedPref(DarkThemeApplication.getContext());
      //   arabicTypeface = Typeface.createFromAsset(context.getAssets(), sharedPref.arabicFontSelection());
@@ -553,7 +540,7 @@ public class VerbSarfKabeerAdapter extends RecyclerView.Adapter<VerbSarfKabeerAd
     private void FontSIzeSelection(ViewHolder holder) {
 
 
-        SharedPreferences sharedPreferences = androidx.preference.PreferenceManager.getDefaultSharedPreferences(DarkThemeApplication.getContext());
+        SharedPreferences sharedPreferences = androidx.preference.PreferenceManager.getDefaultSharedPreferences(QuranGrammarApplication.getContext());
         final Integer arabicFontsize = sharedPreferences.getInt("pref_font_arabic_key",20);
 
         //   final Integer arabicFontsize = SharedPref.arabicFontsize();

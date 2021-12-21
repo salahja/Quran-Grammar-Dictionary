@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import org.sj.conjugator.interfaces.OnItemClickListener;
 import org.sj.conjugator.utilities.SharedPref;
 import com.example.mushafconsolidated.R;
-import com.example.utility.DarkThemeApplication;
+import com.example.utility.QuranGrammarApplication;
 
 import java.util.ArrayList;
 
@@ -582,7 +582,7 @@ public class AconSarfKabeerAdapter extends RecyclerView.Adapter<AconSarfKabeerAd
     }
 
     private void FontSIzeSelection(  ViewHolder holder) {
-        SharedPreferences sharedPreferences = androidx.preference.PreferenceManager.getDefaultSharedPreferences(DarkThemeApplication.getContext());
+        SharedPreferences sharedPreferences = androidx.preference.PreferenceManager.getDefaultSharedPreferences(QuranGrammarApplication.getContext());
         final Integer arabicFontsize = sharedPreferences.getInt("pref_font_arabic_key",20);
 
      //   Integer arabicFontsize=40;

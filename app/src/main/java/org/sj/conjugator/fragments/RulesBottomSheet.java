@@ -18,13 +18,13 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.utility.DarkThemeApplication;
+import com.example.utility.QuranGrammarApplication;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 import org.jetbrains.annotations.NotNull;
 import org.sj.conjugator.adapter.rulesbottomsheetadapter;
 import org.sj.conjugator.interfaces.OnItemClickListener;
-import org.sj.conjugator.utilities.VerbConjugaorApp;
+
 import com.example.mushafconsolidated.R;
 
 import java.util.ArrayList;
@@ -59,7 +59,7 @@ public class RulesBottomSheet extends BottomSheetDialogFragment {
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.mujarrad_bottom_fragment, container, false);
 
-        SharedPreferences prefs = android.preference.PreferenceManager.getDefaultSharedPreferences(DarkThemeApplication.getContext());
+        SharedPreferences prefs = android.preference.PreferenceManager.getDefaultSharedPreferences(QuranGrammarApplication.getContext());
 
         RecyclerView recyclerView = view.findViewById(R.id.recview);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, true));
@@ -69,11 +69,11 @@ public class RulesBottomSheet extends BottomSheetDialogFragment {
         GridLayoutManager mLayoutManager = new GridLayoutManager(getActivity(), 2);
         SharedPreferences shared =
                 PreferenceManager.getDefaultSharedPreferences(getContext());
-        DatabaseUtils db=new DatabaseUtils(DarkThemeApplication.getContext());
+        DatabaseUtils db=new DatabaseUtils(QuranGrammarApplication.getContext());
 
       kovArrayList = db.getKov();
 
-       adapter=new rulesbottomsheetadapter(kovArrayList,DarkThemeApplication.getContext());
+       adapter=new rulesbottomsheetadapter(kovArrayList, QuranGrammarApplication.getContext());
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setAdapter(adapter);

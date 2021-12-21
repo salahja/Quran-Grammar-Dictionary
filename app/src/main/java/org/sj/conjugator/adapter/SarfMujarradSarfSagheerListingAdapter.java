@@ -15,12 +15,11 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.utility.DarkThemeApplication;
+import com.example.utility.QuranGrammarApplication;
 import com.google.android.material.chip.Chip;
 
 import org.jetbrains.annotations.NotNull;
 import org.sj.conjugator.interfaces.OnItemClickListener;
-import org.sj.conjugator.utilities.SharedPref;
 import  org.sj.conjugator.fragments.*;
 import com.example.mushafconsolidated.R;
 
@@ -110,7 +109,7 @@ public class SarfMujarradSarfSagheerListingAdapter extends RecyclerView.Adapter<
         SarfSagheer sagheer = this.sarfSagheer.get(position);
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         String fontCategory = prefs.getString("arabic_font_category", "kitab.ttf");
-        final Typeface mequran = Typeface.createFromAsset(DarkThemeApplication.getContext().getAssets(), fontCategory);
+        final Typeface mequran = Typeface.createFromAsset(QuranGrammarApplication.getContext().getAssets(), fontCategory);
       //  final Typeface meqruans = Typeface.createFromAsset(DarkThemeApplication.getContext().getAssets(), SharedPref.arabicFontSelection());
        int length=        sarfSagheer.size();
 

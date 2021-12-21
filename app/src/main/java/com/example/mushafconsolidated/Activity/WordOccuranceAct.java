@@ -45,7 +45,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.Constant;
-import com.example.mushafconsolidated.DAO.HansDao;
 import com.example.mushafconsolidated.Entities.CorpusNounWbwOccurance;
 import com.example.mushafconsolidated.Entities.CorpusVerbWbwOccurance;
 import com.example.mushafconsolidated.Entities.NewMudhafEntity;
@@ -62,7 +61,7 @@ import com.example.mushafconsolidated.Adapters.NounVerbOccuranceListAdapter;
 import com.example.mushafconsolidated.fragments.QuranMorphologyDetails;
 import com.example.mushafconsolidated.fragments.WordAnalysisBottomSheet;
 import com.example.utility.CorpusUtilityorig;
-import com.example.utility.DarkThemeApplication;
+import com.example.utility.QuranGrammarApplication;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.tonyodev.fetch2.Fetch;
 
@@ -167,7 +166,7 @@ public class WordOccuranceAct extends BaseActivity {
 
     expandableListView = (ExpandableListView) findViewById(R.id.expandableListView);
 
-    SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(DarkThemeApplication.getContext());
+    SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(QuranGrammarApplication.getContext());
     String preferences = prefs.getString("theme", "dark");
     if (preferences.equals("dark")) {
       firstcolortat = Constant.BCYAN;
@@ -178,7 +177,7 @@ public class WordOccuranceAct extends BaseActivity {
 
     } else {
       firstcolortat = Constant.WBURNTUMBER;
-      maincolortag =  ContextCompat.getColor(DarkThemeApplication.getContext(),  R.color.prussianblue);
+      maincolortag =  ContextCompat.getColor(QuranGrammarApplication.getContext(),  R.color.prussianblue);
       pronouncolortag = Constant.WMIDNIHTBLUE;
       fourcolortag = Constant.GREENDARK;
 

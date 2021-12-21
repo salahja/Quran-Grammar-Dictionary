@@ -345,7 +345,7 @@ public class CorpusUtilityorig {
   private static Map<String, ForegroundColorSpan> getStringForegroundColorSpanMap() {
     Map<String, ForegroundColorSpan> spanhash = new HashMap<>();
     SharedPreferences sharedPreferences =
-          androidx.preference.PreferenceManager.getDefaultSharedPreferences(DarkThemeApplication.getContext());
+          androidx.preference.PreferenceManager.getDefaultSharedPreferences(QuranGrammarApplication.getContext());
     String isNightmode = sharedPreferences.getString("themepref", "dark");
     if (isNightmode.equals("dark") || isNightmode.equals("blue")) {
       spanhash.put("PN", propernounspanDark);
@@ -456,7 +456,7 @@ public class CorpusUtilityorig {
 
 
   public void SetMousufSifaDB(ArrayList<CorpusAyahWord> corpusayahWordArrayList, int surah_id) {
-    Utils utils = new Utils(DarkThemeApplication.getContext());
+    Utils utils = new Utils(QuranGrammarApplication.getContext());
     final ArrayList<SifaEntity> surah = utils.getSifabySurah(surah_id);
     SpannableStringBuilder spannableverse = null;
     SpannableString spannableString = null;
@@ -559,7 +559,7 @@ public class CorpusUtilityorig {
 
 
  
-    Utils utils = new Utils(DarkThemeApplication.getContext());
+    Utils utils = new Utils(QuranGrammarApplication.getContext());
 
     final ArrayList<NewNasbEntity> harfnasb = utils.getHarfNasbIndexesnew(surah_id);
 //TODO SURA10 7 INNA ISM INNALIZINA(0,5,6,9 AND KHABR IN 10;8 oolika(0,12,len33)
@@ -650,7 +650,7 @@ public class CorpusUtilityorig {
 
 
   public void setMudhafFromDB(ArrayList<CorpusAyahWord> corpusayahWordArrayList, int surah_id) {
-    Utils utils = new Utils(DarkThemeApplication.getContext());
+    Utils utils = new Utils(QuranGrammarApplication.getContext());
 
     final ArrayList<NewMudhafEntity> surah = utils.getMudhafSurahNew(surah_id);
     SpannableStringBuilder spannableverse = null;
@@ -721,7 +721,7 @@ public class CorpusUtilityorig {
   }
 
   public void setShart(ArrayList<CorpusAyahWord> corpusayahWordArrayList, int surah_id) {
-    Utils utils = new Utils(DarkThemeApplication.getContext());
+    Utils utils = new Utils(QuranGrammarApplication.getContext());
     final ArrayList<NewShartEntity> surah = utils.getShartSurahNew(surah_id);
     //  final ArrayList<ShartEntity> surah = utils.getShartSurah(surah_id);
     SpannableStringBuilder spannableverse = null;
@@ -892,7 +892,7 @@ public class CorpusUtilityorig {
 
   public static Spannable getSpannableVerses(String arabicword, String quranverses) {
 
-    SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(DarkThemeApplication.getContext());
+    SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(QuranGrammarApplication.getContext());
     String preferences = prefs.getString("theme", "dark");
 
     int wordlen = arabicword.length();
@@ -906,7 +906,7 @@ public class CorpusUtilityorig {
 
         str.setSpan(new ForegroundColorSpan(CYAN), indexOf, indexOf + wordlen, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
       }else{
-        str.setSpan(new ForegroundColorSpan(ContextCompat.getColor(DarkThemeApplication.getContext(), R.color.midnightblue)), indexOf, indexOf + wordlen, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        str.setSpan(new ForegroundColorSpan(ContextCompat.getColor(QuranGrammarApplication.getContext(), R.color.midnightblue)), indexOf, indexOf + wordlen, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
       }
 

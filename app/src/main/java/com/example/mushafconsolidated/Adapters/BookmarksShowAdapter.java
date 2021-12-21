@@ -21,9 +21,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.mushafconsolidated.Entities.BookMarks;
 import com.example.mushafconsolidated.R;
 import com.example.mushafconsolidated.intrface.OnItemClickListener;
-import com.example.utility.DarkThemeApplication;
+import com.example.utility.QuranGrammarApplication;
 import com.example.utility.PreferenceUtil;
-import com.example.utility.SharedPref;
 
 import java.util.List;
 
@@ -121,8 +120,8 @@ public class BookmarksShowAdapter extends RecyclerView.Adapter<BookmarksShowAdap
     final BookMarks bookMark = bookMarkArrayList.get(position);
     setHolderposition(position);
     setBookmarid(bookMark.getId());
-    TypedArray imgs = DarkThemeApplication.getContext().getResources().obtainTypedArray(R.array.sura_imgs);
-    SharedPreferences shared = android.preference.PreferenceManager.getDefaultSharedPreferences(DarkThemeApplication.getContext());
+    TypedArray imgs = QuranGrammarApplication.getContext().getResources().obtainTypedArray(R.array.sura_imgs);
+    SharedPreferences shared = android.preference.PreferenceManager.getDefaultSharedPreferences(QuranGrammarApplication.getContext());
     String isNightmode = shared.getString("theme", "dark");
     String chapterno = bookMark.getChapterno();
     final Drawable drawable = imgs.getDrawable((Integer.parseInt(chapterno) - 1));
@@ -145,12 +144,12 @@ public class BookmarksShowAdapter extends RecyclerView.Adapter<BookmarksShowAdap
     holder.verseno.setTextSize(arabicFontSize);
     holder.chapterno.setTextSize(arabicFontSize);
     if (isNightmode.equals("dark")) {
-      ContextCompat.getColor(DarkThemeApplication.getContext(), R.color.color_background_overlay);
-      holder.cardView.setCardBackgroundColor(ContextCompat.getColor(DarkThemeApplication.getContext(), R.color.color_background_overlay));
+      ContextCompat.getColor(QuranGrammarApplication.getContext(), R.color.color_background_overlay);
+      holder.cardView.setCardBackgroundColor(ContextCompat.getColor(QuranGrammarApplication.getContext(), R.color.color_background_overlay));
 
 
     } else if (isNightmode.equals("blue")) {
-      holder.cardView.setCardBackgroundColor(ContextCompat.getColor(DarkThemeApplication.getContext(), R.color.solarizedBase02));
+      holder.cardView.setCardBackgroundColor(ContextCompat.getColor(QuranGrammarApplication.getContext(), R.color.solarizedBase02));
 
     }
 

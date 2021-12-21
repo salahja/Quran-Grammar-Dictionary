@@ -97,7 +97,7 @@ public class QuranGrammarAct extends BaseActivity implements PassdataInterface, 
     private FlowAyahWordAdapter flowAyahWordAdapter;
 
 
-    String partname;
+    String surahArabicName;
     boolean jumptostatus = false;
     int surah_id = 0;
     private boolean mausoof, mudhaf, harfnasb, shart;
@@ -157,12 +157,12 @@ public class QuranGrammarAct extends BaseActivity implements PassdataInterface, 
     private Utils utils;
 
 
-    public String getPartname() {
-        return partname;
+    public String getSurahArabicName() {
+        return surahArabicName;
     }
 
-    public void setPartname(String partname) {
-        this.partname = partname;
+    public void setSurahArabicName(String surahArabicName) {
+        this.surahArabicName = surahArabicName;
     }
 
 
@@ -366,7 +366,7 @@ public class QuranGrammarAct extends BaseActivity implements PassdataInterface, 
                 setChapterno(chapter);
                 setChapterorpart(chapterorpartb);
 
-                setPartname(bundle.getStringExtra(SURAH_ARABIC_NAME));
+                setSurahArabicName(bundle.getStringExtra(SURAH_ARABIC_NAME));
                 //   setChapterno( bundle.getIntExtra(SURAH_ID,2));
                 setVerse_no(bundle.getIntExtra(AYAHNUMBER, 1));
                 setVersescount(bundle.getIntExtra(VERSESCOUNT, 286));
@@ -568,7 +568,7 @@ public class QuranGrammarAct extends BaseActivity implements PassdataInterface, 
                 StringBuilder sb = new StringBuilder();
                 sb.append(suraNumber).append("-").append(soraList.get(suraNumber - 1).getNameenglish()).append("-").append(soraList.get(suraNumber - 1).getAbjadname());
                 setSuraharabicname(sb.toString());
-                setPartname(soraList.get(suraNumber - 1).getAbjadname());
+                setSurahArabicName(soraList.get(suraNumber - 1).getAbjadname());
                 //  ayahIndex.getInputType();
                 Editable text = ayahIndex.getText();
                 setVerse_no(Integer.parseInt(String.valueOf(text)));
@@ -601,7 +601,7 @@ public class QuranGrammarAct extends BaseActivity implements PassdataInterface, 
                 StringBuilder sb = new StringBuilder();
                 sb.append(suraNumber).append("-").append(soraList.get(suraNumber - 1).getNameenglish()).append("-").append(soraList.get(suraNumber - 1).getAbjadname());
                 setSuraharabicname(sb.toString());
-                setPartname(soraList.get(suraNumber - 1).getAbjadname());
+                setSurahArabicName(soraList.get(suraNumber - 1).getAbjadname());
                 setVerse_no(verseNumber);
                 setVersescount(soraList.get(suraNumber - 1).getVersescount());
                 setIsMakkiMadani(soraList.get(suraNumber - 1).getIsmakki());
@@ -711,10 +711,7 @@ public class QuranGrammarAct extends BaseActivity implements PassdataInterface, 
 
 
                     //    final Object o6 = wbwa.get(verseglobal).get(0);
-                    int o1 = wbw.get(verseglobal).getSurah();
-                    int o2 = wbw.get(verseglobal).getAyah();
-                    Object o3 = wbw.get(verseglobal).getWordno();
-                    int wcount = wbw.get(verseglobal).getWordcount();
+
                     StringBuilder sb = new StringBuilder();
                     sb.append(wbw.get(verseglobal).getAraone()).append(wbw.get(verseglobal).getAratwo());
                     CharSequence sequence = concat(wbw.get(verseglobal).getAraone() + wbw.get(verseglobal).getAratwo() +
@@ -724,14 +721,14 @@ public class QuranGrammarAct extends BaseActivity implements PassdataInterface, 
                     Object bn = wbw.get(verseglobal).getBn();
                     Object ind = wbw.get(verseglobal).getIn();
                     String ur = wbw.get(verseglobal).getUr();
-                    word.setSurahId(o1);
-                    word.setVerseId(o2);
-                    word.setWordno((int) Long.parseLong(o3.toString()));
-                    word.setWordcount(wcount);
-                    if (o1 == 6 && o2 == 56) {
 
-                        //    //System.out.println("CHECK");
-                    }
+
+
+                    word.setSurahId(wbw.get(verseglobal).getSurah());
+                    word.setVerseId(wbw.get(verseglobal).getAyah());
+                    word.setWordno(wbw.get(verseglobal).getWordno());
+                    word.setWordcount(wbw.get(verseglobal).getWordcount());
+
                     word.setWordsAr(sequence.toString());
                     //  word.setWordindex(getIndex(wbw.get(verseglobal).getQuranverses()));
                     word.setTranslateEn(en.toString());
@@ -831,10 +828,10 @@ public class QuranGrammarAct extends BaseActivity implements PassdataInterface, 
             header.add(String.valueOf(getRukucount()));
             header.add(String.valueOf(getVersescount()));
             header.add(String.valueOf(getChapterno()));
-            header.add(getPartname());
+            header.add(getSurahArabicName());
 
 
-            flowAyahWordAdapter = new FlowAyahWordAdapter(header, colorerab, allofQuran, corpusayahWordArrayList, QuranGrammarAct.this, surah_id, partname, isMakkiMadani, listener);
+            flowAyahWordAdapter = new FlowAyahWordAdapter(header, colorerab, allofQuran, corpusayahWordArrayList, QuranGrammarAct.this, surah_id, surahArabicName, isMakkiMadani, listener);
 
 
             flowAyahWordAdapter.addContext(QuranGrammarAct.this);
@@ -968,7 +965,7 @@ public class QuranGrammarAct extends BaseActivity implements PassdataInterface, 
 
                 private void RefreshActivity() {
                     Log.e(TAG, "onClick called");
-                    final Intent intent = getIntent().putExtra("chapter", chapterno).putExtra("chapterorpart", chapterorpart).putExtra(SURAH_ARABIC_NAME, partname)
+                    final Intent intent = getIntent().putExtra("chapter", chapterno).putExtra("chapterorpart", chapterorpart).putExtra(SURAH_ARABIC_NAME, surahArabicName)
                             .putExtra(VERSESCOUNT, getVersescount()).putExtra(RUKUCOUNT, rukucount).putExtra(MAKKI_MADANI, isMakkiMadani);
                     overridePendingTransition(0, 0);
                     startActivity(intent);
@@ -1032,7 +1029,7 @@ public class QuranGrammarAct extends BaseActivity implements PassdataInterface, 
 
         en.setChapterno(String.valueOf(chapter_no));
         en.setVerseno(String.valueOf(verse));
-        en.setSurahname(surahname);
+        en.setSurahname(getSurahArabicName());
         //     Utils utils = new Utils(ReadingSurahPartActivity.this);
         utils.insertBookMark(en);
 
@@ -1113,7 +1110,7 @@ public class QuranGrammarAct extends BaseActivity implements PassdataInterface, 
 
     private void RefreshActivity() {
         Log.e(TAG, "onClick called");
-        final Intent intent = getIntent().putExtra("chapter", chapterno).putExtra("chapterorpart", chapterorpart).putExtra(SURAH_ARABIC_NAME, partname)
+        final Intent intent = getIntent().putExtra("chapter", chapterno).putExtra("chapterorpart", chapterorpart).putExtra(SURAH_ARABIC_NAME, surahArabicName)
                 .putExtra(VERSESCOUNT, getVersescount()).putExtra(RUKUCOUNT, rukucount).putExtra(MAKKI_MADANI, isMakkiMadani);
         overridePendingTransition(0, 0);
         startActivity(intent);

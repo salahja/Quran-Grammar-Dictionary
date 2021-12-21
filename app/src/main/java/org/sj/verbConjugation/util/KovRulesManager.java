@@ -2,7 +2,7 @@ package org.sj.verbConjugation.util;
 
 
 
-import com.example.utility.DarkThemeApplication;
+import com.example.utility.QuranGrammarApplication;
 
 import java.util.ArrayList;
 
@@ -92,7 +92,7 @@ public class KovRulesManager {
 
   private ArrayList buildTrilateral() throws Exception{
    // Context context = DarkThemeApplication.getContext();
-    DatabaseUtils utils=new DatabaseUtils(DarkThemeApplication.getContext());
+    DatabaseUtils utils=new DatabaseUtils(QuranGrammarApplication.getContext());
     trilateralRulesList = utils.getKov();
 
 

@@ -29,11 +29,9 @@ import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceManager;
 
 import com.example.mushafconsolidated.R;
-import com.example.utility.DarkThemeApplication;
+import com.example.utility.QuranGrammarApplication;
 
 import org.sj.conjugator.utilities.ThemeHelper;
-import org.sj.conjugator.utilities.VerbConjugaorApp;
-
 
 
 public class SettingsFragmentVerb extends PreferenceFragmentCompat {
@@ -74,7 +72,7 @@ public class SettingsFragmentVerb extends PreferenceFragmentCompat {
                         @Override
                         public boolean onPreferenceChange(Preference preference, Object newValue) {
                             boolean selectionOption =  (boolean) newValue;
-                            SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(DarkThemeApplication.getContext()).edit();
+                            SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(QuranGrammarApplication.getContext()).edit();
                          //   SharedPreferences.Editor editor =  getContext().getSharedPreferences("properties", 0).edit();
                             editor.putBoolean("Accusative", selectionOption);
                             editor.putBoolean("Nominative",false);

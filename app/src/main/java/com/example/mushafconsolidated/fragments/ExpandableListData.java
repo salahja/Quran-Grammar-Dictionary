@@ -12,7 +12,6 @@ import static com.example.Constant.GREENDARK;
 import static com.example.Constant.GREENYELLOW;
 import static com.example.Constant.MIDNIGHTBLUE;
 import static com.example.Constant.ORANGE400;
-import static com.example.Constant.OVAL;
 import static com.example.Constant.WBURNTUMBER;
 import static com.example.Constant.WHOTPINK;
 import static com.example.Constant.deepburnsienna;
@@ -41,7 +40,6 @@ import android.text.style.ForegroundColorSpan;
 
 import androidx.annotation.NonNull;
 
-import com.example.JustJava.FrameSpan;
 import com.example.JustJava.TextBorderSpan;
 import com.example.mushafconsolidated.Activity.SplitQuranVerses;
 import com.example.mushafconsolidated.Entities.NewCorpusExpandWbwPOJO;
@@ -53,8 +51,7 @@ import com.example.mushafconsolidated.Entities.SifaEntity;
 import com.example.mushafconsolidated.Entities.wbwentity;
 import com.example.mushafconsolidated.Utils;
 import com.example.mushafconsolidated.model.Word;
-import com.example.utility.DarkThemeApplication;
-import com.example.utility.SharedPref;
+import com.example.utility.QuranGrammarApplication;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -87,7 +84,7 @@ public class ExpandableListData {
   public LinkedHashMap<String, List<SpannableStringBuilder>> getData() {
 
 
-    SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(DarkThemeApplication.getContext());
+    SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(QuranGrammarApplication.getContext());
 
 
     String whichtranslation = prefs.getString("selecttranslation", "en_sahih");
@@ -134,7 +131,7 @@ public class ExpandableListData {
   private void setNewNasb(List<SpannableStringBuilder> hasbarray) {
 
     ArrayList<NewNasbEntity> kanaSurahAyahnew = utils.getHarfNasbIndSurahAyahSnew(chapterid, ayanumber);
-    SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(DarkThemeApplication.getContext());
+    SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(QuranGrammarApplication.getContext());
   String  preferences = prefs.getString("theme", "dark");
 
     for (NewNasbEntity nasbEntity : kanaSurahAyahnew) {
@@ -729,7 +726,7 @@ public class ExpandableListData {
     ArrayList<SifaEntity> sifabySurahAyah = utils.getSifabySurahAyah(chapterid, ayanumber);
     ArrayList<wbwentity> mausuufo;
     ArrayList<wbwentity> mausuuft;
-    SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(DarkThemeApplication.getContext());
+    SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(QuranGrammarApplication.getContext());
    String preferences = prefs.getString("theme", "dark");
     for (SifaEntity shartEntity : sifabySurahAyah) {
       if(preferences.equals("dark")||preferences.equals("blue"))
@@ -777,7 +774,7 @@ public class ExpandableListData {
     ArrayList<NewMudhafEntity> mudhafSurahAyah = utils.getMudhafSurahAyahNew(chapterid, ayanumber);
     int index = 0;
 
-    SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(DarkThemeApplication.getContext());
+    SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(QuranGrammarApplication.getContext());
     String preferences = prefs.getString("theme", "dark");
 
     for (NewMudhafEntity mudhafEntity : mudhafSurahAyah) {
@@ -843,16 +840,16 @@ public class ExpandableListData {
     String quranverses = corpusSurahWord.get(0).getQurantext();
     ArrayList<NewShartEntity> shart = utils.getShartSurahAyahNew(chapterid, ayanumber);
     ArrayList<NewNasbEntity> kanaSurahAyahnew = utils.getHarfNasbIndSurahAyahSnew(chapterid, ayanumber);
-    SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(DarkThemeApplication.getContext());
+    SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(QuranGrammarApplication.getContext());
     String  preferences = prefs.getString("theme", "dark");
     // String quranverses = corpusSurahWord.get(0).getQurantext();
     String jumlashart = "جملة شرطية";
     StringBuilder sb = new StringBuilder();
     StringBuilder sbjawab = new StringBuilder();
     SharedPreferences sharedPreferences =
-            androidx.preference.PreferenceManager.getDefaultSharedPreferences(DarkThemeApplication.getContext());
+            androidx.preference.PreferenceManager.getDefaultSharedPreferences(QuranGrammarApplication.getContext());
     String quranFont = sharedPreferences.getString("quranFont", "kitab.ttf");
-    Typeface mequran = Typeface.createFromAsset(DarkThemeApplication.getContext().getAssets(), quranFont);
+    Typeface mequran = Typeface.createFromAsset(QuranGrammarApplication.getContext().getAssets(), quranFont);
 
 
     for (NewShartEntity shartEntity : shart) {
@@ -1086,7 +1083,7 @@ public class ExpandableListData {
     int firstwordindex = 0;
     int lastwordindex = 0;
     quranverses = quranverses;
-    SplitQuranVerses split = new SplitQuranVerses(DarkThemeApplication.getContext());
+    SplitQuranVerses split = new SplitQuranVerses(QuranGrammarApplication.getContext());
     ArrayList<Word> words = split.splitSingleVerse(quranverses);
     String trim = charSequence.toString().trim();
     String[] strings = trim.toString().split("\\s");

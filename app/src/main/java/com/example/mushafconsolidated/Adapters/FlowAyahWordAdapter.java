@@ -43,13 +43,12 @@ import com.example.mushafconsolidated.fragments.GrammerFragmentsBottomSheet;
 import com.example.mushafconsolidated.fragments.SentenceAnalysisBottomSheet;
 import com.example.mushafconsolidated.fragments.WordAnalysisBottomSheet;
 import com.example.mushafconsolidated.fragments.WordMorphologyDetails;
-import com.example.mushafconsolidated.intrface.OnItemClickListener;
 import com.example.mushafconsolidated.intrface.OnItemClickListenerOnLong;
 import com.example.mushafconsolidated.model.CorpusAyahWord;
 import com.example.mushafconsolidated.model.CorpusWbwWord;
 import com.example.utility.AnimationUtility;
 import com.example.utility.CorpusUtilityorig;
-import com.example.utility.DarkThemeApplication;
+import com.example.utility.QuranGrammarApplication;
 import com.example.utility.FlowLayout;
 import com.example.utility.PreferenceUtil;
 import com.example.utility.SharedPref;
@@ -495,10 +494,10 @@ showErab=false;
 
 
         if (SharedPref.themePreferences().equals("dark")) {
-          holder.erab_textView.setTextColor(DarkThemeApplication.getContext().getResources().getColor(R.color.white));
+          holder.erab_textView.setTextColor(QuranGrammarApplication.getContext().getResources().getColor(R.color.white));
 
         } else {
-          holder.erab_textView.setTextColor(DarkThemeApplication.getContext().getResources().getColor(R.color.burntamber));
+          holder.erab_textView.setTextColor(QuranGrammarApplication.getContext().getResources().getColor(R.color.burntamber));
 
         }
 

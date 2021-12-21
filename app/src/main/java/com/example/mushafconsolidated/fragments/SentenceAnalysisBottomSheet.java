@@ -62,7 +62,7 @@ import com.example.mushafconsolidated.R;
 import com.example.mushafconsolidated.Utils;
 import com.example.mushafconsolidated.intrface.OnItemClickListener;
 import com.example.mushafconsolidated.model.SarfSagheerPOJO;
-import com.example.utility.DarkThemeApplication;
+import com.example.utility.QuranGrammarApplication;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.android.material.button.MaterialButton;
 
@@ -200,7 +200,7 @@ public class SentenceAnalysisBottomSheet extends BottomSheetDialogFragment {
         Bundle bundle = this.getArguments();
         String[] stringArray = bundle.getStringArray(ARG_OPTIONS_DATA);
         chapterid = Integer.parseInt(stringArray[0]);
-        prefs = android.preference.PreferenceManager.getDefaultSharedPreferences(DarkThemeApplication.getContext());
+        prefs = android.preference.PreferenceManager.getDefaultSharedPreferences(QuranGrammarApplication.getContext());
         preferences = prefs.getString("theme", "dark");
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setCancelable(false); // if you want user to wait for some process to finish,
@@ -425,7 +425,7 @@ public class SentenceAnalysisBottomSheet extends BottomSheetDialogFragment {
         //  this.spannable = new SpannableStringBuilder(quranverses);
         SpannableStringBuilder spannable;
         for (NewShartEntity shartEntity : shart) {
-            prefs = android.preference.PreferenceManager.getDefaultSharedPreferences(DarkThemeApplication.getContext());
+            prefs = android.preference.PreferenceManager.getDefaultSharedPreferences(QuranGrammarApplication.getContext());
             preferences = prefs.getString("theme", "dark");
             harfshartspanDark = new ForegroundColorSpan(GOLD);
             shartspanDark = new ForegroundColorSpan(GREEN);

@@ -32,7 +32,7 @@ import com.example.mushafconsolidated.Entities.lughat;
 import com.example.mushafconsolidated.R;
 import com.example.mushafconsolidated.intrface.OnItemClickListener;
 import com.example.mushafconsolidated.model.SarfSagheerPOJO;
-import com.example.utility.DarkThemeApplication;
+import com.example.utility.QuranGrammarApplication;
 import com.example.utility.SharedPref;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.chip.Chip;
@@ -346,7 +346,7 @@ public class RootWordDisplayAdapter extends RecyclerView.Adapter<RootWordDisplay
 
             SharedPreferences prefs = android.preference.PreferenceManager.getDefaultSharedPreferences(context);
             String fontCategory = prefs.getString("arabic_font_category", "kitab.ttf");
-           mequran = Typeface.createFromAsset(DarkThemeApplication.getContext().getAssets(), fontCategory);
+           mequran = Typeface.createFromAsset(QuranGrammarApplication.getContext().getAssets(), fontCategory);
             //  final Typeface meqruans = Typeface.createFromAsset(DarkThemeApplication.getContext().getAssets(), SharedPref.arabicFontSelection());
 
 
@@ -397,10 +397,10 @@ public class RootWordDisplayAdapter extends RecyclerView.Adapter<RootWordDisplay
             String language = sf.getLanguage();
 
             if (language.equals("en")) {
-                array = DarkThemeApplication.getContext().getResources().getStringArray(R.array.enismfaelmafoolheadings);
+                array = QuranGrammarApplication.getContext().getResources().getStringArray(R.array.enismfaelmafoolheadings);
 
             } else {
-                array = DarkThemeApplication.getContext().getResources().getStringArray(R.array.arismfaelmafoolheadings);
+                array = QuranGrammarApplication.getContext().getResources().getStringArray(R.array.arismfaelmafoolheadings);
             }
 
             holder.apmas.setText(array[0]);
@@ -435,9 +435,9 @@ public class RootWordDisplayAdapter extends RecyclerView.Adapter<RootWordDisplay
         boolean isTraditional = true;
         String[] array;
         if (language.equals("en"))
-            array = DarkThemeApplication.getContext().getResources().getStringArray(R.array.encase);
+            array = QuranGrammarApplication.getContext().getResources().getStringArray(R.array.encase);
         else {
-            array = DarkThemeApplication.getContext().getResources().getStringArray(R.array.arcase);
+            array = QuranGrammarApplication.getContext().getResources().getStringArray(R.array.arcase);
         }
         if (isTraditional) {
             holder.nom.setText(array[0]);
@@ -731,7 +731,7 @@ public class RootWordDisplayAdapter extends RecyclerView.Adapter<RootWordDisplay
 
     private void FontSIzeSelection(ItemViewAdapter holder, ArrayList ismfaelmafoolarray) {
 
-      SharedPreferences sharedPreferences = androidx.preference.PreferenceManager.getDefaultSharedPreferences(DarkThemeApplication.getContext());
+      SharedPreferences sharedPreferences = androidx.preference.PreferenceManager.getDefaultSharedPreferences(QuranGrammarApplication.getContext());
       final Integer arabicFontsize = sharedPreferences.getInt("pref_font_arabic_key",20);
 
 
@@ -880,7 +880,7 @@ public class RootWordDisplayAdapter extends RecyclerView.Adapter<RootWordDisplay
     }
 
     private void FontSizeSelection(ItemViewAdapter holder) {
-      SharedPreferences sharedPreferences = androidx.preference.PreferenceManager.getDefaultSharedPreferences(DarkThemeApplication.getContext());
+      SharedPreferences sharedPreferences = androidx.preference.PreferenceManager.getDefaultSharedPreferences(QuranGrammarApplication.getContext());
       final Integer fontsize = sharedPreferences.getInt("pref_font_arabic_key",20);
 
       if (isverbconjugation) {

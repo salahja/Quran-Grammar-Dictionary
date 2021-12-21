@@ -29,7 +29,7 @@ import java.util.Locale;
 
 import leakcanary.LeakCanary;
 
-public class DarkThemeApplication extends Application {
+public class QuranGrammarApplication extends Application {
     private static Context appContext;
 
 

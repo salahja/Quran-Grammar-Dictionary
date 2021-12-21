@@ -9,9 +9,7 @@ import androidx.sqlite.db.SimpleSQLiteQuery;
 
 import com.example.mushafconsolidated.Entities.BookMarks;
 import com.example.mushafconsolidated.Entities.ChaptersAnaEntity;
-import com.example.mushafconsolidated.Entities.CorpusEntity;
 import com.example.mushafconsolidated.Entities.CorpusExpandWbwPOJO;
-import com.example.mushafconsolidated.Entities.CorpusNounWbwGrouping;
 import com.example.mushafconsolidated.Entities.CorpusNounWbwOccurance;
 import com.example.mushafconsolidated.Entities.CorpusVerbWbwOccurance;
 import com.example.mushafconsolidated.Entities.KanaPOJO;
@@ -27,7 +25,6 @@ import com.example.mushafconsolidated.Entities.NounCorpusBreakup;
 import com.example.mushafconsolidated.Entities.QuranEntity;
 import com.example.mushafconsolidated.Entities.ShartPOJO;
 import com.example.mushafconsolidated.Entities.SifaEntity;
-import com.example.mushafconsolidated.Entities.SifaEntityPojo;
 import com.example.mushafconsolidated.Entities.SifaPOJO;
 import com.example.mushafconsolidated.Entities.VerbCorpus;
 import com.example.mushafconsolidated.Entities.VerbCorpusBreakup;
@@ -38,9 +35,7 @@ import com.example.mushafconsolidated.Entities.qurandictionary;
 import com.example.mushafconsolidated.Entities.wbwentity;
 import com.example.mushafconsolidated.model.wordbyword;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 //import com.example.mushafconsolidated.Entities.JoinVersesTranslationDataTranslation;
@@ -49,10 +44,8 @@ public class Utils {
 
     private static final String TAG = "Utils";
     private static QuranAppDatabase database;
-    public ArrayList<wordbyword> getUserViaQuery;
 
     final Context thiscontext;
-    private int id;
 
     public Utils(Context context) {
         database = QuranAppDatabase.getInstance(context);
@@ -63,16 +56,14 @@ public class Utils {
 
     public ArrayList<NewMudhafEntity> getMudhafSurahNew(int id){
 
-        ArrayList<NewMudhafEntity> items = (ArrayList<NewMudhafEntity>) database.NewMudhafDao().getMudhafSurah(id);
-        return items;
+        return (ArrayList<NewMudhafEntity>) database.NewMudhafDao().getMudhafSurah(id);
 
 
     }
 
     public ArrayList<NewMudhafEntity> getMudhafSurahAyahNew(int id,int aid){
 
-        ArrayList<NewMudhafEntity> items = (ArrayList<NewMudhafEntity>) database.NewMudhafDao().getMudhafSurahAyah(id,aid);
-        return items;
+        return (ArrayList<NewMudhafEntity>) database.NewMudhafDao().getMudhafSurahAyah(id,aid);
 
 
     }
@@ -83,8 +74,7 @@ public class Utils {
 
     public ArrayList<ChaptersAnaEntity> getAllAnaChapters() {
         Log.d(TAG, "getAllAnaChapters: started");
-        ArrayList<ChaptersAnaEntity> items = (ArrayList<ChaptersAnaEntity>) database.AnaQuranChapterDao().getChapters();
-        return items;
+        return (ArrayList<ChaptersAnaEntity>) database.AnaQuranChapterDao().getChapters();
 
 
     }
@@ -93,8 +83,7 @@ public class Utils {
 
     public ArrayList<ChaptersAnaEntity> getSingleChapter(int id) {
         Log.d(TAG, "getSingleChapter: started");
-        ArrayList<ChaptersAnaEntity> singleChapter = (ArrayList<ChaptersAnaEntity>) database.AnaQuranChapterDao().getSingleChapters(id);
-        return singleChapter;
+        return (ArrayList<ChaptersAnaEntity>) database.AnaQuranChapterDao().getSingleChapters(id);
 
 
     }
@@ -106,66 +95,50 @@ public class Utils {
 
     public ArrayList<BookMarks> getBookMarks() {
         Log.d(TAG, "getAllItems: started");
-        ArrayList<BookMarks> bookMarks = (ArrayList<BookMarks>) database.BookMarkDao().getBookMarks();
 
-        return bookMarks;
+        return (ArrayList<BookMarks>) database.BookMarkDao().getBookMarks();
     }
 
 
     public ArrayList<VerbCorpus> getQuranRoot(int id, int verseid, int wordid) {
         Log.d(TAG, "getQuranRoot: started");
-        ArrayList<VerbCorpus> surahVerses = (ArrayList<VerbCorpus>) database.VerbCorpusDao().getQuranRoot(id, verseid, wordid);
 
-        return surahVerses;
+        return (ArrayList<VerbCorpus>) database.VerbCorpusDao().getQuranRoot(id, verseid, wordid);
     }
     public ArrayList<VerbCorpus> getQuranRootaAyah(int id, int verseid ) {
         Log.d(TAG, "getQuranRoot: getQuranRootaAyah");
-        ArrayList<VerbCorpus> surahVerses = (ArrayList<VerbCorpus>) database.VerbCorpusDao().getQuranRootaAyah(id, verseid );
 
-        return surahVerses;
+        return (ArrayList<VerbCorpus>) database.VerbCorpusDao().getQuranRootaAyah(id, verseid );
     }
 
 
     public ArrayList<NounCorpus> getQuranNouns(int id, int verseid, int wordid) {
         Log.d(TAG, "getQuranNouns: started");
-        ArrayList<NounCorpus> qurannouns = (ArrayList<NounCorpus>) database.NounCorpusDao().getQuranNouns(id, verseid, wordid);
 
-        return qurannouns;
+        return (ArrayList<NounCorpus>) database.NounCorpusDao().getQuranNouns(id, verseid, wordid);
     }
     public ArrayList<NounCorpus> getQuranNounAyah(int id, int verseid ) {
         Log.d(TAG, "getQuranNouns: started");
-        ArrayList<NounCorpus> qurannouns = (ArrayList<NounCorpus>) database.NounCorpusDao().getQuranNounAyah(id, verseid );
 
-        return qurannouns;
-    }
-
-
-    public ArrayList<NounCorpus> getAllNouns() {
-        Log.d(TAG, "getAllNouns: started");
-        ArrayList<NounCorpus> qurannouns = (ArrayList<NounCorpus>) database.NounCorpusDao().getAllnouns();
-
-        return qurannouns;
+        return (ArrayList<NounCorpus>) database.NounCorpusDao().getQuranNounAyah(id, verseid );
     }
 
 
     public ArrayList<wbwentity> getwbwTranslatonbywordNew(int id, int ayaid, int wordid) {
         Log.d(TAG, "getwbwTranslatonbyword: started");
-        ArrayList<wbwentity> bywordallwords = (ArrayList<wbwentity>) database.wbwDao().getwbwTranslationbywordno(id, ayaid, wordid);
 
-        return bywordallwords;
+        return (ArrayList<wbwentity>) database.wbwDao().getwbwTranslationbywordno(id, ayaid, wordid);
     }
 
 
     public static List<BookMarks> getBookMarksNew() {
-        final List<BookMarks> marks = database.BookMarkDao().getBookMarks();
-        return marks;
+        return database.BookMarkDao().getBookMarks();
 
     }
 
 
     public static List<QuranEntity> getQuranbySurah(int id) {
-        final List<QuranEntity> marks = database.QuranDao().getQuranVersesBySurah(id);
-        return marks;
+        return database.QuranDao().getQuranVersesBySurah(id);
 
     }
 
@@ -173,23 +146,18 @@ public class Utils {
     public void insertBookMark(BookMarks entity) {
         //    database.BookMarkDao().deleteAllBookMakrs();
 
-        AsyncTask.execute(new Runnable() {
+        AsyncTask.execute(() -> AsyncTask.execute(new Runnable() {
             @Override
             public void run() {
-                AsyncTask.execute(new Runnable() {
-                    @Override
-                    public void run() {
-                        // and deleting
-                        database.BookMarkDao().insertBookmark(entity);
-                        //  runOnUiThread(new Runnable() {
-                        //  public void run() {
-                        //   itemTextView.setText("item deleted");
-                        //    }
-                        //  });
-                    }
-                });
+                // and deleting
+                database.BookMarkDao().insertBookmark(entity);
+                //  runOnUiThread(new Runnable() {
+                //  public void run() {
+                //   itemTextView.setText("item deleted");
+                //    }
+                //  });
             }
-        });
+        }));
 
 
     }
@@ -284,9 +252,8 @@ public class Utils {
 
         SimpleSQLiteQuery query = new SimpleSQLiteQuery(sqlverb);
         //  List<Book> result = booksDao.getBooks(query);
-        ArrayList<NewCorpusExpandWbwPOJO> verbWbw = (ArrayList<NewCorpusExpandWbwPOJO>) database.RawDao().getNewCorpusWbw(query);
 
-        return verbWbw;
+        return (ArrayList<NewCorpusExpandWbwPOJO>) database.RawDao().getNewCorpusWbw(query);
     }
     public ArrayList<NewCorpusExpandWbwPOJO> getCorpusWbwBySurahAyah(int tid, int aid) {
 
@@ -362,9 +329,8 @@ public class Utils {
 
         SimpleSQLiteQuery query = new SimpleSQLiteQuery(sqlverb);
         //  List<Book> result = booksDao.getBooks(query);
-        ArrayList<NewCorpusExpandWbwPOJO> verbWbw = (ArrayList<NewCorpusExpandWbwPOJO>) database.RawDao().getNewCorpusWbw(query);
 
-        return verbWbw;
+        return (ArrayList<NewCorpusExpandWbwPOJO>) database.RawDao().getNewCorpusWbw(query);
     }
     public ArrayList<CorpusExpandWbwPOJO> getCorpusWbwBySurah(int tid) {
 
@@ -416,9 +382,8 @@ public class Utils {
 
         SimpleSQLiteQuery query = new SimpleSQLiteQuery(sqlverb);
         //  List<Book> result = booksDao.getBooks(query);
-        ArrayList<CorpusExpandWbwPOJO> verbWbw = (ArrayList<CorpusExpandWbwPOJO>) database.RawDao().getCorpusWbw(query);
 
-        return verbWbw;
+        return (ArrayList<CorpusExpandWbwPOJO>) database.RawDao().getCorpusWbw(query);
     }
 
     public ArrayList<CorpusNounWbwOccurance> getnounoccuranceHarfNasbZarf(String tid) {
@@ -470,9 +435,8 @@ public class Utils {
 
         SimpleSQLiteQuery query = new SimpleSQLiteQuery(sqlverb);
         //  List<Book> result = booksDao.getBooks(query);
-        ArrayList<CorpusNounWbwOccurance> verbWbw = (ArrayList<CorpusNounWbwOccurance>) database.RawDao().getnounoccurance(query);
 
-        return verbWbw;
+        return (ArrayList<CorpusNounWbwOccurance>) database.RawDao().getnounoccurance(query);
     }
 
 
@@ -532,9 +496,8 @@ public class Utils {
 
         SimpleSQLiteQuery query = new SimpleSQLiteQuery(sqlverb);
         //  List<Book> result = booksDao.getBooks(query);
-        ArrayList<CorpusVerbWbwOccurance> verbWbw = (ArrayList<CorpusVerbWbwOccurance>) database.RawDao().getVerbOccuranceBreakVerses(query);
 
-        return verbWbw;
+        return (ArrayList<CorpusVerbWbwOccurance>) database.RawDao().getVerbOccuranceBreakVerses(query);
     }
     public ArrayList<CorpusNounWbwOccurance> getNounOccuranceBreakVerses(String tid) {
 
@@ -589,9 +552,8 @@ public class Utils {
 
         SimpleSQLiteQuery query = new SimpleSQLiteQuery(sqlverb);
         //  List<Book> result = booksDao.getBooks(query);
-        ArrayList<CorpusNounWbwOccurance> verbWbw = (ArrayList<CorpusNounWbwOccurance>) database.RawDao().getnounoccurance(query);
 
-        return verbWbw;
+        return (ArrayList<CorpusNounWbwOccurance>) database.RawDao().getnounoccurance(query);
     }
 
 
@@ -644,21 +606,18 @@ public class Utils {
 
         SimpleSQLiteQuery query = new SimpleSQLiteQuery(sqlverb);
         //  List<Book> result = booksDao.getBooks(query);
-        ArrayList<CorpusNounWbwOccurance> verbWbw = (ArrayList<CorpusNounWbwOccurance>) database.RawDao().getnounoccurancebysurahayah(query);
 
-        return verbWbw;
+        return (ArrayList<CorpusNounWbwOccurance>) database.RawDao().getnounoccurancebysurahayah(query);
     }
 
 
     public ArrayList<NewNasbEntity> getHarfNasbIndexesnew(int id) {
-        ArrayList<NewNasbEntity> harfNasbIndices = (ArrayList<NewNasbEntity>) database.NewNasbDao().getHarfNasbIndices(id);
-        return harfNasbIndices;
+        return (ArrayList<NewNasbEntity>) database.NewNasbDao().getHarfNasbIndices(id);
 
     }
 
     public ArrayList<NewNasbEntity> getHarfNasbIndSurahAyahSnew(int id,int aid) {
-        ArrayList<NewNasbEntity> harfNasbIndices = (ArrayList<NewNasbEntity>) database.NewNasbDao().getHarfNasbIndicesSurahAyah(id,aid);
-        return harfNasbIndices;
+        return (ArrayList<NewNasbEntity>) database.NewNasbDao().getHarfNasbIndicesSurahAyah(id,aid);
 
     }
 
@@ -672,9 +631,8 @@ public class Utils {
 
         SimpleSQLiteQuery query = new SimpleSQLiteQuery(sqlverb);
         //  List<Book> result = booksDao.getBooks(query);
-        ArrayList<MudhafPOJO> mudhaf = (ArrayList<MudhafPOJO>) database.RawDao().getMudhaf(query);
 
-        return mudhaf;
+        return (ArrayList<MudhafPOJO>) database.RawDao().getMudhaf(query);
     }
 
 
@@ -687,9 +645,8 @@ public class Utils {
 
         SimpleSQLiteQuery query = new SimpleSQLiteQuery(sqlverb);
         //  List<Book> result = booksDao.getBooks(query);
-        ArrayList<SifaPOJO> sifa = (ArrayList<SifaPOJO>) database.RawDao().getMousufSifa(query);
 
-        return sifa;
+        return (ArrayList<SifaPOJO>) database.RawDao().getMousufSifa(query);
     }
     public ArrayList<ShartPOJO> getSharts() {
 
@@ -700,25 +657,9 @@ public class Utils {
 //     "shart.ayah=qurans.ayah and shart.sharttype=\"laula\" order by shart.surah";
         SimpleSQLiteQuery query = new SimpleSQLiteQuery(sqlverb);
         //  List<Book> result = booksDao.getBooks(query);
-        ArrayList<ShartPOJO> sifa = (ArrayList<ShartPOJO>) database.RawDao().getShart(query);
 
-        return sifa;
+        return (ArrayList<ShartPOJO>) database.RawDao().getShart(query);
     }
-
-    public ArrayList<NasbPOJO> getNasabs() {
-
-        String sqlverb="select nasb.surah,nasb.ayah,nasb.indexstart,nasb.indexend,nasb.ismstart,nasb.ismend,\n" +
-                "nasb.khabarstart,nasb.khabarend,nasb.mahdoof,nasb.comment\n" +
-                ",qurans.qurantext,qurans.translation from nasb,qurans where nasb.surah=qurans.surah and \n" +
-                "nasb.ayah=qurans.ayah  order by nasb.surah,nasb.ayah";
-//     "shart.ayah=qurans.ayah and shart.sharttype=\"laula\" order by shart.surah";
-        SimpleSQLiteQuery query = new SimpleSQLiteQuery(sqlverb);
-        //  List<Book> result = booksDao.getBooks(query);
-        ArrayList<NasbPOJO> sifa = (ArrayList<NasbPOJO>) database.RawDao().getNasb(query);
-
-        return sifa;
-    }
-
 
 
     public ArrayList<KanaPOJO> getKanaPojo() {
@@ -730,55 +671,46 @@ public class Utils {
 //     "shart.ayah=qurans.ayah and shart.sharttype=\"laula\" order by shart.surah";
         SimpleSQLiteQuery query = new SimpleSQLiteQuery(sqlverb);
         //  List<Book> result = booksDao.getBooks(query);
-        ArrayList<KanaPOJO> kana = (ArrayList<KanaPOJO>) database.RawDao().getKana(query);
 
-        return kana;
+        return (ArrayList<KanaPOJO>) database.RawDao().getKana(query);
     }
 
 
     public ArrayList<SifaEntity> getSifabySurah(int id) {
-        ArrayList<SifaEntity> sifasurah = (ArrayList<SifaEntity>) database.SifaDao().getSifaindexesBySurah(id);
-        return sifasurah;
+        return (ArrayList<SifaEntity>) database.SifaDao().getSifaindexesBySurah(id);
 
     }
     public ArrayList<SifaEntity> getSifabySurahAyah(int id,int aid) {
-        ArrayList<SifaEntity> sifasurah = (ArrayList<SifaEntity>) database.SifaDao().getSifaindexesBySurahAyah(id,aid);
-        return sifasurah;
+        return (ArrayList<SifaEntity>) database.SifaDao().getSifaindexesBySurahAyah(id,aid);
 
     }
 
 
     public ArrayList<NewShartEntity> getShartSurahNew(int id) {
-        ArrayList<NewShartEntity> shartsurah = (ArrayList<NewShartEntity>) database.NewShartDAO().getShartBySurah(id);
-        return shartsurah;
+        return (ArrayList<NewShartEntity>) database.NewShartDAO().getShartBySurah(id);
 
     }
 
     public ArrayList<lughat> getRootDictionary(String id) {
-        ArrayList<lughat> shartsurah = (ArrayList<lughat>) database.LughatDao().getRootWordDictionary(id.trim());
-        return shartsurah;
+        return (ArrayList<lughat>) database.LughatDao().getRootWordDictionary(id.trim());
 
     }
 
     public ArrayList<lanelexicon> getLanesDifinition(String id) {
-        ArrayList<lanelexicon> lanelexicon = (ArrayList<lanelexicon>) database.LaneDao().getLanesDefinition(id.trim());
-        return lanelexicon;
+        return (ArrayList<lanelexicon>) database.LaneDao().getLanesDefinition(id.trim());
 
     }
 
     public ArrayList<hanslexicon> getHansDifinition(String id) {
-        ArrayList<hanslexicon> hanslexicon = (ArrayList<hanslexicon>) database.HansDao().getHansDefinition(id.trim());
-        return hanslexicon;
+        return (ArrayList<hanslexicon>) database.HansDao().getHansDefinition(id.trim());
 
     }
     public ArrayList<lughat> getArabicWord(String id) {
-        ArrayList<lughat> shartsurah = (ArrayList<lughat>) database.LughatDao().getArabicWord(id);
-        return shartsurah;
+        return (ArrayList<lughat>) database.LughatDao().getArabicWord(id);
 
     }
     public ArrayList<qurandictionary> getQuranDictionary( ) {
-        ArrayList<qurandictionary> shartsurah = (ArrayList<qurandictionary>) database.qurandictionaryDao().getDictionary();
-        return shartsurah;
+        return (ArrayList<qurandictionary>) database.qurandictionaryDao().getDictionary();
 
     }
 
@@ -786,26 +718,22 @@ public class Utils {
 
 
     public ArrayList<NewKanaEntity> getKananew(int id ) {
-        ArrayList<NewKanaEntity> shartsurah = (ArrayList<NewKanaEntity>) database.NewKanaDao().getkanabysurah(id);
-        return shartsurah;
+        return (ArrayList<NewKanaEntity>) database.NewKanaDao().getkanabysurah(id);
 
     }
     public ArrayList<NewKanaEntity> getKanaSurahAyahnew(int id,int aid ) {
-        ArrayList<NewKanaEntity> shartsurah = (ArrayList<NewKanaEntity>) database.NewKanaDao().getkanabysurahAyah(id,aid);
-        return shartsurah;
+        return (ArrayList<NewKanaEntity>) database.NewKanaDao().getkanabysurahAyah(id,aid);
 
     }
 
     public ArrayList<NewShartEntity> getShartSurahAyahNew(int id,int ayah) {
-        ArrayList<NewShartEntity> shartsurah = (ArrayList<NewShartEntity>) database.NewShartDAO().getShartBySurahAyah(id,ayah);
-        return shartsurah;
+        return (ArrayList<NewShartEntity>) database.NewShartDAO().getShartBySurahAyah(id,ayah);
 
     }
 
     public ArrayList<wbwentity> getwbwQuranBySurahAyah(int id,int aid){
 
-        ArrayList<wbwentity> items = (ArrayList<wbwentity>) database.wbwDao().getwbwQuranBySurahAyah(id,aid);
-        return items;
+        return (ArrayList<wbwentity>) database.wbwDao().getwbwQuranBySurahAyah(id,aid);
 
 
     }
@@ -813,9 +741,7 @@ public class Utils {
 
     public ArrayList<wbwentity> getwbwQuranbTranslation(int sid,int aid,int firstwordindex, int lastwordindex) {
 
-        ArrayList<wbwentity> ayah = (ArrayList<wbwentity>) database.wbwDao().getwbwQuranbTranslation(sid,aid,firstwordindex,lastwordindex);
-
-        return ayah;
+        return (ArrayList<wbwentity>) database.wbwDao().getwbwQuranbTranslation(sid,aid,firstwordindex,lastwordindex);
     }
 
 
@@ -830,9 +756,8 @@ public class Utils {
 
         SimpleSQLiteQuery query = new SimpleSQLiteQuery(sqlverb);
         //  List<Book> result = booksDao.getBooks(query);
-        ArrayList<NounCorpusBreakup> verbOccurances = (ArrayList<NounCorpusBreakup>) database.RawDao().getNounBreakup(query);
 
-        return verbOccurances;
+        return (ArrayList<NounCorpusBreakup>) database.RawDao().getNounBreakup(query);
     }
 
 
@@ -846,9 +771,8 @@ public class Utils {
 
         SimpleSQLiteQuery query = new SimpleSQLiteQuery(sqlverb);
         //  List<Book> result = booksDao.getBooks(query);
-        ArrayList<VerbCorpusBreakup> verbOccurances = (ArrayList<VerbCorpusBreakup>) database.RawDao().getVerbBreakup(query);
 
-        return verbOccurances;
+        return (ArrayList<VerbCorpusBreakup>) database.RawDao().getVerbBreakup(query);
     }
 
 

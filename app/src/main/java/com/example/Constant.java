@@ -11,7 +11,7 @@ import android.text.style.ForegroundColorSpan;
 import androidx.core.content.ContextCompat;
 
 import com.example.mushafconsolidated.R;
-import com.example.utility.DarkThemeApplication;
+import com.example.utility.QuranGrammarApplication;
 
 
 import java.util.HashMap;
@@ -168,55 +168,55 @@ public static final String SARFKABEER="sarfkabeer";
 //AGFINST
     public static final   String DATABASE_URL = "http://127.0.0.1/drupal/sites/default/files/2021-04/QuranDatabase.db.zip";
     public static final String  DATABAWSE_FILENAME = "QuranDatabase.db.zip";
-    public static final  int PURPLE = ContextCompat.getColor(DarkThemeApplication.getContext(), R.color.purple);
-    public static final  int PeachPuff = ContextCompat.getColor(DarkThemeApplication.getContext(), R.color.PeachPuff);
-    public static final  int BBLUE = ContextCompat.getColor(DarkThemeApplication.getContext(), R.color.RoyalBlue);
-    public static final int  BCYAN = ContextCompat.getColor(DarkThemeApplication.getContext(), R.color.cyan);
-    public static final int  BYELLOW = ContextCompat.getColor(DarkThemeApplication.getContext(), R.color.yellow);
-    public static final int  BWHITE= ContextCompat.getColor(DarkThemeApplication.getContext(), R.color.white);
+    public static final  int PURPLE = ContextCompat.getColor(QuranGrammarApplication.getContext(), R.color.purple);
+    public static final  int PeachPuff = ContextCompat.getColor(QuranGrammarApplication.getContext(), R.color.PeachPuff);
+    public static final  int BBLUE = ContextCompat.getColor(QuranGrammarApplication.getContext(), R.color.RoyalBlue);
+    public static final int  BCYAN = ContextCompat.getColor(QuranGrammarApplication.getContext(), R.color.cyan);
+    public static final int  BYELLOW = ContextCompat.getColor(QuranGrammarApplication.getContext(), R.color.yellow);
+    public static final int  BWHITE= ContextCompat.getColor(QuranGrammarApplication.getContext(), R.color.white);
 
-    public static final  int TEAL = ContextCompat.getColor(DarkThemeApplication.getContext(), R.color.teal300);
-    public static final  int GOLD = ContextCompat.getColor(DarkThemeApplication.getContext(), R.color.Gold);
-    public static final  int DARKGOLDENROD = ContextCompat.getColor(DarkThemeApplication.getContext(), R.color.DarkGoldenrod);
+    public static final  int TEAL = ContextCompat.getColor(QuranGrammarApplication.getContext(), R.color.teal300);
+    public static final  int GOLD = ContextCompat.getColor(QuranGrammarApplication.getContext(), R.color.Gold);
+    public static final  int DARKGOLDENROD = ContextCompat.getColor(QuranGrammarApplication.getContext(), R.color.DarkGoldenrod);
 
-    public static final int  WMIDNIHTBLUE = ContextCompat.getColor(DarkThemeApplication.getContext(), R.color.midnightblue);
-    public static final int  WBURNTUMBER = ContextCompat.getColor(DarkThemeApplication.getContext(), R.color.burntamber);
-    public static final int GREENDARK = ContextCompat.getColor(DarkThemeApplication.getContext(), R.color.DarkGreen);
-    public static final int  WHOTPINK = ContextCompat.getColor(DarkThemeApplication.getContext(), R.color.HotPink);
-    public static final int FORESTGREEN = ContextCompat.getColor(DarkThemeApplication.getContext(), R.color.sforestgreen);
+    public static final int  WMIDNIHTBLUE = ContextCompat.getColor(QuranGrammarApplication.getContext(), R.color.midnightblue);
+    public static final int  WBURNTUMBER = ContextCompat.getColor(QuranGrammarApplication.getContext(), R.color.burntamber);
+    public static final int GREENDARK = ContextCompat.getColor(QuranGrammarApplication.getContext(), R.color.DarkGreen);
+    public static final int  WHOTPINK = ContextCompat.getColor(QuranGrammarApplication.getContext(), R.color.HotPink);
+    public static final int FORESTGREEN = ContextCompat.getColor(QuranGrammarApplication.getContext(), R.color.sforestgreen);
 
 
-    public static final  int LIME = ContextCompat.getColor(DarkThemeApplication.getContext(),  R.color.Lime);
-    public static final  int KASHMIRIGREEN = ContextCompat.getColor(DarkThemeApplication.getContext(),  R.color.kashmirigreen);
-    public static final  int   MIDNIGHTBLUE = ContextCompat.getColor(DarkThemeApplication.getContext(), R.color.midnightblue);
-    public static final  int   INDIGO = ContextCompat.getColor(DarkThemeApplication.getContext(), R.color.indigo);
-    public static final  int   ORANGE400 = ContextCompat.getColor(DarkThemeApplication.getContext(), R.color.orange400);
-    public static final  int   DARKMAGENTA = ContextCompat.getColor(DarkThemeApplication.getContext(), R.color.DarkMagenta);
-    public static final  int TEAL400 = ContextCompat.getColor(DarkThemeApplication.getContext(), R.color.teal400);
-    public static final  int   ORANGE100 = ContextCompat.getColor(DarkThemeApplication.getContext(), R.color.orange100);
+    public static final  int LIME = ContextCompat.getColor(QuranGrammarApplication.getContext(),  R.color.Lime);
+    public static final  int KASHMIRIGREEN = ContextCompat.getColor(QuranGrammarApplication.getContext(),  R.color.kashmirigreen);
+    public static final  int   MIDNIGHTBLUE = ContextCompat.getColor(QuranGrammarApplication.getContext(), R.color.midnightblue);
+    public static final  int   INDIGO = ContextCompat.getColor(QuranGrammarApplication.getContext(), R.color.indigo);
+    public static final  int   ORANGE400 = ContextCompat.getColor(QuranGrammarApplication.getContext(), R.color.orange400);
+    public static final  int   DARKMAGENTA = ContextCompat.getColor(QuranGrammarApplication.getContext(), R.color.DarkMagenta);
+    public static final  int TEAL400 = ContextCompat.getColor(QuranGrammarApplication.getContext(), R.color.teal400);
+    public static final  int   ORANGE100 = ContextCompat.getColor(QuranGrammarApplication.getContext(), R.color.orange100);
 
-    public static final  int   LIGHTPINK = ContextCompat.getColor(DarkThemeApplication.getContext(), R.color.LightPink);
-    public static final  int   CYANLIGHT = ContextCompat.getColor(DarkThemeApplication.getContext(), R.color.cyan_light);
-    public static final  int   CYANLIGHTEST = ContextCompat.getColor(DarkThemeApplication.getContext(), R.color.cyan_lightest);
+    public static final  int   LIGHTPINK = ContextCompat.getColor(QuranGrammarApplication.getContext(), R.color.LightPink);
+    public static final  int   CYANLIGHT = ContextCompat.getColor(QuranGrammarApplication.getContext(), R.color.cyan_light);
+    public static final  int   CYANLIGHTEST = ContextCompat.getColor(QuranGrammarApplication.getContext(), R.color.cyan_lightest);
 
-    public static final  int   ORANGERED = ContextCompat.getColor(DarkThemeApplication.getContext(), R.color.OrangeRed);
+    public static final  int   ORANGERED = ContextCompat.getColor(QuranGrammarApplication.getContext(), R.color.OrangeRed);
 
-    public static final  int   GREENYELLOW = ContextCompat.getColor(DarkThemeApplication.getContext(), R.color.GreenYellow);
-    public static final  int   HOTPINK = ContextCompat.getColor(DarkThemeApplication.getContext(), R.color.HotPink);
-    public static final  int   SALMON = ContextCompat.getColor(DarkThemeApplication.getContext(), R.color.Salmon);
-    public static final  int   BROWN = ContextCompat.getColor(DarkThemeApplication.getContext(), R.color.LightSlateGray);
+    public static final  int   GREENYELLOW = ContextCompat.getColor(QuranGrammarApplication.getContext(), R.color.GreenYellow);
+    public static final  int   HOTPINK = ContextCompat.getColor(QuranGrammarApplication.getContext(), R.color.HotPink);
+    public static final  int   SALMON = ContextCompat.getColor(QuranGrammarApplication.getContext(), R.color.Salmon);
+    public static final  int   BROWN = ContextCompat.getColor(QuranGrammarApplication.getContext(), R.color.LightSlateGray);
 
-    public static final  int   MEDIUMSLATEBLUE = ContextCompat.getColor(DarkThemeApplication.getContext(), R.color.MediumSlateBlue);
+    public static final  int   MEDIUMSLATEBLUE = ContextCompat.getColor(QuranGrammarApplication.getContext(), R.color.MediumSlateBlue);
 
-    public static final  int   DarkTurquoise = ContextCompat.getColor(DarkThemeApplication.getContext(), R.color.Lavender);
-    public static final  int   DeepPink = ContextCompat.getColor(DarkThemeApplication.getContext(), R.color.DeepPink);
+    public static final  int   DarkTurquoise = ContextCompat.getColor(QuranGrammarApplication.getContext(), R.color.Lavender);
+    public static final  int   DeepPink = ContextCompat.getColor(QuranGrammarApplication.getContext(), R.color.DeepPink);
 
-    public static final  int   Fuchsia = ContextCompat.getColor(DarkThemeApplication.getContext(), R.color.Fuchsia);
-  public static final  int   pinkshade = ContextCompat.getColor(DarkThemeApplication.getContext(), R.color.pinkshade);
+    public static final  int   Fuchsia = ContextCompat.getColor(QuranGrammarApplication.getContext(), R.color.Fuchsia);
+  public static final  int   pinkshade = ContextCompat.getColor(QuranGrammarApplication.getContext(), R.color.pinkshade);
 
-    public static final  int   Magenta = ContextCompat.getColor(DarkThemeApplication.getContext(), R.color.Magenta);
-    public static final  int prussianblue = ContextCompat.getColor(DarkThemeApplication.getContext(),  R.color.prussianblue);
-    public static final int deepburnsienna=ContextCompat.getColor(DarkThemeApplication.getContext(),R.color.deepburnsienna);
+    public static final  int   Magenta = ContextCompat.getColor(QuranGrammarApplication.getContext(), R.color.Magenta);
+    public static final  int prussianblue = ContextCompat.getColor(QuranGrammarApplication.getContext(),  R.color.prussianblue);
+    public static final int deepburnsienna=ContextCompat.getColor(QuranGrammarApplication.getContext(),R.color.deepburnsienna);
 
 //lgiht
 public static ForegroundColorSpan nounspanLight = new ForegroundColorSpan(BBLUE);
@@ -226,12 +226,12 @@ public static ForegroundColorSpan nounspanLight = new ForegroundColorSpan(BBLUE)
 
     public static ForegroundColorSpan propernounspanLight = new ForegroundColorSpan(prussianblue);
     public static ForegroundColorSpan particlespanLight = new ForegroundColorSpan(BBLUE);
-    public static ForegroundColorSpan prepositionspanLight = new ForegroundColorSpan(ContextCompat.getColor(DarkThemeApplication.getContext(), R.color.rustred));
+    public static ForegroundColorSpan prepositionspanLight = new ForegroundColorSpan(ContextCompat.getColor(QuranGrammarApplication.getContext(), R.color.rustred));
     public static ForegroundColorSpan resumtionspanLight = new ForegroundColorSpan(HOTPINK);
 
-    public static ForegroundColorSpan pronounspanLight = new ForegroundColorSpan(ContextCompat.getColor(DarkThemeApplication.getContext(), R.color.steelemetal));
-    public static ForegroundColorSpan attachedpronounspanLight = new ForegroundColorSpan(ContextCompat.getColor(DarkThemeApplication.getContext(), R.color.steelemetal));
-    public static ForegroundColorSpan determinerspanLight = new ForegroundColorSpan(ContextCompat.getColor(DarkThemeApplication.getContext(), R.color.steelemetal));
+    public static ForegroundColorSpan pronounspanLight = new ForegroundColorSpan(ContextCompat.getColor(QuranGrammarApplication.getContext(), R.color.steelemetal));
+    public static ForegroundColorSpan attachedpronounspanLight = new ForegroundColorSpan(ContextCompat.getColor(QuranGrammarApplication.getContext(), R.color.steelemetal));
+    public static ForegroundColorSpan determinerspanLight = new ForegroundColorSpan(ContextCompat.getColor(QuranGrammarApplication.getContext(), R.color.steelemetal));
 
     public static ForegroundColorSpan timeadverbspanLight = new ForegroundColorSpan(BROWN);
     public static ForegroundColorSpan locationadverspanLight = new ForegroundColorSpan(CYANLIGHTEST);

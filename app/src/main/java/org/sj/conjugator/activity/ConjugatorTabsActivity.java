@@ -12,7 +12,7 @@ import androidx.lifecycle.Lifecycle;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
-import com.example.utility.DarkThemeApplication;
+import com.example.utility.QuranGrammarApplication;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
@@ -90,7 +90,7 @@ public class ConjugatorTabsActivity extends BaseActivity {
 
 
 
-            SharedPref sharedPref=new SharedPref(DarkThemeApplication.getContext());
+            SharedPref sharedPref=new SharedPref(QuranGrammarApplication.getContext());
         // Up to here, we have working scrollable pages
         if (ismujarrad) {
             if (sharedPref.getLanguage().equals("en")) {

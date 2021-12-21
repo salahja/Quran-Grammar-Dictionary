@@ -43,30 +43,30 @@ public class ThemeHelper {
         switch (themePref) {
             case LIGHT_THEME: {
                 //AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-                DarkThemeApplication.getContext().setTheme(R.style.Theme_White);
+                QuranGrammarApplication.getContext().setTheme(R.style.Theme_White);
                   AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
                 break;
             }
             case DARK_THEME: {
                // AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-                DarkThemeApplication.getContext().setTheme(R.style.Theme_Black);
+                QuranGrammarApplication.getContext().setTheme(R.style.Theme_Black);
             //    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
                 break;
             }
             case DARK_BLUE: {
-                DarkThemeApplication.getContext().setTheme(R.style.Theme_DarkBlue);
+                QuranGrammarApplication.getContext().setTheme(R.style.Theme_DarkBlue);
            //     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
                 break;
             }
 
             case BROWN_MODE: {
 
-                DarkThemeApplication.getContext().setTheme(R.style.Theme_Green);
+                QuranGrammarApplication.getContext().setTheme(R.style.Theme_Green);
 break;
             }
 
                 case GREEN_MODE: {
-                    DarkThemeApplication.getContext().setTheme(R.style.Theme_Brown);
+                    QuranGrammarApplication.getContext().setTheme(R.style.Theme_Brown);
 
 
 

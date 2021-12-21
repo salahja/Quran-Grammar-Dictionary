@@ -24,8 +24,8 @@
                 android:layout_height="30.0dip"
                 android:background="?odd_item_bg"
                 android:gravity="center_vertical"
-                android:paddingLeft="18.0dip"
-                android:paddingRight="18.0dip"
+                android:paddingStart="18.0dip"
+                android:paddingEnd="18.0dip"
                 android:text="@string/bookmark_last_read"
                 app:tabTextAppearance="@style/TabTextAppearance" />
 
@@ -40,8 +40,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="left"
-                    android:paddingLeft="@dimen/space_2"
-                    android:paddingRight="@dimen/space_2">
+                    android:paddingStart="@dimen/space_2"
+                    android:paddingEnd="@dimen/space_2">
 
                     <com.google.android.material.button.MaterialButton
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
@@ -82,8 +82,8 @@
                 android:layout_height="30.0dip"
                 android:background="?odd_item_bg"
                 android:gravity="center_vertical"
-                android:paddingLeft="18.0dip"
-                android:paddingRight="18.0dip"
+                android:paddingStart="18.0dip"
+                android:paddingEnd="18.0dip"
                 android:text="@string/quick_links"
                 app:tabTextAppearance="@style/TabTextAppearance"/>
 
@@ -100,8 +100,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="left"
-                    android:paddingLeft="@dimen/space_2"
-                    android:paddingRight="@dimen/space_2">
+                    android:paddingStart="@dimen/space_2"
+                    android:paddingEnd="@dimen/space_2">
 
                     <com.google.android.material.button.MaterialButton
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
@@ -155,8 +155,8 @@
                 android:layout_height="wrap_content"
 
                 android:orientation="horizontal"
-                android:paddingLeft="18.0dip"
-                android:paddingRight="18.0dip">
+                android:paddingStart="18.0dip"
+                android:paddingEnd="18.0dip">
 
                 <TextView
                     android:layout_width="wrap_content"

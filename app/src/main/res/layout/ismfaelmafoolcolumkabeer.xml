@@ -35,8 +35,8 @@
                     android:layout_weight="0.2"
                     android:text="Participles"
                     android:gravity="center"
-                    android:paddingLeft="5.0dip"
-                    android:paddingRight="10.0dip"
+                    android:paddingStart="5.0dip"
+                    android:paddingEnd="10.0dip"
                     android:textSize="20sp"
                     />
 
@@ -67,9 +67,9 @@
                     android:layout_width="0.0dip"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2"
-                    android:gravity="center|right"
-                    android:paddingLeft="5.0dip"
-                    android:paddingRight="10.0dip"
+                    android:gravity="center|end"
+                    android:paddingStart="5.0dip"
+                    android:paddingEnd="10.0dip"
 
                     android:textSize="20sp"
                     />
@@ -79,9 +79,9 @@
                     android:layout_width="0.0dip"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2"
-                    android:gravity="center|right"
-                    android:paddingLeft="5.0dip"
-                    android:paddingRight="10.0dip"
+                    android:gravity="center|end"
+                    android:paddingStart="5.0dip"
+                    android:paddingEnd="10.0dip"
 
                     android:textSize="20sp"
                     />
@@ -91,9 +91,9 @@
                     android:layout_width="0.0dip"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2"
-                    android:gravity="center|right"
-                    android:paddingLeft="5.0dip"
-                    android:paddingRight="10.0dip"
+                    android:gravity="center|end"
+                    android:paddingStart="5.0dip"
+                    android:paddingEnd="10.0dip"
 
                     android:textSize="20sp"
                     />
@@ -103,9 +103,9 @@
                     android:layout_width="0.0dip"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2"
-                    android:gravity="center|right"
-                    android:paddingLeft="5.0dip"
-                    android:paddingRight="5.0dip"
+                    android:gravity="center|end"
+                    android:paddingStart="5.0dip"
+                    android:paddingEnd="5.0dip"
 
 
                     android:textSize="20sp"
@@ -116,9 +116,9 @@
                     android:layout_width="0.0dip"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2"
-                    android:gravity="center|right"
-                    android:paddingLeft="5.0dip"
-                    android:paddingRight="5.0dip"
+                    android:gravity="center|end"
+                    android:paddingStart="5.0dip"
+                    android:paddingEnd="5.0dip"
 
 
                     android:textSize="20sp"
@@ -128,9 +128,9 @@
                     android:layout_width="0.0dip"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2"
-                    android:gravity="center|right"
-                    android:paddingLeft="5.0dip"
-                    android:paddingRight="5.0dip"
+                    android:gravity="center|end"
+                    android:paddingStart="5.0dip"
+                    android:paddingEnd="5.0dip"
 
 
                     android:textSize="20sp"
@@ -158,9 +158,9 @@
                     android:layout_width="0.0dip"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2"
-                    android:gravity="center|right"
-                    android:paddingLeft="5.0dip"
-                    android:paddingRight="10.0dip"
+                    android:gravity="center|end"
+                    android:paddingStart="5.0dip"
+                    android:paddingEnd="10.0dip"
                     android:textSize="20sp"
                     />
 
@@ -171,9 +171,9 @@
                     android:layout_width="0.0dip"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2"
-                    android:gravity="center|right"
-                    android:paddingLeft="5.0dip"
-                    android:paddingRight="10.0dip"
+                    android:gravity="center|end"
+                    android:paddingStart="5.0dip"
+                    android:paddingEnd="10.0dip"
                     android:textSize="20sp"
                     />
 
@@ -183,9 +183,9 @@
                     android:layout_width="0.0dip"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2"
-                    android:gravity="center|right"
-                    android:paddingLeft="5.0dip"
-                    android:paddingRight="10.0dip"
+                    android:gravity="center|end"
+                    android:paddingStart="5.0dip"
+                    android:paddingEnd="10.0dip"
                     android:textSize="20sp"
                     />
 
@@ -195,9 +195,9 @@
                     android:layout_width="0.0dip"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2"
-                    android:gravity="center|right"
-                    android:paddingLeft="5.0dip"
-                    android:paddingRight="10.0dip"
+                    android:gravity="center|end"
+                    android:paddingStart="5.0dip"
+                    android:paddingEnd="10.0dip"
                     android:textSize="20sp"
                     />
 
@@ -206,9 +206,9 @@
                     android:layout_width="0.0dip"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2"
-                    android:gravity="center|right"
-                    android:paddingLeft="5.0dip"
-                    android:paddingRight="10.0dip"
+                    android:gravity="center|end"
+                    android:paddingStart="5.0dip"
+                    android:paddingEnd="10.0dip"
 
                     android:textSize="20sp" />
                 <TextView
@@ -216,9 +216,9 @@
                     android:layout_width="0.0dip"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2"
-                    android:gravity="center|right"
-                    android:paddingLeft="5.0dip"
-                    android:paddingRight="10.0dip"
+                    android:gravity="center|end"
+                    android:paddingStart="5.0dip"
+                    android:paddingEnd="10.0dip"
 
                     android:textSize="20sp" />
 
@@ -244,9 +244,9 @@
                     android:layout_width="0.0dip"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2"
-                    android:gravity="center|right"
-                    android:paddingLeft="5.0dip"
-                    android:paddingRight="10.0dip"
+                    android:gravity="center|end"
+                    android:paddingStart="5.0dip"
+                    android:paddingEnd="10.0dip"
                     android:textSize="20sp"
                     />
 
@@ -257,9 +257,9 @@
                     android:layout_width="0.0dip"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2"
-                    android:gravity="center|right"
-                    android:paddingLeft="5.0dip"
-                    android:paddingRight="10.0dip"
+                    android:gravity="center|end"
+                    android:paddingStart="5.0dip"
+                    android:paddingEnd="10.0dip"
                     android:textSize="20sp"
                     />
 
@@ -269,9 +269,9 @@
                     android:layout_width="0.0dip"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2"
-                    android:gravity="center|right"
-                    android:paddingLeft="5.0dip"
-                    android:paddingRight="10.0dip"
+                    android:gravity="center|end"
+                    android:paddingStart="5.0dip"
+                    android:paddingEnd="10.0dip"
                     android:textSize="20sp"
                     />
 
@@ -281,9 +281,9 @@
                     android:layout_width="0.0dip"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2"
-                    android:gravity="center|right"
-                    android:paddingLeft="5.0dip"
-                    android:paddingRight="10.0dip"
+                    android:gravity="center|end"
+                    android:paddingStart="5.0dip"
+                    android:paddingEnd="10.0dip"
                     android:textSize="20sp"
                     />
                 <TextView
@@ -292,9 +292,9 @@
                     android:layout_width="0.0dip"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2"
-                    android:gravity="center|right"
-                    android:paddingLeft="5.0dip"
-                    android:paddingRight="10.0dip"
+                    android:gravity="center|end"
+                    android:paddingStart="5.0dip"
+                    android:paddingEnd="10.0dip"
 
                     android:textSize="20sp" />
 
@@ -303,9 +303,9 @@
                     android:layout_width="0.0dip"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2"
-                    android:gravity="center|right"
-                    android:paddingLeft="5.0dip"
-                    android:paddingRight="10.0dip"
+                    android:gravity="center|end"
+                    android:paddingStart="5.0dip"
+                    android:paddingEnd="10.0dip"
 
                     android:textSize="20sp" />
 
@@ -332,9 +332,9 @@
                     android:layout_width="0.0dip"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2"
-                    android:gravity="center|right"
-                    android:paddingLeft="5.0dip"
-                    android:paddingRight="10.0dip"
+                    android:gravity="center|end"
+                    android:paddingStart="5.0dip"
+                    android:paddingEnd="10.0dip"
                     android:textSize="20sp"
                     />
 
@@ -344,9 +344,9 @@
                     android:layout_width="0.0dip"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2"
-                    android:gravity="center|right"
-                    android:paddingLeft="5.0dip"
-                    android:paddingRight="10.0dip"
+                    android:gravity="center|end"
+                    android:paddingStart="5.0dip"
+                    android:paddingEnd="10.0dip"
                     android:textSize="20sp"
                     />
 
@@ -356,9 +356,9 @@
                     android:layout_width="0.0dip"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2"
-                    android:gravity="center|right"
-                    android:paddingLeft="5.0dip"
-                    android:paddingRight="10.0dip"
+                    android:gravity="center|end"
+                    android:paddingStart="5.0dip"
+                    android:paddingEnd="10.0dip"
                     android:textSize="20sp"
                     />
 
@@ -368,9 +368,9 @@
                     android:layout_width="0.0dip"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2"
-                    android:gravity="center|right"
-                    android:paddingLeft="5.0dip"
-                    android:paddingRight="10.0dip"
+                    android:gravity="center|end"
+                    android:paddingStart="5.0dip"
+                    android:paddingEnd="10.0dip"
                     android:textSize="20sp"
                     />
                 <TextView
@@ -379,9 +379,9 @@
                     android:layout_width="0.0dip"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2"
-                    android:gravity="center|right"
-                    android:paddingLeft="5.0dip"
-                    android:paddingRight="10.0dip"
+                    android:gravity="center|end"
+                    android:paddingStart="5.0dip"
+                    android:paddingEnd="10.0dip"
 
                     android:textSize="20sp" />
                 <TextView
@@ -389,9 +389,9 @@
                     android:layout_width="0.0dip"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2"
-                    android:gravity="center|right"
-                    android:paddingLeft="5.0dip"
-                    android:paddingRight="10.0dip"
+                    android:gravity="center|end"
+                    android:paddingStart="5.0dip"
+                    android:paddingEnd="10.0dip"
 
                     android:textSize="20sp" />
             </LinearLayout>
@@ -422,9 +422,9 @@
                     android:layout_width="0.0dip"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2"
-                    android:gravity="center|right"
-                    android:paddingLeft="5.0dip"
-                    android:paddingRight="10.0dip"
+                    android:gravity="center|end"
+                    android:paddingStart="5.0dip"
+                    android:paddingEnd="10.0dip"
                     android:textSize="20sp"
                     />
 
@@ -434,9 +434,9 @@
                     android:layout_width="0.0dip"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2"
-                    android:gravity="center|right"
-                    android:paddingLeft="5.0dip"
-                    android:paddingRight="10.0dip"
+                    android:gravity="center|end"
+                    android:paddingStart="5.0dip"
+                    android:paddingEnd="10.0dip"
                     android:textSize="20sp"
                     />
 
@@ -446,9 +446,9 @@
                     android:layout_width="0.0dip"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2"
-                    android:gravity="center|right"
-                    android:paddingLeft="5.0dip"
-                    android:paddingRight="10.0dip"
+                    android:gravity="center|end"
+                    android:paddingStart="5.0dip"
+                    android:paddingEnd="10.0dip"
                     android:textSize="20sp"
                     />
 
@@ -458,9 +458,9 @@
                     android:layout_width="0.0dip"
                     android:layout_height="match_parent"
                     android:layout_weight="0.2"
-                    android:gravity="center|right"
-                    android:paddingLeft="5.0dip"
-                    android:paddingRight="10.0dip"
+                    android:gravity="center|end"
+                    android:paddingStart="5.0dip"
+                    android:paddingEnd="10.0dip"
                     android:textSize="20sp"
                     />
                 <TextView
@@ -469,9 +469,9 @@
                     android:layout_width="0.0dip"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2"
-                    android:gravity="center|right"
-                    android:paddingLeft="5.0dip"
-                    android:paddingRight="10.0dip"
+                    android:gravity="center|end"
+                    android:paddingStart="5.0dip"
+                    android:paddingEnd="10.0dip"
 
                     android:textSize="20sp" />
 
@@ -480,9 +480,9 @@
                     android:layout_width="0.0dip"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2"
-                    android:gravity="center|right"
-                    android:paddingLeft="5.0dip"
-                    android:paddingRight="10.0dip"
+                    android:gravity="center|end"
+                    android:paddingStart="5.0dip"
+                    android:paddingEnd="10.0dip"
 
                     android:textSize="20sp" />
 
@@ -509,9 +509,9 @@
                     android:layout_width="0.0dip"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2"
-                    android:gravity="center|right"
-                    android:paddingLeft="5.0dip"
-                    android:paddingRight="10.0dip"
+                    android:gravity="center|end"
+                    android:paddingStart="5.0dip"
+                    android:paddingEnd="10.0dip"
                     android:textSize="20sp"
                     />
 
@@ -521,9 +521,9 @@
                     android:layout_width="0.0dip"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2"
-                    android:gravity="center|right"
-                    android:paddingLeft="5.0dip"
-                    android:paddingRight="10.0dip"
+                    android:gravity="center|end"
+                    android:paddingStart="5.0dip"
+                    android:paddingEnd="10.0dip"
                     android:textSize="20sp"
                     />
 
@@ -533,9 +533,9 @@
                     android:layout_width="0.0dip"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2"
-                    android:gravity="center|right"
-                    android:paddingLeft="5.0dip"
-                    android:paddingRight="10.0dip"
+                    android:gravity="center|end"
+                    android:paddingStart="5.0dip"
+                    android:paddingEnd="10.0dip"
                     android:textSize="20sp"
                     />
 
@@ -545,9 +545,9 @@
                     android:layout_width="0.0dip"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2"
-                    android:gravity="center|right"
-                    android:paddingLeft="5.0dip"
-                    android:paddingRight="10.0dip"
+                    android:gravity="center|end"
+                    android:paddingStart="5.0dip"
+                    android:paddingEnd="10.0dip"
                     android:textSize="20sp"
                     />
                 <TextView
@@ -556,9 +556,9 @@
                     android:layout_width="0.0dip"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2"
-                    android:gravity="center|right"
-                    android:paddingLeft="5.0dip"
-                    android:paddingRight="10.0dip"
+                    android:gravity="center|end"
+                    android:paddingStart="5.0dip"
+                    android:paddingEnd="10.0dip"
 
                     android:textSize="20sp" />
                 <TextView
@@ -566,9 +566,9 @@
                     android:layout_width="0.0dip"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2"
-                    android:gravity="center|right"
-                    android:paddingLeft="5.0dip"
-                    android:paddingRight="10.0dip"
+                    android:gravity="center|end"
+                    android:paddingStart="5.0dip"
+                    android:paddingEnd="10.0dip"
 
                     android:textSize="20sp" />
 
@@ -596,9 +596,9 @@
                     android:layout_width="0.0dip"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2"
-                    android:gravity="center|right"
-                    android:paddingLeft="5.0dip"
-                    android:paddingRight="10.0dip"
+                    android:gravity="center|end"
+                    android:paddingStart="5.0dip"
+                    android:paddingEnd="10.0dip"
                     android:textSize="20sp"
                     />
 
@@ -609,9 +609,9 @@
                     android:layout_width="0.0dip"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2"
-                    android:gravity="center|right"
-                    android:paddingLeft="5.0dip"
-                    android:paddingRight="10.0dip"
+                    android:gravity="center|end"
+                    android:paddingStart="5.0dip"
+                    android:paddingEnd="10.0dip"
                     android:textSize="20sp"
                     />
 
@@ -621,9 +621,9 @@
                     android:layout_width="0.0dip"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2"
-                    android:gravity="center|right"
-                    android:paddingLeft="5.0dip"
-                    android:paddingRight="10.0dip"
+                    android:gravity="center|end"
+                    android:paddingStart="5.0dip"
+                    android:paddingEnd="10.0dip"
                     android:textSize="20sp"
                     />
 
@@ -633,9 +633,9 @@
                     android:layout_width="0.0dip"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2"
-                    android:gravity="center|right"
-                    android:paddingLeft="5.0dip"
-                    android:paddingRight="10.0dip"
+                    android:gravity="center|end"
+                    android:paddingStart="5.0dip"
+                    android:paddingEnd="10.0dip"
                     android:textSize="20sp"
                     />
                 <TextView
@@ -644,9 +644,9 @@
                     android:layout_width="0.0dip"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2"
-                    android:gravity="center|right"
-                    android:paddingLeft="5.0dip"
-                    android:paddingRight="10.0dip"
+                    android:gravity="center|end"
+                    android:paddingStart="5.0dip"
+                    android:paddingEnd="10.0dip"
 
                     android:textSize="20sp" />
 
@@ -655,9 +655,9 @@
                     android:layout_width="0.0dip"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2"
-                    android:gravity="center|right"
-                    android:paddingLeft="5.0dip"
-                    android:paddingRight="10.0dip"
+                    android:gravity="center|end"
+                    android:paddingStart="5.0dip"
+                    android:paddingEnd="10.0dip"
 
                     android:textSize="20sp" />
             </LinearLayout>
@@ -688,9 +688,9 @@
                     android:layout_width="0.0dip"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2"
-                    android:gravity="center|right"
-                    android:paddingLeft="5.0dip"
-                    android:paddingRight="10.0dip"
+                    android:gravity="center|end"
+                    android:paddingStart="5.0dip"
+                    android:paddingEnd="10.0dip"
                     android:textSize="20sp"
                     />
 
@@ -700,9 +700,9 @@
                     android:layout_width="0.0dip"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2"
-                    android:gravity="center|right"
-                    android:paddingLeft="5.0dip"
-                    android:paddingRight="10.0dip"
+                    android:gravity="center|end"
+                    android:paddingStart="5.0dip"
+                    android:paddingEnd="10.0dip"
                     android:textSize="20sp"
                     />
 
@@ -712,9 +712,9 @@
                     android:layout_width="0.0dip"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2"
-                    android:gravity="center|right"
-                    android:paddingLeft="5.0dip"
-                    android:paddingRight="10.0dip"
+                    android:gravity="center|end"
+                    android:paddingStart="5.0dip"
+                    android:paddingEnd="10.0dip"
                     android:textSize="20sp"
                     />
 
@@ -724,9 +724,9 @@
                     android:layout_width="0.0dip"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2"
-                    android:gravity="center|right"
-                    android:paddingLeft="5.0dip"
-                    android:paddingRight="10.0dip"
+                    android:gravity="center|end"
+                    android:paddingStart="5.0dip"
+                    android:paddingEnd="10.0dip"
                     android:textSize="20sp"
                     />
                 <TextView
@@ -735,9 +735,9 @@
                     android:layout_width="0.0dip"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2"
-                    android:gravity="center|right"
-                    android:paddingLeft="5.0dip"
-                    android:paddingRight="10.0dip"
+                    android:gravity="center|end"
+                    android:paddingStart="5.0dip"
+                    android:paddingEnd="10.0dip"
 
                     android:textSize="20sp" />
                 <TextView
@@ -745,9 +745,9 @@
                     android:layout_width="0.0dip"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2"
-                    android:gravity="center|right"
-                    android:paddingLeft="5.0dip"
-                    android:paddingRight="10.0dip"
+                    android:gravity="center|end"
+                    android:paddingStart="5.0dip"
+                    android:paddingEnd="10.0dip"
 
                     android:textSize="20sp" />
 
@@ -775,9 +775,9 @@
                     android:layout_width="0.0dip"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2"
-                    android:gravity="center|right"
-                    android:paddingLeft="5.0dip"
-                    android:paddingRight="10.0dip"
+                    android:gravity="center|end"
+                    android:paddingStart="5.0dip"
+                    android:paddingEnd="10.0dip"
                     android:textSize="20sp"
                     />
 
@@ -788,21 +788,21 @@
                     android:layout_width="0.0dip"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2"
-                    android:gravity="center|right"
-                    android:paddingLeft="5.0dip"
-                    android:paddingRight="10.0dip"
+                    android:gravity="center|end"
+                    android:paddingStart="5.0dip"
+                    android:paddingEnd="10.0dip"
                     android:textSize="20sp"
                     />
 
                 <TextView
+                    android:id="@+id/iseight"
 
-                    android:id="@+id/dual3"
                     android:layout_width="0.0dip"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2"
-                    android:gravity="center|right"
-                    android:paddingLeft="5.0dip"
-                    android:paddingRight="10.0dip"
+                    android:gravity="center|end"
+                    android:paddingStart="5.0dip"
+                    android:paddingEnd="10.0dip"
 
                     android:textSize="20sp" />
                 <TextView
@@ -811,21 +811,21 @@
                     android:layout_width="0.0dip"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2"
-                    android:gravity="center|right"
-                    android:paddingLeft="5.0dip"
-                    android:paddingRight="10.0dip"
+                    android:gravity="center|end"
+                    android:paddingStart="5.0dip"
+                    android:paddingEnd="10.0dip"
                     android:textSize="20sp"
                     />
 
 
-                <TextView
-                    android:id="@+id/iseight"
+                 <TextView
+                android:id="@+id/dual3"
                     android:layout_width="0.0dip"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2"
-                    android:gravity="center|right"
-                    android:paddingLeft="5.0dip"
-                    android:paddingRight="10.0dip"
+                    android:gravity="center|end"
+                    android:paddingStart="5.0dip"
+                    android:paddingEnd="10.0dip"
                     android:textSize="20sp"
                     />
 
@@ -834,9 +834,9 @@
                     android:layout_width="0.0dip"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2"
-                    android:gravity="center|right"
-                    android:paddingLeft="5.0dip"
-                    android:paddingRight="10.0dip"
+                    android:gravity="center|end"
+                    android:paddingStart="5.0dip"
+                    android:paddingEnd="10.0dip"
 
                     android:textSize="20sp" />
             </LinearLayout>
@@ -862,9 +862,9 @@
                     android:layout_width="0.0dip"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2"
-                    android:gravity="center|right"
-                    android:paddingLeft="5.0dip"
-                    android:paddingRight="10.0dip"
+                    android:gravity="center|end"
+                    android:paddingStart="5.0dip"
+                    android:paddingEnd="10.0dip"
                     android:textSize="20sp"
                     />
 
@@ -875,9 +875,9 @@
                     android:layout_width="0.0dip"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2"
-                    android:gravity="center|right"
-                    android:paddingLeft="5.0dip"
-                    android:paddingRight="10.0dip"
+                    android:gravity="center|end"
+                    android:paddingStart="5.0dip"
+                    android:paddingEnd="10.0dip"
                     android:textSize="20sp"
                     />
 
@@ -887,9 +887,9 @@
                     android:layout_width="0.0dip"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2"
-                    android:gravity="center|right"
-                    android:paddingLeft="5.0dip"
-                    android:paddingRight="10.0dip"
+                    android:gravity="center|end"
+                    android:paddingStart="5.0dip"
+                    android:paddingEnd="10.0dip"
                     android:textSize="20sp"
                     />
 
@@ -899,9 +899,9 @@
                     android:layout_width="0.0dip"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2"
-                    android:gravity="center|right"
-                    android:paddingLeft="5.0dip"
-                    android:paddingRight="10.0dip"
+                    android:gravity="center|end"
+                    android:paddingStart="5.0dip"
+                    android:paddingEnd="10.0dip"
                     android:textSize="20sp"
                     />
                 <TextView
@@ -910,9 +910,9 @@
                     android:layout_width="0.0dip"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2"
-                    android:gravity="center|right"
-                    android:paddingLeft="5.0dip"
-                    android:paddingRight="10.0dip"
+                    android:gravity="center|end"
+                    android:paddingStart="5.0dip"
+                    android:paddingEnd="10.0dip"
 
                     android:textSize="20sp" />
 
@@ -921,9 +921,9 @@
                     android:layout_width="0.0dip"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2"
-                    android:gravity="center|right"
-                    android:paddingLeft="5.0dip"
-                    android:paddingRight="10.0dip"
+                    android:gravity="center|end"
+                    android:paddingStart="5.0dip"
+                    android:paddingEnd="10.0dip"
 
                     android:textSize="20sp" />
 

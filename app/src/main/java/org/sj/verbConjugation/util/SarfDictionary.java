@@ -1,7 +1,7 @@
 package org.sj.verbConjugation.util;
 
 
-import com.example.utility.DarkThemeApplication;
+import com.example.utility.QuranGrammarApplication;
 
 import org.sj.verbConjugation.trilateral.augmented.AugmentedTrilateralRoot;
 import org.sj.verbConjugation.trilateral.unaugmented.UnaugmentedTrilateralRoot;
@@ -32,7 +32,7 @@ public class SarfDictionary {
     AugmentedTrilateralRoot augroot = new
           AugmentedTrilateralRoot();
     //  AugmentedTrilateralRootTree augmentedRootsTree = DatabaseManager.getInstance().getAugmentedTrilateralRootTree(c1);
-    DatabaseUtils utils = new DatabaseUtils(DarkThemeApplication.getContext());
+    DatabaseUtils utils = new DatabaseUtils(QuranGrammarApplication.getContext());
   //  final ArrayList<VerbsTriMazeedDictEntity> triVerbMazeed = utils.getTriVerbMazeed(rootText);
     final ArrayList<Mazeed> triVerbMazeed = utils.getMazeedRoot(rootText);
     for (Mazeed root : triVerbMazeed) {
@@ -57,7 +57,7 @@ public class SarfDictionary {
     AugmentedTrilateralRoot augroot = new
           AugmentedTrilateralRoot();
     //  AugmentedTrilateralRootTree augmentedRootsTree = DatabaseManager.getInstance().getAugmentedTrilateralRootTree(c1);
-    DatabaseUtils utils = new DatabaseUtils(DarkThemeApplication.getContext());
+    DatabaseUtils utils = new DatabaseUtils(QuranGrammarApplication.getContext());
       ArrayList<Mazeed> triVerbMazeed = utils.getMazeedRoot(rootText);
 
     for (Mazeed root : triVerbMazeed) {
@@ -168,7 +168,7 @@ public class SarfDictionary {
     char c2 = rootText.charAt(1);
     char c3 = rootText.charAt(2);
     java.util.List result = new LinkedList();
-    DatabaseUtils utils = new DatabaseUtils(DarkThemeApplication.getContext());
+    DatabaseUtils utils = new DatabaseUtils(QuranGrammarApplication.getContext());
     final ArrayList<MujarradVerbs> mujarrad = utils.getMujarradVerbs(rootText);
     UnaugmentedTrilateralRoot unaugmentedTrilateralRoot=new UnaugmentedTrilateralRoot();
     //  UnaugmentedTrilateralRootTree unaugmentedRootsTree = DatabaseManager.getInstance().getUnaugmentedTrilateralRootTree(c1);
@@ -195,7 +195,7 @@ public class SarfDictionary {
     char c1 = rootText.charAt(0);
     char c2 = rootText.charAt(1);
     char c3 = rootText.charAt(2);
-    DatabaseUtils utils = new DatabaseUtils(DarkThemeApplication.getContext());
+    DatabaseUtils utils = new DatabaseUtils(QuranGrammarApplication.getContext());
     final ArrayList<MujarradVerbs> trimujarrad = utils.getMujarradVerbs(rootText);
     UnaugmentedTrilateralRoot unaugmentedTrilateralRoot=new UnaugmentedTrilateralRoot();
   //  UnaugmentedTrilateralRootTree unaugmentedRootsTree = DatabaseManager.getInstance().getUnaugmentedTrilateralRootTree(c1);
@@ -217,7 +217,7 @@ public class SarfDictionary {
     char c1 = rootText.charAt(0);
     char c2 = rootText.charAt(1);
     char c3 = rootText.charAt(2);
-    DatabaseUtils utils = new DatabaseUtils(DarkThemeApplication.getContext());
+    DatabaseUtils utils = new DatabaseUtils(QuranGrammarApplication.getContext());
     final ArrayList<MujarradVerbs> trimujarrad = utils.getMujarradVerbs(rootText);
     UnaugmentedTrilateralRoot unaugmentedTrilateralRoot=new UnaugmentedTrilateralRoot();
 

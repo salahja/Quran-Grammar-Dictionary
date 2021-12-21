@@ -19,7 +19,7 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.utility.DarkThemeApplication;
+import com.example.utility.QuranGrammarApplication;
 import com.google.android.material.chip.Chip;
 
 import org.jetbrains.annotations.NotNull;
@@ -27,7 +27,6 @@ import org.sj.conjugator.activity.ConjugatorTabsActivity;
 import org.sj.conjugator.adapter.MujarradSarfSagheerListingAdapter;
 import org.sj.conjugator.adapter.SarfMujarradSarfSagheerListingAdapter;
 import org.sj.conjugator.utilities.GatherAll;
-import org.sj.conjugator.utilities.VerbConjugaorApp;
 
 import com.example.mushafconsolidated.R;
 
@@ -106,7 +105,7 @@ Context context;
     setHasOptionsMenu(true);
     View view = inflater.inflate(R.layout.thulathilistingnotoolbar, container, false);
     SharedPreferences sharedPreferences =
-            PreferenceManager.getDefaultSharedPreferences(DarkThemeApplication.getContext());
+            PreferenceManager.getDefaultSharedPreferences(QuranGrammarApplication.getContext());
     //  String theme = sharedPreferences.getString("theme", 1);
     String indictive = sharedPreferences.getString(VERBMOOD, "indicative");
     setVerbmood(indictive);
@@ -189,7 +188,7 @@ Context context;
 
 
 
-        DatabaseUtils utils = new DatabaseUtils(DarkThemeApplication.getContext());
+        DatabaseUtils utils = new DatabaseUtils(QuranGrammarApplication.getContext());
         ArrayList<Mazeed> mazeedWeakness = utils.getMazeedWeakness(kov);
         listingMazeedWeakness(ssagheer, mazeedWeakness);
 

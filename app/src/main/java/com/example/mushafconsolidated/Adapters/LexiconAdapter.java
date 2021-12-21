@@ -16,8 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mushafconsolidated.R;
 import com.example.mushafconsolidated.intrface.OnItemClickListener;
-import com.example.utility.DarkThemeApplication;
-import com.example.utility.SharedPref;
+import com.example.utility.QuranGrammarApplication;
 
 import java.util.ArrayList;
 
@@ -70,7 +69,7 @@ public class LexiconAdapter extends RecyclerView.Adapter<LexiconAdapter.ItemView
     public void onBindViewHolder(@NonNull ItemViewAdapter holder, int position) {
       //  Typeface typeface = Typeface.createFromAsset(context.getAssets(), quranfont);
    //   Typeface mequran = Typeface.createFromAsset(DarkThemeApplication.getContext().getAssets(), "Roboto.ttf");
-      Typeface mequran= Typeface.createFromAsset(DarkThemeApplication.getContext().getAssets(), "Taha.ttf");
+      Typeface mequran= Typeface.createFromAsset(QuranGrammarApplication.getContext().getAssets(), "Taha.ttf");
       String lanes = lanesdictionary.get(position);
 
 
