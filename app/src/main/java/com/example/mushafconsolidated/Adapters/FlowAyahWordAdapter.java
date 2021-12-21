@@ -69,6 +69,7 @@ public class FlowAyahWordAdapter extends RecyclerView.Adapter<FlowAyahWordAdapte
 
   private final boolean issentence, isfragmentlisting;
   private final ArrayList<QuranEntity> colorerab;
+  private final SharedPreferences sharedPreferences;
 
   OnItemClickListenerOnLong mItemClickListener;
 
@@ -118,18 +119,16 @@ public class FlowAyahWordAdapter extends RecyclerView.Adapter<FlowAyahWordAdapte
     this.surah_id = surah_id;
     this.SurahName = surahName;
     this.isMakkiMadani = ismakki;
-    SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+  sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
     //   showTranslation =
     //        sharedPreferences.getBoolean(Config.SHOW_TRANSLATION, Config.defaultShowTranslation);
     sharedPreferences.getBoolean(Config.SHOW_Erab, Config.defaultShowErab);
 
     issentence = sharedPreferences.getBoolean("grammarsentence", false);
     isfragmentlisting = sharedPreferences.getBoolean("fragments", false);
-    // corpusTypeface = Typeface.createFromAsset(DarkThemeApplication.getInstance().getResources().getAssets(), "amiri.ttf");
 
 
-    SharedPreferences sharedPref =
-          androidx.preference.PreferenceManager.getDefaultSharedPreferences(context);
+
 
     mItemClickListener = listener;
 
@@ -142,30 +141,8 @@ public class FlowAyahWordAdapter extends RecyclerView.Adapter<FlowAyahWordAdapte
   }
 
 
-  public void setItAll(ArrayList<CorpusAyahWord> ayahWordArrayList, String suraharabicname, int isMakkiMadani, Context context) {
-    this.ayahWordArrayList = ayahWordArrayList;
-    this.context = context;
-    SharedPreferences sharedPreferences =
-          androidx.preference.PreferenceManager.getDefaultSharedPreferences(context);
-    pref = new PreferenceUtil(sharedPreferences);
-    //  PrefUtils(ayahadapterContext);
-    SharedPref prefs = new SharedPref(context);
-    this.SurahName = suraharabicname;
-    this.isMakkiMadani = isMakkiMadani;
-  }
 
-  public void setItAll(ArrayList<CorpusAyahWord> ayahWordArrayList, String suraharabicname, int isMakkiMadani, Context context, OnItemClickListener listener) {
-    this.ayahWordArrayList = ayahWordArrayList;
-    this.context = context;
-    SharedPreferences sharedPreferences =
-          androidx.preference.PreferenceManager.getDefaultSharedPreferences(context);
-    pref = new PreferenceUtil(sharedPreferences);
-    //  PrefUtils(ayahadapterContext);
-    SharedPref prefs = new SharedPref(context);
-    this.SurahName = suraharabicname;
-    this.isMakkiMadani = isMakkiMadani;
 
-  }
 
 
   public void SetOnItemClickListener(final OnItemClickListenerOnLong mItemClickListener) {
@@ -403,21 +380,24 @@ public class FlowAyahWordAdapter extends RecyclerView.Adapter<FlowAyahWordAdapte
 
       //   holder.flowwbw.setBackgroundColor(R.style.Theme_DarkBlue);
 
+      String arabic_font_selection = sharedPreferences.getString("Arabic_Font_Selection", String.valueOf(MODE_PRIVATE));
+
 
       Typeface custom_font = Typeface.createFromAsset(context.getAssets(),
-            SharedPref.arabicFontSelection());
-      boolean showErab = SharedPref.showErab();
-      boolean showWordColor = SharedPref.showWordColor();
+              arabic_font_selection);
 
-      boolean showTransliteration = SharedPref.showTransliteration();
-      boolean showJalalayn = SharedPref.showJalalayn();
-      boolean showTranslation = SharedPref.showTranslation();
-      boolean showWordByword = SharedPref.showWordByword();
-      SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(DarkThemeApplication.getContext());
-      String whichtranslation = prefs.getString("selecttranslation", "en_sahih");
+      boolean showErab = sharedPreferences.getBoolean("showErabKey", true);
+      boolean showWordColor = sharedPreferences.getBoolean("colortag", true);
+
+      boolean showTransliteration = sharedPreferences.getBoolean("showtransliterationKey", true);
+      boolean showJalalayn =sharedPreferences.getBoolean("showEnglishJalalayn", true);
+      boolean showTranslation =sharedPreferences.getBoolean("showTranslationKey", true);
+      boolean showWordByword = sharedPreferences.getBoolean("wordByWord", false);
+
+      String whichtranslation = sharedPreferences.getString("selecttranslation", "en_sahih");
       QuranEntity entity = null;
       QuranEntity erabentity = null;
-      String wbw = SharedPref.getWbwLanguage();
+      String wbw = sharedPreferences.getString("wbw", String.valueOf(Context.MODE_PRIVATE));
       try {
         entity = allofQuran.get(position);
       } catch (IndexOutOfBoundsException e) {
@@ -503,7 +483,7 @@ public class FlowAyahWordAdapter extends RecyclerView.Adapter<FlowAyahWordAdapte
       }
 
 
-      showErab = false;
+showErab=false;
       if (showErab) {
 
 

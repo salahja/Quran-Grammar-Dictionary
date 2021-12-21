@@ -15,7 +15,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
-import androidx.preference.PreferenceManager;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mushafconsolidated.Entities.BookMarks;
@@ -43,12 +43,11 @@ public class BookmarksShowAdapter extends RecyclerView.Adapter<BookmarksShowAdap
   private int bookChapterno;
   private int bookVerseno;
 
-  private int isMakkiMadani;
-  private String urdu_font_selection;
-  private int quran_arabic_font;
+
+
+
   int bookmarkpostion;
-  //  private ArrayList<BookMarks> data;
-  private BookMarks bookmarks;
+
   private List<BookMarks> bookMarkArrayList;
 
 
@@ -56,15 +55,9 @@ public class BookmarksShowAdapter extends RecyclerView.Adapter<BookmarksShowAdap
     return bookmarkpostion;
   }
 
-  public void setBookmarkpostion(int bookmarkpostion) {
-    this.bookmarkpostion = bookmarkpostion;
-  }
-
   PreferenceUtil pref;
-  private int urdu_font_size;
-  private String arabic_font_selection;
-  private String isNightmode;
-  private SharedPref prefs;
+
+
   int holderposition;
   int bookmarid;
 
@@ -88,16 +81,8 @@ public class BookmarksShowAdapter extends RecyclerView.Adapter<BookmarksShowAdap
     return bookChapterno;
   }
 
-  public void setBookChapterno(int bookChapterno) {
-    this.bookChapterno = bookChapterno;
-  }
-
   public int getBookVerseno() {
     return bookVerseno;
-  }
-
-  public void setBookVerseno(int bookVerseno) {
-    this.bookVerseno = bookVerseno;
   }
 
   public BookmarksShowAdapter() {
@@ -105,18 +90,6 @@ public class BookmarksShowAdapter extends RecyclerView.Adapter<BookmarksShowAdap
 
   public BookmarksShowAdapter(Context context) {
     this.BookmarksShowAdapterContext = context;
-  }
-
-  public void setSurahName(String surahName, Context context) {
-    this.BookmarksShowAdapterContext = context;
-    SharedPreferences sharedPreferences =
-          PreferenceManager.getDefaultSharedPreferences(BookmarksShowAdapterContext);
-    pref = new PreferenceUtil(sharedPreferences);
-    //  PrefUtils(BookmarksShowAdapterContext);
-    prefs = new SharedPref(BookmarksShowAdapterContext);
-    this.SurahName = surahName;
-
-
   }
 
 
@@ -128,11 +101,10 @@ public class BookmarksShowAdapter extends RecyclerView.Adapter<BookmarksShowAdap
   @Override
   public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
     View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_bookmar_two, parent, false);
-    ViewHolder holder = new ViewHolder(view);
 
 
     //   sendVerseClick=(SendVerseClick) getActivity();
-    return holder;
+    return new ViewHolder(view);
   }
 
 
@@ -164,20 +136,21 @@ public class BookmarksShowAdapter extends RecyclerView.Adapter<BookmarksShowAdap
     holder.suraName.setText(bookMark.getSurahname());
     holder.chapterno.setText(bookMark.getChapterno());
     holder.verseno.setText(bookMark.getVerseno() + "");
+    int arabicFontSize = shared.getInt("pref_font_arabic_key", 18);
 
 
+    holder.datestamp.setTextSize(arabicFontSize);
 
-    holder.datestamp.setTextSize(SharedPref.SeekarabicFontsize());
-
-    holder.suraName.setTextSize(SharedPref.SeekarabicFontsize());
-    holder.verseno.setTextSize(SharedPref.SeekarabicFontsize());
-    holder.chapterno.setTextSize(SharedPref.SeekarabicFontsize());
+    holder.suraName.setTextSize(arabicFontSize);
+    holder.verseno.setTextSize(arabicFontSize);
+    holder.chapterno.setTextSize(arabicFontSize);
     if (isNightmode.equals("dark")) {
-      holder.cardView.setCardBackgroundColor(DarkThemeApplication.getContext().getResources().getColor(R.color.color_background_overlay));
+      ContextCompat.getColor(DarkThemeApplication.getContext(), R.color.color_background_overlay);
+      holder.cardView.setCardBackgroundColor(ContextCompat.getColor(DarkThemeApplication.getContext(), R.color.color_background_overlay));
 
 
     } else if (isNightmode.equals("blue")) {
-      holder.cardView.setCardBackgroundColor(DarkThemeApplication.getContext().getResources().getColor(R.color.solarizedBase02));
+      holder.cardView.setCardBackgroundColor(ContextCompat.getColor(DarkThemeApplication.getContext(), R.color.solarizedBase02));
 
     }
 
@@ -187,11 +160,6 @@ public class BookmarksShowAdapter extends RecyclerView.Adapter<BookmarksShowAdap
   @Override
   public int getItemCount() {
     return bookMarkArrayList.size();
-  }
-
-
-  public void setBookMarkList(List<BookMarks> bookmarks) {
-    this.bookMarkArrayList = bookmarks;
   }
 
 
@@ -211,11 +179,6 @@ public class BookmarksShowAdapter extends RecyclerView.Adapter<BookmarksShowAdap
   }
 
 
-  public void restoreItem(String item, int position) {
-    //   data.add(position, item);
-    notifyItemInserted(position);
-  }
-
   public Object getItem(int position) {
 
 
@@ -232,9 +195,13 @@ public class BookmarksShowAdapter extends RecyclerView.Adapter<BookmarksShowAdap
         implements View.OnClickListener // current clickListerner
   {
 
-    public TextView datestamp, timestamp, chapterno, suraName, verseno ;
-    ImageView surahicon;
-    CardView cardView;
+    public final TextView datestamp;
+
+    public TextView chapterno;
+    public final TextView suraName;
+    public final TextView verseno ;
+    final ImageView surahicon;
+    final CardView cardView;
 
     public ViewHolder(View view) {
       super(view);
