@@ -1,7 +1,6 @@
 <component name="libraryTable">
   <library name="Gradle: com.squareup.curtains:curtains:1.0.1@aar">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/b3a44546034583d23b17efd5c4adf8cc/jetified-curtains-1.0.1/res" />
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/0b408beea263eced48cf310283e18c62/transformed/jetified-curtains-1.0.1/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/0b408beea263eced48cf310283e18c62/transformed/jetified-curtains-1.0.1/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/0b408beea263eced48cf310283e18c62/transformed/jetified-curtains-1.0.1/AndroidManifest.xml" />

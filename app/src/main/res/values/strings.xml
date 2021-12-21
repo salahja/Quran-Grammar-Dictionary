@@ -154,7 +154,7 @@
     <string name="quranactivity">Quran</string>
     <string name="settings_conjugator">Settings </string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="colortitile">Pick Grammer Phrases COlors</string>
+    <string name="colortitile">Pick Grammar Phrases COlors</string>
     <string name="prefs_show_mausoof">mausoof</string>
     <string name="prefs_show_mudhaf">mudhaf</string>
     <string name="prefs_show_harfnasb">harfnasb</string>
@@ -178,10 +178,20 @@
     <string name="linkkahaf">Surah Kahaf</string>
     <string name="mudhafsummary">Surah 1 to 8 and 59 to 114</string>
     <string name="harfnasbsummary">Valid only from Surah 1 to 8 and 59 to 114</string>
-    <string name="ok">Ok</string>
+    <string name="ok">OK</string>
     <string name="notfound">not found</string>
     <string name="colorize">Colorize</string>
     <string name="go_to_surah_ayah">Go to Surah/Ayah</string>
+    <string name="jussive">Jussive</string>
+    <string name="emphasized">Emphasized</string>
+    <string name="subjunctive">Subjunctive</string>
+    <string name="indicative">Indicative</string>
+    <string name="nasara">nasara</string>
+    <string name="mujarrad_augmented">Mujarrad/UnAugmented</string>
+    <string name="iftiala">Iftiala</string>
+    <string name="istifala">Istifala</string>
+    <string name="mujarrad_listing">Mujarrad List</string>
+    <string name="mazeed_listing">Mazeed list</string>
 
 
 </resources>
