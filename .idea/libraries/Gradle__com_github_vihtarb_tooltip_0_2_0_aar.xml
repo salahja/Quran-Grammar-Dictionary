@@ -1,9 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: com.github.vihtarb:tooltip:0.2.0@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/7167e5313006e61cc88a2ae190bfe0b4/transformed/jetified-tooltip-0.2.0/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/7167e5313006e61cc88a2ae190bfe0b4/transformed/jetified-tooltip-0.2.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/7167e5313006e61cc88a2ae190bfe0b4/transformed/jetified-tooltip-0.2.0/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/8df3032ed5e6370fc549dd2850da253d/transformed/jetified-tooltip-0.2.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/8df3032ed5e6370fc549dd2850da253d/transformed/jetified-tooltip-0.2.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/8df3032ed5e6370fc549dd2850da253d/transformed/jetified-tooltip-0.2.0/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.vihtarb/tooltip/0.2.0/3e56a2597124cbc1da6f6aa8e9683ca0bde09f58/tooltip-0.2.0-javadoc.jar!/" />

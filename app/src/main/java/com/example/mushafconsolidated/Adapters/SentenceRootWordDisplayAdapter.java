@@ -114,7 +114,9 @@ public class SentenceRootWordDisplayAdapter extends RecyclerView.Adapter<Sentenc
     SpannableStringBuilder wordno = worddetailsmap.get(position+1).get("wordno");
 
     int wordposition = Integer.parseInt(String.valueOf(wordno));
-    holder.wordView.setText(worddetailsmap.get(wordposition).get("word"));
+  //  holder.wordView.setText(worddetailsmap.get(wordposition).get("word"));
+    String word = String.valueOf(worddetailsmap.get(wordposition).get("word"));
+    holder.wordView.setText(word);
     System.out.println(worddetailsmap.get(wordposition).get("word"));
     holder.lemma.setText(LEMMA + worddetailsmap.get(wordposition).get("lemma"));
     holder.wdetailstv.setText(worddetailsmap.get(wordposition).get("worddetails"), TextView.BufferType.SPANNABLE);

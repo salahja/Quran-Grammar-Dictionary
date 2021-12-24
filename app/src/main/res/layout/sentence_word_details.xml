@@ -104,6 +104,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15.0dip"
                     android:lines="1"
+                    android:text="wordview"
+          
                     android:onClick="onClick"
                     android:textSize="24.0sp"
                     android:tooltipText="Click for Vocabulary"

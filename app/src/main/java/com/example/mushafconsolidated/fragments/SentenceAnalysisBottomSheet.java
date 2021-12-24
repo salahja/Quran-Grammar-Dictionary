@@ -331,8 +331,8 @@ public class SentenceAnalysisBottomSheet extends BottomSheetDialogFragment {
         }
 
         TreeMap<Integer, HashMap<String, String>> sorted = new TreeMap<>();
-
         sorted.putAll(verbdetailsall);
+      //  sorted.putAll(wordetailsall);
 
 
         if (!corpusSurahWord.isEmpty()) {
