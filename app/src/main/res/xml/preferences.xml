@@ -114,11 +114,7 @@
         android:key="@string/prefs_show_kana"
         app:summaryOn="@string/harfnasbsummary"
         android:title=" Verb kāna/كان واخواتها " />
-    <SwitchPreference
-        android:defaultValue="false"
-        android:key="@string/prefs_show_grammar_fragments"
-        android:title="Gramatial Phrases "
-        app:icon="@drawable/ic_baseline_construction_24" />
+
 
     <SwitchPreference
         android:defaultValue="false"

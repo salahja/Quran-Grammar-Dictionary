@@ -56,6 +56,9 @@ public class SentenceRootWordDisplayAdapter extends RecyclerView.Adapter<Sentenc
   private HashMap<Integer, HashMap<String, SpannableStringBuilder>> worddetailsmap;
   private HashMap<Integer, HashMap<String, String>> verbdetailsmap;
   private SpannableStringBuilder spannable;
+  boolean ismujarrad = false;
+  boolean ismazeed = false;
+  boolean isparticple,isconjugation;
 
   public boolean isSarfSagheerMazeed() {
     return isSarfSagheerMazeed;
@@ -114,9 +117,21 @@ public class SentenceRootWordDisplayAdapter extends RecyclerView.Adapter<Sentenc
     SpannableStringBuilder wordno = worddetailsmap.get(position+1).get("wordno");
 
     int wordposition = Integer.parseInt(String.valueOf(wordno));
+
+    if (verbdetailsmap.get(wordposition)!=null) {
+      ismujarrad = !verbdetailsmap.get(wordposition).get("wazan").equals("null");
+      ismazeed = !verbdetailsmap.get(wordposition).get("form").equals("null");
+    }
+      isparticple = worddetailsmap.get(wordposition).get("PART") != null;
+   isconjugation = ismujarrad || ismazeed || isparticple;
+
+
+
   //  holder.wordView.setText(worddetailsmap.get(wordposition).get("word"));
     String word = String.valueOf(worddetailsmap.get(wordposition).get("word"));
     holder.wordView.setText(word);
+
+
     System.out.println(worddetailsmap.get(wordposition).get("word"));
     holder.lemma.setText(LEMMA + worddetailsmap.get(wordposition).get("lemma"));
     holder.wdetailstv.setText(worddetailsmap.get(wordposition).get("worddetails"), TextView.BufferType.SPANNABLE);
@@ -134,19 +149,21 @@ public class SentenceRootWordDisplayAdapter extends RecyclerView.Adapter<Sentenc
 
     }
 
-    if(worddetailsmap.get("form")!=null)
+    if(isconjugation)
     {
       holder.verbconjugationbtn.setVisibility(View.VISIBLE);
       holder.wordoccurancebtn.setVisibility(View.VISIBLE);
 
-    }else if(worddetailsmap.get("wazan")!=null){
-      holder.verbconjugationbtn.setVisibility(View.VISIBLE);
-      holder.wordoccurancebtn.setVisibility(View.VISIBLE);
+
     }else if (!(worddetailsmap.get(wordposition).get("noun") == null)) {
       holder.noun.setText(worddetailsmap.get(wordposition).get("noun"));
       holder.wordoccurancebtn.setVisibility(View.VISIBLE);
-      holder.verbconjugationbtn.setVisibility(View.GONE);
+     holder.verbconjugationbtn.setVisibility(View.GONE);
 
+
+    }else{
+      holder.verbconjugationbtn.setVisibility(View.GONE);
+      holder.wordoccurancebtn.setVisibility(View.GONE);
 
     }
 
@@ -267,26 +284,6 @@ public class SentenceRootWordDisplayAdapter extends RecyclerView.Adapter<Sentenc
     return worddetailsmap.size();
   }
 
-
-  public void setRootWordsAndMeanings(SpannableStringBuilder spannable, SpannableStringBuilder spannableHarf, boolean noun, ArrayList<ArrayList> ismfaelmafool, boolean participles, boolean isverbconjugation, ArrayList<NewCorpusExpandWbwPOJO> corpusSurahWord, HashMap<String, SpannableStringBuilder> wordbdetail, HashMap<String, String> vbdetail, boolean isSarfSagheer, boolean isSarfSagheerThulahi, ArrayList<ArrayList> sarfsagheer, Context context) {
-
-    this.isnoun = noun;
-    this.ismfaelmafool = ismfaelmafool;
-    this.spannalbeShart = spannable;
-    this.spannableHarf = spannableHarf;
-    this.particples = participles;
-    this.isverbconjugation = isverbconjugation;
-    this.corpusexpand = corpusSurahWord;
-    this.worddetails = wordbdetail;
-    this.vbdetail = vbdetail;
-    this.isSarfSagheerMazeed = isSarfSagheer;
-    this.sarfsagheer = sarfsagheer;
-    this.isSarfSagheerThulahi = isSarfSagheerThulahi;
-
-
-    this.context = context;
-
-  }
 
   public void setRootWordsAndMeanings(ArrayList<NewCorpusExpandWbwPOJO> sencorpusSurahWord, SpannableStringBuilder spannableShart, SpannableStringBuilder spannableHarf, SpannableStringBuilder spannable, HashMap<Integer, HashMap<String, SpannableStringBuilder>> worddetailsmap, HashMap<Integer, HashMap<String, String>> verbdetailsmap, FragmentActivity activity) {
     this.worddetailsmap = worddetailsmap;
@@ -414,19 +411,13 @@ public class SentenceRootWordDisplayAdapter extends RecyclerView.Adapter<Sentenc
       spannableverse.setOnClickListener(this);
       //  view.setOnClickListener(this);
       wordView.setOnClickListener(this);
-      if (isverbconjugation || particples) {
+
         verbconjugationbtn.setOnClickListener(this);
-        verbOccurancebtn.setOnClickListener(this);
+
         wordoccurancebtn.setOnClickListener(this);
 
-      } else if (isnoun) {
-        //  verbOccurancebtn.setEnabled(false);
-        verbconjugationbtn.setOnClickListener(this);
-        verbOccurancebtn.setOnClickListener(this);
-        wordoccurancebtn.setOnClickListener(this);
-      }
 
-      verbOccurancebtn.setOnClickListener(this);
+    //  verbOccurancebtn.setOnClickListener(this);
       wordoccurancebtn.setOnClickListener(this);
       sin4 = view.findViewById(R.id.singular4);
       dual4 = view.findViewById(R.id.dual4);

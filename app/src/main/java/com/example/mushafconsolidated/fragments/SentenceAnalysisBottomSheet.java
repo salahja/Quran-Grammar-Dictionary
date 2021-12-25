@@ -13,12 +13,15 @@ import static com.example.Constant.ORANGE400;
 import static com.example.Constant.QURAN_VERB_ROOT;
 import static com.example.Constant.QURAN_VERB_WAZAN;
 import static com.example.Constant.SURAH_ID;
+import static com.example.Constant.VERBMOOD;
+import static com.example.Constant.VERBTYPE;
 import static com.example.Constant.WHOTPINK;
 import static com.example.Constant.harfinnaspanDark;
 import static com.example.Constant.harfismspanDark;
 import static com.example.Constant.harfkhabarspanDark;
 import static com.example.Constant.harfshartspanDark;
 import static com.example.Constant.jawabshartspanDark;
+import static com.example.Constant.mazeedsignificance;
 import static com.example.Constant.mudhafspansDark;
 import static com.example.Constant.prussianblue;
 import static com.example.Constant.shartspanDark;
@@ -30,12 +33,15 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.Html;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -46,6 +52,7 @@ import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.mushafconsolidated.Activity.LughatWordDetailsAct;
 import com.example.mushafconsolidated.Activity.WordOccuranceAct;
 import com.example.mushafconsolidated.Adapters.RootWordDisplayAdapter;
 import com.example.mushafconsolidated.Adapters.SentenceRootWordDisplayAdapter;
@@ -65,13 +72,16 @@ import com.example.mushafconsolidated.model.SarfSagheerPOJO;
 import com.example.utility.QuranGrammarApplication;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.android.material.button.MaterialButton;
+import com.tooltip.Tooltip;
 
 import org.sj.conjugator.activity.ConjugatorTabsActivity;
+import org.sj.conjugator.utilities.GatherAll;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
-import java.util.TreeMap;
+import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -117,6 +127,8 @@ public class SentenceAnalysisBottomSheet extends BottomSheetDialogFragment {
     private ArrayList<NewCorpusExpandWbwPOJO> SencorpusSurahWord;
     private ArrayList<NewCorpusExpandWbwPOJO> corpusSurahWord;
     private AlertDialog dialog;
+    private String themepreference;
+    private HashMap<Integer, HashMap<String, String>> finalverbdetail;
 
     public boolean isNoun() {
         return noun;
@@ -207,6 +219,7 @@ public class SentenceAnalysisBottomSheet extends BottomSheetDialogFragment {
         builder.setView(R.layout.layout_loading_dialog);
         dialog = builder.create();
 
+        themepreference = prefs.getString("theme", "dark");
 
       //  recyclerView.setLayoutParams(new CoordinatorLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
 
@@ -234,12 +247,12 @@ public class SentenceAnalysisBottomSheet extends BottomSheetDialogFragment {
             getActivity().runOnUiThread(() -> {
 
                 dialog.dismiss();
-                HashMap<Integer, HashMap<String, String>> sorted = new HashMap<Integer, HashMap<String, String>>();
+              finalverbdetail = new HashMap<Integer, HashMap<String, String>>();
 
                 // Copy all data from hashMap into TreeMap
-                sorted.putAll(verbdetailsall);
+                finalverbdetail.putAll(verbdetailsall);
 
-                sentenceRootWordDisplayAdapter.setRootWordsAndMeanings(corpusSurahWord, spannableShart, spannableHarf, spannable, wordetailsall, sorted, getActivity());
+                sentenceRootWordDisplayAdapter.setRootWordsAndMeanings(corpusSurahWord, spannableShart, spannableHarf, spannable, wordetailsall, finalverbdetail, getActivity());
                 recyclerView.setAdapter(sentenceRootWordDisplayAdapter);
               //  recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
                 recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, true));
@@ -294,7 +307,7 @@ public class SentenceAnalysisBottomSheet extends BottomSheetDialogFragment {
                 if (wordetailsall.containsKey(noun.getWordno())) {
                     wordetailsall.get(noun.getWordno()).put("noun", Swordbdetail.get("noun"));
                     wordetailsall.get(noun.getWordno()).put("PCPL", Swordbdetail.get("pcpl"));
-              //      wordetailsall.get(noun.getWordno()).put("form", Swordbdetail.get("form"));
+                  wordetailsall.get(noun.getWordno()).put("form", Swordbdetail.get("form"));
                     wordetailsall.get(noun.getWordno()).put("PART", Swordbdetail.get("PART"));
                 }
             }
@@ -319,7 +332,19 @@ public class SentenceAnalysisBottomSheet extends BottomSheetDialogFragment {
 
             Sbdetail = qm.getVerbDetails();
 
+            for (Map.Entry<String, String> s : Sbdetail.entrySet()) {
+                String value = s.getValue();
+                String key = s.getKey();
+                if(key.equals("wordno")) {
+                    int i = Integer.parseInt(value);
+                    wordetailsall.get(i).put(key, SpannableStringBuilder.valueOf(value));
+                }
 
+             ;
+          //   wordetailsall.put(s, value);
+
+            }
+            ;
 
 
             if (!Sbdetail.isEmpty()) {
@@ -330,8 +355,8 @@ public class SentenceAnalysisBottomSheet extends BottomSheetDialogFragment {
             index++;
         }
 
-        TreeMap<Integer, HashMap<String, String>> sorted = new TreeMap<>();
-        sorted.putAll(verbdetailsall);
+      //  TreeMap<Integer, HashMap<String, String>> sorted = new TreeMap<>();
+     //   sorted.putAll(verbdetailsall);
       //  sorted.putAll(wordetailsall);
 
 
@@ -482,123 +507,121 @@ public class SentenceAnalysisBottomSheet extends BottomSheetDialogFragment {
         sentenceRootWordDisplayAdapter.SetOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(View v, int position) {
-
-
+                int actulaposition=position+1;
                 CharSequence text = null;
                 CharSequence text2 = null;
                 View viewVerbConjugation = v.findViewById(R.id.verbconjugationbtn);
-                View verbOccuranceView = v.findViewById(R.id.verboccurance);
-                View wordoccurance = v.findViewById(R.id.wordoccurance);
+                View verboccuranceid = v.findViewById(R.id.verboccurance);
+                View nouns = v.findViewById(R.id.wordoccurance);
                 View verse = v.findViewById(R.id.spannableverse);
                 View wordview = v.findViewById(R.id.wordView);
-                SpannableStringBuilder root = wordetailsall.get(position + 1).get("root");
-                vb = new VerbWazan();
-                vb.setRoot(String.valueOf(root));
-                if(wordview!=null) {
-                    SpannableStringBuilder tag = wordetailsall.get(position + 1).get("tag");
-                    if(tag.equals("V")){
+                View formview = v.findViewById(R.id.mazeedmeaning);
+                boolean ismujarrad = false;
+                boolean ismazeed = false;
+           String     root = String.valueOf(wordetailsall.get(actulaposition).get("root"));
 
-                        verbdetailsall.get("root");
+                if (finalverbdetail.get(actulaposition)!=null) {
+                  ismujarrad = !finalverbdetail.get(actulaposition).get("wazan").equals("null");
+                  ismazeed = !finalverbdetail.get(actulaposition).get("form").equals("null");
+                }
+                Bundle dataBundle = new Bundle();
+                int intkey = 0;
+                String verbmood = "",mazeedwazan = "";
+                boolean isparticple = wordetailsall.get(actulaposition).get("PART") != null;
+                boolean isconjugation = ismujarrad || ismazeed || isparticple;
+                boolean isroot = wordetailsall.get(actulaposition).get("root") != null;
+                boolean quadrilateral = false;
+                boolean isnoun = (String.valueOf(wordetailsall.get(actulaposition).get("tag"))).equals("N");
+                if(String.valueOf (wordetailsall.get(actulaposition).get("tag")).equals("V")) {
+                  String wordno =    String.valueOf(wordetailsall.get(actulaposition).get("wordno"));
+              //    String wordno = finalverbdetail.get(actulaposition).get(wordetailsall.get(actulaposition).get("wordno"));
+                   intkey = Integer.parseInt(wordno);
 
-                    }else if (wordetailsall.get(position+1).get("root") != null && (wordetailsall.get(position+1).get("PCPL") != null)) {
+                  if(String.valueOf(wordetailsall.get(actulaposition).get("form")).equals("null")){
+                      String mujarradwazan= String.valueOf(finalverbdetail.get(intkey).get("wazan"));
+                      root= String.valueOf(finalverbdetail.get(intkey).get("root"));
+                      ismazeed=false;
+                      ismujarrad=true;
+                      vb = new VerbWazan();
+                      vb.setRoot(root);
+                      vb.setWazan(mujarradwazan);
+                      dataBundle.putString(VERBMOOD, String.valueOf(finalverbdetail.get(intkey).get("verbmood")));
+                      dataBundle.putString(QURAN_VERB_WAZAN, vb.getWazan());
+                      dataBundle.putString(QURAN_VERB_ROOT, root);
+
+                  } else  {
+                      ismazeed=true;
+                      ismujarrad=false;
+                      vb = new VerbWazan();
+                      vb.setRoot(String.valueOf(finalverbdetail.get(intkey).get("root")));
+                      vb.setWazan(String.valueOf(finalverbdetail.get(intkey).get("form")));
+                      dataBundle.putString(QURAN_VERB_WAZAN, vb.getWazan());
+                      dataBundle.putString(QURAN_VERB_ROOT, vb.getRoot());
+                      dataBundle.putString(VERBMOOD, String.valueOf(finalverbdetail.get(intkey).get("verbmood")));
+                  }
+                  finalverbdetail.get(intkey).get("verbmood");
+
+              }
 
 
-                        String roots = String.valueOf(wordbdetail.get("root"));
-                        vb = new VerbWazan();
-                        vb.setRoot(roots);
-                        //    vb.setWazan("N");
-                        char[] chars = roots.toCharArray();
 
-                        boolean first = roots.startsWith("أ");
-                        int second = roots.indexOf("أ");
-                        if (first) {
-                            roots = roots.replace("أ", "ء");
-                        } else if (second != -1) {
-                            roots = roots.replace("أ", "ء");
-                        }
-                        Character C1 = chars[0];
-                        Character C2 = chars[1];
-                        Character C3 = chars[2];
-                        C1.toString();
+                if(isparticple){
+                    vb = new VerbWazan();
+                    if(String.valueOf(wordetailsall.get(actulaposition).get("form")).equals("I")){
+                        DatabaseUtils databaseUtils = new DatabaseUtils(getActivity());
 
-                        String madhiharakah;
-                        String muhdarayharakah;
-                        ArrayList<String> harakah = new ArrayList<>();
-                        if (harakah.size() > 0)
+                        ArrayList<MujarradVerbs> triVerb = databaseUtils.getMujarradVerbs(root);
 
-                            harakah.clear();
-                        DatabaseUtils utils = new DatabaseUtils(getActivity());
-                        final ArrayList<MujarradVerbs> triVerb = utils.getMujarradVerbs(roots);
-                        List<MujarradVerbs> verbDictList= new ArrayList<>();
-                        ArrayList<String> wazannumberslist = new ArrayList<>();
-                        for (MujarradVerbs tri : triVerb) {
-                            verbDictList.add(new MujarradVerbs(tri.getVerb(), tri.getRoot(), tri.getBabname(), tri.getVerbtype()));
-                            wazannumberslist.add(tri.getBabname().concat("-").concat(tri.getVerbtype().concat("-")));
-                        }
 
                         if (!triVerb.isEmpty()) {
                             setParticiples(true);
-                          //  harakah = Harakah.parseHarakah(triVerb.get(0).getBabname());
+                         //   ismfaelmafool = GatherAll.getInstance().getMujarradParticiple(root, triVerb.get(0).getBab());
 
 
-                            madhiharakah = harakah.get(0);
-                            muhdarayharakah = harakah.get(1);
-                            vb.setWazan(harakah.get(2));
-                            //SarfKabeerMujarrad sk = new SarfKabeerMujarrad(madhiharakah, muhdarayharakah, getContext());
-                          //  ismfaelmafool = sk.SarfKabeerThulathi(roots);
+                            vb.setWazan(triVerb.get(0).getBab());
 
-                        } else {
-                            setParticiples(false);
+
                         }
 
-
+                        ismujarrad=true;
+                    }else{
+                        vb.setWazan(String.valueOf(wordetailsall.get(actulaposition).get("form")));
+                        ismazeed=true;
                     }
+                    vb.setRoot(String.valueOf(wordetailsall.get(actulaposition).get("root")));
+
+                    dataBundle.putString(QURAN_VERB_WAZAN, vb.getWazan());
+                    dataBundle.putString(QURAN_VERB_ROOT, vb.getRoot());
+                    dataBundle.putString(VERBMOOD, "indicative");
+
+                }
+                if(isnoun&&!participles){
+                    vb = new VerbWazan();
+                    vb.setRoot(String.valueOf(wordetailsall.get(actulaposition).get("root")));
+
+                    dataBundle.putString(QURAN_VERB_WAZAN, " ");
+                    dataBundle.putString(QURAN_VERB_ROOT, vb.getRoot());
+                    dataBundle.putString(VERBMOOD, "");
 
 
-                }else  if (verse != null) {
-                    GrammerFragmentsBottomSheet item = new GrammerFragmentsBottomSheet();
-                    //    item.setdata(rootWordMeanings,wbwRootwords,grammarRootsCombined);
-                    FragmentManager fragmentManager =  getActivity().getSupportFragmentManager();
-                    Bundle dataBundle = new Bundle();
 
-                    dataBundle.putInt(SURAH_ID, chapterid);dataBundle.putInt(AYAHNUMBER, ayanumber);
+                }
 
 
-                    //   dataBundle.putInt(WORDNUMBER, Math.toIntExact(word.getWordno()));
-                    //   dataBundle.putString(SURAH_ARABIC_NAME, SurahName);
-                    item.setArguments(dataBundle);
-                    String data[] = {String.valueOf(chapterid), String.valueOf(ayanumber)};
-                    FragmentTransaction transactions = fragmentManager.beginTransaction().setCustomAnimations(R.anim.abc_slide_in_top, android.R.anim.fade_out);
-                    //   transactions.show(item);
-                    GrammerFragmentsBottomSheet.newInstance(data).show((getActivity().getSupportFragmentManager()), WordAnalysisBottomSheet.TAG);
-
-
-                } else if (!(wordoccurance == null) && !(root == null)) {
-                    Bundle bundle = new Bundle();
-                    Intent intent = new Intent(getActivity(), WordOccuranceAct.class);
-
-                    try {
-                        bundle.putString(QURAN_VERB_ROOT, vb.getRoot());
-                    } catch (NullPointerException e1) {
-                        e1.printStackTrace();
-                        bundle.putString(QURAN_VERB_ROOT, getHarfNasbAndZarf());
-
-                    }
-                    intent.putExtras(bundle);
-                    //   intent.putExtra(QURAN_VERB_ROOT,vb.getRoot());
-                    startActivity(intent);
-
-
-                } else if (viewVerbConjugation != null) {
+                if (viewVerbConjugation != null) {
                     text = ((MaterialButton) viewVerbConjugation).getText();
                     if (text.toString().equals("Click for Verb Conjugation")) {
-                        if (vb.getRoot() != null && !vb.getWazan().equals("null") && !vb.getWazan().equals("0")) {
+                        if (isroot && isconjugation  ) {
 
-                            Bundle dataBundle = new Bundle();
-                            //      ArrayList arrayList = ThulathiMazeedConjugatonList.get(position);
+
+                            //      ArrayList arrayList = ThulathiMazeedConjugatonList.get(actulaposition);
                             //   arrayList.get(0).ge
-                            dataBundle.putString(QURAN_VERB_WAZAN, vb.getWazan());
-                            dataBundle.putString(QURAN_VERB_ROOT, vb.getRoot());
+                            if (ismujarrad) {
+                                dataBundle.putString(VERBTYPE, "mujarrad");
+                            } else if (ismazeed) {
+                                dataBundle.putString(VERBTYPE, "mazeed");
+                            }
+
                             Intent intent = new Intent(getActivity(), ConjugatorTabsActivity.class);
 
                             intent.putExtras(dataBundle);
@@ -607,9 +630,101 @@ public class SentenceAnalysisBottomSheet extends BottomSheetDialogFragment {
                         }
                     }
 
+                }else
+
+                if (wordview != null) {
+
+                    if (quadrilateral) {
+                        dataBundle.putString(QURAN_VERB_ROOT, vb.getRoot());
+                        dataBundle.putString(QURAN_VERB_WAZAN, " ");
+                        dataBundle.putString("arabicword", "");
+
+                    }
+                    if (isroot&&isconjugation || isnoun) {
+                        try {
+                            if (ismujarrad) {
+                                dataBundle.putString(VERBTYPE, "mujarrad");
+                                dataBundle.putString("arabicword", "");
+                            } else if (ismazeed) {
+                                dataBundle.putString(VERBTYPE, "mazeed");
+                                dataBundle.putString("arabicword", "");
+                            } else {
+                                dataBundle.putString(VERBTYPE, "");
+                                dataBundle.putString("arabicword", "");
+                            }
+                            Intent intent = new Intent(getActivity(), LughatWordDetailsAct.class);
+
+                            intent.putExtras(dataBundle);
+                            startActivity(intent);
+                        } catch (NullPointerException e) {
+                            System.out.println("null pointer");
+                        }
+                    } else {
+
+                        Toast.makeText(getContext(), "not found", Toast.LENGTH_SHORT).show();
+                    }
+                }    else if (verse != null) {
+                    GrammerFragmentsBottomSheet item = new GrammerFragmentsBottomSheet();
+                    //    item.setdata(rootWordMeanings,wbwRootwords,grammarRootsCombined);
+                    FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+
+
+                    dataBundle.putInt(SURAH_ID, chapterid);
+                    dataBundle.putInt(AYAHNUMBER, ayanumber);
+
+
+                    item.setArguments(dataBundle);
+                    String[] data = {String.valueOf(chapterid), String.valueOf(ayanumber)};
+                    FragmentTransaction transactions = fragmentManager.beginTransaction().setCustomAnimations(R.anim.abc_slide_in_top, android.R.anim.fade_out);
+                    //   transactions.show(item);
+                    GrammerFragmentsBottomSheet.newInstance(data).show((getActivity().getSupportFragmentManager()), WordAnalysisBottomSheet.TAG);
+
+
+                } else if (nouns != null) {
+                    Bundle bundle = new Bundle();
+                    //   Intent intent = new Intent(getActivity(), NounOccuranceAsynKAct.class);
+                    Intent intent = new Intent(getActivity(), WordOccuranceAct.class);
+
+                    try {
+                        if (vb.getRoot() != null) {
+                            bundle.putString(QURAN_VERB_ROOT, vb.getRoot());
+                        } else if (getHarfNasbAndZarf() != null) {
+                            bundle.putString(QURAN_VERB_ROOT, getHarfNasbAndZarf());
+                        }
+                    } catch (NullPointerException e1) {
+                        bundle.putString(QURAN_VERB_ROOT, getHarfNasbAndZarf());
+                        e1.printStackTrace();
+
+
+                    }
+                    intent.putExtras(bundle);
+                    //   intent.putExtra(QURAN_VERB_ROOT,vb.getRoot());
+                    startActivity(intent);
+
+
+                }  else if (verboccuranceid != null) {
+                    text2 = ((MaterialButton) verboccuranceid).getText();
+                    if (text2.toString().equals("Click for Verb Occurance")) ;
+                    {
+                        if (!(vb == null)) {
+                            Bundle bundle = new Bundle();
+                            Intent intent = new Intent(getActivity(), WordOccuranceAct.class);
+                            bundle.putString(QURAN_VERB_ROOT, vb.getRoot());
+                            intent.putExtras(bundle);
+                            //   intent.putExtra(QURAN_VERB_ROOT,vb.getRoot());
+                            startActivity(intent);
+                        }
+
+                    }
                 }
 
             }
+
+            private String getFormDetails(String form) {
+
+                return mazeedsignificance.get(form);
+            }
+
         });
 
 

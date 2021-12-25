@@ -54,7 +54,7 @@
         <entry key="app/src/main/res/menu/menu_main.xml" value="0.9" />
         <entry key="app/src/main/res/menu/navigation_drawer_menu.xml" value="1.0642857142857143" />
         <entry key="app/src/main/res/menu/popup_menu.xml" value="1.0" />
-        <entry key="app/src/main/res/xml/preferences.xml" value="0.7892857142857143" />
+        <entry key="app/src/main/res/xml/preferences.xml" value="0.25" />
         <entry key="app/src/main/res/xml/verbpreferences.xml" value="0.6571428571428571" />
       </map>
     </option>

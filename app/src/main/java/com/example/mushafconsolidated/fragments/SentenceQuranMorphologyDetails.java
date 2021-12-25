@@ -52,7 +52,7 @@ public class SentenceQuranMorphologyDetails extends QuranMorphologyDetails{
         this.verbcorpusform = verbCorpuses;
         this.corpusNoun = corpusNounWord;
         this.context = context;
-        String dark = SharedPref.themePreferences();
+
 
 
     }
@@ -75,6 +75,7 @@ public class SentenceQuranMorphologyDetails extends QuranMorphologyDetails{
                 convertForms(mform);
 
                 vbdetail.put("form", String.valueOf(getForm()));
+                vbdetail.put("wazan","null");
 
                 //    setSarfSagheer(true);
                 //  mazeedQuery = sm.getMazeedQuery(roots, getForm());
@@ -82,7 +83,7 @@ public class SentenceQuranMorphologyDetails extends QuranMorphologyDetails{
             } else {
                 String thulathibab = verbcorpusform.get(index).getThulathibab();
                 if (thulathibab.length() == 0)
-                    vbdetail.put("thulathi", null);
+                    vbdetail.put("thulathi", "null");
                 else if (thulathibab.length() == 1) {
                     String s = verbcorpusform.get(index).getThulathibab();
                     final StringBuilder sb = getThulathiName(s);
@@ -90,6 +91,7 @@ public class SentenceQuranMorphologyDetails extends QuranMorphologyDetails{
 
                     vbdetail.put("thulathi", sb.toString());
                     vbdetail.put("wazan", thulathibab);
+                    vbdetail.put("form","null");
 
                 } else if (thulathibab.length() > 1) {
                     String s = thulathibab.substring(0, 1);
@@ -142,18 +144,52 @@ public class SentenceQuranMorphologyDetails extends QuranMorphologyDetails{
 
         }
 
-        String mood = verbcorpusform.get(index).getMood_kananumbers();
-        switch (mood) {
-            case "IND":
-                vbdetail.put("mood", CorpusConstants.verbfeaturesenglisharabic.IND);
-                break;
-            case "JUS":
-                vbdetail.put("mood", CorpusConstants.verbfeaturesenglisharabic.JUS);
-                break;
-            case "SUBJ":
-                vbdetail.put("mood", CorpusConstants.verbfeaturesenglisharabic.SUBJ);
-                break;
+
+        if(roots.equals("كون")) {
+            String kana_mood = verbcorpusform.get(index).getKana_mood();
+            switch (kana_mood) {
+                case "MOOD:SUBJ":
+                    vbdetail.put("mood", CorpusConstants.verbfeaturesenglisharabic.IND);
+                    vbdetail.put("verbmood", "subjunctive");
+
+                case "JUS":
+                    vbdetail.put("mood", CorpusConstants.verbfeaturesenglisharabic.JUS);
+                    vbdetail.put("verbmood", "jussive");
+                    break;
+                case "SUBJ":
+                    vbdetail.put("mood", CorpusConstants.verbfeaturesenglisharabic.SUBJ);
+                    vbdetail.put("verbmood", "subjunctive");
+                    break;
+                default:
+                    vbdetail.put("mood", CorpusConstants.verbfeaturesenglisharabic.IND);
+                    vbdetail.put("verbmood", "indicative");
+                    break;
+            }
+        }else {
+
+            String mood = verbcorpusform.get(index).getMood_kananumbers();
+            switch (mood) {
+                case "IND":
+                    vbdetail.put("mood", CorpusConstants.verbfeaturesenglisharabic.IND);
+                    vbdetail.put("verbmood", "indicative");
+
+                case "JUS":
+                    vbdetail.put("mood", CorpusConstants.verbfeaturesenglisharabic.JUS);
+                    vbdetail.put("verbmood", "jussive");
+                    break;
+                case "SUBJ":
+                    vbdetail.put("mood", CorpusConstants.verbfeaturesenglisharabic.SUBJ);
+                    vbdetail.put("verbmood", "subjunctive");
+                    break;
+
+            }
         }
+
+
+
+
+
+
 
         vbdetail.put("lemma", verbcorpusform.get(index).getLemma_a());
 
@@ -270,7 +306,7 @@ public class SentenceQuranMorphologyDetails extends QuranMorphologyDetails{
                 final String mform = form.replaceAll("\\(|\\)", "");
 
                 //   String mform = corpusNoun.get(0).getForm();
-
+                wordbdetail.put("PART", SpannableStringBuilder.valueOf("PCPL"));
                 if (mform.equals("I")) {
                     wordbdetail.put("form", SpannableStringBuilder.valueOf(form));
 
@@ -286,8 +322,12 @@ public class SentenceQuranMorphologyDetails extends QuranMorphologyDetails{
                     if (corpusNoun.get(index).getProptwo().equals("PCPL")) {
                         wordbdetail.put("PCPL", SpannableStringBuilder.valueOf(corpusNoun.get(index).getPropone().concat(corpusNoun.get(index).getProptwo())));
                         wordbdetail.put("PART", SpannableStringBuilder.valueOf("PCPL"));
+                        wordbdetail.put("particple", SpannableStringBuilder.valueOf("PART"));
+                        wordbdetail.put("form", SpannableStringBuilder.valueOf(String.valueOf("I")));
                     } else {
                         wordbdetail.put("PART", SpannableStringBuilder.valueOf("NONE"));
+                        wordbdetail.put("particple", SpannableStringBuilder.valueOf("PART"));
+                        wordbdetail.put("form", SpannableStringBuilder.valueOf(String.valueOf("I")));
                     }
 
 
@@ -369,9 +409,11 @@ public class SentenceQuranMorphologyDetails extends QuranMorphologyDetails{
                 if (!propone.equals("null") && !proptwo.equals("null")) {
                     if (pcpl.equals("ACTPCPL")) {
                         sb.append(CorpusConstants.NominalsProp.ACTPCPL);
+                        wordbdetail.put("particple", SpannableStringBuilder.valueOf("PART"));
 
                     } else if (pcpl.equals("PASSPCPL")) {
                         sb.append(CorpusConstants.NominalsProp.PASSPCPL);
+                        wordbdetail.put("particple", SpannableStringBuilder.valueOf("PART"));
                     }
                 }
 
@@ -422,8 +464,10 @@ public class SentenceQuranMorphologyDetails extends QuranMorphologyDetails{
                 } else {
                     if (corpusNoun.get(0).getProptwo().equals("PCPL")) {
                         wordbdetail.put("PCPL", SpannableStringBuilder.valueOf(corpusNoun.get(0).getPropone().concat(corpusNoun.get(0).getProptwo())));
+                        wordbdetail.put("particple", SpannableStringBuilder.valueOf("PART"));
                     } else {
                         wordbdetail.put("PCPL", SpannableStringBuilder.valueOf("NONE"));
+                        wordbdetail.put("particple", SpannableStringBuilder.valueOf("PART"));
                     }
 
 
@@ -564,7 +608,7 @@ public class SentenceQuranMorphologyDetails extends QuranMorphologyDetails{
                     convertForms(mform);
 
                     wordbdetail.put("form", SpannableStringBuilder.valueOf(String.valueOf(getForm())));
-
+                    wordbdetail.put("wazan", SpannableStringBuilder.valueOf("null"));
                     //    setSarfSagheer(true);
                     //  mazeedQuery = sm.getMazeedQuery(roots, getForm());
 
@@ -579,6 +623,7 @@ public class SentenceQuranMorphologyDetails extends QuranMorphologyDetails{
 
                         wordbdetail.put("thulathi", SpannableStringBuilder.valueOf(sb.toString()));
                         wordbdetail.put("wazan", SpannableStringBuilder.valueOf(thulathibab));
+                        wordbdetail.put("form", SpannableStringBuilder.valueOf("null"));
 
                     } else if (thulathibab.length() > 1) {
                         String s = thulathibab.substring(0, 1);
@@ -586,7 +631,7 @@ public class SentenceQuranMorphologyDetails extends QuranMorphologyDetails{
 
                         wordbdetail.put("thulathi", SpannableStringBuilder.valueOf(sb.toString()));
                         wordbdetail.put("wazan", SpannableStringBuilder.valueOf(s));
-
+                        wordbdetail.put("form", SpannableStringBuilder.valueOf("null"));
                     }
 
                 }

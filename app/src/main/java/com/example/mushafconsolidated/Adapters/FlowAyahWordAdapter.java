@@ -66,7 +66,7 @@ public class FlowAyahWordAdapter extends RecyclerView.Adapter<FlowAyahWordAdapte
   static boolean showTranslation;
   static boolean wordByWord;
 
-  private final boolean issentence, isfragmentlisting;
+  private final boolean issentence;
   private final ArrayList<QuranEntity> colorerab;
   private final SharedPreferences sharedPreferences;
 
@@ -124,7 +124,7 @@ public class FlowAyahWordAdapter extends RecyclerView.Adapter<FlowAyahWordAdapte
     sharedPreferences.getBoolean(Config.SHOW_Erab, Config.defaultShowErab);
 
     issentence = sharedPreferences.getBoolean("grammarsentence", false);
-    isfragmentlisting = sharedPreferences.getBoolean("fragments", false);
+
 
 
 
@@ -620,18 +620,9 @@ showErab=false;
 
         private void LoadItemList(Bundle dataBundle) {
 
-          if (isfragmentlisting) {
-            GrammerFragmentsBottomSheet item = new GrammerFragmentsBottomSheet();
-            //    item.setdata(rootWordMeanings,wbwRootwords,grammarRootsCombined);
-            FragmentManager fragmentManager = ((AppCompatActivity) context).getSupportFragmentManager();
 
-            item.setArguments(dataBundle);
-            String[] data = {String.valueOf(word.getSurahId()), String.valueOf(word.getVerseId()), word.getTranslateEn(), String.valueOf((word.getWordno()))};
-            FragmentTransaction transactions = fragmentManager.beginTransaction().setCustomAnimations(R.anim.abc_slide_in_top, android.R.anim.fade_out);
-            //   transactions.show(item);
-            GrammerFragmentsBottomSheet.newInstance(data).show(((AppCompatActivity) context).getSupportFragmentManager(), WordAnalysisBottomSheet.TAG);
 
-          } else if (issentence) {
+            if (issentence) {
             SentenceAnalysisBottomSheet item = new SentenceAnalysisBottomSheet();
             //    item.setdata(rootWordMeanings,wbwRootwords,grammarRootsCombined);
             FragmentManager fragmentManager = ((AppCompatActivity) context).getSupportFragmentManager();

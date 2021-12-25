@@ -163,7 +163,7 @@ public class WordAnalysisBottomSheet extends BottomSheetDialogFragment {
     private VerbWazan vb;
     private VerbWazan arabicword;
     protected RootWordDisplayAdapter rwAdapter;
-    final ArrayList<SarfSagheer> sarfSagheerList=new ArrayList<>();
+    final ArrayList<SarfSagheer> sarfSagheerList = new ArrayList<>();
 
     public void setIsroot(boolean isroot) {
         this.isroot = isroot;
@@ -175,7 +175,7 @@ public class WordAnalysisBottomSheet extends BottomSheetDialogFragment {
 
     final ArrayList<String> wazannumberslist = new ArrayList<>();
     SarfSagheerPOJO sarf;
-    boolean isroot, isarabicword, quadrilateral,isnoun,ismujarradparticple;
+    boolean isroot, isarabicword, quadrilateral, isnoun, ismujarradparticple;
     private SentenceRootWordDisplayAdapter sentenceRootWordDisplayAdapter;
 
     public boolean isParticiples() {
@@ -250,7 +250,7 @@ public class WordAnalysisBottomSheet extends BottomSheetDialogFragment {
         ayanumber = Integer.parseInt(stringArray[1]);
         String wbwtranslation = stringArray[2];
         int wordno = Integer.parseInt(stringArray[3]);
-        if(stringArray.length>4) {//ignore if the call is from wordoccurance
+        if (stringArray.length > 4) {//ignore if the call is from wordoccurance
             storepreferences(chapterid, ayanumber, stringArray[4]);
         }
         Utils utils = new Utils(getActivity());
@@ -274,7 +274,7 @@ public class WordAnalysisBottomSheet extends BottomSheetDialogFragment {
                 ArrayList<NounCorpus> corpusNounWord = utils.getQuranNouns(chapterid, ayanumber, wordno);
                 ArrayList<VerbCorpus> verbCorpusRootWord = utils.getQuranRoot(chapterid, ayanumber, wordno);
                 QuranMorphologyDetails am = new QuranMorphologyDetails(corpusSurahWord, corpusNounWord, verbCorpusRootWord, getContext());
-           vb=new VerbWazan();
+                vb = new VerbWazan();
                 wordbdetail = am.getWordDetails();
                 if (verbCorpusRootWord.size() > 0 && verbCorpusRootWord.get(0).getTag().equals("V")) {
                     vbdetail = am.getVerbDetails();
@@ -288,20 +288,20 @@ public class WordAnalysisBottomSheet extends BottomSheetDialogFragment {
                 isparticple = wordbdetail.get("particple") != null;
                 isconjugation = ismujarrad || ismazeed || isparticple;
                 isroot = wordbdetail.get("root") != null;
-                if(isroot){
+                if (isroot) {
                     vb.setRoot(String.valueOf(wordbdetail.get("root")));
                 }
 
-               isnoun = wordbdetail.get("noun") != null;
-                        if(isparticple){
-                      if(wordbdetail.get("form").toString().equals("I")){
-                          ismujarradparticple=true;
-                      }else{
-                          ismujarradparticple=false;
-                      }
+                isnoun = wordbdetail.get("noun") != null;
+                if (isparticple) {
+                    if (wordbdetail.get("form").toString().equals("I")) {
+                        ismujarradparticple = true;
+                    } else {
+                        ismujarradparticple = false;
+                    }
 
-                        }
-              root = vbdetail.get("root");
+                }
+                root = vbdetail.get("root");
                 if (ismujarrad) {
                     mujarradwazan = vbdetail.get("wazan");
                     verbmood = vbdetail.get("verbmood");
@@ -321,7 +321,7 @@ public class WordAnalysisBottomSheet extends BottomSheetDialogFragment {
 
                     ArrayList<ArrayList> listing = GatherAll.getInstance().getMujarradListing(verbmood, root, vb.getWazan());//     ThulathiMazeedConjugatonList = iniitThulathiQuerys(vbdetail.get("wazan"), vbdetail.get("root"));
 
-                    SarfSagheer ss=new SarfSagheer();
+                    SarfSagheer ss = new SarfSagheer();
                     ss.setWeakness(listing.get(0).get(0).toString());
                     ss.setWazanname(listing.get(0).get(1).toString());
                     ss.setVerbroot(listing.get(0).get(2).toString());
@@ -378,7 +378,7 @@ public class WordAnalysisBottomSheet extends BottomSheetDialogFragment {
                     setIsverbconjugaton(true);
                     ArrayList<ArrayList> listing = GatherAll.getInstance().getMazeedListing(verbmood, root, mazeedwazan);
 
-                    SarfSagheer ss=new SarfSagheer();
+                    SarfSagheer ss = new SarfSagheer();
                     ss.setWeakness(listing.get(0).get(0).toString());
                     ss.setWazanname(listing.get(0).get(1).toString());
                     ss.setVerbroot(listing.get(0).get(2).toString());
@@ -419,7 +419,7 @@ public class WordAnalysisBottomSheet extends BottomSheetDialogFragment {
                     setIsroot(true);
                     setParticiples(true);
                     setIsverbconjugaton(false);
-                    if(!ismujarradparticple) {
+                    if (!ismujarradparticple) {
                         String form1 = String.valueOf(wordbdetail.get("form"));
                         String root = String.valueOf(wordbdetail.get("root"));
                         vb = new VerbWazan();
@@ -429,9 +429,9 @@ public class WordAnalysisBottomSheet extends BottomSheetDialogFragment {
                         setNoun(false);
                         String tafeel = mazeedsignificance.get("II");
                         vbdetail.put("mazeed", tafeel);
-                    }else {
+                    } else {
 
-                      String root=vb.getRoot();
+                        String root = vb.getRoot();
                         boolean first = root.startsWith("أ");
                         int second = root.indexOf("أ");
                         if (first) {
@@ -441,9 +441,9 @@ public class WordAnalysisBottomSheet extends BottomSheetDialogFragment {
                         }
 
 
-                        DatabaseUtils databaseUtils=new DatabaseUtils(getActivity());
+                        DatabaseUtils databaseUtils = new DatabaseUtils(getActivity());
 
-                         ArrayList<MujarradVerbs> triVerb = databaseUtils.getMujarradVerbs(root);
+                        ArrayList<MujarradVerbs> triVerb = databaseUtils.getMujarradVerbs(root);
                         verbDictList = new ArrayList<>();
                         for (MujarradVerbs tri : triVerb) {
                             verbDictList.add(new MujarradVerbs(tri.getVerb(), tri.getRoot(), tri.getBabname(), tri.getVerbtype()));
@@ -452,12 +452,10 @@ public class WordAnalysisBottomSheet extends BottomSheetDialogFragment {
 
                         if (!triVerb.isEmpty()) {
                             setParticiples(true);
-                            ismfaelmafool = GatherAll.getInstance().getMujarradParticiple( root, triVerb.get(0).getBab());
-
+                            ismfaelmafool = GatherAll.getInstance().getMujarradParticiple(root, triVerb.get(0).getBab());
 
 
                             vb.setWazan(triVerb.get(0).getBab());
-
 
 
                         } else {
@@ -467,10 +465,10 @@ public class WordAnalysisBottomSheet extends BottomSheetDialogFragment {
 
 
                 } else if (isroot && isnoun) {
-                    vb=new VerbWazan();
-                  vb.setRoot(root);
-                  setIsroot(true);
-                  setNoun(true);
+                    vb = new VerbWazan();
+                    vb.setRoot(root);
+                    setIsroot(true);
+                    setNoun(true);
 
 
                 } else if (isroot && !isconjugation) {
@@ -499,7 +497,7 @@ public class WordAnalysisBottomSheet extends BottomSheetDialogFragment {
                 corpusNounWord.size();
                 try {
                     //   if (corpusNounWord.get(0).getTag().equals("ACC") || corpusNounWord.get(0).equals("T") || corpusNounWord.get(0).equals("LOC")) {
-                //    vb = new VerbWazan();
+                    //    vb = new VerbWazan();
                     if (corpusNounWord.size() > 0 && (corpusNounWord.get(0).getTag().equals("COND") || (corpusNounWord.get(0).getTag().equals("T") || corpusNounWord.get(0).getTag().equals("LOC")))) {
                         if (corpusNounWord.get(0).getTag().equals("COND")) {
                             setHarfNasbAndZarf("ACC");
@@ -527,14 +525,13 @@ public class WordAnalysisBottomSheet extends BottomSheetDialogFragment {
                         setParticiples(false);
 
 
-                    }   else if (wordbdetail.get("root") != null && wordbdetail.get("root").length() == 4) {
+                    } else if (wordbdetail.get("root") != null && wordbdetail.get("root").length() == 4) {
                         setMazeedSarfSagheer(false);//form 10 and 11 return 0 to be done
                         setThulathiSarfSagheer(false);
                         setIsverbconjugaton(false);
                         setIsroot(true);
                         setQuadrilateral(true);
                         vb.setRoot(vbdetail.get("root"));
-
 
 
                     } else if (wordbdetail.get("root") != null && wordbdetail.get("noun") != null) {
@@ -613,8 +610,6 @@ public class WordAnalysisBottomSheet extends BottomSheetDialogFragment {
         editor.commit();
 
     }
-
-
 
 
     protected void setHarfNasb(Utils utils, ArrayList<NewCorpusExpandWbwPOJO> corpusSurahWord) {
@@ -726,7 +721,6 @@ public class WordAnalysisBottomSheet extends BottomSheetDialogFragment {
     }
 
 
-
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -767,7 +761,7 @@ public class WordAnalysisBottomSheet extends BottomSheetDialogFragment {
                     }
                     //        holder.quran_transliteration.setText(Html.fromHtml(entity.getTranslation(), Html.FROM_HTML_MODE_LEGACY));
                     String formDetails = getFormDetails(mform);
-                    if(!(formDetails ==null)) {
+                    if (!(formDetails == null)) {
                         Tooltip.Builder builder = new Tooltip.Builder(v, R.style.ayah_translation)
                                 .setCancelable(true)
                                 .setDismissOnClick(false)
@@ -873,7 +867,7 @@ public class WordAnalysisBottomSheet extends BottomSheetDialogFragment {
                 } else if (viewVerbConjugation != null) {
                     text = ((MaterialButton) viewVerbConjugation).getText();
                     if (text.toString().equals("Click for Verb Conjugation")) {
-                        if (isroot && isconjugation  ) {
+                        if (isroot && isconjugation) {
 
                             Bundle dataBundle = new Bundle();
                             //      ArrayList arrayList = ThulathiMazeedConjugatonList.get(position);

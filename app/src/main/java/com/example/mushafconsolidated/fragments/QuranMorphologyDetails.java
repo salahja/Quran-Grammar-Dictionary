@@ -196,7 +196,7 @@ public class QuranMorphologyDetails {
       switch (mood) {
         case "IND":
           vbdetail.put("mood", CorpusConstants.verbfeaturesenglisharabic.IND);
-          vbdetail.put("verbmood", "subjunctive");
+          vbdetail.put("verbmood", "indicative");
 
         case "JUS":
           vbdetail.put("mood", CorpusConstants.verbfeaturesenglisharabic.JUS);
