@@ -1,0 +1,15 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+
+    <style name="AppTextField" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
+        <item name="boxBackgroundColor">@color/text_field_background</item>
+    </style>
+
+    <color name="text_field_background">#F3F1F1</color>
+
+
+
+
+
+
+</resources>
