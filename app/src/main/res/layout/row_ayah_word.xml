@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    android:orientation="vertical"
+   >
+
+
+    <include layout="@layout/quran_imageview_row" />
+
+
+
+
+    <com.example.utility.FlowLayout
+        android:maxLines="1"
+        android:elevation="8dp"
+        android:id="@+id/flow_word_by_word"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:visibility="visible" />
+
+
+
+    <TextView
+        android:id="@+id/arabic_textView"
+
+        android:textSize="16.0sp"
+         
+
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5.0dip"
+        android:paddingStart="5.0dip"
+        android:paddingEnd="5.0dip"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+    <TextView
+        android:id="@+id/quran_textView"
+
+         
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:lineSpacingExtra="@dimen/lineSpacingExtra"
+        android:padding="@dimen/textViewPadding"
+        android:hint="@string/arabic_font_style"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:visibility="visible" />
+
+    <include layout="@layout/quran_tranlation_rows"
+        android:visibility="visible"/>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/lineWidth"
+        android:background="@android:color/darker_gray" />
+
+
+</LinearLayout>

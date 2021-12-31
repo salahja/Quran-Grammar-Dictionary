@@ -1,0 +1,214 @@
+<!--
+~ Copyright (C) 2019 The Android Open Source Project
+~
+~ Licensed under the Apache License, Version 2.0 (the "License");
+~ you may not use this file except in compliance with the License.
+~ You may obtain a copy of the License at
+~
+~      http://www.apache.org/licenses/LICENSE-2.0
+~
+~ Unless required by applicable law or agreed to in writing, software
+~ distributed under the License is distributed on an "AS IS" BASIS,
+~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+~ See the License for the specific language governing permissions and
+~ limitations under the License.
+-->
+
+<resources>
+    <string name="app_name"></string>
+
+    <!--Main-->
+
+    <!--Instructions-->
+
+    <!--Component-->
+
+
+    <!--Theme Summary-->
+
+
+    <!-- Strings used for fragments for navigation -->
+
+    <!-- TODO: Remove or change this placeholder text -->
+
+    <!-- Shrine backdrop menu labels -->
+    <string name="header_msg" translatable="false">\"بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ\"</string>
+
+    <string name="more_action" />
+    <string name="go_to" />
+    <string name="OK" />
+    <string name="id_downloaded">Downloaded</string>
+    <string name="id_ready_to_download">Ready to Download</string>
+
+
+    <string name="id_select_translations">Select Translation</string>
+    <string name="prefs_select_translaton">selecttranslation</string>
+    <!-- Strings used for fragments for navigation -->
+
+    <string name="Done">Done</string>
+    <string name="failed">Failed</string>
+    <string name="app_folder_path">/Mushafapplication</string>
+    <string name="permission">he application can not start without this permission.</string>
+
+
+    <string name="Alert">Alert</string>
+
+    <string name="toolbar_title">SEARCH</string>
+    <string name="action_search">search</string>
+    <string name="id_chapters">Chapters</string>
+    <string name="id_juzzs">Juz</string>
+    <string name="prefs_show_translitration">showtransliterationKey</string>
+    <string name="prefs_show_en_jalalayn">showEnglishJalalayn</string>
+
+    <string name="seek_title">English Font Selection</string>
+    <string name="seek_summary">Summary</string>
+
+    <!--website titles> -->
+    <string name="google_title">Google</string>
+    <string name="google_summary">Google search</string>
+    <string name="google_link" translatable="false">https://google.com</string>
+
+    <string name="ddg_title">DuckDuckGo</string>
+    <string name="ddg_summary">DuckDuckGo search</string>
+    <string name="ddg_link" translatable="false">https://duckduckgo.com/</string>
+    <string name="seek_titles">Arabic Font Size</string>
+    <string name="arabic_font_style"><![CDATA[Arabic Font Style<]]></string>
+
+
+    <string-array name="encase">
+
+        <item>Nom.</item>
+        <item>Acc.</item>
+        <item>Gen.</item>
+
+    </string-array>
+    <string-array name="arabicpronouns">
+
+        <item>هو </item>
+        <item>"هما(مذ)" </item>
+        <item>هم </item>
+        <item>هي </item>
+        <item>"هما(مؤ)" </item>
+        <item>هن </item>
+        <item>أنت</item>
+        <item>أنتما </item>
+        <item>أنتم </item>
+        <item>أنت </item>
+        <item>أنتما </item>
+        <item>أنتن </item>
+        <item>أنا  </item>
+        <item>نحن  </item>
+    </string-array>
+    <string-array name="arcase">
+
+        <item>الرفع </item>
+        <item>النصب</item>
+        <item>الجر  </item>
+
+    </string-array>
+
+
+    <string name="faelmazi">Past Activeٍ</string>
+    <string name="faelmudhary">Present Active</string>
+    <string name="faelmadimajhool">Past Passive </string>
+    <string name="faelmudharymajhol">Present Passive</string>
+    <string name="faelamr">Command</string>
+    <string name="lang">Conjugation Headers</string>
+    <string name="click_more">Click for Verb Conjugation</string>
+
+
+    <string-array name="lang_names">
+
+        <item>English</item>
+        <item>Arabic</item>
+    </string-array>
+
+    <string-array name="lang_codes">
+
+        <item>en</item>
+        <item>ar</item>
+    </string-array>
+
+    <string-array name="verbmoodsList">
+        <item>Indicative(مرفوع)</item>
+        <item>Subjunctive(منصوب)</item>
+        <item>Jussive(مجزوم)</item>
+        <item>Emphasized</item>
+
+    </string-array>
+
+    <string-array name="verbmoodEntry">
+        <item>Indicative</item>
+        <item>Subjunctive</item>
+        <item>Jussive</item>
+        <item>Emphasized</item>>
+    </string-array>
+
+    <string name="ismmafool">الاسم المفعول</string>
+    <string name="ismfael">الاسم الفاعل</string>
+    <string name="ismalaone">مِفْعَلٌ</string>
+    <string name="ismalatwo">مِفْعَلَةٌ</string>
+    <string name="ismalthree">مِفْعَالٌ</string>
+
+
+    <string name="zarfmafalun">مَفْعَلٌ</string>
+    <string name="zarfmafilun">مَفْعِلٌ</string>
+    <string name="zarfmafalatun">مَفْعَلةٌ</string>
+    <string name="title_activity_main">MainActivity</string>
+    <!--
+    This string is used for square devices and overridden by hello_world in
+    values-round/strings.xml for round devices.
+    -->
+    <string name="listing">Select</string>
+    <string name="mujarradlist">Mujarrad </string>
+    <string name="title_activity_verb_conjugation">VerbConjugationAct</string>
+    <string name="verb_conjugator">Conjugation</string>
+    <string name="conjugator">Verb Conjugator</string>
+    <string name="mazeed_list">Mazeed</string>
+    <string name="quranactivity">Quran</string>
+    <string name="settings_conjugator">Settings </string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="colortitile">Pick Grammar Phrases COlors</string>
+    <string name="prefs_show_mausoof">mausoof</string>
+    <string name="prefs_show_mudhaf">mudhaf</string>
+    <string name="prefs_show_harfnasb">harfnasb</string>
+
+    <string name="bookmarks">BookMarks</string>
+    <string name="colon_mark">:</string>
+    <string name="all">All</string>
+    <string name="bookmark_last_read">Last Read</string>
+    <string name="quick_links">Quick Links</string>
+
+    <string name="text_ayatul_kursi">Ayatul Kursi</string>
+    <string name="text_kahaf">Al-Kahaf</string>
+    <string name="lemma">lemma</string>
+    <string name="root_word">Root Word</string>
+    <string name="prefs_show_shart">shart</string>
+    <string name="prefs_grammar_sentence">grammarsentence</string>
+    <string name="prefs_show_kana">kana</string>
+    <string name="prefs_show_grammar_fragments">fragments</string>
+    <string name="prefs_wbw">wbw</string>
+    <string name="prefs_show_colortag">colortag</string>
+    <string name="linkkahaf">Surah Kahaf</string>
+    <string name="mudhafsummary">Surah 1 to 8 and 59 to 114</string>
+    <string name="harfnasbsummary">Valid only from Surah 1 to 8 and 59 to 114</string>
+    <string name="ok">OK</string>
+    <string name="notfound">not found</string>
+    <string name="colorize">Colorize</string>
+    <string name="go_to_surah_ayah">Go to Surah/Ayah</string>
+    <string name="jussive">Jussive</string>
+    <string name="emphasized">Emphasized</string>
+    <string name="subjunctive">Subjunctive</string>
+    <string name="Indicative">Indicative</string>
+    <string name="nasara">nasara</string>
+    <string name="mujarrad_augmented">Mujarrad/UnAugmented</string>
+    <string name="iftiala">Iftiala</string>
+    <string name="istifala">Istifala</string>
+    <string name="mujarrad_listing">Mujarrad List</string>
+    <string name="mazeed_listing">Mazeed list</string>
+    <string name="moodsummar">indicative,Subjunctive,Jussive,Emphasized</string>
+    <string name="indicative">Indicative</string>
+    <string name="loadingverbs">Please wait! Loading Sample of 30 Verbs.</string>
+
+
+</resources>

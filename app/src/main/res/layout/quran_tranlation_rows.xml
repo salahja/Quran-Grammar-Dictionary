@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/translate_textViewnote"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sahiah International"
+            android:lineSpacingExtra="@dimen/lineSpacingExtra"
+            android:padding="@dimen/textViewPadding"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:visibility="gone" />
+
+
+
+
+        <TextView
+            android:id="@+id/translate_textView"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/translate_textViewnote"
+            android:lineSpacingExtra="@dimen/lineSpacingExtra"
+            android:padding="@dimen/textViewPadding"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:visibility="visible" />
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/quran_jalalaynnote"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lineSpacingExtra="@dimen/lineSpacingExtra"
+            android:padding="@dimen/textViewPadding"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/quran_jalalayn"
+            android:layout_width="match_parent"
+
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/quran_jalalaynnote"
+            android:lineSpacingExtra="@dimen/lineSpacingExtra"
+            android:padding="@dimen/textViewPadding"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/quran_transliterationnote"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:lineSpacingExtra="@dimen/lineSpacingExtra"
+        android:padding="@dimen/textViewPadding"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/quran_transliteration"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:lineSpacingExtra="@dimen/lineSpacingExtra"
+        android:padding="@dimen/textViewPadding"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:visibility="gone" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <ImageView
+            android:id="@+id/expandImageButton"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+
+            android:layout_centerInParent="true"
+            android:adjustViewBounds="true"
+            android:contentDescription="@null"
+            android:foregroundGravity="center_horizontal"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/ic_drop_down"
+            android:tooltipText="@string/Alert" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/erab_textViewnote"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:lineSpacingExtra="@dimen/lineSpacingExtra"
+            android:padding="@dimen/textViewPadding"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/erab_textView"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/erab_textViewnote"
+            android:lineSpacingExtra="@dimen/lineSpacingExtra"
+            android:padding="@dimen/textViewPadding"
+
+            android:visibility="gone" />
+
+
+    </RelativeLayout>
+
+</RelativeLayout>
