@@ -5,6 +5,7 @@ import static android.graphics.Color.CYAN;
 import static android.graphics.Color.GREEN;
 import static android.graphics.Color.YELLOW;
 import static com.example.Constant.AYAHNUMBER;
+import static com.example.Constant.AYAH_ID;
 import static com.example.Constant.BCYAN;
 import static com.example.Constant.DeepPink;
 import static com.example.Constant.FORESTGREEN;
@@ -14,6 +15,7 @@ import static com.example.Constant.INDICATIVE;
 import static com.example.Constant.ORANGE400;
 import static com.example.Constant.QURAN_VERB_ROOT;
 import static com.example.Constant.QURAN_VERB_WAZAN;
+import static com.example.Constant.SURAH_ARABIC_NAME;
 import static com.example.Constant.SURAH_ID;
 import static com.example.Constant.VERBMOOD;
 import static com.example.Constant.VERBTYPE;
@@ -52,6 +54,7 @@ import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.mushafconsolidated.Activity.ActivitySettings;
 import com.example.mushafconsolidated.Activity.LughatWordDetailsAct;
 import com.example.mushafconsolidated.Activity.WordOccuranceAct;
 import com.example.mushafconsolidated.Adapters.RootWordDisplayAdapter;
@@ -67,8 +70,10 @@ import com.example.mushafconsolidated.Entities.VerbCorpus;
 import com.example.mushafconsolidated.Entities.VerbWazan;
 import com.example.mushafconsolidated.Entities.lughat;
 import com.example.mushafconsolidated.Entities.wbwentity;
+import com.example.mushafconsolidated.FontQuranListDialogFragment;
 import com.example.mushafconsolidated.R;
 import com.example.mushafconsolidated.Utils;
+import com.example.mushafconsolidated.VerbFormsDialogFrag;
 import com.example.mushafconsolidated.intrface.OnItemClickListener;
 import com.example.mushafconsolidated.model.SarfSagheerPOJO;
 import com.example.utility.QuranGrammarApplication;
@@ -612,9 +617,12 @@ public class WordAnalysisBottomSheet extends BottomSheetDialogFragment {
 
         SharedPreferences pref = getContext().getSharedPreferences("lastread", MODE_PRIVATE);
         SharedPreferences.Editor editor = pref.edit();
-        editor.putInt("surah", chapterid);
-        editor.putInt("ayah", ayanumber);
-        editor.putString("surahname", s);
+        editor.putInt(SURAH_ID, chapterid);
+        editor.putInt(AYAH_ID, ayanumber);
+        editor.putString(SURAH_ARABIC_NAME, s);
+
+
+
         editor.apply();
         editor.commit();
 
@@ -748,6 +756,20 @@ public class WordAnalysisBottomSheet extends BottomSheetDialogFragment {
                 View formview = v.findViewById(R.id.mazeedmeaning);
 
                 if (formview != null) {
+
+                    VerbFormsDialogFrag item=new VerbFormsDialogFrag();
+                    //    item.setdata(rootWordMeanings,wbwRootwords,grammarRootsCombined);
+                    FragmentManager fragmentManager =  getActivity().getSupportFragmentManager();
+                    String sample="بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ";
+                    String vbform = vbdetail.get("formnumber");
+                    if(null!=vbform) {
+                        String data[] = {vbform};
+                        FragmentTransaction transactions = fragmentManager.beginTransaction().setCustomAnimations(R.anim.abc_slide_in_top, android.R.anim.fade_out);
+                        transactions.show(item);
+                        VerbFormsDialogFrag.newInstance(data).show(getActivity().getSupportFragmentManager(), WordAnalysisBottomSheet.TAG);
+
+                    } ;
+                    /*
                     final SpannableStringBuilder formnumber = wordbdetail.get("formnumber");
                     final String vbform = vbdetail.get("formnumber");
                     String mform = "";
@@ -780,11 +802,12 @@ public class WordAnalysisBottomSheet extends BottomSheetDialogFragment {
 
 
                                 .setBackgroundColor(color)
-
+  //    WebView wv = (WebView)findViewById(R.id.webview);
+     //   wv.loadUrl("file:///android_asset/form10.html");
 
                                 .setText(Html.fromHtml(getFormDetails(mform)));
                         builder.show();
-                    }
+                    }*/
                 } else if (wordview != null) {
                     Bundle dataBundle = new Bundle();
                     if (quadrilateral) {

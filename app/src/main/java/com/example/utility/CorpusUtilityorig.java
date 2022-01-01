@@ -1,10 +1,13 @@
 package com.example.utility;
 
+import static android.content.Context.MODE_PRIVATE;
 import static android.graphics.Color.CYAN;
 import static android.graphics.Color.GREEN;
 import static android.graphics.Color.YELLOW;
+import static com.example.Constant.AYAH_ID;
 import static com.example.Constant.BBLUE;
 import static com.example.Constant.BCYAN;
+import static com.example.Constant.CHAPTER;
 import static com.example.Constant.CYANLIGHTEST;
 import static com.example.Constant.FORESTGREEN;
 import static com.example.Constant.GOLD;
@@ -14,6 +17,8 @@ import static com.example.Constant.MIDNIGHTBLUE;
 import static com.example.Constant.ORANGE400;
 import static com.example.Constant.OVAL;
 import static com.example.Constant.RECKT;
+import static com.example.Constant.SURAH_ARABIC_NAME;
+import static com.example.Constant.SURAH_ID;
 import static com.example.Constant.WBURNTUMBER;
 import static com.example.Constant.WHOTPINK;
 import static com.example.Constant.adjectivespanDark;
@@ -130,6 +135,7 @@ public class CorpusUtilityorig {
   //todo harfnasm 2nd surah verfified
   //todo shart done till 4th
   private static final int PERMISSION_REQUEST_CODE = 100;
+
   private final String preferences;
 
   private final Context context;
@@ -153,7 +159,21 @@ public class CorpusUtilityorig {
 
   }
 
+  public static HashMap<String, String> getpreferences() {
+    HashMap<String, String> lastread=new HashMap<>();
+    SharedPreferences pref = QuranGrammarApplication.getContext().getSharedPreferences("lastread", MODE_PRIVATE);
 
+    int surah = pref.getInt(CHAPTER, 1);
+    int ayah = pref.getInt(AYAH_ID, 1);
+    String surahname = pref.getString(SURAH_ARABIC_NAME, "");
+    lastread.put(CHAPTER, String.valueOf(surah));
+    lastread.put(AYAH_ID, String.valueOf(ayah));
+    lastread.put(SURAH_ARABIC_NAME,surahname);
+    return lastread;
+
+
+
+  }
   public static SpannableString NewSetWordSpanTag(String tagone, String tagtwo, String tagthree, String tagfour, String tagfive, String arafive, String arafour, String arathree, String aratwo, String araone) {
     SpannableString str = null;
     int tagcounter = 0;

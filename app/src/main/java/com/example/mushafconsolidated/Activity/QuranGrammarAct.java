@@ -3,6 +3,7 @@ package com.example.mushafconsolidated.Activity;
 
 import static android.text.TextUtils.concat;
 import static com.example.Constant.AYAHNUMBER;
+import static com.example.Constant.AYAH_ID;
 import static com.example.Constant.CHAPTER;
 import static com.example.Constant.CHAPTERORPART;
 import static com.example.Constant.MAKKI_MADANI;
@@ -182,13 +183,8 @@ public class QuranGrammarAct extends BaseActivity implements PassdataInterface, 
         this.verse_no = verse_no;
     }
 
-    public String getSuraharabicname() {
-        return suraharabicname;
-    }
 
-    public void setSuraharabicname(String suraharabicname) {
-        this.suraharabicname = suraharabicname;
-    }
+
 
     private int isMakkiMadani;
     int versescount = 0;
@@ -205,7 +201,7 @@ public class QuranGrammarAct extends BaseActivity implements PassdataInterface, 
         this.chapterorpart = chapterorpart;
     }
 
-    String suraharabicname;
+
     private static final String TAG = "fragment";
 
 
@@ -358,21 +354,27 @@ public class QuranGrammarAct extends BaseActivity implements PassdataInterface, 
                 getpreferences();
                 setChapterorpart(true);
             } else {
-                final int chapter = bundle.getIntExtra(CHAPTER, 1);
-                //     final int chapter = 1;
-                final boolean chapterorpartb = bundle.getBooleanExtra(CHAPTERORPART, true);
-                initView();
-                bundle.getStringExtra("partname");
-                setChapterno(chapter);
-                setChapterorpart(chapterorpartb);
+                  int chapter = bundle.getIntExtra(CHAPTER, 1);
 
-                setSurahArabicName(bundle.getStringExtra(SURAH_ARABIC_NAME));
-                //   setChapterno( bundle.getIntExtra(SURAH_ID,2));
-                setVerse_no(bundle.getIntExtra(AYAHNUMBER, 1));
-                setVersescount(bundle.getIntExtra(VERSESCOUNT, 286));
-                setIsMakkiMadani(bundle.getIntExtra(MAKKI_MADANI, 1));
-                setSuraharabicname(bundle.getStringExtra(SURAH_ARABIC_NAME));
-                setRukucount(bundle.getIntExtra(RUKUCOUNT, 1));
+                Utils util=new Utils(this);
+                ArrayList<ChaptersAnaEntity> list = util.getAllAnaChapters();
+            //    final boolean chapterorpartb = bundle.getBooleanExtra(CHAPTERORPART, true);
+                initView();
+
+
+                setChapterno(chapter);
+              //  setChapterorpart(chapterorpartb);
+
+                setSurahArabicName(list.get(chapter-1).getAbjadname());
+                //   setChapterno( bundle.etIntExtra(SURAH_ID,2));
+                setVerse_no(bundle.getIntExtra(AYAH_ID, 1));
+                setVersescount(list.get(chapter-1).getVersescount());
+                setIsMakkiMadani(list.get(chapter-1).getIsmakki());
+                setRukucount(list.get(chapter-1).getRukucount());
+
+             //   setIsMakkiMadani(bundle.getIntExtra(MAKKI_MADANI, 1));
+               // setSuraharabicname(bundle.getStringExtra(SURAH_ARABIC_NAME));
+             //   setRukucount(bundle.getIntExtra(RUKUCOUNT, 1));
 
                 setUpOnCLicks();
 
@@ -412,10 +414,10 @@ public class QuranGrammarAct extends BaseActivity implements PassdataInterface, 
 
     private void getpreferences() {
         SharedPreferences pref = getApplicationContext().getSharedPreferences("lastread", MODE_PRIVATE);
-        chapterno = pref.getInt("surah", 1);
-        verse_no = pref.getInt("ayah", 1);
-        surahname=pref.getString("surahname","");
-        setSuraharabicname(surahname);
+        chapterno = pref.getInt(CHAPTER, 1);
+        verse_no = pref.getInt(AYAH_ID, 1);
+        surahname=pref.getString(SURAH_ARABIC_NAME,"");
+        setSurahArabicName(surahname);
 
 
 
@@ -495,7 +497,7 @@ public class QuranGrammarAct extends BaseActivity implements PassdataInterface, 
         suraNames.setAdapter(adapter);
 
         suraNames.setSelection(currentsurah - 1);
-        setSuraharabicname(show[getCurrentSelectSurah()]);
+        setSurahArabicName(show[getCurrentSelectSurah()]);
 
         verses.setAdapter(verseAdapter);
         //   verses.setSelection(verseNumber);
@@ -567,7 +569,7 @@ public class QuranGrammarAct extends BaseActivity implements PassdataInterface, 
 
                 StringBuilder sb = new StringBuilder();
                 sb.append(suraNumber).append("-").append(soraList.get(suraNumber - 1).getNameenglish()).append("-").append(soraList.get(suraNumber - 1).getAbjadname());
-                setSuraharabicname(sb.toString());
+                setSurahArabicName(sb.toString());
                 setSurahArabicName(soraList.get(suraNumber - 1).getAbjadname());
                 //  ayahIndex.getInputType();
                 Editable text = ayahIndex.getText();
@@ -600,7 +602,7 @@ public class QuranGrammarAct extends BaseActivity implements PassdataInterface, 
 
                 StringBuilder sb = new StringBuilder();
                 sb.append(suraNumber).append("-").append(soraList.get(suraNumber - 1).getNameenglish()).append("-").append(soraList.get(suraNumber - 1).getAbjadname());
-                setSuraharabicname(sb.toString());
+                setSurahArabicName(sb.toString());
                 setSurahArabicName(soraList.get(suraNumber - 1).getAbjadname());
                 setVerse_no(verseNumber);
                 setVersescount(soraList.get(suraNumber - 1).getVersescount());

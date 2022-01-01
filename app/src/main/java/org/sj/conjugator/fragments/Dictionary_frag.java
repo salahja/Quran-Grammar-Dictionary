@@ -33,6 +33,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
+import Utility.ArabicLiterals;
 import ru.dimorinny.floatingtextbutton.FloatingTextButton;
 
 
@@ -138,6 +139,12 @@ public class Dictionary_frag extends Fragment {
         verbroot = dataBundle.getString(QURAN_VERB_ROOT);
         arabicword = dataBundle.getString("arabicword");
         vocabroot = dataBundle.getString(QURAN_VERB_ROOT);
+        //for lughat convert hamaza to alif
+        int starts = vocabroot.indexOf(ArabicLiterals.Hamza);
+        String hamza = "ء";
+        if (starts != -1) {
+            vocabroot = vocabroot.replace(ArabicLiterals.Hamza, LALIF.trim());
+        }
         if (null != arabicword) {
             dictionary = utils.getArabicWord(arabicword);
 
@@ -181,6 +188,8 @@ public class Dictionary_frag extends Fragment {
             }
             worddifinition.add(hanssb.toString());
         } else {
+
+
             dictionary = utils.getRootDictionary(vocabroot.trim());
         }
 

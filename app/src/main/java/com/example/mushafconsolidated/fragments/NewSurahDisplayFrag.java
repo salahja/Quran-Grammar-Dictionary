@@ -3,6 +3,9 @@ package com.example.mushafconsolidated.fragments;
 
 import static android.content.Context.MODE_PRIVATE;
 import static com.example.Constant.AYAHNUMBER;
+import static com.example.Constant.AYAH_ID;
+import static com.example.Constant.CHAPTER;
+import static com.example.Constant.SURAH_ID;
 
 import android.content.Context;
 import android.content.Intent;
@@ -126,47 +129,17 @@ public class NewSurahDisplayFrag extends Fragment {
 
     MaterialButton lastread = view.findViewById(R.id.lastread);
     TextView kahaf = view.findViewById(R.id.kahaf);
+    TextView ayakursi=view.findViewById(R.id.ayatkursi);
 
     SharedPreferences pref = getContext().getSharedPreferences("lastread", MODE_PRIVATE);
 
-    lastreadchapterno = pref.getInt("surah", 1);
-    lastreadverseno = pref.getInt("ayah", 1);
+    lastreadchapterno = pref.getInt(CHAPTER, 1);
+    lastreadverseno = pref.getInt(AYAH_ID, 1);
     StringBuilder sb=new StringBuilder();
     sb.append("Last read").append(":").append("Surah:").append(lastreadchapterno).append(" ").append("Ayah:").append(lastreadverseno);
     lastread.setText(sb.toString());
     kahaf.setText(R.string.linkkahaf);
-/*
- ImageView surahicon = view.findViewById(R.id.surahicon);
-    ImageView makkimadaniIcon= view.findViewById(R.id.makkimadaniicon);
-    ImageView kahaficon = view.findViewById(R.id.kahaficon);
-    ImageView kahafmakkimadaniicon= view.findViewById(R.id.kahafmakkimadaniicon)    ;
-    final Drawable drawable = imgs.getDrawable(lastreadchapterno - 1);
-    final Drawable kahafdrawable = imgs.getDrawable(18 - 1);
-    surahicon.setImageDrawable(drawable);
-    surahicon.setColorFilter(Color.CYAN);
 
-    kahaficon.setImageDrawable(kahafdrawable);
-    kahaficon.setColorFilter(Color.CYAN);
-    int ismakki = allAnaChapters.get(lastreadchapterno-1).getIsmakki();
-   int iskhafmakki=    allAnaChapters.get(18).getIsmakki();
-    if(ismakki==1) {
-
-
-      makkimadaniIcon.setImageResource(R.drawable.ic_makkah_foreground);
-    }else{
-      makkimadaniIcon.setImageResource(R.drawable.ic_madinah_foreground);
-    }
-    makkimadaniIcon.setColorFilter(Color.CYAN);
-
-    if(iskhafmakki==1) {
-
-
-      kahafmakkimadaniicon.setImageResource(R.drawable.ic_makkah_foreground);
-    }else{
-      kahafmakkimadaniicon.setImageResource(R.drawable.ic_madinah_foreground);
-    }
-    kahafmakkimadaniicon.setColorFilter(Color.CYAN);
- */
 
 
     lastread.setOnClickListener(new View.OnClickListener() {
@@ -178,7 +151,7 @@ public class NewSurahDisplayFrag extends Fragment {
         intent.putExtra("chapter", lastreadchapterno);
         intent.putExtra("chapterorpart",true);
         intent.putExtra(  "partname",allAnaChapters.get(lastreadchapterno-1).getAbjadname());
-        intent.putExtra("verseno",lastreadverseno);
+        intent.putExtra(AYAH_ID,lastreadverseno);
         intent.putExtra(AYAHNUMBER,lastreadverseno);
 
         startActivity(intent);
@@ -195,7 +168,24 @@ public class NewSurahDisplayFrag extends Fragment {
         intent.putExtra("chapterorpart",true);
         intent.putExtra(  "partname",allAnaChapters.get(18).getAbjadname());
         intent.putExtra("verseno",1);
-        intent.putExtra(AYAHNUMBER,1);
+        intent.putExtra(AYAH_ID,1);
+
+        startActivity(intent);
+
+      }
+    });
+
+    ayakursi.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+
+        Intent intent = new Intent(QuranGrammarApplication.getContext(), QuranGrammarAct.class);
+        //  Intent intent = new Intent(DarkThemeApplication.getContext(), ReadingSurahPartActivity.class);
+        intent.putExtra("chapter", 2);
+        intent.putExtra("chapterorpart",true);
+        intent.putExtra(  "partname",allAnaChapters.get(2).getAbjadname());
+        intent.putExtra("verseno",255);
+        intent.putExtra(AYAH_ID,255);
 
         startActivity(intent);
 

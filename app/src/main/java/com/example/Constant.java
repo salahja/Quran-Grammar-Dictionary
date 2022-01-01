@@ -159,7 +159,7 @@ public static final String SARFKABEER="sarfkabeer";
     public static final String MAKKI_MADANI = "makkimadani";
     public static final String WORDNUMBER = "wordnumber";
 
-
+    public static final String AYAH_ID = "ayah_id";
     public static final String SURAH_ID = "surah_id";
     public static final String RECKT ="reckt" ;
     public static final String OVAL ="oval" ;

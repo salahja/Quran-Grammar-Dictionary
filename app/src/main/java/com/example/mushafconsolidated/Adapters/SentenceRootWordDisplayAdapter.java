@@ -97,11 +97,11 @@ public class SentenceRootWordDisplayAdapter extends RecyclerView.Adapter<Sentenc
     SharedPreferences sharedPreferences =
             PreferenceManager.getDefaultSharedPreferences(context);
     String quranFont = sharedPreferences.getString("quranFont", "kitab.ttf");
-    Typeface mequran = Typeface.createFromAsset(context.getAssets(), quranFont);
-
+    Typeface appliedFont = Typeface.createFromAsset(context.getAssets(), quranFont);
+    String theme = sharedPreferences.getString("themePref", "dark");
     Log.d(TAG, "onBindViewHolder: called");
-    Typeface arabicTypeface = Typeface.createFromAsset(context.getAssets(), SharedPref.arabicFontSelection());
-    if (SharedPref.themePreferences().equals("dark")) {
+
+    if (theme.equals("dark")) {
       rootcolor = Constant.BCYAN;
       weaknesscolor = Constant.BYELLOW;
       wazancolor = Constant.BBLUE;
@@ -252,7 +252,7 @@ public class SentenceRootWordDisplayAdapter extends RecyclerView.Adapter<Sentenc
       Object[] spans = spannalbeShart.getSpans(0, spannalbeShart.length(), Object.class);
       if (spans.length > 0) {
         holder.quranverseShart.setText(spannalbeShart);
-        holder.quranverseShart.setTypeface(mequran);
+        holder.quranverseShart.setTypeface(appliedFont);
       }
     }
 
@@ -261,7 +261,7 @@ public class SentenceRootWordDisplayAdapter extends RecyclerView.Adapter<Sentenc
       if (spans.length > 0) {
 
         holder.spannableverse.setText(spannableHarf);
-        holder.spannableverse.setTypeface(mequran);
+        holder.spannableverse.setTypeface(appliedFont);
       }
     }
 
@@ -271,7 +271,7 @@ public class SentenceRootWordDisplayAdapter extends RecyclerView.Adapter<Sentenc
       if (spans.length > 0) {
         holder.spannableverse.setText(spannable, TextView.BufferType.SPANNABLE);
         //   holder.spannableverse.setText(spannable);
-        holder.spannableverse.setTypeface(mequran);
+        holder.spannableverse.setTypeface(appliedFont);
       }
     }
 

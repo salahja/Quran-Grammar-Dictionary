@@ -150,15 +150,15 @@ public class SentenceQuranMorphologyDetails extends QuranMorphologyDetails{
             switch (kana_mood) {
                 case "MOOD:SUBJ":
                     vbdetail.put("mood", CorpusConstants.verbfeaturesenglisharabic.IND);
-                    vbdetail.put("verbmood", "subjunctive");
+                    vbdetail.put("verbmood", "Indicative");
 
                 case "JUS":
                     vbdetail.put("mood", CorpusConstants.verbfeaturesenglisharabic.JUS);
-                    vbdetail.put("verbmood", "jussive");
+                    vbdetail.put("verbmood", "Jussive");
                     break;
                 case "SUBJ":
                     vbdetail.put("mood", CorpusConstants.verbfeaturesenglisharabic.SUBJ);
-                    vbdetail.put("verbmood", "subjunctive");
+                    vbdetail.put("verbmood", "Subjunctive");
                     break;
                 default:
                     vbdetail.put("mood", CorpusConstants.verbfeaturesenglisharabic.IND);
@@ -175,11 +175,11 @@ public class SentenceQuranMorphologyDetails extends QuranMorphologyDetails{
 
                 case "JUS":
                     vbdetail.put("mood", CorpusConstants.verbfeaturesenglisharabic.JUS);
-                    vbdetail.put("verbmood", "jussive");
+                    vbdetail.put("verbmood", "Jussive");
                     break;
                 case "SUBJ":
                     vbdetail.put("mood", CorpusConstants.verbfeaturesenglisharabic.SUBJ);
-                    vbdetail.put("verbmood", "subjunctive");
+                    vbdetail.put("verbmood", "Subjunctive");
                     break;
 
             }

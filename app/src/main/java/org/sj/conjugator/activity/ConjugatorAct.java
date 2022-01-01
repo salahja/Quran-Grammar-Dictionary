@@ -2,9 +2,13 @@
 package org.sj.conjugator.activity;
 
 
+import static com.example.Constant.AYAH_ID;
+import static com.example.Constant.CHAPTER;
 import static com.example.Constant.QURAN_VERB_ROOT;
 import static com.example.Constant.QURAN_VERB_WAZAN;
 import static com.example.Constant.SARFKABEER;
+import static com.example.Constant.SURAH_ARABIC_NAME;
+import static com.example.Constant.SURAH_ID;
 import static com.example.Constant.VERBMOOD;
 import static com.example.Constant.VERBTYPE;
 
@@ -35,6 +39,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.mushafconsolidated.Activity.QuranGrammarAct;
+import com.example.utility.CorpusUtilityorig;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.chip.Chip;
@@ -47,6 +52,7 @@ import com.example.mushafconsolidated.R;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 
@@ -138,11 +144,19 @@ public class ConjugatorAct extends BaseActivity implements View.OnClickListener 
 
     callButton.setOnClickListener(view -> {
       ConjugatorAct.super.finish();
-        Intent quranintnt = new Intent(ConjugatorAct.this, QuranGrammarAct.class);
-        //      finish();
 
+        HashMap<String, String> map = CorpusUtilityorig.getpreferences();
+        Bundle dataBundle=new Bundle();
+        map.get(SURAH_ARABIC_NAME);
+        dataBundle.putString(SURAH_ARABIC_NAME,map.get(SURAH_ARABIC_NAME));
+        dataBundle.putInt(CHAPTER, Integer.parseInt(map.get(CHAPTER)));
+        dataBundle.putInt(AYAH_ID, Integer.parseInt(map.get(AYAH_ID)));
+
+            Intent intent = new Intent(ConjugatorAct.this, QuranGrammarAct.class);
+        intent.putExtras(dataBundle);
         finish();
-        startActivity(quranintnt);
+        startActivity(intent);
+
      //  Snackbar.make(viewById, "Call button clicked", Snackbar.LENGTH_SHORT).show();
     });
 
