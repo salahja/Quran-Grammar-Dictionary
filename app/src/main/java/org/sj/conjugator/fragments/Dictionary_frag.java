@@ -2,6 +2,7 @@ package org.sj.conjugator.fragments;
 
 
 import static com.example.Constant.*;
+import static org.sj.conjugator.utilities.ArabicLiterals.AlifHamzaAbove;
 import static org.sj.conjugator.utilities.ArabicLiterals.AlifMaksuraString;
 import static org.sj.conjugator.utilities.ArabicLiterals.Hamza;
 import static org.sj.conjugator.utilities.ArabicLiterals.LALIF;
@@ -14,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -56,6 +58,7 @@ public class Dictionary_frag extends Fragment {
     ArrayList<String> worddifinition = new ArrayList<>();
     String language;
     private String vocabroot;
+
 
     public Dictionary_frag(LughatWordDetailsAct lughatWordDetailsAct, String language) {
         this.context = context;
@@ -119,22 +122,19 @@ public class Dictionary_frag extends Fragment {
         callButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //     FragmentManager fragmentManager = null;
-                //   fragmentManager.popBackStack("mujarrad", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
 
                 FragmentManager fm = getActivity()
                         .getSupportFragmentManager();
-                //   fm.popBackStack ("mujarrad", FragmentManager.POP_BACK_STACK_INCLUSIVE);
-                //    getFragmentManager().popBackStack();
-                //   FragmentManager fm = getActivity().getSupportFragmentManager();
+
                 fm.popBackStack();
-                //     fm.popBackStack();
+
 
             }
         });
 
 
-        assert dataBundle != null;
+
         Utils utils = new Utils(QuranGrammarApplication.getContext());
         verbroot = dataBundle.getString(QURAN_VERB_ROOT);
         arabicword = dataBundle.getString("arabicword");
@@ -149,43 +149,93 @@ public class Dictionary_frag extends Fragment {
             dictionary = utils.getArabicWord(arabicword);
 
         } else if (language.equals("lanes")) {
-            char[] chars = verbroot.toCharArray();
+
             int indexOfHamza = verbroot.indexOf(Hamza);
             if (indexOfHamza != -1) {
                 verbroot = verbroot.replaceAll(Hamza, LALIF);
             }
-
+            Character C1 = verbroot.charAt(0);
+            Character C2 = verbroot.charAt(1);
+            Character C3 = verbroot.charAt(2);
+            if (C3.toString().equals(Ya)) {
+                verbroot = verbroot.replace(Ya, AlifMaksuraString);
+            } else if (C3.toString().equals(LALIF)) {
+                verbroot = verbroot.replace(LALIF, AlifHamzaAbove);
+            } else if (C2.toString().equals(C3.toString())) {
+                verbroot = verbroot.substring(0, 2);
+            }
             StringBuilder difinitionbuilder = new StringBuilder();
 
             lanesdictionary = utils.getLanesDifinition(verbroot);
+
+            //  <p style="margin-left:200px; margin-right:50px;">
+            difinitionbuilder.append(html);
+            String replaced = "";
             for (lanelexicon lanes : lanesdictionary) {
-                //  <p style="margin-left:200px; margin-right:50px;">
-                difinitionbuilder.append("<p style=\"margin-left:200px; margin-right:50px;\">");
-                difinitionbuilder.append(lanes.getDefinition()).append("</p>");
+            //  replaced = getString(lanes);
+              replaced=lanes.getDefinition();
+                int indexOf = replaced.indexOf("<orth extent=\"full\" lang=\"ar\">ذ</orth>");
+                int indexofForm=replaced.indexOf("<form>");
+                int indexofFormclose=replaced.indexOf("</form>");
+                int indexofforminfl=replaced.indexOf("<form n=\"infl\">");
+                difinitionbuilder.append("<p dir='ltr' style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">");
+
+                if(indexOf!=-1){
+                   replaced=replaced.replaceAll("<orth extent=\"full\" lang=\"ar\">ذ</orth>","");
+              //     difinitionbuilder.append(replaced);
+               }
+                if(indexofForm!=-1){
+                    replaced=replaced.replaceAll("<form>","");
+               //     difinitionbuilder.append(replaced);
+                }
+                if(indexofFormclose!=-1){
+                    replaced=replaced.replaceAll("</form>","");
+                //    difinitionbuilder.append(replaced);
+                }
+                if(indexofforminfl!=-1){
+                    replaced=replaced.replaceAll("<form n=\"infl\">","");
+                //    difinitionbuilder.append(replaced);
+                }
+
+                difinitionbuilder.append(replaced);
+
+                difinitionbuilder.append("</p>");
+                difinitionbuilder.append("<hr size=\"1\" width=\"100%\" color=\"red\">  ");
+
             }
+
             worddifinition.add(difinitionbuilder.toString());
         } else if (language.equals("hans")) {
-            char[] chars = verbroot.toCharArray();
-            int indexOfHamza = verbroot.indexOf(Hamza);
-            int indexofAlifMaksura = verbroot.indexOf(Ya);
-            String probableRoot=verbroot;
-            if (indexOfHamza != -1) {
-                verbroot = verbroot.replaceAll(Hamza, LALIF);
-            }
-            if (indexofAlifMaksura != -1) {
-                verbroot = verbroot.replaceAll(Ya, AlifMaksuraString);
+
+
+
+            String probableRoot = verbroot;
+
+
+            Character C1 = verbroot.charAt(0);
+            Character C2 = verbroot.charAt(1);
+            Character C3 = verbroot.charAt(2);
+            if (C3.toString().equals(Ya)) {
+                verbroot = verbroot.replace(Ya, AlifMaksuraString);
+            } else if (C3.toString().equals(LALIF)) {
+                verbroot = verbroot.replace(LALIF, Hamza);//change alif to hamza
+            } else if (C2.toString().equals(C3.toString())) {
+                verbroot = verbroot.substring(0, 2);//contract the double at end
             }
             StringBuilder hanssb = new StringBuilder();
 
             hansdictionary = utils.getHansDifinition(verbroot);
-            if(hansdictionary.isEmpty()){
-                hansdictionary=utils.getHansDifinition(probableRoot);
+            if (hansdictionary.isEmpty()) {
+                hansdictionary = utils.getHansDifinition(probableRoot);
             }
+            hanssb.append(html);
             for (hanslexicon lanes : hansdictionary) {
                 //  <p style="margin-left:200px; margin-right:50px;">
-                hanssb.append("<p style=\"margin-left:200px; margin-right:50px;\">");
+                hanssb.append("<p style=\"margin-left:10px; margin-right:10px;\">");
                 hanssb.append(lanes.getDefinition()).append("</p>");
+                hanssb.append("<hr size=\"1\" width=\"100%\" color=\"red\">  ");
             }
+            hanssb.append("</html");
             worddifinition.add(hanssb.toString());
         } else {
 
@@ -212,6 +262,21 @@ public class Dictionary_frag extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         return view;
+    }
+
+    @NonNull
+    private String getString(lanelexicon lanes) {
+        String replaced;
+        replaced = lanes.getDefinition();
+        int indexOf = lanes.getDefinition().indexOf("<entryFree");
+        int indexOfclose = lanes.getDefinition().indexOf("</entryFree>");
+        if (indexOf != -1) {
+            replaced = replaced.replaceAll("<entryFree", "<p>");
+        }
+        if (indexOfclose != -1) {
+            replaced = replaced.replaceAll("</entryFree>", "</p>");
+        }
+        return replaced;
     }
 
 

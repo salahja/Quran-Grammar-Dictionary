@@ -6,6 +6,7 @@ import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -56,7 +57,7 @@ public class LexiconAdapter extends RecyclerView.Adapter<LexiconAdapter.ItemView
 
 
 
-            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.enlish_lughat, parent, false);
+            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.dictionary_layout, parent, false);
 
         return new ItemViewAdapter(view);
     }
@@ -75,15 +76,30 @@ public class LexiconAdapter extends RecyclerView.Adapter<LexiconAdapter.ItemView
 
       if(language.equals("lanes")){
 
-        //    String hansweirreplace = lanes.replace(">,", "><br><p>");
-         //   String finalreplace = hansweirreplace.replace("),", ")<br><p>");
-      //      holder.wordDictionary.setText(Html.fromHtml(lanes));
-        holder.wordDictionary.setText(HtmlCompat.fromHtml(lanes, 0));
-        holder.wordDictionary.setTypeface(mequran);
+
+
+       //   wv.loadDataWithBaseURL(null,myHtmlString, "text/html", "UTF-8", null);
+
+
+
+          StringBuilder data = new StringBuilder();
+
+       //   data .append("<HTML><HEAD><LINK href=\"entry.css\" type=\"text/css\" rel=\"stylesheet\"/></HEAD><body>");
+          data .append(lanes);
+
+      //    holder. wordDictionary.loadDataWithBaseURL("file:///android_asset/", data .toString(), "text/html", "utf-8", null);
+          holder. wordDictionary.loadDataWithBaseURL(null, data.toString(), "text/html", "utf-8", null);
+
 
           }else  if(language.equals("hans")) {
-        holder.wordDictionary.setText(HtmlCompat.fromHtml(lanes, 0));
-        holder.wordDictionary.setTypeface(mequran);
+          StringBuilder data = new StringBuilder();
+       //   data .append("<HTML><HEAD><LINK href=\"entry.css\" type=\"text/css\" rel=\"stylesheet\"/></HEAD><body>");
+          data .append(lanes.toString());
+        //  data .append("</body></HTML>");
+        //  holder. wordDictionary.loadDataWithBaseURL("file:///android_asset/", data .toString(), "text/html", "utf-8", null);
+          holder. wordDictionary.loadDataWithBaseURL(null, data .toString(), "text/html", "utf-8", null);
+
+
 
       }
 
@@ -127,7 +143,8 @@ public class LexiconAdapter extends RecyclerView.Adapter<LexiconAdapter.ItemView
         ImageView dismissview;
 
 
-        public  final TextView wordDictionary,wordDictionaryUrdu,meaning,rootwowrd,arabicword;
+        public  final TextView wordDictionaryUrdu,meaning,rootwowrd,arabicword;
+        WebView wordDictionary;
 
         public ItemViewAdapter(View view) {
             super(view);
