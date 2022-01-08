@@ -157,6 +157,14 @@ public class Dictionary_frag extends Fragment {
             Character C1 = verbroot.charAt(0);
             Character C2 = verbroot.charAt(1);
             Character C3 = verbroot.charAt(2);
+
+            if(verbroot.equals("حيي")){
+
+            }else
+            if(verbroot.equals("ايي")){
+                verbroot="اى";
+            }else
+
             if (C3.toString().equals(Ya)) {
                 verbroot = verbroot.replace(Ya, AlifMaksuraString);
             } else if (C3.toString().equals(LALIF)) {
@@ -165,6 +173,7 @@ public class Dictionary_frag extends Fragment {
                 verbroot = verbroot.substring(0, 2);
             }
             StringBuilder difinitionbuilder = new StringBuilder();
+
 
             lanesdictionary = utils.getLanesDifinition(verbroot);
 
@@ -208,21 +217,26 @@ public class Dictionary_frag extends Fragment {
         } else if (language.equals("hans")) {
 
 
-
             String probableRoot = verbroot;
 
 
             Character C1 = verbroot.charAt(0);
             Character C2 = verbroot.charAt(1);
             Character C3 = verbroot.charAt(2);
-            if (C3.toString().equals(Ya)) {
+            if(verbroot.equals("ايي")) {
+                verbroot = "آي";
+            }else if (C3.toString().equals(Ya)) {
                 verbroot = verbroot.replace(Ya, AlifMaksuraString);
             } else if (C3.toString().equals(LALIF)) {
                 verbroot = verbroot.replace(LALIF, Hamza);//change alif to hamza
             } else if (C2.toString().equals(C3.toString())) {
                 verbroot = verbroot.substring(0, 2);//contract the double at end
             }
+            if(C1.toString().equals(Hamza)){
+                verbroot = verbroot.replace(Hamza, LALIF);
+            }
             StringBuilder hanssb = new StringBuilder();
+
 
             hansdictionary = utils.getHansDifinition(verbroot);
             if (hansdictionary.isEmpty()) {

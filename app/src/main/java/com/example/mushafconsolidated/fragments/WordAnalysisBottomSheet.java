@@ -92,6 +92,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import database.DatabaseUtils;
+import database.entity.Mazeed;
 import database.entity.MujarradVerbs;
 
 
@@ -387,47 +388,62 @@ public class WordAnalysisBottomSheet extends BottomSheetDialogFragment {
 
 
                 } else if (isroot && ismazeed && !isparticple) {
-                    setMazeedSarfSagheer(true);
-                    setThulathiSarfSagheer(false);
-                    setIsverbconjugaton(true);
-                    ArrayList<ArrayList> listing = GatherAll.getInstance().getMazeedListing(verbmood, root, mazeedwazan);
-
-                    SarfSagheer ss = new SarfSagheer();
-                    ss.setWeakness(listing.get(0).get(0).toString());
-                    ss.setWazanname(listing.get(0).get(1).toString());
-                    ss.setVerbroot(listing.get(0).get(2).toString());
-
-                    ss.setMadhi(listing.get(0).get(3).toString());
-                    ss.setMadhimajhool(listing.get(0).get(4).toString());
-                    ss.setMudharay(listing.get(0).get(5).toString());
 
 
-                    ss.setMudharaymajhool(listing.get(0).get(6).toString());
-                    ss.setAmrone(listing.get(0).get(7).toString());
-                    ss.setNahiamrone(listing.get(0).get(8).toString());
-                    ss.setIsmfael(listing.get(0).get(9).toString());
-                    ss.setIsmmafool(listing.get(0).get(10).toString());
-                    ss.setIsmalaone(listing.get(0).get(11).toString());
-                    ss.setIsmalatwo(listing.get(0).get(12).toString());
-                    ss.setIsmalathree(listing.get(0).get(13).toString());
+                   DatabaseUtils databaseUtils=new DatabaseUtils(QuranGrammarApplication.getContext());
+                    ArrayList<Mazeed> mazeedRoot = databaseUtils.getMazeedRoot(root);
+                    if(!mazeedRoot.isEmpty()) {
+                        setMazeedSarfSagheer(true);
+                        setThulathiSarfSagheer(false);
+                        setIsverbconjugaton(true);
+                        ArrayList<ArrayList> listing = GatherAll.getInstance().getMazeedListing(verbmood, root, mazeedwazan);
 
-                    ss.setZarfone(listing.get(0).get(14).toString());
-                    ss.setZarftwo(listing.get(0).get(15).toString());
-                    ss.setZarfthree(listing.get(0).get(16).toString());
-                    ss.setVerbtype(listing.get(0).get(17).toString());
-                    ss.setWazan(listing.get(0).get(18).toString());
+                        SarfSagheer ss = new SarfSagheer();
+                        ss.setWeakness(listing.get(0).get(0).toString());
+                        ss.setWazanname(listing.get(0).get(1).toString());
+                        ss.setVerbroot(listing.get(0).get(2).toString());
+
+                        ss.setMadhi(listing.get(0).get(3).toString());
+                        ss.setMadhimajhool(listing.get(0).get(4).toString());
+                        ss.setMudharay(listing.get(0).get(5).toString());
 
 
-                    sarfSagheerList.add(ss);
+                        ss.setMudharaymajhool(listing.get(0).get(6).toString());
+                        ss.setAmrone(listing.get(0).get(7).toString());
+                        ss.setNahiamrone(listing.get(0).get(8).toString());
+                        ss.setIsmfael(listing.get(0).get(9).toString());
+                        ss.setIsmmafool(listing.get(0).get(10).toString());
+                        ss.setIsmalaone(listing.get(0).get(11).toString());
+                        ss.setIsmalatwo(listing.get(0).get(12).toString());
+                        ss.setIsmalathree(listing.get(0).get(13).toString());
+
+                        ss.setZarfone(listing.get(0).get(14).toString());
+                        ss.setZarftwo(listing.get(0).get(15).toString());
+                        ss.setZarfthree(listing.get(0).get(16).toString());
+                        ss.setVerbtype(listing.get(0).get(17).toString());
+                        ss.setWazan(listing.get(0).get(18).toString());
 
 
-                    setIsroot(true);
-                    vb = new VerbWazan();
-                    vb.setRoot(vbdetail.get("root"));
-                    vb.setWazan(vbdetail.get("form"));
-                    String tafeel = mazeedsignificance.get("II");
-                    vbdetail.put("mazeed", tafeel);
+                        sarfSagheerList.add(ss);
 
+
+                        setIsroot(true);
+                        vb = new VerbWazan();
+                        vb.setRoot(vbdetail.get("root"));
+                        vb.setWazan(vbdetail.get("form"));
+                        String tafeel = mazeedsignificance.get("II");
+                        vbdetail.put("mazeed", tafeel);
+                    }else{
+                        setIsroot(true);
+                        vb = new VerbWazan();
+                        vb.setRoot(vbdetail.get("root"));
+                        vb.setWazan(vbdetail.get("form"));
+                        String tafeel = mazeedsignificance.get("II");
+                        vbdetail.put("mazeed", tafeel);
+                        setMazeedSarfSagheer(false);
+                        setThulathiSarfSagheer(false);
+                        setIsverbconjugaton(false);
+                    }
 
                 } else if (isroot && isparticple) {
                     setIsroot(true);

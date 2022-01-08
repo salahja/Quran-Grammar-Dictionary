@@ -227,13 +227,15 @@ public class FragmentIsmIsmAla extends Fragment {
         ArrayList<ArrayList> mujarradListing = GatherAll.getInstance().getMujarradIsmAla(verbmood, verbroot, unaugmentedFormula);
 
 
+       if(!mujarradListing.isEmpty()) {
 
 
-        IsmAlaSarfKabeerAdapter ska = new  IsmAlaSarfKabeerAdapter(mujarradListing, getContext());
-        //AconSarfSagheerAdapter sk=new AconSarfSagheerAdapter(ar, MainActivity.this);
-        recyclerView.setAdapter(ska);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+           IsmAlaSarfKabeerAdapter ska = new IsmAlaSarfKabeerAdapter(mujarradListing, getContext());
+           //AconSarfSagheerAdapter sk=new AconSarfSagheerAdapter(ar, MainActivity.this);
+           recyclerView.setAdapter(ska);
+           recyclerView.setHasFixedSize(true);
+           recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+       }
 
     }
 
