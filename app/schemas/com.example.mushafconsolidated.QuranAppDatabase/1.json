@@ -2,8 +2,46 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "3a3bcb3f2ddddea30f851a3989959ba5",
+    "identityHash": "2301b28f1b997c1e577bbf7712712bb5",
     "entities": [
+      {
+        "tableName": "rules",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`harf` TEXT NOT NULL, `worddetails` TEXT, `detailsrules` TEXT NOT NULL, `id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "harf",
+            "columnName": "harf",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "worddetails",
+            "columnName": "worddetails",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "detailsrules",
+            "columnName": "detailsrules",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
       {
         "tableName": "hansdictionary",
         "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`rootword` TEXT NOT NULL, `word` TEXT NOT NULL, `parentid` INTEGER NOT NULL, `definition` TEXT NOT NULL, `id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL)",
@@ -1581,7 +1619,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '3a3bcb3f2ddddea30f851a3989959ba5')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '2301b28f1b997c1e577bbf7712712bb5')"
     ]
   }
 }

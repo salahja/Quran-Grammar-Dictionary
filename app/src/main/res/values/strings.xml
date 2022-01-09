@@ -209,6 +209,11 @@
     <string name="moodsummar">indicative,Subjunctive,Jussive,Emphasized</string>
     <string name="indicative">Indicative</string>
     <string name="loadingverbs">Please wait! Loading Sample of 30 Verbs.</string>
+    <string name="title_activity_grammarrulelist_detail_host">grammarrulelistDetailHostActivity
+    </string>
+    <string name="title_grammarrulelist_list">grammarrule_detail</string>
+    <string name="title_grammarrulelist_detail">grammarrule_list Detail</string>
+    <string name="title_grammarrule_detail" />
 
 
 </resources>

@@ -24,7 +24,7 @@ import java.util.ArrayList;
 public class LexiconAdapter extends RecyclerView.Adapter<LexiconAdapter.ItemViewAdapter> {
 
 
-  OnItemClickListener mItemClickListener;
+    OnItemClickListener mItemClickListener;
     private Context context;
 
 
@@ -43,7 +43,7 @@ public class LexiconAdapter extends RecyclerView.Adapter<LexiconAdapter.ItemView
 
 
     public LexiconAdapter(ArrayList<String> lanesdictionary, Context context, String language) {
-      this.lanesdictionary=lanesdictionary;
+        this.lanesdictionary=lanesdictionary;
 
         this.context = context;
         this.language=language;
@@ -57,7 +57,7 @@ public class LexiconAdapter extends RecyclerView.Adapter<LexiconAdapter.ItemView
 
 
 
-            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.dictionary_layout, parent, false);
+        view = LayoutInflater.from(parent.getContext()).inflate(R.layout.dictionary_layout, parent, false);
 
         return new ItemViewAdapter(view);
     }
@@ -68,40 +68,45 @@ public class LexiconAdapter extends RecyclerView.Adapter<LexiconAdapter.ItemView
 
     @Override
     public void onBindViewHolder(@NonNull ItemViewAdapter holder, int position) {
-      //  Typeface typeface = Typeface.createFromAsset(context.getAssets(), quranfont);
-   //   Typeface mequran = Typeface.createFromAsset(DarkThemeApplication.getContext().getAssets(), "Roboto.ttf");
-      Typeface mequran= Typeface.createFromAsset(QuranGrammarApplication.getContext().getAssets(), "Taha.ttf");
-      String lanes = lanesdictionary.get(position);
+        //  Typeface typeface = Typeface.createFromAsset(context.getAssets(), quranfont);
+        //   Typeface mequran = Typeface.createFromAsset(DarkThemeApplication.getContext().getAssets(), "Roboto.ttf");
+        Typeface mequran= Typeface.createFromAsset(QuranGrammarApplication.getContext().getAssets(), "Taha.ttf");
+        String lanes = lanesdictionary.get(position);
+
+        if(language.equals("accusative")||language.equals("preposition")||language.equals("conditonal")||language.equals("relative")
+                ||language.equals("dem")||language.equals("Jussive")||language.equals("Subjunctive")){
+            holder. wordDictionary.loadDataWithBaseURL(null, lanes.toString(), "text/html", "utf-8", null);
 
 
-      if(language.equals("lanes")){
-
-
-
-       //   wv.loadDataWithBaseURL(null,myHtmlString, "text/html", "UTF-8", null);
-
-
-
-          StringBuilder data = new StringBuilder();
-
-       //   data .append("<HTML><HEAD><LINK href=\"entry.css\" type=\"text/css\" rel=\"stylesheet\"/></HEAD><body>");
-          data .append(lanes);
-
-      //    holder. wordDictionary.loadDataWithBaseURL("file:///android_asset/", data .toString(), "text/html", "utf-8", null);
-          holder. wordDictionary.loadDataWithBaseURL(null, data.toString(), "text/html", "utf-8", null);
-
-
-          }else  if(language.equals("hans")) {
-          StringBuilder data = new StringBuilder();
-       //   data .append("<HTML><HEAD><LINK href=\"entry.css\" type=\"text/css\" rel=\"stylesheet\"/></HEAD><body>");
-          data .append(lanes.toString());
-        //  data .append("</body></HTML>");
-        //  holder. wordDictionary.loadDataWithBaseURL("file:///android_asset/", data .toString(), "text/html", "utf-8", null);
-          holder. wordDictionary.loadDataWithBaseURL(null, data .toString(), "text/html", "utf-8", null);
+        }
+        else  if(language.equals("lanes")){
 
 
 
-      }
+            //   wv.loadDataWithBaseURL(null,myHtmlString, "text/html", "UTF-8", null);
+
+
+
+            StringBuilder data = new StringBuilder();
+
+            //   data .append("<HTML><HEAD><LINK href=\"entry.css\" type=\"text/css\" rel=\"stylesheet\"/></HEAD><body>");
+            data .append(lanes);
+
+            //    holder. wordDictionary.loadDataWithBaseURL("file:///android_asset/", data .toString(), "text/html", "utf-8", null);
+            holder. wordDictionary.loadDataWithBaseURL(null, data.toString(), "text/html", "utf-8", null);
+
+
+        }else  if(language.equals("hans")) {
+            StringBuilder data = new StringBuilder();
+            //   data .append("<HTML><HEAD><LINK href=\"entry.css\" type=\"text/css\" rel=\"stylesheet\"/></HEAD><body>");
+            data .append(lanes.toString());
+            //  data .append("</body></HTML>");
+            //  holder. wordDictionary.loadDataWithBaseURL("file:///android_asset/", data .toString(), "text/html", "utf-8", null);
+            holder. wordDictionary.loadDataWithBaseURL(null, data .toString(), "text/html", "utf-8", null);
+
+
+
+        }
 
 
 

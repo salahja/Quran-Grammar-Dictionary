@@ -71,18 +71,23 @@ public class Constant {
 
     public static final String PASTHUMA = "A";
 
-
-
-
+    public static final String RELATIVE="rel";
+    public static final String CONDITIONAL="cond";
+    public static final String DEMONSTRATIVE="dem";
+    public static final String PREPOSITION="prep";
+    public static final String ACCUSATIVE="accusative";
     public static final String VERBMOOD ="verbcase";
     public static final String  INDICATIVE="Indicative";
     public static final String VERBTYPE ="verbtype";
 
     public static final String QURAN_VERB_WAZAN = "form";
-public static final String SARFKABEER="sarfkabeer";
+    public static final String SARFKABEER="sarfkabeer";
     public static final String QURAN_VERB_ROOT = "root";
     public static final String QURAN_VOCUBALORY_ROOT = "vroot";
     public static final  String MUJARRADVERBTAG ="thulathiverblist";
+
+
+
 
 
     public static final String TAFEEL = "تَفْعِيل-II";

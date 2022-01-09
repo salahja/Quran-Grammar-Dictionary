@@ -208,7 +208,7 @@ public class RootWordDisplayAdapter extends RecyclerView.Adapter<RootWordDisplay
 
         //   holder.verblist.setText(Html.fromHtml(sb.toString(), Html.FROM_HTML_MODE_LEGACY));
 
-
+/*
         if (null != spannalbeShart) {
             Object[] spans = spannalbeShart.getSpans(0, spannalbeShart.length(), Object.class);
             if (spans.length > 0) {
@@ -224,7 +224,7 @@ public class RootWordDisplayAdapter extends RecyclerView.Adapter<RootWordDisplay
                 holder.spannableverse.setTypeface(mequran);
             }
         }
-
+*/
         if (null != spannable) {
             Object[] spans = spannable.getSpans(0, spannable.length(), Object.class);
             if (spans.length > 0) {
@@ -305,6 +305,10 @@ public class RootWordDisplayAdapter extends RecyclerView.Adapter<RootWordDisplay
         }
         if (vbdetail.get("mood") != null) {
             vb.append(vbdetail.get("mood"));
+        }
+        if(vbdetail.get("verbmood")!=null){
+            holder.moodrules.setVisibility(View.VISIBLE);
+            holder.moodrules.setText(vbdetail.get("verbmood"));
         }
 
         if (vb.length() > 2) {
@@ -900,15 +904,18 @@ public class RootWordDisplayAdapter extends RecyclerView.Adapter<RootWordDisplay
     }
 
 
-    public void setRootWordsAndMeanings(boolean verb, ArrayList<String> wazannumberslist, SpannableStringBuilder spannableStringBuilder, SarfSagheerPOJO sarf, SpannableStringBuilder spannable, SpannableStringBuilder spannableHarf, boolean noun, ArrayList<ArrayList> ismfaelmafool, boolean participles, boolean isverbconjugation, ArrayList<NewCorpusExpandWbwPOJO> corpusSurahWord, HashMap<String, SpannableStringBuilder> wordbdetail, HashMap<String, String> vbdetail, boolean isSarfSagheer, boolean isSarfSagheerThulahi, ArrayList<SarfSagheer> sarfsagheer, Context context) {
+    public void setRootWordsAndMeanings(boolean verb, ArrayList<String> wazannumberslist,
+                                        SpannableStringBuilder spannableStringBuilder,
+
+                                        boolean noun, ArrayList<ArrayList> ismfaelmafool, boolean participles, boolean isverbconjugation, ArrayList<NewCorpusExpandWbwPOJO> corpusSurahWord, HashMap<String, SpannableStringBuilder> wordbdetail, HashMap<String, String> vbdetail, boolean isSarfSagheer, boolean isSarfSagheerThulahi, ArrayList<SarfSagheer> sarfsagheer, Context context) {
         this.isverb = verb;
         this.wazannumberslist = wazannumberslist;
         this.spannable = spannableStringBuilder;
-        this.sarf = sarf;
+
         this.isnoun = noun;
         this.ismfaelmafool = ismfaelmafool;
-        this.spannalbeShart = spannable;
-        this.spannableHarf = spannableHarf;
+
+
         this.particples = participles;
         this.isverbconjugation = isverbconjugation;
         this.corpusexpand = corpusSurahWord;
@@ -978,12 +985,13 @@ public class RootWordDisplayAdapter extends RecyclerView.Adapter<RootWordDisplay
         public final TextView nom1, acc1, gen1;
         public final TextView nom2, acc2, gen2;
         public final TextView nom3, acc3, gen3;
-        public final TextView wordDictionary;
+        public final TextView wordDictionary,moodrules;
         public final Chip triroot, paradigm, rootdetails, verb;
         ConstraintLayout expandable;
 
         public ItemViewAdapter(View view) {
             super(view);
+            moodrules= itemView.findViewById(R.id.moodrules);
             mazeedmeaning = itemView.findViewById(R.id.mazeedmeaning);
             darkThemeBacground = itemView.findViewById(R.id.grammar);
             rdone = view.findViewById(R.id.rdone);
@@ -1222,5 +1230,4 @@ public class RootWordDisplayAdapter extends RecyclerView.Adapter<RootWordDisplay
         }
     }
 }
-
 

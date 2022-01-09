@@ -23,68 +23,65 @@
         android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.DarkBlue"
+        android:theme="@style/Theme.MaterialComponents.DayNight.DarkActionBar"
         android:usesCleartextTraffic="true"
         tools:replace="android:allowBackup">
-
-
         <activity
-            android:name="com.example.mushafconsolidated.Activity.WordOccuranceAct"
-            android:screenOrientation = "portrait"
-            android:parentActivityName=".Activity.MainActivity">
+            android:name=".Activity.GrammarRuleDetailHostActivity"
+            android:exported="false"
+            android:label="@string/title_activity_grammarrulelist_detail_host"
+            android:resizeableActivity="true"
+            tools:targetApi="24" />
+        <activity
+            android:name=".Activity.WordOccuranceAct"
+            android:parentActivityName=".Activity.MainActivity"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.mushafconsolidated.Activity.MainActivity" />
         </activity>
         <activity
-            android:name="com.example.mushafconsolidated.Activity.QuranGrammarAct"
-            android:screenOrientation = "portrait"
-            android:parentActivityName=".Activity.MainActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.mushafconsolidated.Activity.MainActivity" />
-        </activity>
-
-
-        <activity
-            android:name="com.example.mushafconsolidated.Activity.SearchActivity"
-            android:screenOrientation = "portrait"
-            android:parentActivityName=".Activity.MainActivity">
+            android:name=".Activity.QuranGrammarAct"
+            android:parentActivityName=".Activity.MainActivity"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.mushafconsolidated.Activity.MainActivity" />
         </activity>
         <activity
-            android:name="com.example.mushafconsolidated.Activity.SearchResult"
-            android:screenOrientation = "portrait"
-            android:parentActivityName=".Activity.MainActivity">
+            android:name=".Activity.SearchActivity"
+            android:parentActivityName=".Activity.MainActivity"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.mushafconsolidated.Activity.MainActivity" />
         </activity>
-
+        <activity
+            android:name=".Activity.SearchResult"
+            android:parentActivityName=".Activity.MainActivity"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.mushafconsolidated.Activity.MainActivity" />
+        </activity>
         <activity
             android:name=".Activity.LughatWordDetailsAct"
-            android:screenOrientation = "portrait"
-            android:label="@string/title_activity_verb_conjugation">
+            android:label="@string/title_activity_verb_conjugation"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.mushafconsolidated.Activity.MainActivity" />
         </activity>
-
-
         <activity
             android:name=".Activity.MainActivity"
-            android:screenOrientation = "portrait"
-            android:label="@string/title_activity_main">
+            android:label="@string/title_activity_main"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
         <activity
             android:name="org.sj.conjugator.activity.SarfSagheerActivity"
             android:parentActivityName=".Activity.QuranGrammarAct">
@@ -92,8 +89,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.mushafconsolidated.Activity.MainActivity" />
         </activity>
-
-
         <activity
             android:name="org.sj.conjugator.activity.ConjugatorTabsActivity"
             android:parentActivityName=".Activity.QuranGrammarAct">
@@ -101,7 +96,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.mushafconsolidated.Activity.MainActivity" />
         </activity>
-
         <activity
             android:name="org.sj.conjugator.activity.ConjugatorAct"
             android:parentActivityName=".Activity.QuranGrammarAct">
@@ -109,8 +103,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.mushafconsolidated.Activity.MainActivity" />
         </activity>
-
-
         <activity
             android:name=".Activity.ActivitySettings"
             android:parentActivityName=".Activity.QuranGrammarAct">
@@ -118,7 +110,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.mushafconsolidated.Activity.MainActivity" />
         </activity>
-
     </application>
 
 </manifest>

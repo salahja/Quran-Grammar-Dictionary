@@ -323,7 +323,22 @@ public class QuranGrammarAct extends BaseActivity implements PassdataInterface, 
                     finish();
                     startActivity(conjugatorintent);
 
-                } else if (i == R.id.bookmarksnav) {
+                } else if (i == R.id.grammar) {
+                    chipNavigationBar.setVisibility(View.GONE);
+                    //  Intent conjugatorintent = new Intent(newreadactivity.this, VerbConjugationAct.class);
+                    Intent conjugatorintent = new Intent(QuranGrammarAct.this, GrammarRuleDetailHostActivity.class);
+                    //   Intent conjugatorintent = new Intent(newreadactivity.this, VerbConjugationAct.class);
+
+
+                    finish();
+                    startActivity(conjugatorintent);
+
+                }
+
+
+
+
+                else if (i == R.id.bookmarksnav) {
                     chipNavigationBar.setVisibility(View.GONE);
                     BookmarkFragment bookmarkFragment = new BookmarkFragment();
 
@@ -354,16 +369,16 @@ public class QuranGrammarAct extends BaseActivity implements PassdataInterface, 
                 getpreferences();
                 setChapterorpart(true);
             } else {
-                  int chapter = bundle.getIntExtra(CHAPTER, 1);
+                int chapter = bundle.getIntExtra(CHAPTER, 1);
 
                 Utils util=new Utils(this);
                 ArrayList<ChaptersAnaEntity> list = util.getAllAnaChapters();
-            //    final boolean chapterorpartb = bundle.getBooleanExtra(CHAPTERORPART, true);
+                //    final boolean chapterorpartb = bundle.getBooleanExtra(CHAPTERORPART, true);
                 initView();
 
 
                 setChapterno(chapter);
-              //  setChapterorpart(chapterorpartb);
+                //  setChapterorpart(chapterorpartb);
 
                 setSurahArabicName(list.get(chapter-1).getAbjadname());
                 //   setChapterno( bundle.etIntExtra(SURAH_ID,2));
@@ -372,9 +387,9 @@ public class QuranGrammarAct extends BaseActivity implements PassdataInterface, 
                 setIsMakkiMadani(list.get(chapter-1).getIsmakki());
                 setRukucount(list.get(chapter-1).getRukucount());
 
-             //   setIsMakkiMadani(bundle.getIntExtra(MAKKI_MADANI, 1));
-               // setSuraharabicname(bundle.getStringExtra(SURAH_ARABIC_NAME));
-             //   setRukucount(bundle.getIntExtra(RUKUCOUNT, 1));
+                //   setIsMakkiMadani(bundle.getIntExtra(MAKKI_MADANI, 1));
+                // setSuraharabicname(bundle.getStringExtra(SURAH_ARABIC_NAME));
+                //   setRukucount(bundle.getIntExtra(RUKUCOUNT, 1));
 
                 setUpOnCLicks();
 
@@ -637,7 +652,7 @@ public class QuranGrammarAct extends BaseActivity implements PassdataInterface, 
     private void SetTranslation() {
 
 
-        allofQuran = Utils.getQuranbySurah(chapterno);
+        //     allofQuran = Utils.getQuranbySurah(chapterno);
         shared.getBoolean("prefs_show_erab", true);
 
 
@@ -879,12 +894,12 @@ public class QuranGrammarAct extends BaseActivity implements PassdataInterface, 
 
 
         View qurantext = view.findViewById(R.id.quran_textView);
-      //  if (overflow != null) {
-       //     popupMenu(overflow);
-      //  }  else
-            if (overflow != null) {
-         //   popupMenu(overflow);
-         //  showPopup(overflow);
+        //  if (overflow != null) {
+        //     popupMenu(overflow);
+        //  }  else
+        if (overflow != null) {
+            //   popupMenu(overflow);
+            //  showPopup(overflow);
             boolean colortag = shared.getBoolean("colortag", true);
             boolean issentencesanalysis = shared.getBoolean("grammarsentence", true);
 
@@ -894,13 +909,13 @@ public class QuranGrammarAct extends BaseActivity implements PassdataInterface, 
             View fopen = view.findViewById(R.id.fileopen);
             View bookmarkview = view.findViewById(R.id.bookmark);
             SwitchCompat colorized = view.findViewById(R.id.colorized);
-          //  SwitchCompat sentencesana = view.findViewById(R.id.sentences);
-          //  View gotobookmarsk = view.findViewById(R.id.gotobookmarks);
+            //  SwitchCompat sentencesana = view.findViewById(R.id.sentences);
+            //  View gotobookmarsk = view.findViewById(R.id.gotobookmarks);
 
             builder.setView(view);
             colorized.setChecked(colortag);
 
-          //  sentencesana.setChecked(issentencesanalysis);
+            //  sentencesana.setChecked(issentencesanalysis);
 
 
             builder.setNeutralButton("Exit", new DialogInterface.OnClickListener() {

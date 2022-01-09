@@ -12,6 +12,7 @@ import com.example.mushafconsolidated.Entities.ChaptersAnaEntity;
 import com.example.mushafconsolidated.Entities.CorpusExpandWbwPOJO;
 import com.example.mushafconsolidated.Entities.CorpusNounWbwOccurance;
 import com.example.mushafconsolidated.Entities.CorpusVerbWbwOccurance;
+import com.example.mushafconsolidated.Entities.GrammarRules;
 import com.example.mushafconsolidated.Entities.KanaPOJO;
 import com.example.mushafconsolidated.Entities.MudhafPOJO;
 import com.example.mushafconsolidated.Entities.NasbPOJO;
@@ -775,6 +776,16 @@ public class Utils {
         return (ArrayList<VerbCorpusBreakup>) database.RawDao().getVerbBreakup(query);
     }
 
+
+    public  ArrayList<GrammarRules> getGrammarRules() {
+        return (ArrayList<GrammarRules>) database.grammarRulesDao().getGrammarRules();
+
+    }
+
+    public  ArrayList<GrammarRules> getGrammarRulesByRules(String harf) {
+        return (ArrayList<GrammarRules>) database.grammarRulesDao().getGrammarRulesByHarf(harf);
+
+    }
 
 }
 

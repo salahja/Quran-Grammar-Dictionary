@@ -259,6 +259,9 @@
     <item name="rdsubjunctive" type="id" />
     <item name="rdjussive" type="id" />
     <item name="lastread" type="id" />
+    <item name="grammarrule_detail_nav_container" type="id" />
+    <item name="babnos" type="id" />
+    <item name="moodrules" type="id" />
 
 
 </resources>
