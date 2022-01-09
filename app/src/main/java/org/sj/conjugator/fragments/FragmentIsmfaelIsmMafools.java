@@ -211,12 +211,13 @@ public class FragmentIsmfaelIsmMafools extends Fragment {
         List ismmafool = null;
         ArrayList<ArrayList> arrayLists = GatherAll.getInstance().buildAugmenteParticiples(verbroot, augmentedFormula);
 
-        //  VerbSarfKabeerAdapter ska = new VerbSarfKabeerAdapter(skabeer, getContext());
-        IsmFaelIsmMafoolSarfKabeerAdapter ska = new IsmFaelIsmMafoolSarfKabeerAdapter(arrayLists, getContext(), false);
-        //AconSarfSagheerAdapter sk=new AconSarfSagheerAdapter(ar, MainActivity.this);
-        recyclerView.setAdapter(ska);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+       if(!arrayLists.isEmpty()) {
+           IsmFaelIsmMafoolSarfKabeerAdapter ska = new IsmFaelIsmMafoolSarfKabeerAdapter(arrayLists, getContext(), false);
+
+           recyclerView.setAdapter(ska);
+           recyclerView.setHasFixedSize(true);
+           recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+       }
 
 
     }
@@ -227,13 +228,14 @@ public class FragmentIsmfaelIsmMafools extends Fragment {
         //   OldThulathi();
         ArrayList<ArrayList> mujarradListing = GatherAll.getInstance().getMujarradParticiple(verbroot, unaugmentedFormula);
 
-
-        boolean newsarf = true;
-        IsmFaelIsmMafoolSarfKabeerAdapter ska = new IsmFaelIsmMafoolSarfKabeerAdapter(mujarradListing, getContext(), newsarf);
-        //AconSarfSagheerAdapter sk=new AconSarfSagheerAdapter(ar, MainActivity.this);
-        recyclerView.setAdapter(ska);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+          if(!mujarradListing.isEmpty()) {
+              boolean newsarf = true;
+              IsmFaelIsmMafoolSarfKabeerAdapter ska = new IsmFaelIsmMafoolSarfKabeerAdapter(mujarradListing, getContext(), newsarf);
+              //AconSarfSagheerAdapter sk=new AconSarfSagheerAdapter(ar, MainActivity.this);
+              recyclerView.setAdapter(ska);
+              recyclerView.setHasFixedSize(true);
+              recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+          }
 
     }
 

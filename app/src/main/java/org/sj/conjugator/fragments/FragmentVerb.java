@@ -144,13 +144,15 @@ public class FragmentVerb extends Fragment {
      // initMazeedAdapterNew();
       final ArrayList<ArrayList> indictive = GatherAll.getInstance().getMazeedListing(verbmood, verbroot,augmentedFormula);
       VerbSarfKabeerAdapter sk;
-       indictive.remove(0);
-      sk = new VerbSarfKabeerAdapter(indictive, getContext());
-      recyclerView.setAdapter(sk);
+      if(!indictive.isEmpty()) {
+        indictive.remove(0);
+        sk = new VerbSarfKabeerAdapter(indictive, getContext());
+        recyclerView.setAdapter(sk);
 
-      //  recyclerView.setAdapter(ska);
-      recyclerView.setHasFixedSize(true);
-      recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        //  recyclerView.setAdapter(ska);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+      }
 
     }
 

@@ -71,13 +71,8 @@ public abstract class QuranAppDatabase extends RoomDatabase {
             File mainDatabase = new File(Environment.getExternalStorageDirectory().
                     getAbsolutePath() + "/Mushafapplication"+ "/qurangrammar.db");
 
-
-          //  char[] userEnteredPassphrase= {1,2,3,4,5};
-        //     final byte[] passphrase = SQLiteDatabase.getBytes(userEnteredPassphrase);
-       //     final SupportFactory factory = new SupportFactory(passphrase);
-
-/*
-            quranAppDatabaseInstanceasset = Room.databaseBuilder(context, QuranAppDatabase.class, "qurangrammar.db")
+ /*
+      quranAppDatabaseInstanceasset = Room.databaseBuilder(context, QuranAppDatabase.class, "qurangrammar.db")
                   .createFromAsset("databases/qurangrammar.db")
                     .fallbackToDestructiveMigration()
                     .addCallback(initialCallBack)
@@ -85,7 +80,11 @@ public abstract class QuranAppDatabase extends RoomDatabase {
               //   .openHelperFactory(factory)
                      .build();
 
-*/
+  */
+
+
+
+
  quranAppDatabaseInstance=     Room.databaseBuilder(context, QuranAppDatabase.class, "qurangrammar.db")
 
                     .createFromFile(mainDatabase)

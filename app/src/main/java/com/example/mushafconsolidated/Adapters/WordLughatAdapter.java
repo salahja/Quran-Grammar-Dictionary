@@ -19,7 +19,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.mushafconsolidated.Entities.lughat;
 import com.example.mushafconsolidated.R;
 import com.example.mushafconsolidated.intrface.OnItemClickListener;
-import com.example.utility.SharedPref;
 
 import java.util.ArrayList;
 
@@ -60,7 +59,7 @@ public class WordLughatAdapter extends RecyclerView.Adapter<WordLughatAdapter.It
 
 
 
-            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.enlish_lughat, parent, false);
+            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.lughat_layout, parent, false);
 
         return new ItemViewAdapter(view);
     }

@@ -14,16 +14,17 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
             <com.google.android.material.tabs.TabLayout
 
                 android:id="@id/tabLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:tabMode="scrollable"
                 app:tabGravity="center"
                 app:tabIndicatorHeight="0.0dip"
+                app:tabMode="scrollable"
 
-           />
+                tools:ignore="SpeakableTextPresentCheck" />
 
 
 

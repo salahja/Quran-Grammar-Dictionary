@@ -191,13 +191,14 @@ f.setArguments(dataBundle);
 
         ArrayList<ArrayList> mujarradListing = GatherAll.getInstance().getMujarradZarf(verbmood, verbroot, unaugmentedFormula);
 
+        if(!mujarradListing.isEmpty()) {
 
-
-        IsmZarffKabeerAdapter   ska = new  IsmZarffKabeerAdapter(mujarradListing, getContext());
-        //AconSarfSagheerAdapter sk=new AconSarfSagheerAdapter(ar, MainActivity.this);
-        recyclerView.setAdapter(ska);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+            IsmZarffKabeerAdapter ska = new IsmZarffKabeerAdapter(mujarradListing, getContext());
+            //AconSarfSagheerAdapter sk=new AconSarfSagheerAdapter(ar, MainActivity.this);
+            recyclerView.setAdapter(ska);
+            recyclerView.setHasFixedSize(true);
+            recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        }
 
     }
 

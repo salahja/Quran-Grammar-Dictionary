@@ -353,8 +353,27 @@ public static ForegroundColorSpan nounspanLight = new ForegroundColorSpan(BBLUE)
     };
 
   public static final Map<String, String> mazeedsignificance;
+    public static  String htmltwo="<!DOCTYPE html> <html> <head>   <style>      \n" +
+            "             text-align: left;}  \n" +
+            "             h2{font-style: italic;  \n" +
+            "              font-size: 30px;  \n" +
+            "              color: #f08080;}  \n" +
+            "            p{font-size: 20px;}  \n" +
 
-  static {
+            "      </style>  \n" +
+            "    </head>  ";
+    public static  String html="<!DOCTYPE html> <html> <head>   <style>                body{background-color:lavender;  \n" +
+            "             text-align: center;}  \n" +
+            "             h1{font-style: italic;  \n" +
+            "              font-size: 40px;  \n" +
+            "              color: #f08080;}  \n" +
+            "            p{font-size: 20px;" +
+            "              color-blue}  \n" +
+
+            "      </style>  \n" +
+            "    </head>  ";
+
+    static {
     mazeedsignificance = new HashMap<String, String>() {
       {
         put("II", "                   Form II\n" +
