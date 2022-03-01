@@ -21,6 +21,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.window.layout.WindowMetrics;
+import androidx.window.layout.WindowMetricsCalculator;
 
 import com.example.mushafconsolidated.R;
 
@@ -58,6 +60,7 @@ public class MainActivity extends BaseActivity {
     private File newquran;
 
 
+    public enum WindowSizeClass { COMPACT, MEDIUM, EXPANDED }
 
 
     @Override
@@ -82,6 +85,7 @@ public class MainActivity extends BaseActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        computeWindowSizeClasses();
 
        setContentView(R.layout.fragment_reading);
 
@@ -121,13 +125,56 @@ public class MainActivity extends BaseActivity {
 
     }
 
+    private void computeWindowSizeClasses() {
+        WindowMetrics metrics = WindowMetricsCalculator.getOrCreate()
+                .computeCurrentWindowMetrics(this);
+        SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(MainActivity.this).edit();
+        float widthDp = metrics.getBounds().width() /
+                getResources().getDisplayMetrics().density;
+        WindowSizeClass widthWindowSizeClass;
+
+        //     SharedPreferences.Editor editor = getActivity().getSharedPreferences("properties", 0).edit();
+
+        if (widthDp < 600f) {
+            widthWindowSizeClass = WindowSizeClass.COMPACT;
+
+            //     SharedPreferences.Editor editor = getActivity().getSharedPreferences("properties", 0).edit();
+            editor.putString("width", "compactWidth");
+            editor.apply();
 
 
+        } else if (widthDp < 840f) {
+            widthWindowSizeClass = WindowSizeClass.MEDIUM;
+
+            //     SharedPreferences.Editor editor = getActivity().getSharedPreferences("properties", 0).edit();
+            editor.putString("width", "mediumWidth");
+
+            editor.apply();
+        } else {
+            widthWindowSizeClass = WindowSizeClass.EXPANDED;
+
+            editor.putString("width", "expandedWidth");
+
+            editor.apply();
+
+        }
+
+        float heightDp = metrics.getBounds().height() /
+                getResources().getDisplayMetrics().density;
+        WindowSizeClass heightWindowSizeClass;
+
+        if (heightDp < 480f) {
+            heightWindowSizeClass = WindowSizeClass.COMPACT;
 
 
+        } else if (heightDp < 900f) {
+            heightWindowSizeClass = WindowSizeClass.MEDIUM;
+        } else {
+            heightWindowSizeClass = WindowSizeClass.EXPANDED;
+        }
 
-
-
+        // Use widthWindowSizeClass and heightWindowSizeClass
+    }
 
 
     private boolean checkPermission() {

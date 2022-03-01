@@ -140,17 +140,13 @@ public class Dictionary_frag extends Fragment {
             if (!dictionary.isEmpty())
                 isarabicword = true;
 
-        }
-
-
-
-        else if (language.equals("lanes")) {
+        } else if (language.equals("lanes")) {
 
             int indexOfHamza = verbroot.indexOf(Hamza);
             if (indexOfHamza != -1) {
                 verbroot = verbroot.replaceAll(Hamza, LALIF);
             }
-            Character C1 = verbroot.charAt(0);
+
             Character C2 = verbroot.charAt(1);
             Character C3 = verbroot.charAt(2);
             if (verbroot.equals("يدي")) {
@@ -214,6 +210,10 @@ public class Dictionary_frag extends Fragment {
 
 
             String probableRoot = verbroot;
+            int indexOfHamza = verbroot.indexOf(Hamza);
+            if (indexOfHamza != -1) {
+                verbroot = verbroot.replaceAll(Hamza, LALIF);
+            }
 
 
             char C1 = verbroot.charAt(0);
@@ -243,6 +243,9 @@ public class Dictionary_frag extends Fragment {
             if (!hansdictionary.isEmpty())
                 ishans = true;
             hanssb.append(html);
+            if(!ishans){
+                hanssb.append("root word "+verbroot+"not found");
+            }
             for (hanslexicon lanes : hansdictionary) {
                 //  <p style="margin-left:200px; margin-right:50px;">
                 hanssb.append("<p style=\"margin-left:10px; margin-right:10px;\">");
@@ -265,17 +268,35 @@ public class Dictionary_frag extends Fragment {
         recyclerView = view.findViewById(R.id.sarfrecview);
         WordLughatAdapter ska;
         LexiconAdapter lanesLexiconAdapter;
-        if (language.equals("relative")) {
+        if (language.equals("genetivenoun")) {
+
+            ArrayList<GrammarRules> ismmajroor = utils.getGrammarRulesByRules("genetivenoun");
+            worddifinition.add(ismmajroor.get(0).getDetailsrules());
+            lanesLexiconAdapter = new LexiconAdapter(worddifinition, getContext(), language);
+            recyclerView.setAdapter(lanesLexiconAdapter);
+        } else if (language.equals("accusativenoun")) {
+
+            ArrayList<GrammarRules> ismmansub = utils.getGrammarRulesByRules("accusativenoun");
+            worddifinition.add(ismmansub.get(0).getDetailsrules());
+            lanesLexiconAdapter = new LexiconAdapter(worddifinition, getContext(), language);
+            recyclerView.setAdapter(lanesLexiconAdapter);
+        } else if (language.equals("nominativenoun")) {
+
+            ArrayList<GrammarRules> ismmarfu = utils.getGrammarRulesByRules("nomnouns");
+            worddifinition.add(ismmarfu.get(0).getDetailsrules());
+            lanesLexiconAdapter = new LexiconAdapter(worddifinition, getContext(), language);
+            recyclerView.setAdapter(lanesLexiconAdapter);
+        } else if (language.equals("relative")) {
             ArrayList<GrammarRules> rel = utils.getGrammarRulesByRules("relative");
             worddifinition.add(rel.get(0).getDetailsrules());
             lanesLexiconAdapter = new LexiconAdapter(worddifinition, getContext(), language);
             recyclerView.setAdapter(lanesLexiconAdapter);
-        }else        if (language.equals("demonstrative")) {
+        } else if (language.equals("demonstrative")) {
             ArrayList<GrammarRules> dem = utils.getGrammarRulesByRules("dem");
             worddifinition.add(dem.get(0).getDetailsrules());
             lanesLexiconAdapter = new LexiconAdapter(worddifinition, getContext(), language);
             recyclerView.setAdapter(lanesLexiconAdapter);
-        }else if (language.equals("Subjunctive")) {
+        } else if (language.equals("Subjunctive")) {
             ArrayList<GrammarRules> nasab = utils.getGrammarRulesByRules("nasab");
             worddifinition.add(nasab.get(0).getDetailsrules());
             lanesLexiconAdapter = new LexiconAdapter(worddifinition, getContext(), language);
@@ -296,14 +317,14 @@ public class Dictionary_frag extends Fragment {
             worddifinition.add(shart.get(0).getDetailsrules());
             lanesLexiconAdapter = new LexiconAdapter(worddifinition, getContext(), language);
             recyclerView.setAdapter(lanesLexiconAdapter);
-        }  else if (language.equals("demonstrative")) {
+        } else if (language.equals("demonstrative")) {
             ArrayList<GrammarRules> nasab = utils.getGrammarRulesByRules("kanainna");
             worddifinition.add(nasab.get(0).getDetailsrules());
             lanesLexiconAdapter = new LexiconAdapter(worddifinition, getContext(), language);
             recyclerView.setAdapter(lanesLexiconAdapter);
 
 
-        }  else if (language.equals("accusative")) {
+        } else if (language.equals("accusative")) {
             ArrayList<GrammarRules> nasab = utils.getGrammarRulesByRules("kanainna");
             worddifinition.add(nasab.get(0).getDetailsrules());
             lanesLexiconAdapter = new LexiconAdapter(worddifinition, getContext(), language);

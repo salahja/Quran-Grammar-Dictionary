@@ -645,7 +645,7 @@ public class QuranMorphologyDetails {
             case "ACC":
               sb.append(CorpusConstants.NominalsProp.ACC);
               break;
-            case "GEN":
+            case "GEN":  sb.append(CorpusConstants.NominalsProp.GEN);
               sb.append(CorpusConstants.NominalsProp.GEN);
               break;
           }
@@ -737,12 +737,15 @@ public class QuranMorphologyDetails {
         if (!cases.equals("null")) {
           switch (cases) {
             case "NOM":
+              wordbdetail.put("nouncase", SpannableStringBuilder.valueOf("NOM"));
               sb.append(CorpusConstants.NominalsProp.NOM + " ");
               break;
             case "ACC":
+              wordbdetail.put("nouncase", SpannableStringBuilder.valueOf("ACC"));
               sb.append(CorpusConstants.NominalsProp.ACC + " ");
               break;
             case "GEN":
+              wordbdetail.put("nouncase", SpannableStringBuilder.valueOf("GEN"));
               sb.append(CorpusConstants.NominalsProp.GEN + " ");
               break;
           }
@@ -809,7 +812,35 @@ public class QuranMorphologyDetails {
         if (sb.length() > 5) {
           wordbdetail.put("noun", SpannableStringBuilder.valueOf(sb.toString()));
         }
+      } else  if (corpusNoun.get(0).getTag().equals("PN")||
+              corpusNoun.get(0).getTag().equals("VN")||
+              corpusNoun.get(0).getTag().equals("ADJ")
+      ) {
+
+
+
+        String cases = corpusNoun.get(0).getCases();
+      //  sb.append("Noun:");
+        if (!cases.equals("null")) {
+          switch (cases) {
+            case "NOM":
+              wordbdetail.put("nouncase", SpannableStringBuilder.valueOf("NOM"));
+           //   sb.append(CorpusConstants.NominalsProp.NOM + " ");
+              break;
+            case "ACC":
+              wordbdetail.put("nouncase", SpannableStringBuilder.valueOf("ACC"));
+            //  sb.append(CorpusConstants.NominalsProp.ACC + " ");
+              break;
+            case "GEN":
+              wordbdetail.put("nouncase", SpannableStringBuilder.valueOf("GEN"));
+           //   sb.append(CorpusConstants.NominalsProp.GEN + " ");
+              break;
+          }
+        }
+
       }
+
+
     }
   }
 

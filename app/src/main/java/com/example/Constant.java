@@ -5,6 +5,7 @@ import static android.graphics.Color.GREEN;
 import static android.graphics.Color.RED;
 import static android.graphics.Color.YELLOW;
 
+import android.text.SpannableStringBuilder;
 import android.text.style.BackgroundColorSpan;
 import android.text.style.ForegroundColorSpan;
 
@@ -79,7 +80,8 @@ public class Constant {
     public static final String VERBMOOD ="verbcase";
     public static final String  INDICATIVE="Indicative";
     public static final String VERBTYPE ="verbtype";
-
+   public static final String NOUNCASE="nouncase";
+    public static final String ISPARTICPLE="particple";
     public static final String QURAN_VERB_WAZAN = "form";
     public static final String SARFKABEER="sarfkabeer";
     public static final String QURAN_VERB_ROOT = "root";

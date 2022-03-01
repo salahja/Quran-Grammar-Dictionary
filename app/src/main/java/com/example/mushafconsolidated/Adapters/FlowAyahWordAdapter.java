@@ -406,12 +406,12 @@ public class FlowAyahWordAdapter extends RecyclerView.Adapter<FlowAyahWordAdapte
         System.out.println("check");
       }
 
-
-      final CorpusAyahWord ayahWord = ayahWordArrayList.get(position);
+        int actualposition=position-1;
+      final CorpusAyahWord ayahWord = ayahWordArrayList.get(actualposition);
       if(null!=entity){
       storepreferences(entity);
     }
-      SpannableString quranverses = ayahWordArrayList.get(position).getSpannableverse();
+      SpannableString quranverses = ayahWordArrayList.get(actualposition).getSpannableverse();
 
       holder.quran_textView.setText(quranverses);
       //   holder.translate_textView.setText(ayahWord.getQuranTranslate());
@@ -421,7 +421,7 @@ public class FlowAyahWordAdapter extends RecyclerView.Adapter<FlowAyahWordAdapte
 
       setChapterInfo(holder, ayahWord);
 
-      setAdapterposition(position);
+      setAdapterposition(actualposition);
 
 
       wordBywordWithTranslation(holder, custom_font, showWordColor, wbw, ayahWord, showWordByword);

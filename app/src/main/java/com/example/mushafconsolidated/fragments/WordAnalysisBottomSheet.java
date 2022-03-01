@@ -15,6 +15,8 @@ import static com.example.Constant.FORESTGREEN;
 import static com.example.Constant.GOLD;
 import static com.example.Constant.GREENDARK;
 import static com.example.Constant.INDICATIVE;
+import static com.example.Constant.ISPARTICPLE;
+import static com.example.Constant.NOUNCASE;
 import static com.example.Constant.ORANGE400;
 import static com.example.Constant.PREPOSITION;
 import static com.example.Constant.QURAN_VERB_ROOT;
@@ -66,6 +68,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mushafconsolidated.Activity.ActivitySettings;
 import com.example.mushafconsolidated.Activity.LughatWordDetailsAct;
+import com.example.mushafconsolidated.Activity.WordDictionaryAct;
 import com.example.mushafconsolidated.Activity.WordOccuranceAct;
 import com.example.mushafconsolidated.Adapters.RootWordDisplayAdapter;
 import com.example.mushafconsolidated.Adapters.SentenceRootWordDisplayAdapter;
@@ -842,8 +845,15 @@ public class WordAnalysisBottomSheet extends BottomSheetDialogFragment {
                         dataBundle.putString(VERBMOOD, INDICATIVE);
                         dataBundle.putString(QURAN_VERB_WAZAN, vb.getWazan());
                         dataBundle.putString(QURAN_VERB_ROOT, vb.getRoot());
+                        dataBundle.putBoolean(ISPARTICPLE, true);
+                        if(noun){
+                            dataBundle.putString(NOUNCASE, String.valueOf(wordbdetail.get("nouncase")));
+                        }
 
                     } else {
+                        if(noun){
+                            dataBundle.putString(NOUNCASE, String.valueOf(wordbdetail.get("nouncase")));
+                        }
                         dataBundle.putString(QURAN_VERB_ROOT, vb.getRoot());
                         dataBundle.putString(QURAN_VERB_WAZAN, " ");
                     }
@@ -875,7 +885,8 @@ public class WordAnalysisBottomSheet extends BottomSheetDialogFragment {
                     dataBundle.putString(QURAN_VERB_WAZAN, "");
                     dataBundle.putString(QURAN_VERB_ROOT, "");
                     dataBundle.putString(VERBTYPE, "");
-                    Intent intent = new Intent(getActivity(), LughatWordDetailsAct.class);
+                //    Intent intent = new Intent(getActivity(), WordDictionaryAct.class);
+                 Intent intent = new Intent(getActivity(), LughatWordDetailsAct.class);
 
                     intent.putExtras(dataBundle);
                     startActivity(intent);
@@ -889,7 +900,8 @@ public class WordAnalysisBottomSheet extends BottomSheetDialogFragment {
                         } else {
                             dataBundle.putString(VERBTYPE, "");
                         }
-                        Intent intent = new Intent(getActivity(), LughatWordDetailsAct.class);
+                   //     Intent intent = new Intent(getActivity(), WordDictionaryAct.class);
+                     Intent intent = new Intent(getActivity(), LughatWordDetailsAct.class);
 
                         intent.putExtras(dataBundle);
                         startActivity(intent);

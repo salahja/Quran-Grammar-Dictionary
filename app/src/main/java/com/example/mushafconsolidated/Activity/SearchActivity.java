@@ -73,7 +73,7 @@ public class SearchActivity extends AppCompatActivity implements OnItemClickList
     super.onCreate(savedInstanceState);
     setContentView(R.layout.search_main);
     Toolbar toolbar = findViewById(R.id.toolbar);
-    setSupportActionBar(toolbar);
+    //setSupportActionBar(toolbar);
     Display display = getWindowManager().getDefaultDisplay();
     DisplayMetrics outMetrics = new DisplayMetrics();
     display.getMetrics(outMetrics);

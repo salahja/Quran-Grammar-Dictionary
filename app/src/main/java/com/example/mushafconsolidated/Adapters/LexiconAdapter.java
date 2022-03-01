@@ -6,6 +6,7 @@ import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -72,11 +73,16 @@ public class LexiconAdapter extends RecyclerView.Adapter<LexiconAdapter.ItemView
         //   Typeface mequran = Typeface.createFromAsset(DarkThemeApplication.getContext().getAssets(), "Roboto.ttf");
         Typeface mequran= Typeface.createFromAsset(QuranGrammarApplication.getContext().getAssets(), "Taha.ttf");
         String lanes = lanesdictionary.get(position);
+        holder.wordDictionary.requestFocus();
+        holder.wordDictionary.getSettings().setLightTouchEnabled(true);
+        holder.wordDictionary.getSettings().setBuiltInZoomControls(true);
+        holder.  wordDictionary.getSettings().setBuiltInZoomControls(true);
+        holder.wordDictionary.getSettings().setSupportZoom(true);
 
-        if(language.equals("accusative")||language.equals("preposition")||language.equals("conditonal")||language.equals("relative")
+        if(language.equals("genetivenoun")||language.equals("accusativenoun")||language.equals("nominativenoun")||language.equals("accusative")||language.equals("preposition")||language.equals("conditonal")||language.equals("relative")
                 ||language.equals("dem")||language.equals("Jussive")||language.equals("Subjunctive")){
             holder. wordDictionary.loadDataWithBaseURL(null, lanes.toString(), "text/html", "utf-8", null);
-
+            holder.  wordDictionary.getSettings().setBuiltInZoomControls(true);
 
         }
         else  if(language.equals("lanes")){
@@ -93,8 +99,11 @@ public class LexiconAdapter extends RecyclerView.Adapter<LexiconAdapter.ItemView
             data .append(lanes);
 
             //    holder. wordDictionary.loadDataWithBaseURL("file:///android_asset/", data .toString(), "text/html", "utf-8", null);
-            holder. wordDictionary.loadDataWithBaseURL(null, data.toString(), "text/html", "utf-8", null);
 
+
+
+            holder. wordDictionary.loadDataWithBaseURL(null, data.toString(), "text/html", "utf-8", null);
+            holder.  wordDictionary.getSettings().setBuiltInZoomControls(true);
 
         }else  if(language.equals("hans")) {
             StringBuilder data = new StringBuilder();
@@ -104,7 +113,7 @@ public class LexiconAdapter extends RecyclerView.Adapter<LexiconAdapter.ItemView
             //  holder. wordDictionary.loadDataWithBaseURL("file:///android_asset/", data .toString(), "text/html", "utf-8", null);
             holder. wordDictionary.loadDataWithBaseURL(null, data .toString(), "text/html", "utf-8", null);
 
-
+            holder.  wordDictionary.getSettings().setBuiltInZoomControls(true);
 
         }
 
@@ -149,7 +158,7 @@ public class LexiconAdapter extends RecyclerView.Adapter<LexiconAdapter.ItemView
 
 
         public  final TextView wordDictionaryUrdu,meaning,rootwowrd,arabicword;
-        WebView wordDictionary;
+        TweakedWebView wordDictionary;
 
         public ItemViewAdapter(View view) {
             super(view);

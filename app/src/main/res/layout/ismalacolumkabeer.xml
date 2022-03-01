@@ -41,6 +41,7 @@
             app:strokeWidth="1dp">
 
             <TableRow
+android:layout_weight="1"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
@@ -127,6 +128,7 @@ android:autoSizeMinTextSize="10sp"
 
 
         <TableRow
+android:layout_weight="1"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content">
 
@@ -221,6 +223,7 @@ android:autoSizeMinTextSize="10sp"
         </TableRow>
 
         <TableRow
+android:layout_weight="1"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content">
 
@@ -312,6 +315,7 @@ android:autoSizeMinTextSize="10sp"
         </TableRow>
 
         <TableRow
+android:layout_weight="1"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content">
 
@@ -408,6 +412,7 @@ android:autoSizeMinTextSize="10sp"
             android:background="@android:color/darker_gray"
             />
         <TableRow
+android:layout_weight="1"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content">
 
@@ -498,6 +503,7 @@ android:autoSizeMinTextSize="10sp"
         </TableRow>
 
         <TableRow
+android:layout_weight="1"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content">
 
@@ -587,6 +593,7 @@ android:autoSizeMinTextSize="10sp"
         </TableRow>
 
         <TableRow
+android:layout_weight="1"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content">
 
@@ -683,6 +690,7 @@ android:autoSizeMinTextSize="10sp"
             android:background="@android:color/darker_gray"
             />
         <TableRow
+android:layout_weight="1"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content">
 
@@ -772,6 +780,7 @@ android:autoSizeMinTextSize="10sp"
         </TableRow>
 
         <TableRow
+android:layout_weight="1"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content">
 
@@ -863,6 +872,7 @@ android:autoSizeMinTextSize="10sp"
         </TableRow>
 
         <TableRow
+android:layout_weight="1"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content">
 

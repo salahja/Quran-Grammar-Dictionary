@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'
 
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion 31
     buildToolsVersion "30.0.3"
 
     defaultConfig {
@@ -58,6 +58,11 @@ task wrapper(type: Wrapper) {
 }
 
 dependencies {
+    implementation "androidx.window:window:1.0.0"
+
+    // For Java-friendly APIs to register and unregister callbacks
+    implementation "androidx.window:window-java:1.0.0"
+
     api 'com.google.android.material:material:1.4.0-rc01'
     implementation 'com.google.android.material:material:1.4.0-rc01'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
@@ -68,6 +73,7 @@ dependencies {
     implementation 'androidx.wear:wear:1.1.0'
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.1'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1'
+    implementation 'androidx.window:window:1.0.0-alpha05'
     compileOnly 'com.google.android.wearable:wearable:2.8.1'
     implementation "com.google.android.material:material:<latest-version>"
     implementation 'com.shreyaspatil:MaterialDialog:2.1'

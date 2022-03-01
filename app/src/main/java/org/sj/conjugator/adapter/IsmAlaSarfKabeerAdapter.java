@@ -103,7 +103,7 @@ public class IsmAlaSarfKabeerAdapter extends RecyclerView.Adapter<IsmAlaSarfKabe
         gcase(holder);
         ismalanumbers(holder);
 
-      //  FontSIzeSelection(holder);
+         FontSIzeSelection(holder);
         SetTypeface(holder);
 
 
@@ -316,57 +316,56 @@ public class IsmAlaSarfKabeerAdapter extends RecyclerView.Adapter<IsmAlaSarfKabe
     }
 
         private void FontSIzeSelection (ViewHolder holder){
+
+
             SharedPreferences sharedPreferences = androidx.preference.PreferenceManager.getDefaultSharedPreferences(QuranGrammarApplication.getContext());
+            String width = sharedPreferences.getString("width", "compactWidth");
             final Integer arabicFontsize = sharedPreferences.getInt("pref_font_arabic_key",20);
-            //  Integer arabicFontsize = 40;
-            //   Integer arabicFontsize = 70;
+            if(width.equals("mediumWidth")||width.equals("expandedWidth")) {
+                if (isTraditional) {
+                    holder.nom.setTextSize(arabicFontsize);//(array[0]);
+                    holder.acc.setTextSize(arabicFontsize);//(array[1]);
+                    holder.gen.setTextSize(arabicFontsize);//(array[2]);
 
-            if (isTraditional) {
-                holder.nom.setTextSize(arabicFontsize);//(array[0]);
-                holder.acc.setTextSize(arabicFontsize);//(array[1]);
-                holder.gen.setTextSize(arabicFontsize);//(array[2]);
+                    holder.nom1.setTextSize(arabicFontsize);//(array[0]);
+                    holder.acc1.setTextSize(arabicFontsize);//(array[1]);
+                    holder.gen1.setTextSize(arabicFontsize);//(array[2]);
 
-                holder.nom1.setTextSize(arabicFontsize);//(array[0]);
-                holder.acc1.setTextSize(arabicFontsize);//(array[1]);
-                holder.gen1.setTextSize(arabicFontsize);//(array[2]);
-
-                holder.nom2.setTextSize(arabicFontsize);//(array[0]);
-                holder.acc2.setTextSize(arabicFontsize);//(array[1]);
-                holder.gen2.setTextSize(arabicFontsize);//(array[2]);
+                    holder.nom2.setTextSize(arabicFontsize);//(array[0]);
+                    holder.acc2.setTextSize(arabicFontsize);//(array[1]);
+                    holder.gen2.setTextSize(arabicFontsize);//(array[2]);
 
 
+                    holder.sin1.setTextSize(arabicFontsize);//(array[0]);
+                    holder.dual1.setTextSize(arabicFontsize);//(array[1]);
+                    holder.plu1.setTextSize(arabicFontsize);//(array[2]);
 
+                    holder.sin2.setTextSize(arabicFontsize);//(array[0]);
+                    holder.dual2.setTextSize(arabicFontsize);//(array[1]);
+                    holder.plu2.setTextSize(arabicFontsize);//(array[2]);
 
+                    holder.sin3.setTextSize(arabicFontsize);//(array[0]);
+                    holder.dual3.setTextSize(arabicFontsize);//(array[1]);
+                    holder.plu3.setTextSize(arabicFontsize);//(array[2]);
 
-                holder.sin1.setTextSize(arabicFontsize);//(array[0]);
-                holder.dual1.setTextSize(arabicFontsize);//(array[1]);
-                holder.plu1.setTextSize(arabicFontsize);//(array[2]);
+                } else {
+                    holder.nom.setTextSize(arabicFontsize);//(array[0]);
+                    holder.acc.setTextSize(arabicFontsize);//(array[1]);
+                    holder.gen.setTextSize(arabicFontsize);//(array[2]);
 
-                holder.sin2.setTextSize(arabicFontsize);//(array[0]);
-                holder.dual2.setTextSize(arabicFontsize);//(array[1]);
-                holder.plu2.setTextSize(arabicFontsize);//(array[2]);
+                    holder.sin1.setTextSize(arabicFontsize);//(array[0]);
+                    holder.dual1.setTextSize(arabicFontsize);//(array[1]);
+                    holder.plu1.setTextSize(arabicFontsize);//(array[2]);
 
-                holder.sin3.setTextSize(arabicFontsize);//(array[0]);
-                holder.dual3.setTextSize(arabicFontsize);//(array[1]);
-                holder.plu3.setTextSize(arabicFontsize);//(array[2]);
+                    holder.sin2.setTextSize(arabicFontsize);//(array[0]);
+                    holder.dual2.setTextSize(arabicFontsize);//(array[1]);
+                    holder.plu2.setTextSize(arabicFontsize);//(array[2]);
 
-            } else {
-                holder.nom.setTextSize(arabicFontsize);//(array[0]);
-                holder.acc.setTextSize(arabicFontsize);//(array[1]);
-                holder.gen.setTextSize(arabicFontsize);//(array[2]);
+                    holder.sin3.setTextSize(arabicFontsize);//(array[0]);
+                    holder.dual2.setTextSize(arabicFontsize);//(array[1]);
+                    holder.dual3.setTextSize(arabicFontsize);//(array[2]);
 
-                holder.sin1.setTextSize(arabicFontsize);//(array[0]);
-                holder.dual1.setTextSize(arabicFontsize);//(array[1]);
-                holder.plu1.setTextSize(arabicFontsize);//(array[2]);
-
-                holder.sin2.setTextSize(arabicFontsize);//(array[0]);
-                holder.dual2.setTextSize(arabicFontsize);//(array[1]);
-                holder.plu2.setTextSize(arabicFontsize);//(array[2]);
-
-                holder.sin3.setTextSize(arabicFontsize);//(array[0]);
-                holder.dual2.setTextSize(arabicFontsize);//(array[1]);
-                holder.dual3.setTextSize(arabicFontsize);//(array[2]);
-
+                }
             }
         /*    holder.nom.setTextSize(arabicFontsize);//(array[0]);
             holder.acc.setTextSize(arabicFontsize);//(array[1]);

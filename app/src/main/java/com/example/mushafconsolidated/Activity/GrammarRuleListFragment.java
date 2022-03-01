@@ -89,12 +89,12 @@ public class GrammarRuleListFragment extends Fragment {
 
             Bundle arguments = new Bundle();
             arguments.putString(GrammarRuleDetailFragment.ARG_ITEM_ID, String.valueOf(item.getId()));
-            if (itemDetailFragmentContainer != null) {
-                Navigation.findNavController(itemDetailFragmentContainer)
-                        .navigate(R.id.fragment_grammarrule_detail, arguments);
-            } else {
+    //     if (itemDetailFragmentContainer != null) {
+        //      Navigation.findNavController(itemDetailFragmentContainer)
+          //            .navigate(R.id.fragment_grammarrule_detail, arguments);
+         //   } else {
                 Navigation.findNavController(itemView).navigate(R.id.show_grammarrule_detail, arguments);
-            }
+          //  }
         };
 
         /*

@@ -517,7 +517,7 @@ public class VerbSarfKabeerAdapter extends RecyclerView.Adapter<VerbSarfKabeerAd
         holder.muzmajantunna.setTypeface(arabicTypeface);
         holder.muzmajana.setTypeface(arabicTypeface);
         holder.muzmajnahnu.setTypeface(arabicTypeface);
-  //      FontSIzeSelection(holder);
+
 
         holder.muzmajhua.setText(hua);
         holder.muzmajhuma.setText(huma);
@@ -534,119 +534,121 @@ public class VerbSarfKabeerAdapter extends RecyclerView.Adapter<VerbSarfKabeerAd
         holder.muzmajana.setText(ana);
 //
         holder.muzmajnahnu.setText(nahnu);
-
+        FontSIzeSelection(holder);
     }
 
     private void FontSIzeSelection(ViewHolder holder) {
 
 
         SharedPreferences sharedPreferences = androidx.preference.PreferenceManager.getDefaultSharedPreferences(QuranGrammarApplication.getContext());
+        String width = sharedPreferences.getString("width", "compactWidth");
         final Integer arabicFontsize = sharedPreferences.getInt("pref_font_arabic_key",20);
+        if(width.equals("mediumWidth")||width.equals("expandedWidth")) {
 
-        //   final Integer arabicFontsize = SharedPref.arabicFontsize();
-        holder.muzhua.setTextSize(arabicFontsize);
-        holder.muzhuma.setTextSize(arabicFontsize);
-        holder.muzhum.setTextSize(arabicFontsize);
-        holder.muzhia.setTextSize(arabicFontsize);
-        holder.muzhumaf.setTextSize(arabicFontsize);
-        holder.muzhunna.setTextSize(arabicFontsize);
-        holder.muzanta.setTextSize(arabicFontsize);
-        holder.muzantuma.setTextSize(arabicFontsize);
-        holder.muzantum.setTextSize(arabicFontsize);
-        holder.muzanti.setTextSize(arabicFontsize);
-        holder.muzantumaf.setTextSize(arabicFontsize);
-        holder.muzantunna.setTextSize(arabicFontsize);
-        holder.muzana.setTextSize(arabicFontsize);
-        holder.muznahnu.setTextSize(arabicFontsize);
+            //   final Integer arabicFontsize = SharedPref.arabicFontsize();
+            holder.muzhua.setTextSize(arabicFontsize);
+            holder.muzhuma.setTextSize(arabicFontsize);
+            holder.muzhum.setTextSize(arabicFontsize);
+            holder.muzhia.setTextSize(arabicFontsize);
+            holder.muzhumaf.setTextSize(arabicFontsize);
+            holder.muzhunna.setTextSize(arabicFontsize);
+            holder.muzanta.setTextSize(arabicFontsize);
+            holder.muzantuma.setTextSize(arabicFontsize);
+            holder.muzantum.setTextSize(arabicFontsize);
+            holder.muzanti.setTextSize(arabicFontsize);
+            holder.muzantumaf.setTextSize(arabicFontsize);
+            holder.muzantunna.setTextSize(arabicFontsize);
+            holder.muzana.setTextSize(arabicFontsize);
+            holder.muznahnu.setTextSize(arabicFontsize);
 
-        holder.muzmajhua.setTextSize(arabicFontsize);
-        holder.muzmajhuma.setTextSize(arabicFontsize);
-        holder.muzmajhum.setTextSize(arabicFontsize);
-        holder.muzmajhia.setTextSize(arabicFontsize);
-        holder.muzmajhumaf.setTextSize(arabicFontsize);
-        holder.muzmajhunna.setTextSize(arabicFontsize);
-        holder.muzmajanta.setTextSize(arabicFontsize);
-        holder.muzmajantuma.setTextSize(arabicFontsize);
-        holder.muzmajantum.setTextSize(arabicFontsize);
-        holder.muzmajanti.setTextSize(arabicFontsize);
-        holder.muzmajantumaf.setTextSize(arabicFontsize);
-        holder.muzmajantunna.setTextSize(arabicFontsize);
-        holder.muzmajana.setTextSize(arabicFontsize);
-        holder.muzmajnahnu.setTextSize(arabicFontsize);
+            holder.muzmajhua.setTextSize(arabicFontsize);
+            holder.muzmajhuma.setTextSize(arabicFontsize);
+            holder.muzmajhum.setTextSize(arabicFontsize);
+            holder.muzmajhia.setTextSize(arabicFontsize);
+            holder.muzmajhumaf.setTextSize(arabicFontsize);
+            holder.muzmajhunna.setTextSize(arabicFontsize);
+            holder.muzmajanta.setTextSize(arabicFontsize);
+            holder.muzmajantuma.setTextSize(arabicFontsize);
+            holder.muzmajantum.setTextSize(arabicFontsize);
+            holder.muzmajanti.setTextSize(arabicFontsize);
+            holder.muzmajantumaf.setTextSize(arabicFontsize);
+            holder.muzmajantunna.setTextSize(arabicFontsize);
+            holder.muzmajana.setTextSize(arabicFontsize);
+            holder.muzmajnahnu.setTextSize(arabicFontsize);
 
-        holder.madhihua.setTextSize(arabicFontsize);
-        holder.madhihuma.setTextSize(arabicFontsize);
-        holder.madhihum.setTextSize(arabicFontsize);
-        holder.madhihia.setTextSize(arabicFontsize);
-        holder.madhihumaf.setTextSize(arabicFontsize);
-        holder.madhihunna.setTextSize(arabicFontsize);
+            holder.madhihua.setTextSize(arabicFontsize);
+            holder.madhihuma.setTextSize(arabicFontsize);
+            holder.madhihum.setTextSize(arabicFontsize);
+            holder.madhihia.setTextSize(arabicFontsize);
+            holder.madhihumaf.setTextSize(arabicFontsize);
+            holder.madhihunna.setTextSize(arabicFontsize);
 
-        holder.madhianta.setTextSize(arabicFontsize);
-        holder.madhiantuma.setTextSize(arabicFontsize);
-        holder.madhiantum.setTextSize(arabicFontsize);
-        holder.madhianti.setTextSize(arabicFontsize);
-        holder.madhiantunna.setTextSize(arabicFontsize);
-        holder.madhiantumaf.setTextSize(arabicFontsize);
-        holder.madhiana.setTextSize(arabicFontsize);
-        holder.madhinahnu.setTextSize(arabicFontsize);
-
-
-        holder.madimajhua.setTextSize(arabicFontsize);
-        holder.madimajhuma.setTextSize(arabicFontsize);
-        holder.madimajhum.setTextSize(arabicFontsize);
-        holder.madimajhia.setTextSize(arabicFontsize);
-        holder.madimajhumaf.setTextSize(arabicFontsize);
-        holder.madimajhunna.setTextSize(arabicFontsize);
-        holder.madimajanta.setTextSize(arabicFontsize);
-        holder.madimajantuma.setTextSize(arabicFontsize);
-        holder.madimajantum.setTextSize(arabicFontsize);
-        holder.madimajanti.setTextSize(arabicFontsize);
-        holder.madimajantumaf.setTextSize(arabicFontsize);
-        holder.madimajantunna.setTextSize(arabicFontsize);
-        holder.madimajana.setTextSize(arabicFontsize);
-
-        holder.madimajnahnu.setTextSize(arabicFontsize);
-        holder.amranta.setTextSize(arabicFontsize);
-
-        holder.amrantuma.setTextSize(arabicFontsize);
-        holder.amrantum.setTextSize(arabicFontsize);
-
-        holder.amranti.setTextSize(arabicFontsize);
-
-        holder.amrantumaf.setTextSize(arabicFontsize);
-        holder.amrantunna.setTextSize(arabicFontsize);
-
-        holder.nahiamranta.setTextSize(arabicFontsize);
-
-        holder.nahiamrantuma.setTextSize(arabicFontsize);
-        holder.nahiamrantum.setTextSize(arabicFontsize);
-
-        holder.nahiamranti.setTextSize(arabicFontsize);
-
-        holder.nahiamrantumaf.setTextSize(arabicFontsize);
-        holder.nahiamrantunna.setTextSize(arabicFontsize);
-
-        holder.huaid.setTextSize(arabicFontsize);//(array[0]);
-        holder.humamid.setTextSize(arabicFontsize);//(array[1]);
-        holder.humid.setTextSize(arabicFontsize);//(array[2]);
-
-        holder.hiaid.setTextSize(arabicFontsize);//(array[3]);
-        holder.humafid.setTextSize(arabicFontsize);//(array[4]);
-        holder.hunnaid.setTextSize(arabicFontsize);//(array[5]);
+            holder.madhianta.setTextSize(arabicFontsize);
+            holder.madhiantuma.setTextSize(arabicFontsize);
+            holder.madhiantum.setTextSize(arabicFontsize);
+            holder.madhianti.setTextSize(arabicFontsize);
+            holder.madhiantunna.setTextSize(arabicFontsize);
+            holder.madhiantumaf.setTextSize(arabicFontsize);
+            holder.madhiana.setTextSize(arabicFontsize);
+            holder.madhinahnu.setTextSize(arabicFontsize);
 
 
-        holder.antaid.setTextSize(arabicFontsize);//(array[6]);
-        holder.antumamid.setTextSize(arabicFontsize);//(array[7]);
-        holder.antumid.setTextSize(arabicFontsize);//(array[8]);
+            holder.madimajhua.setTextSize(arabicFontsize);
+            holder.madimajhuma.setTextSize(arabicFontsize);
+            holder.madimajhum.setTextSize(arabicFontsize);
+            holder.madimajhia.setTextSize(arabicFontsize);
+            holder.madimajhumaf.setTextSize(arabicFontsize);
+            holder.madimajhunna.setTextSize(arabicFontsize);
+            holder.madimajanta.setTextSize(arabicFontsize);
+            holder.madimajantuma.setTextSize(arabicFontsize);
+            holder.madimajantum.setTextSize(arabicFontsize);
+            holder.madimajanti.setTextSize(arabicFontsize);
+            holder.madimajantumaf.setTextSize(arabicFontsize);
+            holder.madimajantunna.setTextSize(arabicFontsize);
+            holder.madimajana.setTextSize(arabicFontsize);
 
-        holder.antiid.setTextSize(arabicFontsize);//(array[9]);
-        holder.antumafid.setTextSize(arabicFontsize);//(array[10]);
-        holder.antunnaid.setTextSize(arabicFontsize);//(array[11]);
+            holder.madimajnahnu.setTextSize(arabicFontsize);
+            holder.amranta.setTextSize(arabicFontsize);
 
-        holder.anaid.setTextSize(arabicFontsize);//(array[12]);
-        holder.nahnuid.setTextSize(arabicFontsize);//(array[13]);
+            holder.amrantuma.setTextSize(arabicFontsize);
+            holder.amrantum.setTextSize(arabicFontsize);
+
+            holder.amranti.setTextSize(arabicFontsize);
+
+            holder.amrantumaf.setTextSize(arabicFontsize);
+            holder.amrantunna.setTextSize(arabicFontsize);
+
+            holder.nahiamranta.setTextSize(arabicFontsize);
+
+            holder.nahiamrantuma.setTextSize(arabicFontsize);
+            holder.nahiamrantum.setTextSize(arabicFontsize);
+
+            holder.nahiamranti.setTextSize(arabicFontsize);
+
+            holder.nahiamrantumaf.setTextSize(arabicFontsize);
+            holder.nahiamrantunna.setTextSize(arabicFontsize);
+
+            holder.huaid.setTextSize(arabicFontsize);//(array[0]);
+            holder.humamid.setTextSize(arabicFontsize);//(array[1]);
+            holder.humid.setTextSize(arabicFontsize);//(array[2]);
+
+            holder.hiaid.setTextSize(arabicFontsize);//(array[3]);
+            holder.humafid.setTextSize(arabicFontsize);//(array[4]);
+            holder.hunnaid.setTextSize(arabicFontsize);//(array[5]);
 
 
+            holder.antaid.setTextSize(arabicFontsize);//(array[6]);
+            holder.antumamid.setTextSize(arabicFontsize);//(array[7]);
+            holder.antumid.setTextSize(arabicFontsize);//(array[8]);
+
+            holder.antiid.setTextSize(arabicFontsize);//(array[9]);
+            holder.antumafid.setTextSize(arabicFontsize);//(array[10]);
+            holder.antunnaid.setTextSize(arabicFontsize);//(array[11]);
+
+            holder.anaid.setTextSize(arabicFontsize);//(array[12]);
+            holder.nahnuid.setTextSize(arabicFontsize);//(array[13]);
+
+        }
     }
 
     private void MadhiMajhool(ViewHolder holder, int position) {

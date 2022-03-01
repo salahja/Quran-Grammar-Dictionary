@@ -3,6 +3,7 @@ package org.sj.conjugator.adapter;
 import static android.view.View.GONE;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.view.LayoutInflater;
@@ -12,6 +13,7 @@ import android.view.ViewGroup;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.utility.QuranGrammarApplication;
 import com.google.android.material.chip.Chip;
 
 import org.jetbrains.annotations.NotNull;
@@ -89,6 +91,10 @@ public class MazeedFihiSagheerListingadapter extends RecyclerView.Adapter<Mazeed
         holder.conjugate.setTypeface(mequran);
         holder.ismalaheader.setVisibility(GONE);
         holder.ismala.setVisibility(GONE);
+
+        SharedPreferences sharedPreferences = androidx.preference.PreferenceManager.getDefaultSharedPreferences(QuranGrammarApplication.getContext());
+        String width = sharedPreferences.getString("width", "compactWidth");
+        final Integer arabicFontsize = sharedPreferences.getInt("pref_font_arabic_key",20);
 
         if (length == 11) {
             int ind=0;
@@ -174,7 +180,7 @@ public class MazeedFihiSagheerListingadapter extends RecyclerView.Adapter<Mazeed
             holder.ismzarf.setText((CharSequence) toArray.get(5));
 
 
-
+            FontSizeSelection(holder);
 
 
         }
@@ -182,29 +188,34 @@ public class MazeedFihiSagheerListingadapter extends RecyclerView.Adapter<Mazeed
     }
 
     private void FontSizeSelection(@NotNull MufradatViewHolder holder) {
-        final Integer fontsize = SharedPref.arabicFontsize();
 
-        holder.mamaroof.setTextSize(fontsize);
-        holder.mumaroof.setTextSize(fontsize);
-        holder.masdaro.setTextSize(fontsize);
-        holder.masdart.setTextSize(fontsize);
-        holder.ismfail.setTextSize(fontsize);
 
-        holder.mamajhool.setTextSize(fontsize);
+        SharedPreferences sharedPreferences = androidx.preference.PreferenceManager.getDefaultSharedPreferences(QuranGrammarApplication.getContext());
+        String width = sharedPreferences.getString("width", "compactWidth");
+        final Integer fontsize = sharedPreferences.getInt("pref_font_arabic_key",20);
+        if(width.equals("mediumWidth")||width.equals("expandedWidth")) {
+            holder.mamaroof.setTextSize(fontsize);
+            holder.mumaroof.setTextSize(fontsize);
+            holder.masdaro.setTextSize(fontsize);
+            holder.masdart.setTextSize(fontsize);
+            holder.ismfail.setTextSize(fontsize);
 
-        holder.mumajhool.setTextSize(fontsize);
+            holder.mamajhool.setTextSize(fontsize);
 
-        holder.ismmafool.setTextSize(fontsize);
+            holder.mumajhool.setTextSize(fontsize);
 
-        holder.amr.setTextSize(fontsize);
+            holder.ismmafool.setTextSize(fontsize);
 
-        holder.nahiamr.setTextSize(fontsize);
-        holder.babno.setTextSize(fontsize);
-        holder.babno.setTextColor(Color.YELLOW);
-        holder.rootword.setTextSize(fontsize);
-        holder.rootword.setTextColor(Color.BLUE);
-        holder.weaknessname.setTextSize(fontsize);
-        holder.weaknessname.setTextColor(Color.GREEN);
+            holder.amr.setTextSize(fontsize);
+
+            holder.nahiamr.setTextSize(fontsize);
+            holder.babno.setTextSize(fontsize);
+            holder.babno.setTextColor(Color.YELLOW);
+            holder.rootword.setTextSize(fontsize);
+            holder.rootword.setTextColor(Color.BLUE);
+            holder.weaknessname.setTextSize(fontsize);
+            holder.weaknessname.setTextColor(Color.GREEN);
+        }
     }
 
 
