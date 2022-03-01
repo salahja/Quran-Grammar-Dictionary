@@ -6,6 +6,7 @@ import android.view.DragEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 
 import androidx.fragment.app.Fragment;
@@ -76,6 +77,9 @@ public class GrammarRuleDetailFragment extends Fragment {
 
         mToolbarLayout = rootView.findViewById(R.id.toolbar_layout);
         mTextView = binding.grammarruleDetail;
+
+        WebSettings webSettings = mTextView.getSettings();
+        webSettings.setJavaScriptEnabled(true);
 
         // Show the placeholder content as text in a TextView & in the toolbar if available.
         updateContent();
