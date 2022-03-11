@@ -95,6 +95,7 @@ import com.google.android.material.button.MaterialButton;
 import com.tooltip.Tooltip;
 
 import org.sj.conjugator.activity.ConjugatorTabsActivity;
+import org.sj.conjugator.fragments.RulesMujarradVerbList;
 import org.sj.conjugator.fragments.SarfSagheer;
 import org.sj.conjugator.utilities.GatherAll;
 
@@ -119,13 +120,28 @@ import database.entity.MujarradVerbs;
 public class WordAnalysisBottomSheet extends BottomSheetDialogFragment {
 
     public static final String TAG = "bottom";
-    int chapterid = 0;
-    int ayanumber = 0;
-
     // TODO: Customize parameter argument names
     private static final String ARG_OPTIONS_DATA = "options_data";
-    private SpannableStringBuilder spannable;
+    final ArrayList<SarfSagheer> sarfSagheerList = new ArrayList<>();
+    final ArrayList<String> wazannumberslist = new ArrayList<>();
+    protected RootWordDisplayAdapter rwAdapter;
+    int chapterid = 0;
+    int ayanumber = 0;
     boolean isMazeedSarfSagheer;
+    boolean isThulathiSarfSagheer;
+    boolean isverbconjugaton;
+    boolean participles, isVerb;
+    boolean noun;
+    List<MujarradVerbs> verbDictList;
+    List<String> expandableListTitle;
+    HashMap<String, List<SpannableStringBuilder>> expandableListDetail;
+    // --Commented out by Inspection (11/01/22, 8:24 AM):HashMap<Integer, HashMap<String, SpannableStringBuilder>> wordetailsall = new HashMap<>();
+    // --Commented out by Inspection (11/01/22, 8:35 AM):HashMap<Integer, HashMap<String, String>> verbdetailsall = new HashMap<>();
+    HashMap<String, String> vbdetail = new HashMap<>();
+    HashMap<String, SpannableStringBuilder> wordbdetail;
+    boolean showGrammarFragments = false;
+    boolean isroot, isarabicword, quadrilateral, isnoun, ismujarradparticple;
+    private SpannableStringBuilder spannable;
     private String themepreference;
     private boolean ismujarrad, ismazeed, isparticple;
     private boolean isconjugation;
@@ -133,17 +149,29 @@ public class WordAnalysisBottomSheet extends BottomSheetDialogFragment {
     private String mujarradwazan, mazeedwazan;
     private String verbmood;
     private boolean isHarf;
-    private boolean isrelative,isdem,isprep,isharfnasb,isShart;
+    private boolean isrelative, isdem, isprep, isharfnasb, isShart;
+    private String HarfNasbAndZarf;
+    // --Commented out by Inspection (11/01/22, 8:25 AM):private ArrayList<NewCorpusExpandWbwPOJO> SencorpusSurahWord;
+    private ArrayList<NewCorpusExpandWbwPOJO> corpusSurahWord;
+    // --Commented out by Inspection (11/01/22, 8:24 AM):private View selectedview;
+    private AlertDialog dialog;
+    private ArrayList<ArrayList> ismfaelmafool;
+    private VerbWazan vb;
+    private VerbWazan arabicword;
+
+    // TODO: Customize parameters
+    @NonNull
+    public static WordAnalysisBottomSheet newInstance(String[] data) {
+        final WordAnalysisBottomSheet fragment = new WordAnalysisBottomSheet();
+        final Bundle args = new Bundle();
+        args.putStringArray(ARG_OPTIONS_DATA, data);
+        fragment.setArguments(args);
+        return fragment;
+    }
 
     public void setQuadrilateral(boolean quadrilateral) {
         this.quadrilateral = quadrilateral;
     }
-
-    boolean isThulathiSarfSagheer;
-    boolean isverbconjugaton;
-    boolean participles, isVerb;
-    boolean noun;
-    private String HarfNasbAndZarf;
 
     public boolean isVerb() {
         return isVerb;
@@ -153,22 +181,6 @@ public class WordAnalysisBottomSheet extends BottomSheetDialogFragment {
         isVerb = verb;
     }
 
-    List<MujarradVerbs> verbDictList;
-
-    List<String> expandableListTitle;
-    HashMap<String, List<SpannableStringBuilder>> expandableListDetail;
-
-    // --Commented out by Inspection (11/01/22, 8:24 AM):HashMap<Integer, HashMap<String, SpannableStringBuilder>> wordetailsall = new HashMap<>();
-    // --Commented out by Inspection (11/01/22, 8:35 AM):HashMap<Integer, HashMap<String, String>> verbdetailsall = new HashMap<>();
-    HashMap<String, String> vbdetail = new HashMap<>();
-    HashMap<String, SpannableStringBuilder> wordbdetail;
-
-    boolean showGrammarFragments = false;
-    // --Commented out by Inspection (11/01/22, 8:25 AM):private ArrayList<NewCorpusExpandWbwPOJO> SencorpusSurahWord;
-    private ArrayList<NewCorpusExpandWbwPOJO> corpusSurahWord;
-    private AlertDialog dialog;
-    // --Commented out by Inspection (11/01/22, 8:24 AM):private View selectedview;
-
     public boolean isNoun() {
         return noun;
     }
@@ -177,23 +189,14 @@ public class WordAnalysisBottomSheet extends BottomSheetDialogFragment {
         this.noun = noun;
     }
 
-    private ArrayList<ArrayList> ismfaelmafool;
-    private VerbWazan vb;
-    private VerbWazan arabicword;
-    protected RootWordDisplayAdapter rwAdapter;
-    final ArrayList<SarfSagheer> sarfSagheerList = new ArrayList<>();
-
     public void setIsroot(boolean isroot) {
         this.isroot = isroot;
     }
+    // --Commented out by Inspection (11/01/22, 8:26 AM):private SentenceRootWordDisplayAdapter sentenceRootWordDisplayAdapter;
 
     public void setIsarabicword(boolean isarabicword) {
         this.isarabicword = isarabicword;
     }
-
-    final ArrayList<String> wazannumberslist = new ArrayList<>();
-    boolean isroot, isarabicword, quadrilateral, isnoun, ismujarradparticple;
-    // --Commented out by Inspection (11/01/22, 8:26 AM):private SentenceRootWordDisplayAdapter sentenceRootWordDisplayAdapter;
 
     public boolean isParticiples() {
         return participles;
@@ -215,6 +218,10 @@ public class WordAnalysisBottomSheet extends BottomSheetDialogFragment {
         return isMazeedSarfSagheer;
     }
 
+    public void setMazeedSarfSagheer(boolean mazeedSarfSagheer) {
+        isMazeedSarfSagheer = mazeedSarfSagheer;
+    }
+
     public String getHarfNasbAndZarf() {
         return HarfNasbAndZarf;
     }
@@ -223,27 +230,12 @@ public class WordAnalysisBottomSheet extends BottomSheetDialogFragment {
         HarfNasbAndZarf = harfNasbAndZarf;
     }
 
-    public void setMazeedSarfSagheer(boolean mazeedSarfSagheer) {
-        isMazeedSarfSagheer = mazeedSarfSagheer;
-    }
-
     public boolean isThulathiSarfSagheer() {
         return isThulathiSarfSagheer;
     }
 
     public void setThulathiSarfSagheer(boolean thulathiSarfSagheer) {
         isThulathiSarfSagheer = thulathiSarfSagheer;
-    }
-
-
-    // TODO: Customize parameters
-    @NonNull
-    public static WordAnalysisBottomSheet newInstance(String[] data) {
-        final WordAnalysisBottomSheet fragment = new WordAnalysisBottomSheet();
-        final Bundle args = new Bundle();
-        args.putStringArray(ARG_OPTIONS_DATA, data);
-        fragment.setArguments(args);
-        return fragment;
     }
 
     @Nullable
@@ -293,6 +285,7 @@ public class WordAnalysisBottomSheet extends BottomSheetDialogFragment {
 
             }
             //if any true..good for verb conjugation
+            isarabicword = wordbdetail.get("arabicword") != null;
             ismujarrad = vbdetail.get("wazan") != null;
             ismazeed = vbdetail.get("form") != null;
 
@@ -311,8 +304,8 @@ public class WordAnalysisBottomSheet extends BottomSheetDialogFragment {
             isprep = wordbdetail.get("prep") != null;
 
             isdem = wordbdetail.get("dem") != null;
-            isShart=wordbdetail.get("cond")!=null;
-            isHarf = iscond == isrelative == isharfnasb==isprep==isdem;
+            isShart = wordbdetail.get("cond") != null;
+            isHarf = iscond == isrelative == isharfnasb == isprep == isdem;
 
             if (isroot) {
                 root = vbdetail.get("root");
@@ -347,12 +340,12 @@ public class WordAnalysisBottomSheet extends BottomSheetDialogFragment {
 
 
             //  vb.setRoot(String.valueOf(wordbdetail.get("root")));
-            if(iscond||isdem||isharfnasb||isprep||isrelative) {
+            if (iscond || isdem || isharfnasb || isprep || isrelative) {
                 setIsroot(false);
                 setThulathiSarfSagheer(false);
                 setMazeedSarfSagheer(false);
                 setIsverbconjugaton(true);
-            }else if (isroot && ismujarrad && !isparticple) {
+            } else if (isroot && ismujarrad && !isparticple) {
 
                 vb = new VerbWazan();
                 vb.setRoot(root);
@@ -542,9 +535,6 @@ public class WordAnalysisBottomSheet extends BottomSheetDialogFragment {
             }
 
 
-
-
-
             corpusNounWord.size();
             try {
                 //   if (corpusNounWord.get(0).getTag().equals("ACC") || corpusNounWord.get(0).equals("T") || corpusNounWord.get(0).equals("LOC")) {
@@ -655,7 +645,6 @@ public class WordAnalysisBottomSheet extends BottomSheetDialogFragment {
         editor.putString(SURAH_ARABIC_NAME, s);
 
 
-
         editor.apply();
         editor.commit();
 
@@ -695,8 +684,6 @@ public class WordAnalysisBottomSheet extends BottomSheetDialogFragment {
 
     protected void SetMudhaf(Utils utils) {
         ArrayList<NewMudhafEntity> mudhafSurahAyah = utils.getMudhafSurahAyahNew(chapterid, ayanumber);
-
-
 
 
         for (NewMudhafEntity mudhafEntity : mudhafSurahAyah) {
@@ -786,31 +773,53 @@ public class WordAnalysisBottomSheet extends BottomSheetDialogFragment {
 
             if (formview != null) {
 
-                VerbFormsDialogFrag item=new VerbFormsDialogFrag();
+                VerbFormsDialogFrag item = new VerbFormsDialogFrag();
                 //    item.setdata(rootWordMeanings,wbwRootwords,grammarRootsCombined);
-                FragmentManager fragmentManager =  getActivity().getSupportFragmentManager();
-
-                String vbform = vbdetail.get("formnumber");
-                if(null!=vbform) {
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                String vbform;
+                if (!vbdetail.isEmpty()) {
+                    vbform = vbdetail.get("formnumber");
+                } else {
+                    vbform = String.valueOf(wordbdetail.get("formnumber"));
+                    vbform = vbform.replaceAll("\\(", "").replaceAll("\\)", "");
+                }
+                if (null != vbform) {
                     String[] data = {vbform};
+
+
                     FragmentTransaction transactions = fragmentManager.beginTransaction().setCustomAnimations(R.anim.abc_slide_in_top, android.R.anim.fade_out);
                     transactions.show(item);
                     VerbFormsDialogFrag.newInstance(data).show(getActivity().getSupportFragmentManager(), WordAnalysisBottomSheet.TAG);
 
+
+
+
+/*
+   VerbFormsDialogFrag frag = new VerbFormsDialogFrag();
+                      Bundle dataBundle = new Bundle();
+                    dataBundle.putString("form", vbform);
+                    frag.setArguments(dataBundle);
+                    FragmentTransaction transactions = getActivity().getSupportFragmentManager().beginTransaction()
+                            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+                    transactions.replace(R.id.frame_container, frag).addToBackStack("mujarrad");
+                    transactions.commit();
+                    */
+
+
                 }
             } else if (wordview != null) {
                 Bundle dataBundle = new Bundle();
-                if(isHarf) {
-                    if(isharfnasb) {
+                if (isHarf) {
+                    if (isharfnasb) {
                         dataBundle.putBoolean(ACCUSATIVE, true);
 
-                    }else if(isprep){
+                    } else if (isprep) {
                         dataBundle.putBoolean(PREPOSITION, true);
-                    }else if(isrelative){
+                    } else if (isrelative) {
                         dataBundle.putBoolean(RELATIVE, true);
-                    }else if(isdem){
+                    } else if (isdem) {
                         dataBundle.putBoolean(DEMONSTRATIVE, true);
-                    }else if(isShart){
+                    } else if (isShart) {
                         dataBundle.putBoolean(CONDITIONAL, true);
                     }
 
@@ -825,13 +834,12 @@ public class WordAnalysisBottomSheet extends BottomSheetDialogFragment {
 
                     intent.putExtras(dataBundle);
                     startActivity(intent);
-                }else
-                if (quadrilateral) {
+                } else if (quadrilateral) {
                     dataBundle.putString(QURAN_VERB_ROOT, vb.getRoot());
                     dataBundle.putString(QURAN_VERB_WAZAN, " ");
                     dataBundle.putString("arabicword", "");
-                } else if (isarabicword) {
-                    dataBundle.putString("arabicword", arabicword.getArabicword());
+                } else if (isarabicword && !isroot) {
+                    dataBundle.putString("arabicword", String.valueOf(wordbdetail.get("arabicword")));
                     dataBundle.putString(QURAN_VERB_WAZAN, " ");
                     dataBundle.putString(QURAN_VERB_ROOT, " ");
                 } else if (isroot) {
@@ -846,12 +854,12 @@ public class WordAnalysisBottomSheet extends BottomSheetDialogFragment {
                         dataBundle.putString(QURAN_VERB_WAZAN, vb.getWazan());
                         dataBundle.putString(QURAN_VERB_ROOT, vb.getRoot());
                         dataBundle.putBoolean(ISPARTICPLE, true);
-                        if(noun){
+                        if (noun) {
                             dataBundle.putString(NOUNCASE, String.valueOf(wordbdetail.get("nouncase")));
                         }
 
                     } else {
-                        if(noun){
+                        if (noun) {
                             dataBundle.putString(NOUNCASE, String.valueOf(wordbdetail.get("nouncase")));
                         }
                         dataBundle.putString(QURAN_VERB_ROOT, vb.getRoot());
@@ -859,25 +867,24 @@ public class WordAnalysisBottomSheet extends BottomSheetDialogFragment {
                     }
 
 
-                }else
-                {
+                } else {
                     //   dataBundle.putString("arabicword", String.valueOf(wordbdetail.get("arabicword")));
                     String arabicword = String.valueOf(wordbdetail.get("arabicword"));
                     int inkasra = arabicword.indexOf(Kasra);
-                    int intshadda =    arabicword.indexOf(SHADDA);
-                    int intfatha =     arabicword.indexOf(Fatha);
-                    int intdamma =     arabicword.indexOf(Damma);
-                    if(inkasra!=-1){
-                        arabicword=arabicword.replaceAll(Kasra,"");
+                    int intshadda = arabicword.indexOf(SHADDA);
+                    int intfatha = arabicword.indexOf(Fatha);
+                    int intdamma = arabicword.indexOf(Damma);
+                    if (inkasra != -1) {
+                        arabicword = arabicword.replaceAll(Kasra, "");
                     }
-                    if(intshadda!=-1){
-                        arabicword=arabicword.replaceAll(SHADDA,"");
+                    if (intshadda != -1) {
+                        arabicword = arabicword.replaceAll(SHADDA, "");
                     }
-                    if(intfatha!=-1){
-                        arabicword=arabicword.replaceAll(Fatha,"");
+                    if (intfatha != -1) {
+                        arabicword = arabicword.replaceAll(Fatha, "");
                     }
-                    if(intdamma!=-1){
-                        arabicword=arabicword.replaceAll(Damma,"");
+                    if (intdamma != -1) {
+                        arabicword = arabicword.replaceAll(Damma, "");
                     }
                     dataBundle.putString("arabicword", arabicword);
 
@@ -885,8 +892,8 @@ public class WordAnalysisBottomSheet extends BottomSheetDialogFragment {
                     dataBundle.putString(QURAN_VERB_WAZAN, "");
                     dataBundle.putString(QURAN_VERB_ROOT, "");
                     dataBundle.putString(VERBTYPE, "");
-                //    Intent intent = new Intent(getActivity(), WordDictionaryAct.class);
-                 Intent intent = new Intent(getActivity(), LughatWordDetailsAct.class);
+                    //    Intent intent = new Intent(getActivity(), WordDictionaryAct.class);
+                    Intent intent = new Intent(getActivity(), LughatWordDetailsAct.class);
 
                     intent.putExtras(dataBundle);
                     startActivity(intent);
@@ -900,8 +907,8 @@ public class WordAnalysisBottomSheet extends BottomSheetDialogFragment {
                         } else {
                             dataBundle.putString(VERBTYPE, "");
                         }
-                   //     Intent intent = new Intent(getActivity(), WordDictionaryAct.class);
-                     Intent intent = new Intent(getActivity(), LughatWordDetailsAct.class);
+                        //     Intent intent = new Intent(getActivity(), WordDictionaryAct.class);
+                        Intent intent = new Intent(getActivity(), LughatWordDetailsAct.class);
 
                         intent.putExtras(dataBundle);
                         startActivity(intent);
@@ -964,9 +971,9 @@ public class WordAnalysisBottomSheet extends BottomSheetDialogFragment {
                         } else if (ismazeed) {
                             dataBundle.putString(VERBTYPE, "mazeed");
                         }
-                        if(vbdetail.isEmpty()) {
+                        if (vbdetail.isEmpty()) {
                             dataBundle.putString(VERBMOOD, "Indicative");
-                        }else {
+                        } else {
                             dataBundle.putString(VERBMOOD, vbdetail.get("verbmood"));
                         }
                         dataBundle.putString(QURAN_VERB_WAZAN, vb.getWazan());

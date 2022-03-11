@@ -16,6 +16,7 @@ import static com.example.Constant.VERBTYPE;
 import static Utility.ArabicLiterals.LALIF;
 
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -408,6 +409,9 @@ public class LughatWordDetailsAct extends BaseActivity {
             languages[2] = "english";
             languages[3] = "urdu";
 
+        }else{
+            Toast.makeText(this, "not found", Toast.LENGTH_SHORT).show();
+            this.finish();
         }
 
 

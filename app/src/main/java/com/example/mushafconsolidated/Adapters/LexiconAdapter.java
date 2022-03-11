@@ -81,7 +81,9 @@ public class LexiconAdapter extends RecyclerView.Adapter<LexiconAdapter.ItemView
 
         if(language.equals("genetivenoun")||language.equals("accusativenoun")||language.equals("nominativenoun")||language.equals("accusative")||language.equals("preposition")||language.equals("conditonal")||language.equals("relative")
                 ||language.equals("dem")||language.equals("Jussive")||language.equals("Subjunctive")){
-            holder. wordDictionary.loadDataWithBaseURL(null, lanes.toString(), "text/html", "utf-8", null);
+           // webView.loadDataWithBaseURL(htmlData, "text/html", "utf-8", null);
+
+            holder. wordDictionary.loadDataWithBaseURL("file:///android_asset/", lanes.toString(), "text/html", "utf-8", null);
             holder.  wordDictionary.getSettings().setBuiltInZoomControls(true);
 
         }

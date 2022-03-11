@@ -31,17 +31,13 @@ import java.util.ArrayList;
 public class MudhafDisplayFrag extends Fragment {
 
 
-
-
-
     private RecyclerView recyclerView;
     //   private RecyclerView.Adapter ParentAdapter;
     private MudhafAdapter sifaAdapter;
-  //  SurahDisplayAdapter ParentAdapter;
+    //  SurahDisplayAdapter ParentAdapter;
 
     private OnItemClickListener mItemClickListener;
     private RecyclerView.LayoutManager layoutManager;
-
 
 
     public MudhafDisplayFrag() {
@@ -56,7 +52,6 @@ public class MudhafDisplayFrag extends Fragment {
      * @return A new instance of fragment BlankFragment.
      */
     // TODO: Rename and change types and number of parameters
-
     public static MudhafDisplayFrag newInstance() {
         MudhafDisplayFrag fragment = new MudhafDisplayFrag();
         Bundle args = new Bundle();
@@ -77,27 +72,24 @@ public class MudhafDisplayFrag extends Fragment {
                              Bundle savedInstanceState) {
 
 
-        View view=inflater.inflate(R.layout.reccylerview, container, false);
-        Utils utils=new Utils(getContext());
+        View view = inflater.inflate(R.layout.reccylerview, container, false);
+        Utils utils = new Utils(getContext());
 
 
         final ArrayList<MudhafPOJO> sifabySurahAll = utils.getMudhaf();
 
         for (MudhafPOJO sifa : sifabySurahAll) {
-            SpannableStringBuilder str=new SpannableStringBuilder(sifa.getQurantext());
+            SpannableStringBuilder str = new SpannableStringBuilder(sifa.getQurantext());
             try {
                 str.setSpan(new ForegroundColorSpan(BYELLOW), sifa.getStartindex(), sifa.getEndindex(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
                 sifa.setSpannedverse(str);
-            }catch (IndexOutOfBoundsException e){
+            } catch (IndexOutOfBoundsException e) {
 
                 System.out.println(e.getMessage());
-                System.out.println(sifa.getSurah()+","+sifa.getAyah()+","+sifa.getWordno());
+                System.out.println(sifa.getSurah() + "," + sifa.getAyah() + "," + sifa.getWordno());
             }
 
         }
-
-
-
 
 
         setRecyclerView(view.findViewById(R.id.RecyclerView));
@@ -106,9 +98,7 @@ public class MudhafDisplayFrag extends Fragment {
 
 
         getRecyclerView().setLayoutManager(getLayoutManager());
-        setSifaAdapter(new MudhafAdapter(getContext(),sifabySurahAll));
-
-
+        setSifaAdapter(new MudhafAdapter(getContext(), sifabySurahAll));
 
 
         getRecyclerView().setAdapter(getSifaAdapter());
@@ -116,35 +106,28 @@ public class MudhafDisplayFrag extends Fragment {
     }
 
 
-
-
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
 
-
-
-
-
-
-       getRecyclerView().setAdapter(getSifaAdapter());
+        getRecyclerView().setAdapter(getSifaAdapter());
 
         setRecyclerView(view.findViewById(R.id.RecyclerView));
         getRecyclerView().setHasFixedSize(true);
         setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        Utils utils=new Utils(getContext());
+        Utils utils = new Utils(getContext());
         final ArrayList<MudhafPOJO> all = utils.getMudhaf();
 
-        for( MudhafPOJO sifa: all) {
-            SpannableStringBuilder str=new SpannableStringBuilder(sifa.getQurantext());
+        for (MudhafPOJO sifa : all) {
+            SpannableStringBuilder str = new SpannableStringBuilder(sifa.getQurantext());
             try {
                 str.setSpan(new ForegroundColorSpan(BYELLOW), sifa.getStartindex(), sifa.getEndindex(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
                 sifa.setSpannedverse(str);
-            }catch (IndexOutOfBoundsException e) {
-                System.out.println(sifa.getSurah()+","+sifa.getAyah()+","+sifa.getWordno()+","+
-                        sifa.getStartindex()+","+sifa.getEndindex());
+            } catch (IndexOutOfBoundsException e) {
+                System.out.println(sifa.getSurah() + "," + sifa.getAyah() + "," + sifa.getWordno() + "," +
+                        sifa.getStartindex() + "," + sifa.getEndindex());
             }
 
         }
@@ -156,9 +139,7 @@ public class MudhafDisplayFrag extends Fragment {
 
 
         getRecyclerView().setLayoutManager(getLayoutManager());
-        setSifaAdapter(new MudhafAdapter(getContext(),all));
-
-
+        setSifaAdapter(new MudhafAdapter(getContext(), all));
 
 
         getRecyclerView().setAdapter(getSifaAdapter());
@@ -166,16 +147,11 @@ public class MudhafDisplayFrag extends Fragment {
         getRecyclerView().setLayoutManager(getLayoutManager());
 
 
-
-
         getSifaAdapter().SetOnItemClickListener((v, position) -> {
-         //   Toast.makeText(getActivity(), "clicked", Toast.LENGTH_SHORT).show();
-
-
+            //   Toast.makeText(getActivity(), "clicked", Toast.LENGTH_SHORT).show();
 
 
         });
-
 
 
     }
@@ -212,8 +188,6 @@ public class MudhafDisplayFrag extends Fragment {
     public void setLayoutManager(RecyclerView.LayoutManager layoutManager) {
         this.layoutManager = layoutManager;
     }
-
-
 
 
 }

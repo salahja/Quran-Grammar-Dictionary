@@ -31,6 +31,7 @@ public class ViewPager2 extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
     public ViewPager2(Context context) {
         this.context = context;
     }
@@ -74,7 +75,7 @@ public class ViewPager2 extends Fragment {
 
 // viewPager2.setAdapter(new OrignalPager(this, list, viewPager2));
 //  viewPager2.setAdapter(new ViewPagerAdapter(this, list, viewPager2));
-     //   viewPagertwo.setAdapter(new ViewPagerAdapter((MainActivity) context, surahArrayList, viewPagertwo));
+        //   viewPagertwo.setAdapter(new ViewPagerAdapter((MainActivity) context, surahArrayList, viewPagertwo));
         return view;
     }
 }

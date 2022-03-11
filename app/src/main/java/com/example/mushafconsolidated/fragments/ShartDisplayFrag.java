@@ -34,17 +34,15 @@ import java.util.List;
 public class ShartDisplayFrag extends Fragment {
 
 
-
     List<SpannableStringBuilder> kanaExpandableListDetail;
 
     private RecyclerView recyclerView;
     //   private RecyclerView.Adapter ParentAdapter;
     private ShartAdapter shartAdapter;
-  //  SurahDisplayAdapter ParentAdapter;
+    //  SurahDisplayAdapter ParentAdapter;
 
     private OnItemClickListener mItemClickListener;
     private RecyclerView.LayoutManager layoutManager;
-
 
 
     public ShartDisplayFrag() {
@@ -59,7 +57,6 @@ public class ShartDisplayFrag extends Fragment {
      * @return A new instance of fragment BlankFragment.
      */
     // TODO: Rename and change types and number of parameters
-
     public static ShartDisplayFrag newInstance() {
         ShartDisplayFrag fragment = new ShartDisplayFrag();
         Bundle args = new Bundle();
@@ -80,14 +77,14 @@ public class ShartDisplayFrag extends Fragment {
                              Bundle savedInstanceState) {
 
 
-        View view=inflater.inflate(R.layout.reccylerview, container, false);
-        Utils utils=new Utils(getContext());
-     //   ExpandableListData expandableListData=new ExpandableListData(chapterid,ayanumber,corpusSurahWord,utils);
-     //   kanaExpandableListDetail=   expandableListData .getKana();
+        View view = inflater.inflate(R.layout.reccylerview, container, false);
+        Utils utils = new Utils(getContext());
+        //   ExpandableListData expandableListData=new ExpandableListData(chapterid,ayanumber,corpusSurahWord,utils);
+        //   kanaExpandableListDetail=   expandableListData .getKana();
         final ArrayList<ShartPOJO> sifabySurahAll = utils.getSharts();
 
         for (ShartPOJO shart : sifabySurahAll) {
-            SpannableStringBuilder spannableverse=new SpannableStringBuilder(shart.getQurantext());
+            SpannableStringBuilder spannableverse = new SpannableStringBuilder(shart.getQurantext());
             try {
 
 
@@ -108,14 +105,7 @@ public class ShartDisplayFrag extends Fragment {
             }
 
 
-
-
-
-
         }
-
-
-
 
 
         setRecyclerView(view.findViewById(R.id.RecyclerView));
@@ -124,9 +114,7 @@ public class ShartDisplayFrag extends Fragment {
 
 
         getRecyclerView().setLayoutManager(getLayoutManager());
-        setShartAdapter(new ShartAdapter(getContext(),sifabySurahAll));
-
-
+        setShartAdapter(new ShartAdapter(getContext(), sifabySurahAll));
 
 
         getRecyclerView().setAdapter(getShartAdapter());
@@ -134,29 +122,22 @@ public class ShartDisplayFrag extends Fragment {
     }
 
 
-
-
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
 
-
-
-
-
-
-       getRecyclerView().setAdapter(getShartAdapter());
+        getRecyclerView().setAdapter(getShartAdapter());
 
         setRecyclerView(view.findViewById(R.id.RecyclerView));
         getRecyclerView().setHasFixedSize(true);
         setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        Utils utils=new Utils(getContext());
+        Utils utils = new Utils(getContext());
         final ArrayList<ShartPOJO> all = utils.getSharts();
 
-        for( ShartPOJO shart: all) {
-            SpannableStringBuilder spannableverse=new SpannableStringBuilder(shart.getQurantext());
+        for (ShartPOJO shart : all) {
+            SpannableStringBuilder spannableverse = new SpannableStringBuilder(shart.getQurantext());
 
 
             try {
@@ -178,10 +159,6 @@ public class ShartDisplayFrag extends Fragment {
             }
 
 
-
-
-
-
         }
 
 
@@ -191,9 +168,7 @@ public class ShartDisplayFrag extends Fragment {
 
 
         getRecyclerView().setLayoutManager(getLayoutManager());
-        setShartAdapter(new ShartAdapter(getContext(),all));
-
-
+        setShartAdapter(new ShartAdapter(getContext(), all));
 
 
         getRecyclerView().setAdapter(getShartAdapter());
@@ -201,16 +176,11 @@ public class ShartDisplayFrag extends Fragment {
         getRecyclerView().setLayoutManager(getLayoutManager());
 
 
-
-
         getShartAdapter().SetOnItemClickListener((v, position) -> {
-         //   Toast.makeText(getActivity(), "clicked", Toast.LENGTH_SHORT).show();
-
-
+            //   Toast.makeText(getActivity(), "clicked", Toast.LENGTH_SHORT).show();
 
 
         });
-
 
 
     }
@@ -247,8 +217,6 @@ public class ShartDisplayFrag extends Fragment {
     public void setLayoutManager(RecyclerView.LayoutManager layoutManager) {
         this.layoutManager = layoutManager;
     }
-
-
 
 
 }

@@ -35,17 +35,14 @@ import java.util.ArrayList;
 public class KanaDisplayFrag extends DialogFragment implements IOnBackPressed {
 
 
-
-
-
     private RecyclerView recyclerView;
     //   private RecyclerView.Adapter ParentAdapter;
     private KanaAdapter kanaAdapter;
-  //  SurahDisplayAdapter ParentAdapter;
+    //  SurahDisplayAdapter ParentAdapter;
 
     private OnItemClickListener mItemClickListener;
     private RecyclerView.LayoutManager layoutManager;
-    ArrayList<SpannableStringBuilder> sharts=new ArrayList<>();
+    ArrayList<SpannableStringBuilder> sharts = new ArrayList<>();
 
 
     public KanaDisplayFrag() {
@@ -60,7 +57,6 @@ public class KanaDisplayFrag extends DialogFragment implements IOnBackPressed {
      * @return A new instance of fragment BlankFragment.
      */
     // TODO: Rename and change types and number of parameters
-
     public static KanaDisplayFrag newInstance() {
         KanaDisplayFrag fragment = new KanaDisplayFrag();
         Bundle args = new Bundle();
@@ -81,24 +77,21 @@ public class KanaDisplayFrag extends DialogFragment implements IOnBackPressed {
                              Bundle savedInstanceState) {
 
 
-        View view=inflater.inflate(R.layout.reccylerview, container, false);
-        Utils utils=new Utils(getContext());
+        View view = inflater.inflate(R.layout.reccylerview, container, false);
+        Utils utils = new Utils(getContext());
 
 
         final ArrayList<KanaPOJO> sifabySurahAll = utils.getKanaPojo();
 
         for (KanaPOJO shart : sifabySurahAll) {
-            SpannableStringBuilder spannableverse=new SpannableStringBuilder(shart.getQurantext());
+            SpannableStringBuilder spannableverse = new SpannableStringBuilder(shart.getQurantext());
             int shartAyah = shart.getAyah();
-
-
-
 
 
             try {
 
 
-               spannableverse.setSpan(new ForegroundColorSpan(GOLD), shart.getIndexstart(), shart.getIndexend(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                spannableverse.setSpan(new ForegroundColorSpan(GOLD), shart.getIndexstart(), shart.getIndexend(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
                 shart.setSpannedverse(spannableverse);
 
 
@@ -110,20 +103,12 @@ public class KanaDisplayFrag extends DialogFragment implements IOnBackPressed {
                 shart.setSpannedverse(spannableverse);
 
 
-
             } catch (IndexOutOfBoundsException e) {
                 System.out.println(e.getMessage());
             }
 
 
-
-
-
-
         }
-
-
-
 
 
         setRecyclerView(view.findViewById(R.id.RecyclerView));
@@ -132,9 +117,7 @@ public class KanaDisplayFrag extends DialogFragment implements IOnBackPressed {
 
 
         getRecyclerView().setLayoutManager(getLayoutManager());
-        setKanaAdapter(new KanaAdapter(getContext(),sifabySurahAll));
-
-
+        setKanaAdapter(new KanaAdapter(getContext(), sifabySurahAll));
 
 
         getRecyclerView().setAdapter(getKanaAdapter());
@@ -142,29 +125,22 @@ public class KanaDisplayFrag extends DialogFragment implements IOnBackPressed {
     }
 
 
-
-
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
 
-
-
-
-
-
-       getRecyclerView().setAdapter(getKanaAdapter());
+        getRecyclerView().setAdapter(getKanaAdapter());
 
         setRecyclerView(view.findViewById(R.id.RecyclerView));
         getRecyclerView().setHasFixedSize(true);
         setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        Utils utils=new Utils(getContext());
+        Utils utils = new Utils(getContext());
         final ArrayList<KanaPOJO> all = utils.getKanaPojo();
 
-        for( KanaPOJO shart: all) {
-            SpannableStringBuilder spannableverse=new SpannableStringBuilder(shart.getQurantext());
+        for (KanaPOJO shart : all) {
+            SpannableStringBuilder spannableverse = new SpannableStringBuilder(shart.getQurantext());
 
 
             try {
@@ -186,10 +162,6 @@ public class KanaDisplayFrag extends DialogFragment implements IOnBackPressed {
             }
 
 
-
-
-
-
         }
 
 
@@ -199,9 +171,7 @@ public class KanaDisplayFrag extends DialogFragment implements IOnBackPressed {
 
 
         getRecyclerView().setLayoutManager(getLayoutManager());
-        setKanaAdapter(new KanaAdapter(getContext(),all));
-
-
+        setKanaAdapter(new KanaAdapter(getContext(), all));
 
 
         getRecyclerView().setAdapter(getKanaAdapter());
@@ -209,16 +179,11 @@ public class KanaDisplayFrag extends DialogFragment implements IOnBackPressed {
         getRecyclerView().setLayoutManager(getLayoutManager());
 
 
-
-
         getKanaAdapter().SetOnItemClickListener((v, position) -> {
-         //   Toast.makeText(getActivity(), "clicked", Toast.LENGTH_SHORT).show();
-
-
+            //   Toast.makeText(getActivity(), "clicked", Toast.LENGTH_SHORT).show();
 
 
         });
-
 
 
     }
@@ -259,10 +224,9 @@ public class KanaDisplayFrag extends DialogFragment implements IOnBackPressed {
 
     @Override
     public boolean onBackPressed() {
-        Intent in=new Intent(getActivity(), QuranGrammarAct.class);
+        Intent in = new Intent(getActivity(), QuranGrammarAct.class);
         startActivity(in);
         return true;
-
 
 
     }

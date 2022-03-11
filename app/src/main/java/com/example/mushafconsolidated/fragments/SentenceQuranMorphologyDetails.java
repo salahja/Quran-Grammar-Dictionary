@@ -16,9 +16,9 @@ import com.example.utility.SharedPref;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class SentenceQuranMorphologyDetails extends QuranMorphologyDetails{
+public class SentenceQuranMorphologyDetails extends QuranMorphologyDetails {
     private final Context context;
-    private   int index;
+    private int index;
     private ArrayList<NounCorpus> corpusNoun;
 
     int form = 0;
@@ -41,18 +41,16 @@ public class SentenceQuranMorphologyDetails extends QuranMorphologyDetails{
     }
 
 
-
     public SentenceQuranMorphologyDetails(int index,
                                           ArrayList<NewCorpusExpandWbwPOJO> corpusSurahWord,
                                           ArrayList<NounCorpus> corpusNounWord, ArrayList<VerbCorpus> verbCorpuses,
                                           Context context) {
         super();
-        this.index=index-1;
+        this.index = index - 1;
         this.corpusSurahWord = corpusSurahWord;
         this.verbcorpusform = verbCorpuses;
         this.corpusNoun = corpusNounWord;
         this.context = context;
-
 
 
     }
@@ -61,13 +59,13 @@ public class SentenceQuranMorphologyDetails extends QuranMorphologyDetails{
     public HashMap<String, String> getVerbDetails() {
 
         HashMap<String, String> vbdetail = new HashMap<>();
-      vbdetail.put("surahid", String.valueOf(verbcorpusform.get(index).getChapterno()));
+        vbdetail.put("surahid", String.valueOf(verbcorpusform.get(index).getChapterno()));
         vbdetail.put("ayahid", String.valueOf(verbcorpusform.get(index).getVerseno()));
-        vbdetail.put("wordno",  String.valueOf(verbcorpusform.get(index).getWordno()));
+        vbdetail.put("wordno", String.valueOf(verbcorpusform.get(index).getWordno()));
 
         String roots;
         roots = getVerbRoot();
-        roots=getVerbCorpusRoot();
+        roots = getVerbCorpusRoot();
         vbdetail.put("root", roots);
         if (verbcorpusform.size() > 0) {
             if (!verbcorpusform.get(index).getForm().equals("I")) {
@@ -75,7 +73,7 @@ public class SentenceQuranMorphologyDetails extends QuranMorphologyDetails{
                 convertForms(mform);
 
                 vbdetail.put("form", String.valueOf(getForm()));
-                vbdetail.put("wazan","null");
+                vbdetail.put("wazan", "null");
 
                 //    setSarfSagheer(true);
                 //  mazeedQuery = sm.getMazeedQuery(roots, getForm());
@@ -91,7 +89,7 @@ public class SentenceQuranMorphologyDetails extends QuranMorphologyDetails{
 
                     vbdetail.put("thulathi", sb.toString());
                     vbdetail.put("wazan", thulathibab);
-                    vbdetail.put("form","null");
+                    vbdetail.put("form", "null");
 
                 } else if (thulathibab.length() > 1) {
                     String s = thulathibab.substring(0, 1);
@@ -145,7 +143,7 @@ public class SentenceQuranMorphologyDetails extends QuranMorphologyDetails{
         }
 
 
-        if(roots.equals("كون")) {
+        if (roots.equals("كون")) {
             String kana_mood = verbcorpusform.get(index).getKana_mood();
             switch (kana_mood) {
                 case "MOOD:SUBJ":
@@ -165,7 +163,7 @@ public class SentenceQuranMorphologyDetails extends QuranMorphologyDetails{
                     vbdetail.put("verbmood", "Indicative");
                     break;
             }
-        }else {
+        } else {
 
             String mood = verbcorpusform.get(index).getMood_kananumbers();
             switch (mood) {
@@ -186,11 +184,6 @@ public class SentenceQuranMorphologyDetails extends QuranMorphologyDetails{
         }
 
 
-
-
-
-
-
         vbdetail.put("lemma", verbcorpusform.get(index).getLemma_a());
 
 
@@ -200,16 +193,10 @@ public class SentenceQuranMorphologyDetails extends QuranMorphologyDetails{
     private String getVerbCorpusRoot() {
 
         String roots = null;
-   roots=     verbcorpusform.get(index).getRoot_a();
+        roots = verbcorpusform.get(index).getRoot_a();
 
         return roots;
     }
-
-
-
-
-
-
 
 
     private String getVerbRoot() {
@@ -266,9 +253,10 @@ public class SentenceQuranMorphologyDetails extends QuranMorphologyDetails{
         }
         return roots;
     }
-    HashMap<String, SpannableStringBuilder>  getNoundetails() {
-        HashMap<String, SpannableStringBuilder> wordbdetail=new HashMap<>();
-      StringBuilder sb=new StringBuilder();
+
+    HashMap<String, SpannableStringBuilder> getNoundetails() {
+        HashMap<String, SpannableStringBuilder> wordbdetail = new HashMap<>();
+        StringBuilder sb = new StringBuilder();
 
       /*
         if (corpusNoun.size() > 0) {
@@ -301,7 +289,7 @@ public class SentenceQuranMorphologyDetails extends QuranMorphologyDetails{
         if (corpusNoun.size() > 0) {
             if (corpusNoun.get(index).getProptwo().equals(CorpusConstants.NominalsProp.PCPL)) {
                 String form = corpusNoun.get(index).getForm();
-             //   String form = corpusNoun.get(0).getForm();
+                //   String form = corpusNoun.get(0).getForm();
 
                 final String mform = form.replaceAll("\\(|\\)", "");
 
@@ -312,13 +300,13 @@ public class SentenceQuranMorphologyDetails extends QuranMorphologyDetails{
 
                 }
                 if (!mform.equals("I")) {
-                    if(!mform.equals("null")) {
+                    if (!mform.equals("null")) {
                         convertForms(mform);
                         wordbdetail.put("form", SpannableStringBuilder.valueOf(String.valueOf(getForm())));
 
                         getRoot(corpusSurahWord, wordbdetail);
                     }
-                }else {
+                } else {
                     if (corpusNoun.get(index).getProptwo().equals("PCPL")) {
                         wordbdetail.put("PCPL", SpannableStringBuilder.valueOf(corpusNoun.get(index).getPropone().concat(corpusNoun.get(index).getProptwo())));
                         wordbdetail.put("PART", SpannableStringBuilder.valueOf("PCPL"));
@@ -429,8 +417,8 @@ public class SentenceQuranMorphologyDetails extends QuranMorphologyDetails{
                 }
             }
         }
-    getProperNounDetails(corpusNoun, wordbdetail, sb);
-    return     wordbdetail;
+        getProperNounDetails(corpusNoun, wordbdetail, sb);
+        return wordbdetail;
     }
 
 
@@ -446,7 +434,7 @@ public class SentenceQuranMorphologyDetails extends QuranMorphologyDetails{
         wordbdetail.put("wordtranslation", SpannableStringBuilder.valueOf(corpusSurahWord.get(index).getEn()));
 
         String arabicword = corpusSurahWord.get(index).getAraone().concat(corpusSurahWord.get(index).getAratwo().concat(corpusSurahWord.get(index).getArathree()
-              .concat(corpusSurahWord.get(index).getArafour().concat(corpusSurahWord.get(index).getArafour()))));
+                .concat(corpusSurahWord.get(index).getArafour().concat(corpusSurahWord.get(index).getArafour()))));
         if (corpusNoun.size() > 0) {
             if (corpusNoun.get(0).getProptwo().equals(CorpusConstants.NominalsProp.PCPL)) {
                 String form = corpusNoun.get(0).getForm();
@@ -476,7 +464,7 @@ public class SentenceQuranMorphologyDetails extends QuranMorphologyDetails{
             }
         }
         int size = corpusNoun.size();
-        int corpousindex=0;
+        int corpousindex = 0;
 
         GetPronounDetails(corpusSurahWord, wordbdetail);
         GetLemmArabicwordWordDetails(corpusSurahWord, wordbdetail);
@@ -485,10 +473,7 @@ public class SentenceQuranMorphologyDetails extends QuranMorphologyDetails{
         getRoot(corpusSurahWord, wordbdetail);
 
 
- // getProperNounDetails(corpusNoun, wordbdetail, sb);
-
-
-
+        // getProperNounDetails(corpusNoun, wordbdetail, sb);
 
 
         return wordbdetail;
@@ -602,7 +587,7 @@ public class SentenceQuranMorphologyDetails extends QuranMorphologyDetails{
         int wordno = corpusSurahWord.get(index).getWordno();
         for (VerbCorpus verb : verbcorpusform) {
 
-            if(verb.getWordno()==wordno && (verb.getVoice().equals("ACTI")|| verb.getVoice().equals("PASS"))){
+            if (verb.getWordno() == wordno && (verb.getVoice().equals("ACTI") || verb.getVoice().equals("PASS"))) {
                 if (!verb.getForm().equals("I")) {
                     String mform = verb.getForm();
                     convertForms(mform);
@@ -689,9 +674,9 @@ public class SentenceQuranMorphologyDetails extends QuranMorphologyDetails{
                 }
 
                 wordbdetail.put("lemma", SpannableStringBuilder.valueOf(verb.getLemma_a()));
-                wordbdetail.put("root", SpannableStringBuilder.valueOf(verb.getRoot_a() ));
-             //   wordbdetail.put("form", SpannableStringBuilder.valueOf(verb.getForm() ));
-              //  wordbdetail.put("wazan", SpannableStringBuilder.valueOf(verb.getThulathibab() ));
+                wordbdetail.put("root", SpannableStringBuilder.valueOf(verb.getRoot_a()));
+                //   wordbdetail.put("form", SpannableStringBuilder.valueOf(verb.getForm() ));
+                //  wordbdetail.put("wazan", SpannableStringBuilder.valueOf(verb.getThulathibab() ));
 
             }
         }
@@ -703,7 +688,7 @@ public class SentenceQuranMorphologyDetails extends QuranMorphologyDetails{
                     wordbdetail.put("tag", SpannableStringBuilder.valueOf(corpusSurahWord.get(index).getTagone()));
                     wordbdetail.put("root", SpannableStringBuilder.valueOf(corpusSurahWord.get(index).getRootaraone()));
 
-                }else{
+                } else {
                     wordbdetail.put("tag", SpannableStringBuilder.valueOf("none"));
 
                 }
@@ -715,7 +700,7 @@ public class SentenceQuranMorphologyDetails extends QuranMorphologyDetails{
                 } else if (corpusSurahWord.get(index).getRootaratwo().length() > 0) {
                     wordbdetail.put("root", SpannableStringBuilder.valueOf(corpusSurahWord.get(index).getRootaratwo()));
                     wordbdetail.put("tag", SpannableStringBuilder.valueOf(corpusSurahWord.get(index).getTagtwo()));
-                }else{
+                } else {
                     wordbdetail.put("tag", SpannableStringBuilder.valueOf("none"));
                 }
 
@@ -729,7 +714,7 @@ public class SentenceQuranMorphologyDetails extends QuranMorphologyDetails{
                 } else if (corpusSurahWord.get(index).getRootarathree().length() > 0) {
                     wordbdetail.put("root", SpannableStringBuilder.valueOf(corpusSurahWord.get(index).getRootarathree()));
                     wordbdetail.put("tag", SpannableStringBuilder.valueOf(corpusSurahWord.get(index).getTagthree()));
-                }else{
+                } else {
                     wordbdetail.put("tag", SpannableStringBuilder.valueOf("none"));
                 }
 
@@ -747,7 +732,7 @@ public class SentenceQuranMorphologyDetails extends QuranMorphologyDetails{
                 } else if (corpusSurahWord.get(index).getRootarafour().length() > 0) {
                     wordbdetail.put("root", SpannableStringBuilder.valueOf(corpusSurahWord.get(index).getRootarafour()));
                     wordbdetail.put("tag", SpannableStringBuilder.valueOf(corpusSurahWord.get(index).getTagfour()));
-                }else{
+                } else {
                     wordbdetail.put("tag", SpannableStringBuilder.valueOf("none"));
                 }
 
@@ -768,21 +753,15 @@ public class SentenceQuranMorphologyDetails extends QuranMorphologyDetails{
                 } else if (corpusSurahWord.get(index).getRootarafive().length() > 0) {
                     wordbdetail.put("root", SpannableStringBuilder.valueOf(corpusSurahWord.get(index).getRootarafive()));
                     wordbdetail.put("tag", SpannableStringBuilder.valueOf(corpusSurahWord.get(index).getTagfive()));
-                }else{
+                } else {
                     wordbdetail.put("tag", SpannableStringBuilder.valueOf("none"));
                 }
 
-            }else
-            {
+            } else {
                 wordbdetail.put("tag", SpannableStringBuilder.valueOf("none"));
             }
 
         }
-
-
-
-
-
 
 
     }
@@ -981,7 +960,6 @@ tagspannable.subSequence(tagthree+tagtwo+2,tagthree+tagtwo+tagone+2)
         }
 
     }
-
 
 
     private void GetPronounDetails

@@ -243,8 +243,8 @@ public class Dictionary_frag extends Fragment {
             if (!hansdictionary.isEmpty())
                 ishans = true;
             hanssb.append(html);
-            if(!ishans){
-                hanssb.append("root word "+verbroot+"not found");
+            if (!ishans) {
+                hanssb.append("root word " + verbroot + "not found");
             }
             for (hanslexicon lanes : hansdictionary) {
                 //  <p style="margin-left:200px; margin-right:50px;">

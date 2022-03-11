@@ -48,10 +48,9 @@ public class SettingsFragment extends PreferenceFragmentCompat {
                         @Override
                         public boolean onPreferenceChange(Preference preference, Object newValue) {
                             String selectionOption = (String) newValue;
-                            SharedPreferences.Editor editor =  getContext().getSharedPreferences("properties", 0).edit();
+                            SharedPreferences.Editor editor = getContext().getSharedPreferences("properties", 0).edit();
                             editor.putString("selecttranslation", selectionOption);
                             editor.apply();
-
 
 
                             return true;
@@ -71,7 +70,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
                             newValueInt = (Integer) newValue;
                         } catch (NumberFormatException nfe) {
                             Log.e(TAG,
-                                    "SeekBarPreference is a Integer, but it caused a NumberFormatException" );
+                                    "SeekBarPreference is a Integer, but it caused a NumberFormatException");
                             return false;
                         }
 
@@ -79,21 +78,20 @@ public class SettingsFragment extends PreferenceFragmentCompat {
                             return false;
                         }
 
-                     final SharedPreferences.Editor editor =
-                              preference.getContext().getSharedPreferences(SHARED_PREFERENCE_EDITOR_NAME, Context.MODE_PRIVATE).edit();
+                        final SharedPreferences.Editor editor =
+                                preference.getContext().getSharedPreferences(SHARED_PREFERENCE_EDITOR_NAME, Context.MODE_PRIVATE).edit();
 
-                         editor.putInt(SHARED_PREFERENCE_SEEKBAR_VALUE, newValueInt);
-                       editor.apply();
-
+                        editor.putInt(SHARED_PREFERENCE_SEEKBAR_VALUE, newValueInt);
+                        editor.apply();
 
 
                         //   SharedPreferences.Editor editor = preference.getContext().getSharedPreferences("properties", 0).edit();
-                     //   editor.putString("quran_arabic_font", paramString);
-                     //   editor.apply();
+                        //   editor.putString("quran_arabic_font", paramString);
+                        //   editor.apply();
                         return true;
                     } else {
                         String objType = newValue.getClass().getName();
-                        Log.e(TAG, "SeekBarPreference is not a Integer, it is " +objType);
+                        Log.e(TAG, "SeekBarPreference is not a Integer, it is " + objType);
                         return false;
                     }
                 }
@@ -107,7 +105,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
                         public boolean onPreferenceChange(Preference preference, Object newValue) {
                             String themeOption = (String) newValue;
 
-                        //    ThemeHelper.applyTheme(themeOption);
+                            //    ThemeHelper.applyTheme(themeOption);
                             return true;
                         }
                     });

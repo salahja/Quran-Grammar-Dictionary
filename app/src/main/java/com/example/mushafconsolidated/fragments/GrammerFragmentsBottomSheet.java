@@ -153,7 +153,7 @@ public class GrammerFragmentsBottomSheet extends BottomSheetDialogFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.expand_list, container, false);
-       // RecyclerView recyclerView = view.findViewById(R.id.wordByWordRecyclerView);
+        // RecyclerView recyclerView = view.findViewById(R.id.wordByWordRecyclerView);
         expandableListView = (ExpandableListView) view.findViewById(R.id.expandableListView);
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setCancelable(false); // if you want user to wait for some process to finish,
@@ -173,26 +173,24 @@ public class GrammerFragmentsBottomSheet extends BottomSheetDialogFragment {
         Utils utils = new Utils(getActivity());
 
 
-
         ex.execute(new Runnable() {
             ProgressDialog mProgressBar = new ProgressDialog(getActivity());
+
             @Override
             public void run() {
 
-               getActivity(). runOnUiThread(() -> {
+                getActivity().runOnUiThread(() -> {
 
-                   dialog.show();
+                    dialog.show();
                 });
 
                 ArrayList<NewCorpusExpandWbwPOJO> corpusSurahWord;
                 corpusSurahWord = utils.getCorpusWbwBySurahAyahWordid(chapterid, ayanumber, 1);
                 ArrayList<NounCorpus> corpusNounWord = utils.getQuranNouns(chapterid, ayanumber, 1);
-                ExpandableListData expandableListData=new ExpandableListData(chapterid,ayanumber,corpusSurahWord,utils);
-                expandableListDetail =expandableListData .getData();
-                kanaExpandableListDetail=   expandableListData .getKana();
+                ExpandableListData expandableListData = new ExpandableListData(chapterid, ayanumber, corpusSurahWord, utils);
+                expandableListDetail = expandableListData.getData();
+                kanaExpandableListDetail = expandableListData.getKana();
                 expandableListTitle = new ArrayList<String>(expandableListDetail.keySet());
-
-
 
 
                 ThulathiMazeedConjugatonList = new ArrayList<>();
@@ -209,23 +207,17 @@ public class GrammerFragmentsBottomSheet extends BottomSheetDialogFragment {
 
                         grammarFragmentsListAdapter = new GrammarFragmentsListAdapter(getContext(), expandableListTitle, expandableListDetail);
                         expandableListView.setAdapter(grammarFragmentsListAdapter);
-                        for ( int i = 0; i < grammarFragmentsListAdapter.getGroupCount(); i++ ) {
+                        for (int i = 0; i < grammarFragmentsListAdapter.getGroupCount(); i++) {
                             expandableListView.expandGroup(i);
                         }
-
-
-
-
 
 
                     }
                 });
 
 
-
             }
         });
-
 
 
         return view;
@@ -234,16 +226,9 @@ public class GrammerFragmentsBottomSheet extends BottomSheetDialogFragment {
     }
 
 
-
-
-
-
-
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-
 
 
     }

@@ -54,10 +54,10 @@ public class BookmarkFragment extends Fragment implements AdapterView.OnItemClic
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_bookmark, container, false);
- ;
+        ;
 
         List<BookMarks> bookMarksNew = Utils.getBookMarksNew();
-      //  List<BookMarks> bookmarks = new DatabaseAccess().getBookmarks();
+        //  List<BookMarks> bookmarks = new DatabaseAccess().getBookmarks();
         bookmarksShowAdapter = new BookmarksShowAdapter(getActivity());
         mRecview = view.findViewById(R.id.recyclerViewAdapterTranslation);
         coordinatorLayout = view.findViewById(R.id.coordinatorLayout);
@@ -110,11 +110,11 @@ public class BookmarkFragment extends Fragment implements AdapterView.OnItemClic
                 snackbar.setActionTextColor(Color.CYAN);
                 snackbar.show();
                 final long itemId = bookmarksShowAdapter.getItemId(position);
-              final int bookmarkid = bookmarksShowAdapter.getBookmarid();
-                                     bookmarksShowAdapter.getBookChapterno();
-                  //      bookmarksShowAdapter.getBookMarkArrayList(bookmarkid)
-              //  Utils butils = new Utils(getActivity());
-              //  butils.deleteBookmarks(bookmarid);
+                final int bookmarkid = bookmarksShowAdapter.getBookmarid();
+                bookmarksShowAdapter.getBookChapterno();
+                //      bookmarksShowAdapter.getBookMarkArrayList(bookmarkid)
+                //  Utils butils = new Utils(getActivity());
+                //  butils.deleteBookmarks(bookmarid);
                 Utils.deleteBookMarks(item);
 
 
@@ -154,17 +154,17 @@ public class BookmarkFragment extends Fragment implements AdapterView.OnItemClic
                 dataBundle.putString(SURAH_ARABIC_NAME, bmark.getSurahname());
 //                dataBundle.putInt(VERSESCOUNT,bmark.getVersescount());
                 //VersesFragment frag = new VersesFragment();
-             //   frag.setArguments(dataBundle);
+                //   frag.setArguments(dataBundle);
                 String header = bmark.getHeader();
                 Fragment fragment;
-              Intent readingintent = new Intent(getActivity(), QuranGrammarAct.class);
-              readingintent.putExtra(MUFRADATFRAGTAG, false);
-              readingintent.putExtra(CHAPTER, Integer.parseInt(bmark.getChapterno()));
-              readingintent.putExtra(AYAHNUMBER, Integer.parseInt(bmark.getVerseno()));
-              readingintent.putExtra(CHAPTERORPART, true);
-              readingintent.putExtra(SURAH_ARABIC_NAME, bmark.getSurahname());
-              readingintent.putExtra(WBW,true);
-              startActivity(readingintent);
+                Intent readingintent = new Intent(getActivity(), QuranGrammarAct.class);
+                readingintent.putExtra(MUFRADATFRAGTAG, false);
+                readingintent.putExtra(CHAPTER, Integer.parseInt(bmark.getChapterno()));
+                readingintent.putExtra(AYAHNUMBER, Integer.parseInt(bmark.getVerseno()));
+                readingintent.putExtra(CHAPTERORPART, true);
+                readingintent.putExtra(SURAH_ARABIC_NAME, bmark.getSurahname());
+                readingintent.putExtra(WBW, true);
+                startActivity(readingintent);
                 /*
                  if (dataBundle != null) {
 
