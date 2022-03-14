@@ -792,20 +792,6 @@ public class WordAnalysisBottomSheet extends BottomSheetDialogFragment {
                     VerbFormsDialogFrag.newInstance(data).show(getActivity().getSupportFragmentManager(), WordAnalysisBottomSheet.TAG);
 
 
-
-
-/*
-   VerbFormsDialogFrag frag = new VerbFormsDialogFrag();
-                      Bundle dataBundle = new Bundle();
-                    dataBundle.putString("form", vbform);
-                    frag.setArguments(dataBundle);
-                    FragmentTransaction transactions = getActivity().getSupportFragmentManager().beginTransaction()
-                            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-                    transactions.replace(R.id.frame_container, frag).addToBackStack("mujarrad");
-                    transactions.commit();
-                    */
-
-
                 }
             } else if (wordview != null) {
                 Bundle dataBundle = new Bundle();

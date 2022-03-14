@@ -1,5 +1,8 @@
 package com.example.mushafconsolidated;
 
+import static com.example.mushafconsolidated.settings.Constants.DATABASENAME;
+import static com.example.mushafconsolidated.settings.Constants.FILEPATH;
+
 import android.content.Context;
 import android.os.Environment;
 
@@ -71,9 +74,8 @@ public abstract class QuranAppDatabase extends RoomDatabase {
 
     public static synchronized QuranAppDatabase getInstance(Context context) {
         if (null == quranAppDatabaseInstance) {
-            File mainDatabase = new File(Environment.getExternalStorageDirectory().
-                    getAbsolutePath() + "/Mushafapplication"+ "/qurangrammar.db");
 
+            File mainDatabase= new File(FILEPATH + "/"+DATABASENAME);
  quranAppDatabaseInstanceasset = Room.databaseBuilder(context, QuranAppDatabase.class, "qurangrammar.db")
                   .createFromAsset("databases/qurangrammar.db")
                     .fallbackToDestructiveMigration()
@@ -110,8 +112,8 @@ public abstract class QuranAppDatabase extends RoomDatabase {
 
 
         }
-   //     return     quranAppDatabaseInstance;
-    return quranAppDatabaseInstanceasset;
+    return     quranAppDatabaseInstance;
+   // return quranAppDatabaseInstanceasset;
     }
 
 

@@ -3,6 +3,9 @@ package com.example.mushafconsolidated.settings;
 
 import android.os.Environment;
 
+import com.example.mushafconsolidated.R;
+import com.example.utility.QuranGrammarApplication;
+
 import java.io.File;
 
 public class
@@ -19,6 +22,9 @@ Constants {
 
          public static final String HOSTDATABASEURL="http://192.168.29.28.sslip.io/drupal/sites/default/files/2021-05/QuranDatabase.zip";
    public static final String HOSTQURANTRANSLATION ="http://192.168.29.28.sslip.io/drupal/sites/default/files/2021-05/";
+
+   public static String FILEPATH= QuranGrammarApplication.getContext().getExternalFilesDir(null).
+           getAbsolutePath() + "/" + QuranGrammarApplication.getContext().getResources().getString(R.string.app_folder_path);
     public static final String DATABASEZIP="qurangrammar.db.zip";
    // public static final String DATABASENAME="QuranDatabase.db";
    public static final String DATABASENAME="qurangrammar.db";

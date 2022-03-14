@@ -3,9 +3,9 @@ package com.example.mushafconsolidated.Activity;
 
 import static com.example.mushafconsolidated.settings.Constants.DATABASENAME;
 import static com.example.mushafconsolidated.settings.Constants.DATABASEZIP;
+import static com.example.mushafconsolidated.settings.Constants.FILEPATH;
 
 import android.Manifest;
-import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -26,8 +26,6 @@ import androidx.window.layout.WindowMetricsCalculator;
 
 import com.example.mushafconsolidated.R;
 
-import com.example.utility.QuranGrammarApplication;
-
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -47,27 +45,13 @@ public class MainActivity extends BaseActivity {
     private static final int PERMISSION_REQUEST_CODE = 100;
 
 
-
-    boolean isUserInteracting;
-
-
     private static final int REQUEST_WRITE_STORAGE = 112;
-    private static final int REQUEST_WRITE_Settings = 113;
-    private static final int READ_EXTERNAL_STORAGE = 114;
-
 
 
     private File newquran;
 
 
-    public enum WindowSizeClass { COMPACT, MEDIUM, EXPANDED }
-
-
-    @Override
-    public void onUserInteraction() {
-        super.onUserInteraction();
-        isUserInteracting = true;
-    }
+    public enum WindowSizeClass {COMPACT, MEDIUM, EXPANDED}
 
 
     @Override
@@ -87,20 +71,18 @@ public class MainActivity extends BaseActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         computeWindowSizeClasses();
 
-       setContentView(R.layout.fragment_reading);
+        setContentView(R.layout.fragment_reading);
 
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
         int SPL = 1;
-        if (sp.getInt("spl", 0) != SPL)
-        {
+        if (sp.getInt("spl", 0) != SPL) {
             PreferenceManager.setDefaultValues(this, R.xml.preferences, true);
-          //  PreferenceManager.setDefaultValues(this, R.xml.prefs2, true);
+            //  PreferenceManager.setDefaultValues(this, R.xml.prefs2, true);
             sp.edit().putInt("spl", SPL).apply();
         }
 
 
-        newquran = new File(Environment.getExternalStorageDirectory().
-                getAbsolutePath() + getString(R.string.app_folder_path) + File.separator + DATABASENAME);
+        newquran = new File(FILEPATH + "/" + DATABASENAME);
 
 
         if (!hasPermission) {
@@ -118,7 +100,7 @@ public class MainActivity extends BaseActivity {
         }
 
 
-      //  PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
+        //  PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
         boolean hasPermissions = (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED);
 
@@ -131,12 +113,12 @@ public class MainActivity extends BaseActivity {
         SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(MainActivity.this).edit();
         float widthDp = metrics.getBounds().width() /
                 getResources().getDisplayMetrics().density;
-        WindowSizeClass widthWindowSizeClass;
+       // WindowSizeClass widthWindowSizeClass;
 
         //     SharedPreferences.Editor editor = getActivity().getSharedPreferences("properties", 0).edit();
 
         if (widthDp < 600f) {
-            widthWindowSizeClass = WindowSizeClass.COMPACT;
+            //widthWindowSizeClass = WindowSizeClass.COMPACT;
 
             //     SharedPreferences.Editor editor = getActivity().getSharedPreferences("properties", 0).edit();
             editor.putString("width", "compactWidth");
@@ -144,14 +126,14 @@ public class MainActivity extends BaseActivity {
 
 
         } else if (widthDp < 840f) {
-            widthWindowSizeClass = WindowSizeClass.MEDIUM;
+            //widthWindowSizeClass = WindowSizeClass.MEDIUM;
 
             //     SharedPreferences.Editor editor = getActivity().getSharedPreferences("properties", 0).edit();
             editor.putString("width", "mediumWidth");
 
             editor.apply();
         } else {
-            widthWindowSizeClass = WindowSizeClass.EXPANDED;
+            // widthWindowSizeClass = WindowSizeClass.EXPANDED;
 
             editor.putString("width", "expandedWidth");
 
@@ -177,31 +159,6 @@ public class MainActivity extends BaseActivity {
     }
 
 
-    private boolean checkPermission() {
-        int result = ContextCompat.checkSelfPermission(QuranGrammarApplication.getContext(), android.
-                Manifest.permission.WRITE_EXTERNAL_STORAGE);
-        return result == PackageManager.PERMISSION_GRANTED;
-    }
-
-    private void requestPermission() {
-        if (ActivityCompat.shouldShowRequestPermissionRationale((Activity) QuranGrammarApplication.getContext(), android.Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-            Toast.makeText((Activity) QuranGrammarApplication.getContext(), "Write External Storage permission allows us to create files. Please allow this permission in App Settings.", Toast.LENGTH_LONG).show();
-        } else {
-            ActivityCompat.requestPermissions((Activity) QuranGrammarApplication.getContext(), new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE}, PERMISSION_REQUEST_CODE);
-        }
-    }
-
-
-
-
-
-
-
-
-
-
-
-
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -225,19 +182,18 @@ public class MainActivity extends BaseActivity {
         boolean isexternalstorageMounted = getDefaultSaveRootPath();
 
 
-
         if (!newquran.exists()) {
             // first install copy newquran.db.zip and unzip
-         //   new CopyDatabase().execute();
+            //   new CopyDatabase().execute();
             CopyDatbases();
 
 
         } else {
 
-        Intent homeactivity = new Intent(MainActivity.this, QuranGrammarAct.class);
-         //   Intent homeactivity = new Intent(MainActivity.this, ReadingSurahPartActivity.class);
-           startActivity(homeactivity);
-        MainActivity.this.finish();
+            Intent homeactivity = new Intent(MainActivity.this, QuranGrammarAct.class);
+            //   Intent homeactivity = new Intent(MainActivity.this, ReadingSurahPartActivity.class);
+            startActivity(homeactivity);
+            MainActivity.this.finish();
         }
     }
 
@@ -246,126 +202,128 @@ public class MainActivity extends BaseActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
         builder.setCancelable(false); // if you want user to wait for some process to finish,
         builder.setView(R.layout.layout_loading_dialog);
-        AlertDialog     dialog = builder.create();
-           ex.execute(new Runnable() {
-               @Override
-               public void run() {
-                   runOnUiThread(dialog::show);
-                   boolean canWrie = canWriteInSDCard();
-                   if(canWrie) {
-                       try {
+        AlertDialog dialog = builder.create();
+        ex.execute(new Runnable() {
+            @Override
+            public void run() {
+                runOnUiThread(dialog::show);
+                boolean canWrie = canWriteInSDCard();
+                if (canWrie) {
+                    try {
+
+                        File databaseDirectory = new File(FILEPATH);
 
 
-                           File databaseDirectory = new File(Environment.getExternalStorageDirectory()
-                                   .getAbsolutePath() + "/" + QuranGrammarApplication.getContext().getResources().getString(R.string.app_folder_path));
-                           if (!databaseDirectory.exists()) {
-                               databaseDirectory.mkdirs();
-                           }
-                           //        File databaseFile = new File(databaseDirectory,"newquran.db");
-                           File databaseFile = new File(databaseDirectory, DATABASEZIP);
-                           boolean b = databaseFile.getParentFile().mkdirs();
-                           if (!databaseFile.exists()) {
-                               boolean createFile = databaseFile.createNewFile();
-                           }
-                           //    InputStream inputStream = getApplicationContext().getAssets().open("newquran.db");
-                           InputStream inputStream = getApplicationContext().getAssets().open(DATABASEZIP);
-                           FileOutputStream outputStream = new FileOutputStream(databaseFile);
-                           int fileSize = inputStream.available();
-                           //   publishProgress(0, fileSize);
-                           int copylength = 0;
-                           byte[] buffer = new byte[1024];
-                           while (true) {
-                               int read = inputStream.read(buffer);
-                               if (read == -1) break;
-                               copylength += read;
-                               //   publishProgress(copylength, fileSize);
-                               outputStream.write(buffer, 0, read);
-                           }
-                           outputStream.flush();
-                           outputStream.close();
-                           inputStream.close();
-                       } catch (IOException e1) {
-                           e1.printStackTrace();
+                        if (!databaseDirectory.exists()) {
+                            boolean cr = databaseDirectory.mkdirs();
+                            System.out.println(cr);
+                        }
 
-                       }
-                   }else{
-//todo
-                   }
-                   //post
+                        File databaseFile = new File(databaseDirectory, DATABASEZIP);
 
-                   runOnUiThread(() -> {
+                            databaseFile.getParentFile();
 
-                       File zipfile = new File(Environment.getExternalStorageDirectory().
-                               getAbsolutePath() + getString(R.string.app_folder_path) + File.separator + DATABASEZIP);
+                        if (!databaseFile.exists()) {
+                            databaseFile.createNewFile();
+                        }
+                        //    InputStream inputStream = getApplicationContext().getAssets().open("newquran.db");
+                        InputStream inputStream = getApplicationContext().getAssets().open(DATABASEZIP);
+                        FileOutputStream outputStream = new FileOutputStream(databaseFile);
+                        int fileSize = inputStream.available();
+                        //   publishProgress(0, fileSize);
+                        int copylength = 0;
+                        byte[] buffer = new byte[1024];
+                        while (true) {
+                            int read = inputStream.read(buffer);
+                            if (read == -1) break;
+                            copylength += read;
+                            //   publishProgress(copylength, fileSize);
+                            outputStream.write(buffer, 0, read);
+                        }
+                        outputStream.flush();
+                        outputStream.close();
+                        inputStream.close();
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
 
-                       File mainDatabasesZIP = new File(String.valueOf(zipfile));
-                    File   targetDirectory = new File(Environment.getExternalStorageDirectory()
-                               .getAbsolutePath() + "/" + getApplicationContext().getResources().getString(R.string.app_folder_path));
-                       ZipInputStream zis = null;
-                       int progress = 1;
-                       try {
-                           zis = new ZipInputStream(
-                                   new BufferedInputStream(new FileInputStream(mainDatabasesZIP)));
-                       } catch (FileNotFoundException e) {
-                           e.printStackTrace();
-                           AlertDialog.Builder dialog1 = new  AlertDialog.Builder(MainActivity.this);
-                           dialog1.setMessage(e.getCause().toString());
-                           AlertDialog alertDialog = dialog1.create();
-                           alertDialog.show();
+                    }
+                }
 
-                       }
-                       try {
-                           ZipEntry ze;
-                           int count;
-                           byte[] buffer = new byte[8192];
-                           while ((ze = zis.getNextEntry()) != null) {
-                               File file = new File(targetDirectory, ze.getName());
-                               File dir = ze.isDirectory() ? file : file.getParentFile();
-                               if (!dir.isDirectory() && !dir.mkdirs())
-                                   throw new FileNotFoundException("Failed to ensure directory: " +
-                                           dir.getAbsolutePath());
-                               if (ze.isDirectory())
-                                   continue;
-                               try (FileOutputStream fout = new FileOutputStream(file)) {
-                                   progress += 1;
-
-                                   while ((count = zis.read(buffer)) != -1) {
-                                       fout.write(buffer, 0, count);
-                                       progress += 1;
-                                       //   progressBarDD.setProgress(progress);
-                                   }
-                               }
-
-                           }
-                       } catch (IOException e) {
-                           e.printStackTrace();
-                       } finally {
-                           try {
-                               zis.close();
-                               mainDatabasesZIP.delete();
-                          //     progressBarDD.dismiss();
-                           } catch (IOException e) {
-                               e.printStackTrace();
-                           }
-                       }
-                       ex.shutdown();
-                       dialog.dismiss();
-
-                       Intent zipintent = new Intent(MainActivity.this, QuranGrammarAct.class);
-
-                       startActivity(zipintent);
-                       MainActivity.this.finish();
-
-                   });
+                runOnUiThread(() -> {
 
 
-               }
+                    File zipfile = new File(getExternalFilesDir(null).
+                            getAbsolutePath() + getString(R.string.app_folder_path) + File.separator + DATABASEZIP);
 
-               private boolean canWriteInSDCard() {
-                   String state = Environment.getExternalStorageState();
-                   return Environment.MEDIA_MOUNTED.equals(state);
-               }
-           });
+                    File targetDirectory = new File(FILEPATH);
+                    File mainDatabasesZIP = new File(String.valueOf(zipfile));
+
+
+                    ZipInputStream zis = null;
+                    int progress = 1;
+                    try {
+                        zis = new ZipInputStream(
+                                new BufferedInputStream(new FileInputStream(mainDatabasesZIP)));
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                        AlertDialog.Builder dialog1 = new AlertDialog.Builder(MainActivity.this);
+                        dialog1.setMessage(e.getCause().toString());
+                        AlertDialog alertDialog = dialog1.create();
+                        alertDialog.show();
+
+                    }
+                    try {
+                        ZipEntry ze;
+                        int count;
+                        byte[] buffer = new byte[8192];
+                        while ((ze = zis.getNextEntry()) != null) {
+                            File file = new File(targetDirectory, ze.getName());
+                            File dir = ze.isDirectory() ? file : file.getParentFile();
+                            if (!dir.isDirectory() && !dir.mkdirs())
+                                throw new FileNotFoundException("Failed to ensure directory: " +
+                                        dir.getAbsolutePath());
+                            if (ze.isDirectory())
+                                continue;
+                            try (FileOutputStream fout = new FileOutputStream(file)) {
+                                progress += 1;
+
+                                while ((count = zis.read(buffer)) != -1) {
+                                    fout.write(buffer, 0, count);
+                                    progress += 1;
+                                    //   progressBarDD.setProgress(progress);
+                                }
+                            }
+
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    } finally {
+                        try {
+                            zis.close();
+                            mainDatabasesZIP.delete();
+                            //     progressBarDD.dismiss();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    ex.shutdown();
+                    dialog.dismiss();
+
+                    Intent zipintent = new Intent(MainActivity.this, QuranGrammarAct.class);
+
+                    startActivity(zipintent);
+                    MainActivity.this.finish();
+
+                });
+
+
+            }
+
+            private boolean canWriteInSDCard() {
+                String state = Environment.getExternalStorageState();
+                return Environment.MEDIA_MOUNTED.equals(state);
+            }
+        });
 
     }
 
@@ -388,9 +346,6 @@ public class MainActivity extends BaseActivity {
 
         return useExternalStorage;
     }
-
-
-
 
 
 }

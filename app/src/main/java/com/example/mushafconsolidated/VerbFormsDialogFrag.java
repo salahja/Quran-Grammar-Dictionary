@@ -73,7 +73,9 @@ public class VerbFormsDialogFrag extends BottomSheetDialogFragment {
         String formstr = "Form";
         formstr = formstr.concat(" ").concat(form);
         ArrayList<GrammarRules> list = utils.getGrammarRulesByRules(formstr);
-        wv.loadDataWithBaseURL(null, list.get(0).getDetailsrules().toString(), "text/html", "utf-8", null);
+        if(!list.isEmpty()) {
+            wv.loadDataWithBaseURL(null, list.get(0).getDetailsrules().toString(), "text/html", "utf-8", null);
+        }
         return view;
     }
 
