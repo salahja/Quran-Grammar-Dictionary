@@ -400,13 +400,14 @@ public class FlowAyahWordAdapter extends RecyclerView.Adapter<FlowAyahWordAdapte
       QuranEntity entity = null;
       QuranEntity erabentity = null;
       String wbw = sharedPreferences.getString("wbw", String.valueOf(Context.MODE_PRIVATE));
+      int actualposition=position-1;
       try {
-        entity = allofQuran.get(position);
+        entity = allofQuran.get(actualposition);
       } catch (IndexOutOfBoundsException e) {
         System.out.println("check");
       }
 
-        int actualposition=position-1;
+
       final CorpusAyahWord ayahWord = ayahWordArrayList.get(actualposition);
       if(null!=entity){
       storepreferences(entity);
@@ -487,17 +488,19 @@ public class FlowAyahWordAdapter extends RecyclerView.Adapter<FlowAyahWordAdapte
       }
 
 
-showErab=false;
+//showErab=false;
       if (showErab) {
 
 
-        holder.erab_textView.setText(erabentity.getErabspnabble());
+        holder.erab_textView.setText(entity.getAr_irab_two());
+   //     holder.erab_textView.setText(erabentity.getErabspnabble());
         holder.erab_textView.setTextSize(forntSize);
         holder.erab_textView.setTypeface(custom_font);
         holder.erab_textView.setVisibility(View.VISIBLE);
         holder.erab_textViewnote.setVisibility(View.VISIBLE);
 
 
+       /*
         if (SharedPref.themePreferences().equals("dark")) {
           holder.erab_textView.setTextColor(QuranGrammarApplication.getContext().getResources().getColor(R.color.white));
 
@@ -505,6 +508,7 @@ showErab=false;
           holder.erab_textView.setTextColor(QuranGrammarApplication.getContext().getResources().getColor(R.color.burntamber));
 
         }
+        */
 
       }
     }
