@@ -46,6 +46,7 @@
         <entry key="app/src/main/res/layout/new_fragment_reading.xml" value="0.43617021276595747" />
         <entry key="app/src/main/res/layout/newsarfkabeercolumn.xml" value="0.43214285714285716" />
         <entry key="app/src/main/res/layout/orignalsurarowlinear.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/popup_filter_layout.xml" value="1.1392857142857142" />
         <entry key="app/src/main/res/layout/popup_layout.xml" value="0.25" />
         <entry key="app/src/main/res/layout/qaris_view_word_details.xml" value="0.25" />
         <entry key="app/src/main/res/layout/quran_list_dialog.xml" value="1.1714285714285715" />
@@ -60,6 +61,8 @@
         <entry key="app/src/main/res/layout/sarfsagheerheader.xml" value="1.0642857142857143" />
         <entry key="app/src/main/res/layout/sentence_word_details.xml" value="0.4714285714285714" />
         <entry key="app/src/main/res/layout/settting_pref.xml" value="0.14285714285714285" />
+        <entry key="app/src/main/res/layout/surah_header.xml" value="0.9357142857142857" />
+        <entry key="app/src/main/res/layout/switch_layout.xml" value="1.0071428571428571" />
         <entry key="app/src/main/res/layout/switch_layouts.xml" value="1.0642857142857143" />
         <entry key="app/src/main/res/layout/thulathilistingnotoolbar.xml" value="0.1" />
         <entry key="app/src/main/res/layout/thulathitable.xml" value="0.67" />

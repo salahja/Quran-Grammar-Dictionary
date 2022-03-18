@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.core.text.HtmlCompat;
 import androidx.core.view.ViewCompat;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
@@ -165,7 +166,11 @@ public class GrammarRuleListFragment extends Fragment {
             String s = String.valueOf(id);
             holder.mIdView.setText(s);
          //   holder.mContentView.setText(mValues.get(position).getHarf());
-            holder.mContentView.setText(mValues.get(position).getWorddetails());
+        holder.mContentView.setText(mValues.get(position).getWorddetails());
+
+        //    holder.mContentView.setText(HtmlCompat.fromHtml(mValues.get(position).getWorddetails() ,0));
+
+
             holder.itemView.setTag(mValues.get(position));
             holder.itemView.setOnClickListener(mOnClickListener);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {

@@ -236,7 +236,7 @@ public class SplitQuranVerses {
     public ArrayList<CorpusNounWbwOccurance> NounspanablelenewwordbywordSplitQuran(ArrayList<CorpusNounWbwOccurance> verblist) {
         ArrayList<CorpusNounWbwOccurance> ayahWordArrayList = new ArrayList<CorpusNounWbwOccurance>();
         ArrayList<WordSpan> wordArrayList;
-     //   CorpusUtility versespannable=new CorpusUtility(context );
+      //  CorpusUtility versespannable=new CorpusUtility(context );
         WordMorphologyDetails wm=new WordMorphologyDetails();
         for (CorpusNounWbwOccurance vers : verblist) {
             CorpusNounWbwOccurance ayahword= new CorpusNounWbwOccurance();

@@ -16,12 +16,14 @@ import static com.example.mushafconsolidated.R.drawable.activatedbackgroundbrown
 
 
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
@@ -30,20 +32,25 @@ import android.text.Editable;
 import android.text.InputFilter;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
+import android.text.Spanned;
+import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -77,15 +84,19 @@ import com.example.mushafconsolidated.intrface.PassdataInterface;
 import com.example.mushafconsolidated.model.CorpusAyahWord;
 import com.example.mushafconsolidated.model.CorpusWbwWord;
 import com.example.utility.CorpusUtilityorig;
+import com.example.utility.QuranGrammarApplication;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.ismaeldivita.chipnavigation.ChipNavigationBar;
 
+import org.ahocorasick.trie.Emit;
+import org.ahocorasick.trie.Trie;
 import org.sj.conjugator.activity.ConjugatorAct;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -117,10 +128,10 @@ public class QuranGrammarAct extends BaseActivity implements PassdataInterface, 
 
     int rukucount, totalverses;
     String surahname;
-
+    int mudhafColoragainstBlack, mausofColoragainstBlack, sifatColoragainstBlack, fourcolortag, brokenPlurarColoragainstBlack;
     private boolean kana;
     private List<QuranEntity> allofQuran;
-    private ArrayList<QuranEntity> colorerab;
+    private List<QuranEntity> colorerab;
     private SharedPreferences shared;
     // --Commented out by Inspection (14/08/21, 7:26 PM):ChipNavigationBar chipNavigationBar;
 
@@ -269,6 +280,23 @@ public class QuranGrammarAct extends BaseActivity implements PassdataInterface, 
 
         setContentView(R.layout.new_fragment_reading);
 
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(QuranGrammarApplication.getContext());
+        if (preferences.equals("dark")) {
+            mausofColoragainstBlack = prefs.getInt("mausoofblack", Color.RED);
+            mudhafColoragainstBlack = prefs.getInt("mudhafblack", Color.CYAN);
+            sifatColoragainstBlack = prefs.getInt("sifatblack", Color.YELLOW);
+            brokenPlurarColoragainstBlack = prefs.getInt("brokenblack", Color.GREEN);
+
+
+        } else {
+
+            mudhafColoragainstBlack = prefs.getInt("mausoofwhite", 0xFF000000);
+            mausofColoragainstBlack = prefs.getInt("mudhafwhite", 0xFF000000);
+            sifatColoragainstBlack = prefs.getInt("sifatwhite", 0xFF000000);
+            brokenPlurarColoragainstBlack = prefs.getInt("brokenwhite", 0xFF000000);
+
+
+        }
         if (isFirstTime()) {
 
             Intent intents = new Intent(QuranGrammarAct.this, ActivitySettings.class);
@@ -810,7 +838,7 @@ public class QuranGrammarAct extends BaseActivity implements PassdataInterface, 
         if (mausoof) {
 
 
-            corpus.SetMousufSifaDB(corpusayahWordArrayList, chapterno);
+           corpus.SetMousufSifaDB(corpusayahWordArrayList, chapterno);
         }
         if (mudhaf) {
 
@@ -848,7 +876,9 @@ public class QuranGrammarAct extends BaseActivity implements PassdataInterface, 
             header.add(getSurahArabicName());
 
 
-            flowAyahWordAdapter = new FlowAyahWordAdapter(header, colorerab, allofQuran, corpusayahWordArrayList, QuranGrammarAct.this, surah_id, surahArabicName, isMakkiMadani, listener);
+
+            HightLightKeyWord();
+            flowAyahWordAdapter = new FlowAyahWordAdapter(header,  allofQuran, corpusayahWordArrayList, QuranGrammarAct.this, surah_id, surahArabicName, isMakkiMadani, listener);
 
 
             flowAyahWordAdapter.addContext(QuranGrammarAct.this);
@@ -861,6 +891,54 @@ public class QuranGrammarAct extends BaseActivity implements PassdataInterface, 
 
 
         });
+    }
+
+    private void HightLightKeyWord() {
+
+
+        String mudhafilahistr = "مضاف إليه";
+        String sifastr = "صفة";
+        int mudhaflenght = mudhafilahistr.length();
+        int sifalength = sifastr.length();
+
+        for (QuranEntity pojo : allofQuran) {
+            String ar_irab_two = pojo.getAr_irab_two();
+            SpannableStringBuilder str = new SpannableStringBuilder(ar_irab_two);
+
+            Trie mudhaftrie = Trie.builder().onlyWholeWords().addKeywords(mudhafilahistr).build();
+            Collection<Emit> mudhafemit = mudhaftrie.parseText(ar_irab_two);
+
+            Trie sifatrie = Trie.builder().onlyWholeWords().addKeywords(sifastr).build();
+            Collection<Emit> sifaemit = sifatrie.parseText(ar_irab_two);
+
+
+            for (Emit emit : mudhafemit) {
+
+
+                str.setSpan(new ForegroundColorSpan(mausofColoragainstBlack),
+                        emit.getStart(),
+                        emit.getStart() + mudhaflenght,
+                        Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+
+            }
+
+            for (Emit emit : sifaemit) {
+                int start = emit.getStart();
+
+                str.setSpan(new ForegroundColorSpan(mudhafColoragainstBlack),
+                        emit.getStart(),
+                        emit.getStart() + sifalength,
+                        Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+
+            }
+        //    colorerab.get(0).setErabspnabble(str);
+
+        pojo.setErabspnabble(str);
+
+
+        }
     }
 
 
@@ -894,9 +972,10 @@ public class QuranGrammarAct extends BaseActivity implements PassdataInterface, 
 
 
         View qurantext = view.findViewById(R.id.quran_textView);
-        //  if (overflow != null) {
-        //     popupMenu(overflow);
-        //  }  else
+          if (overflow != null) {
+    popupMenu(overflow);
+     //  popupWindow(overflow);
+        }  else
         if (overflow != null) {
             //   popupMenu(overflow);
             //  showPopup(overflow);
@@ -1066,14 +1145,72 @@ public class QuranGrammarAct extends BaseActivity implements PassdataInterface, 
     }
 
 
+    private void popupWindow(View overflow) {
+        LayoutInflater layoutInflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        final View popupView = layoutInflater.inflate(R.layout.popup_filter_layout, null);
+      SwitchCompat colorSwitch = popupView.findViewById(R.id.mySwitch);
+        final View jumpto = popupView.findViewById(R.id.jumpto);
+        View bookmarview = popupView.findViewById(R.id.bookmark);
+        boolean colortag = shared.getBoolean("colortag", true);
+
+        SwitchCompat colorized = popupView.findViewById(R.id.mySwitch);
+        colorized.setChecked(colortag);
+        colorSwitch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Toast.makeText(QuranGrammarAct.this, "You Clicked " , Toast.LENGTH_SHORT).show();
+                boolean colortag = shared.getBoolean("colortag", true);
+                boolean issentencesanalysis = shared.getBoolean("grammarsentence", true);
+                if (colortag) {
+                    SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(QuranGrammarAct.this).edit();
+                    //     SharedPreferences.Editor editor = getActivity().getSharedPreferences("properties", 0).edit();
+                    editor.putBoolean("colortag", false);
+
+                    editor.apply();
+                    RefreshActivity();
+                } else {
+                    SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(QuranGrammarAct.this).edit();
+                    //     SharedPreferences.Editor editor = getActivity().getSharedPreferences("properties", 0).edit();
+                    editor.putBoolean("colortag", true);
+
+                    editor.apply();
+                    RefreshActivity();
+                }
+
+            }
+        });
+        PopupWindow popupWindow = new PopupWindow(
+                popupView,
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT);
+
+        popupWindow.setBackgroundDrawable(new BitmapDrawable());
+        popupWindow.setOutsideTouchable(true);
+        popupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+            @Override
+            public void onDismiss() {
+                //TODO do sth here on dismiss
+            }
+        });
+
+        popupWindow.showAsDropDown(overflow);
+
+    }
     private void popupMenu(View overflow) {
 
         PopupMenu popupMenu = new PopupMenu(this, overflow);
         MenuInflater inflater = popupMenu.getMenuInflater();
         inflater.inflate(R.menu.popup_menu, popupMenu.getMenu());
-
-
+         SwitchCompat switcher;
+        boolean isChecked = false;
+        SwitchCompat colorSwitch = overflow.findViewById(R.id.colorized);
+     
         Object menuHelper;
+
+
+
+
         Class[] argTypes;
         try {
             Field fMenuHelper = PopupMenu.class.getDeclaredField("mPopup");

@@ -235,7 +235,7 @@ public class SurahDisplay  {
 
                 ArrayList<String> header = new ArrayList<>();
                 ArrayList<QuranEntity> colorerab = new ArrayList<>();
-                FlowAyahWordAdapter flowAyahWordAdapter = new FlowAyahWordAdapter(header,colorerab, allofQuran, corpusayahWordArrayList, context, surahid, suraharabicname, ismakki, listener);
+                FlowAyahWordAdapter flowAyahWordAdapter = new FlowAyahWordAdapter(header, allofQuran, corpusayahWordArrayList, context, surahid, suraharabicname, ismakki, listener);
                 flowAyahWordAdapter.addContext(context);
                 parentRecyclerView =context.findViewById(R.id.overlayViewRecyclerView);
                 parentRecyclerView.setHasFixedSize(true);

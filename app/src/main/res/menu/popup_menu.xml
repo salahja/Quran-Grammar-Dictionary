@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
+
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
@@ -18,12 +19,13 @@
 
     <item
         android:id="@+id/colorized"
+        app:actionViewClass="androidx.appcompat.widget.SwitchCompat"
+        android:icon="@drawable/ic_baseline_color_lens_24"
+        android:enabled="true"
 
-
-        app:actionLayout="@layout/switch_layout"
         android:title="@string/colorize"
         app:showAsAction="always" />
 
-    <item android:title="React Native" />
+
 
 </menu>
