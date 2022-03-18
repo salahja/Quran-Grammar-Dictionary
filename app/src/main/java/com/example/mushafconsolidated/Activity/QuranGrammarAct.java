@@ -1023,7 +1023,14 @@ public class QuranGrammarAct extends BaseActivity implements PassdataInterface, 
             bookMarkSelected();
 
         } else if (qurantext != null) {
-            QuranEntity word = allofQuran.get(position);
+            QuranEntity word = null;
+            if (position != 0) {
+                word = allofQuran.get(position-1);
+            } else {
+                word = allofQuran.get(position);
+
+            }
+
             Bundle dataBundle = new Bundle();
             dataBundle.putInt(SURAH_ID, word.getSurah());
             dataBundle.putInt(AYAHNUMBER, Math.toIntExact(word.getAyah()));
