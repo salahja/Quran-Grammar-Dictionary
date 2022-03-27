@@ -7,6 +7,7 @@ import static android.graphics.Color.YELLOW;
 import static com.example.Constant.AYAH_ID;
 import static com.example.Constant.BBLUE;
 import static com.example.Constant.BCYAN;
+import static com.example.Constant.BYELLOW;
 import static com.example.Constant.CHAPTER;
 import static com.example.Constant.CYANLIGHTEST;
 import static com.example.Constant.FORESTGREEN;
@@ -95,8 +96,10 @@ import static com.example.Constant.verbspanLight;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
+import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.text.Spannable;
 import android.text.SpannableString;
@@ -114,6 +117,7 @@ import androidx.core.content.ContextCompat;
 import com.example.Constant;
 import com.example.JustJava.FrameSpan;
 import com.example.JustJava.TextBorderSpan;
+import com.example.mushafconsolidated.Entities.MousufSifa;
 import com.example.mushafconsolidated.Entities.NewKanaEntity;
 import com.example.mushafconsolidated.Entities.NewMudhafEntity;
 import com.example.mushafconsolidated.Entities.NewNasbEntity;
@@ -124,30 +128,80 @@ import com.example.mushafconsolidated.Utils;
 import com.example.mushafconsolidated.model.CorpusAyahWord;
 
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
 
 public class CorpusUtilityorig {
 
+  public int getSuracounter() {
+    return suracounter;
+  }
+
+  public boolean isIsmausoofbrokenplural() {
+    return ismausoofbrokenplural;
+  }
+
+  public void setIsmausoofbrokenplural(boolean ismausoofbrokenplural) {
+    this.ismausoofbrokenplural = ismausoofbrokenplural;
+  }
+
+  public boolean isIsmousoofsifa() {
+    return ismousoofsifa;
+  }
+
+  public void setIsmousoofsifa(boolean ismousoofsifa) {
+    this.ismousoofsifa = ismousoofsifa;
+  }
+
+  public void setSuracounter(int suracounter) {
+    this.suracounter = suracounter;
+  }
+  boolean ismausoofbrokenplural, ismousoofsifa;
   //todo harfnasm 2nd surah verfified
   //todo shart done till 4th
   private static final int PERMISSION_REQUEST_CODE = 100;
 
   private final String preferences;
-
+  int suracounter;
   private final Context context;
 
-
+  int surahid,ayahid;
+  final ArrayList<MousufSifa> NEWmousufSifaArrayList = new ArrayList<>();
 
   public void setAyahid(int ayahid) {
     this.ayahid = ayahid;
   }
 
+  public int getSurahid() {
+    return surahid;
+  }
 
-  public int suraid, ayahid;
+  public void setSurahid(int surahid) {
+    this.surahid = surahid;
+  }
+
+  public int getAyahid() {
+    return ayahid;
+  }
+
+  public int getSuraid() {
+    return suraid;
+  }
+
+  public void setSuraid(int suraid) {
+    this.suraid = suraid;
+  }
+
+  public int suraid;
 
 
   public CorpusUtilityorig(Context context) {
@@ -940,4 +994,931 @@ public class CorpusUtilityorig {
 
   }
 
+
+  public ArrayList<CorpusAyahWord> NewMAOUSOOFSIFA(ArrayList<CorpusAyahWord> corpusayahWordArrayList) {
+    //TODO 8:42:6 (ALUDWATUL ALQUSWA///
+    //TODO 7:12   *iz amartuk
+    //TOTO 7;19 haithu shituma
+    SpannableStringBuilder strs = new SpannableStringBuilder();
+    String prevaraone = "";
+    String prevaratwo = "";
+    String prevarathree = "";
+    String prevarafour = "";
+    String prevarafive = "";
+    String prevtagone = "";
+    String prevtagtwo = "";
+    String prevprevtagone = "";
+    String prevprevtagtwo = "";
+    String prevprevtagthree = "";
+    String prevtagthree = "";
+    String prevtagfour = "";
+    String prevtagfive = "";
+
+    String prequranverses = "";
+    String arabicwordtwo = "";
+    String prevcases = "";
+
+    String prevgendernumber = "";
+    String prevtype = "";
+    String arabicword = "";
+
+
+    String cases = "";
+    String gendernumber = "";
+    String type = "";
+
+
+    String arabicwod = "";
+    int wordno;
+    String currenttagone = "";
+    String currenttagtwo = "";
+    String currenttagthree = "";
+    String currenttagfour = "";
+    String currenttagfive = "";
+    String currentaraone = "";
+    String currentaratwo = "";
+    String currentarathree = "";
+    String currentarafour = "";
+    String currentarafive = "";
+
+    String prevdetailsone = "";
+    String prevdetailstwo = "";
+    String prevdetailsthree = "";
+    String prevdetailsfour = "";
+    String prevdetailsfive = "";
+
+
+    String currentdetailsone = "";
+    String currentdetailstwo = "";
+    String currentdetailsthree = "";
+    String currentdetailsfour = "";
+    String currentdetailsfive = "";
+
+
+    String prevprevdetailsone = "";
+    String prevprevdetailstwo = "";
+    String prevprevdetailsthree = "";
+    String prevthirdaraone = "";
+    String prefouraraone = "";
+    String prevprevaraone = "";
+    String prevprevaratwo = "";
+    String prevprevarathree = "";
+    boolean pp = false;
+    boolean ppp = false;
+    boolean pppp = false;
+    boolean ppppp = false;
+    if(preferences.equals("dark")||preferences.equals("blue"))
+    {
+      sifaspansDark=new BackgroundColorSpan(WBURNTUMBER);
+    }else{
+      sifaspansDark=new BackgroundColorSpan(CYANLIGHTEST);
+    }
+
+    boolean ptaglength = false;
+
+
+    SpannableStringBuilder str = null;
+
+    HashMap<Integer, Integer> indexes = new HashMap<>();
+    // CorpusAyahWord[] corpusayahWordArrayList = new CorpusAyahWord[0];
+    for (CorpusAyahWord ayahWord : corpusayahWordArrayList) {
+
+
+      //  HashMap<Integer, Integer> indexes = new HashMap<>();
+      int size = ayahWord.getWord().size();
+      for (int indexv = 0; indexv < size; indexv++) {
+        // SpannableStringBuilder verse = ayahWord.getWord().get(indexv).getCorpusSpnnableQuranverse();
+        SpannableString verse = ayahWord.getSpannableverse();
+        String translations = ayahWord.getWord().get(indexv).getTranslations();
+
+        if (indexv >= 3) {
+          prevthirdaraone = ayahWord.getWord().get(indexv - 3).getAraone();
+
+        }
+        setSuraid(ayahWord.getWord().get(indexv).getSurahId());
+        setAyahid(ayahWord.getWord().get(indexv).getVerseId());
+
+        if (indexv != 0) {
+          prevtagone = ayahWord.getWord().get(indexv - 1).getTagone();
+          prevtagtwo = ayahWord.getWord().get(indexv - 1).getTagtwo();
+
+          prevtagthree = ayahWord.getWord().get(indexv - 1).getTagthree();
+          prevtagfour = ayahWord.getWord().get(indexv - 1).getTagfour();
+          prevtagfive = ayahWord.getWord().get(indexv - 1).getTagfour();
+
+          prevaraone = ayahWord.getWord().get(indexv - 1).getAraone();
+          prevaratwo = ayahWord.getWord().get(indexv - 1).getAratwo();
+          prevarathree = ayahWord.getWord().get(indexv - 1).getArathree();
+          prevarafour = ayahWord.getWord().get(indexv - 1).getArafour();
+          prevarafive = ayahWord.getWord().get(indexv - 1).getArafive();
+
+          prevdetailsone = ayahWord.getWord().get(indexv - 1).getDetailsone();
+          prevdetailstwo = ayahWord.getWord().get(indexv - 1).getDetailstwo();
+
+          prevdetailsthree = ayahWord.getWord().get(indexv - 1).getDetailsthree();
+          prevdetailsfour = ayahWord.getWord().get(indexv - 1).getDetailsfour();
+          prevdetailsfive = ayahWord.getWord().get(indexv - 1).getDetailsfive();
+          if (indexv >= 2) {
+            prevprevtagone = ayahWord.getWord().get(indexv - 2).getTagone();
+            prevprevtagtwo = ayahWord.getWord().get(indexv - 2).getTagone();
+            prevprevtagthree = ayahWord.getWord().get(indexv - 2).getTagone();
+            prevprevdetailsone = ayahWord.getWord().get(indexv - 2).getDetailsone();
+            prevprevdetailstwo = ayahWord.getWord().get(indexv - 2).getDetailstwo();
+            prevprevdetailsthree = ayahWord.getWord().get(indexv - 2).getDetailsthree();
+
+            prevprevaraone = ayahWord.getWord().get(indexv - 2).getAraone();
+            prevprevaratwo = ayahWord.getWord().get(indexv - 2).getAratwo();
+            prevprevarathree = ayahWord.getWord().get(indexv - 2).getArathree();
+          }
+
+          if (indexv >= 3) {
+            prevthirdaraone = ayahWord.getWord().get(indexv - 3).getAraone();
+
+          }
+
+          if (indexv >= 4) {
+            prefouraraone = ayahWord.getWord().get(indexv - 4).getAraone();
+
+          }
+
+
+          pp = prevtagtwo.length() == 0;
+          ppp = prevtagthree.length() == 0;
+          pppp = prevtagfour.length() == 0;
+          ppppp = prevtagfive.length() == 0;
+          ptaglength = pp && ppp & pppp & ppppp;
+
+
+        }
+
+        boolean LAFDHJALALA = prevprevaratwo.equals("ٱللَّهِ") || prevprevaratwo.equals("ٱللَّهَ") || prevprevaratwo.equals("ٱللَّهُ")
+                || prevprevaraone.equals("ٱللَّهِ") || prevprevaraone.equals("ٱللَّهَ") || prevprevaraone.equals("ٱللَّهُ");
+
+        boolean LAFDHJALLALA = prevaratwo.equals("ٱللَّهِ") || prevaratwo.equals("ٱللَّهَ") || prevaratwo.equals("ٱللَّهُ")
+                || prevaraone.equals("ٱللَّهِ") || prevaraone.equals("ٱللَّهَ") || prevaraone.equals("ٱللَّهُ");
+        currenttagone = ayahWord.getWord().get(indexv).getTagone();
+        currenttagtwo = ayahWord.getWord().get(indexv).getTagtwo();
+        currenttagthree = ayahWord.getWord().get(indexv).getTagthree();
+        currenttagfour = ayahWord.getWord().get(indexv).getTagfour();
+        currenttagfive = ayahWord.getWord().get(indexv).getTagfive();
+
+
+        currentdetailsone = ayahWord.getWord().get(indexv).getDetailsone();
+        currentdetailstwo = ayahWord.getWord().get(indexv).getDetailstwo();
+        currentdetailsthree = ayahWord.getWord().get(indexv).getDetailsthree();
+        currentdetailsfour = ayahWord.getWord().get(indexv).getDetailsfour();
+        currentdetailsfive = ayahWord.getWord().get(indexv).getDetailsfive();
+
+
+        currentaraone = ayahWord.getWord().get(indexv).getAraone();
+        currentaratwo = ayahWord.getWord().get(indexv).getAratwo();
+        currentarathree = ayahWord.getWord().get(indexv).getArathree();
+        currentarafour = ayahWord.getWord().get(indexv).getArafour();
+        currentarafive = ayahWord.getWord().get(indexv).getArafive();
+        boolean b = currenttagone.length() == 0;
+        boolean cc = currenttagtwo.length() == 0;
+        boolean ccc = currenttagthree.length() == 0;
+        boolean cccc = currenttagfour.length() == 0;
+        boolean ccccc = currenttagfive.length() == 0;
+
+        boolean ctaglength = cc && ccc & cccc & ccccc;
+        boolean prevfirsttagnotnoun = !prevtagone.equals("N") || !prevtagone.equals("ADJ") || !prevtagone.equals("PN") || !prevtagone.equals("VN");
+
+        boolean prevsecondtagnotnoung = !prevtagtwo.equals("N") || !prevtagtwo.equals("ADJ") || !prevtagtwo.equals("PN") || !prevtagtwo.equals("VN");
+        boolean currentsecondtagnotnoun = !currenttagtwo.equals("N") || !currenttagtwo.equals("ADJ") || !currenttagtwo.equals("PN") || !currenttagtwo.equals("VN");
+        boolean currentfirsttagnotnoun = !currenttagone.equals("N") || !currenttagtwo.equals("ADJ") || !currenttagthree.equals("PN") || !currenttagthree.equals("VN");
+
+
+        boolean prevtagonenoun = prevtagone.equals("T") || prevtagone.equals("N") || prevtagone.equals("ADJ") || prevtagone.equals("PN") || prevtagone.equals("VN");
+        boolean prevtagtwonoun = prevtagtwo.equals("T") || prevtagtwo.equals("N") || prevtagtwo.equals("ADJ") || prevtagtwo.equals("PN") || prevtagtwo.equals("VN");
+        boolean prevtagthreenoun = prevtagthree.equals("T") || prevtagthree.equals("N") || prevtagthree.equals("ADJ") ||
+                prevtagthree.equals("PN") || prevtagthree.equals("VN");
+        boolean prevtagfournoun = prevtagfour.equals("T") || prevtagfour.equals("N") || prevtagfour.equals("ADJ") || prevtagfour.equals("PN") || prevtagfour.equals("VN");
+        boolean prevtagfivenoun = prevtagfive.equals("T") || prevtagfive.equals("N") || prevtagfive.equals("ADJ") || prevtagfive.equals("PN") || prevtagfive.equals("VN");
+
+        //amended curenttagonenour removed noun d
+        //  boolean currenttagonenoun =  tagone.equals("ADJ") || tagone.equals("PN") || tagone.equals("VN");
+        //   boolean currenttagonenoun = tagone.equals("ADJ") || tagone.equals("PN") || tagone.equals("VN");
+        boolean currenttagonenoun = currenttagone.equals("ADJ") || currenttagone.equals("PN") ||currenttagone.equals("N")|| currenttagone.equals("VN");
+
+        boolean currenttagtwonoun = currenttagtwo.equals("ADJ") || currenttagtwo.equals("PN") || currenttagtwo.equals("VN");
+        boolean currenttagthreenoun = currenttagthree.equals("ADJ") || currenttagthree.equals("PN") || currenttagthree.equals("VN");
+        boolean currenttagfournoun = currenttagfour.equals("ADJ") || currenttagfour.equals("PN") || currenttagfour.equals("VN");
+        boolean currenttagfivenoun = currenttagfive.equals("ADJ") || currenttagfive.equals("PN") || currenttagfive.equals("VN");
+        boolean currenttagoneADJ = currenttagone.equals("ADJ");
+
+
+        boolean currenttagtwoADJ = currenttagtwo.equals("ADJ");
+        boolean currenttagthreeADJ = currenttagthree.equals("ADJ");
+        boolean currenttagfourADJ = currenttagfour.equals("ADJ");
+        boolean currenttagfiveADJ = currenttagfive.equals("ADJ");
+
+        if (ayahWord.getWord().get(indexv).getSurahId() == 111
+                && ayahWord.getWord().get(indexv).getVerseId() == 3
+                && ayahWord.getWord().get(indexv).getWordno() == 4) {
+
+          System.out.println("check");
+        }
+        if (ayahWord.getWord().get(indexv).getSurahId() == 15
+                && ayahWord.getWord().get(indexv).getVerseId() == 1
+                && ayahWord.getWord().get(indexv).getWordno() == 6) {
+
+          System.out.println("check");
+        }
+
+        if (ayahWord.getWord().get(indexv).getSurahId() == 9
+                && ayahWord.getWord().get(indexv).getVerseId() == 20
+                && ayahWord.getWord().get(indexv).getWordno() == 10) {
+
+          continue;
+        }
+
+        if (ayahWord.getWord().get(indexv).getSurahId() == 9
+                && ayahWord.getWord().get(indexv).getVerseId() == 38
+                && ayahWord.getWord().get(indexv).getWordno() == 24) {
+
+          System.out.println("check");
+        }
+
+        boolean hua = false;
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(QuranGrammarApplication.getContext());
+     //   preferences = prefs.getString("themePref", "dark");
+
+        int mausofColoragainstBlack;
+        mausofColoragainstBlack = prefs.getInt("mausoofblack", Color.RED);
+        if (ayahWord.getWord().get(indexv).getSurahId() == 2
+                && ayahWord.getWord().get(indexv).getVerseId() == 101
+                && ayahWord.getWord().get(indexv).getWordno() == 7) {
+          ColoredShart(ayahWord, indexv, currentaraone, prefouraraone, verse, translations);
+
+
+        } else if (ayahWord.getWord().get(indexv).getSurahId() == 2
+                && ayahWord.getWord().get(indexv).getVerseId() == 217
+                && ayahWord.getWord().get(indexv).getWordno() == 10) {
+          ColoredShart(ayahWord, indexv, currentaraone, prevprevaraone, verse, translations);
+
+
+        } else if (ayahWord.getWord().get(indexv).getSurahId() == 2
+                && ayahWord.getWord().get(indexv).getVerseId() == 68
+                && ayahWord.getWord().get(indexv).getWordno() == 13) {
+
+
+          setIndexesExceptions(ayahWord, indexv, currentaraone, verse, translations);
+        } else if (ayahWord.getWord().get(indexv).getSurahId() == 2
+                && ayahWord.getWord().get(indexv).getVerseId() == 71
+                && ayahWord.getWord().get(indexv).getWordno() == 5) {
+
+
+          setIndexesExceptions(ayahWord, indexv, currentaraone, verse, translations);
+        } else if (currenttagoneADJ || currenttagtwoADJ || currenttagthreeADJ) {
+
+          //   } else if (currenttagoneADJ || currenttagtwoADJ || currenttagthreeADJ||currenttagonenoun||currenttagtwonoun||currenttagthreenoun) {
+
+          if (LAFDHJALLALA) {
+            continue;
+          }
+
+          if (ayahWord.getWord().get(indexv).getSurahId() == 2
+                  && ayahWord.getWord().get(indexv).getVerseId() == 49
+                  && ayahWord.getWord().get(indexv).getWordno() == 18) {
+            ColoredShart(ayahWord, indexv, currentaraone, prevthirdaraone, verse, translations);
+
+
+          }
+
+
+
+          else if (prevtagonenoun || prevtagtwonoun || prevtagthreenoun || prevtagfournoun || prevtagfivenoun) {
+            setMainindexes(ayahWord, indexv, prevaraone, prevaratwo, prevarathree, prevarafour, prevarafive, currentaraone, currentaratwo, currentarathree, currentarafour, currentarafive, verse, translations);
+
+          } else if (!prevtagonenoun && currenttagoneADJ) {
+            setIndexesExceptions(ayahWord, indexv, currentaraone, verse, translations);
+
+          }
+
+
+        } else if (currenttagonenoun||currenttagtwonoun||currenttagthreenoun) {
+          if (ayahWord.getWord().get(indexv).getSurahId() == 1
+                  && ayahWord.getWord().get(indexv).getVerseId() == 4
+                  && ayahWord.getWord().get(indexv).getWordno() == 2) {
+            continue;
+
+
+          }else
+          if (ayahWord.getWord().get(indexv).getSurahId() == 1
+                  && ayahWord.getWord().get(indexv).getVerseId() == 4
+                  && ayahWord.getWord().get(indexv).getWordno() == 1) {
+            setIndexesExceptions(ayahWord, indexv, currentaraone, verse, translations);
+
+
+          } else {
+
+            String prevdetails = "";
+            if (!prevdetailsone.contains("PREFIX")) {
+              prevdetails = prevdetailsone;
+            } else if (!prevdetailstwo.contains("PREFIX")) {
+              prevdetails = prevdetailstwo;
+            }
+            boolean contains = prevdetails.contains("POS:ADJ");
+            //      if(!prevdetails.contains("POS:ADJ")) {
+            if (!contains) {
+
+
+              GetMousoofSifaValidation getMousoofSifaValidation = new GetMousoofSifaValidation(prevdetails, currentdetailsone, "").invoke();
+              boolean caseone = getMousoofSifaValidation.isCaseone();
+              boolean casetwo = getMousoofSifaValidation.isCasetwo();
+              boolean casethree = getMousoofSifaValidation.isCasethree();
+
+              boolean fcurrentFem = getMousoofSifaValidation.isFcurrentFem();
+              boolean fcurrentDual = getMousoofSifaValidation.isFcurrentDual();
+              boolean fcurrentSin = getMousoofSifaValidation.isFcurrentSin();
+              boolean fcurrentPlural = getMousoofSifaValidation.isFcurrentPlural();
+              boolean mcurrentMas = getMousoofSifaValidation.isMcurrentMas();
+              boolean mcurrentDual = getMousoofSifaValidation.isMcurrentDual();
+              boolean mcurrentSin = getMousoofSifaValidation.isMcurrentSin();
+              boolean mcurrentPlural = getMousoofSifaValidation.isMcurrentPlural();
+              boolean typeindef = getMousoofSifaValidation.isTypeindef();
+              setIsmousoofsifa(false);
+
+              if ((caseone || casetwo || casethree) && typeindef && (fcurrentFem || fcurrentDual || fcurrentSin || fcurrentPlural
+                      || mcurrentMas || mcurrentDual || mcurrentSin || mcurrentPlural)) {
+
+
+                StringBuilder pprevarasb = new StringBuilder();
+
+                pprevarasb.append(prevaraone).append(prevaratwo).append(prevarathree).append(prevarafour).append(prevarafive).append(" ");
+
+                //  String prevarasb = prevaraone + prevaratwo + prevarathree + prevarafour + prevarafive + " " +
+                //       araone + aratwo + arathree + arafour + arafive;
+                String prevarasb = prevaraone + prevaratwo + prevarathree + prevarafour + prevarafive
+                        + " " + currentaraone + currentaratwo + currentarathree + currentarafour + currentarafive;
+
+
+                str = new SpannableStringBuilder(prevarasb);
+
+                int wordlen = str.length();
+                int indexOf;
+                //  indexOf = ayahWord.get(index)getQuranverses().indexOf(String.valueOf(str));
+                indexOf = ayahWord.getWord().get(indexv).getQuranversestr().indexOf(String.valueOf(str));
+
+
+                //    verse = new SpannableStringBuilder();
+                //todo error due to change quranverses from corpusexpand to qurans qurantext
+                if (indexOf != -1) {
+                  //   verse = ayahWord.getWord().get(indexv).getCorpusSpnnableQuranverse();
+                  indexes.put(indexOf, indexOf + wordlen);
+                  try {
+                    verse.setSpan(sifaspansDark, indexOf, indexOf + wordlen, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    //     verse.setSpan(new ForegroundColorSpan(mausofColoragainstBlack), indexOf, indexOf + wordlen, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                  } catch (IndexOutOfBoundsException e) {
+                    System.out.println(e.getMessage());
+                  }
+
+                  //   ayahWord.getWord().get(indexv).setCorpusSpnnableQuranverse(verse);
+                  //   ayahWord.setSpannableverse(verse);
+
+
+                }
+
+              }
+            }
+          }
+
+        }
+
+
+        else if (currenttagone.equals("ADJ") || currenttagtwo.equals("ADJ") || currenttagthree.equals("ADJ")) {
+
+          String prevarasb =
+                  currentaraone + currentaratwo + currentarathree + currentarafour + currentarafive;
+          str = new SpannableStringBuilder(prevarasb);
+
+          int wordlen = str.length();
+          int indexOf;
+          //  indexOf = ayahWord.get(index)getQuranverses().indexOf(String.valueOf(str));
+          indexOf = ayahWord.getWord().get(indexv).getQuranversestr().indexOf(String.valueOf(str));
+
+
+          //    verse = new SpannableStringBuilder();
+          if (indexOf != -1) {
+            indexes.put(indexOf, indexOf + wordlen);
+            verse.setSpan(sifaspansDark, indexOf, indexOf + wordlen, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+          //  verse.setSpan(new ForegroundColorSpan(mausofColoragainstBlack), indexOf, indexOf + wordlen, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            SetMousufSpan(ayahWord, indexv, verse, translations, wordlen, indexOf);
+
+          }
+
+
+        }
+
+
+        // SetMousufSifaSpan(indexes, verse,  ayahWord.getWord().get(indexv).getSurahId(),ayahWord.getWord().get(indexv).getVerseId());
+
+
+        ayahWord.getWord().get(indexv).getWordsAr();
+        ayahWord.getWord().get(indexv).getWordno();
+        setSuracounter(ayahWord.getWord().get(indexv).getSurahId());
+        //   updateVSPANS(verse);
+      }//for
+
+
+    }
+ //   newwritefile("sifa" + getSuracounter(), NEWmousufSifaArrayList);
+
+
+    return corpusayahWordArrayList;
+  }
+
+  private void setIndexesExceptions(CorpusAyahWord ayahWord, int indexv, String araone, SpannableString verse, String translations) {
+    SpannableString str;
+
+
+    str = new SpannableString(araone);
+
+    int wordlen = str.length();
+    int indexOf;
+    //  indexOf = ayahWord.get(index)getQuranverses().indexOf(String.valueOf(str));
+    indexOf = verse.toString().indexOf(String.valueOf(str));
+
+    //   SetMousufSpan(ayahWord, indexv, verse, translations, wordlen, indexOf);
+    //    verse = new SpannableStringBuilder();
+    //todo error due to change quranverses from corpusexpand to qurans qurantext
+    if (indexOf != -1) {
+      //   verse = sifat.get(indexv).getCorpusSpnnableQuranverse();
+      //indexes.put(indexOf, indexOf + wordlen);
+      try {
+        verse.setSpan(sifaspansDark, indexOf, indexOf + wordlen, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+     //   verse.setSpan(new ForegroundColorSpan(BYELLOW), indexOf, indexOf + wordlen, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        SetMousufSpan(ayahWord, indexv, verse,translations, wordlen, indexOf);
+
+
+      } catch (IndexOutOfBoundsException e) {
+        System.out.println(e.getMessage());
+      }
+
+      //   sifat.get(indexv).setCorpusSpnnableQuranverse(verse);
+      //   ayahWord.setSpannableverse(verse);
+
+
+    }
+
+  }
+
+
+  private void ColoredShart(CorpusAyahWord ayahWord, int indexv, String araone, String prevthirdaraone, SpannableString verse, String translations) {
+    SpannableString strss;
+
+    strss = new SpannableString(prevthirdaraone);
+    SpannableString currentara = new SpannableString(araone);
+
+    int wordlen = strss.length();
+    int indexOf;
+    //  indexOf = ayahWord.get(index)getQuranverses().indexOf(String.valueOf(str));
+    indexOf = verse.toString().indexOf(String.valueOf(strss));
+
+
+    int wordlentwo = currentara.length();
+    int indexOftwo;
+    //  indexOf = ayahWord.get(index)getQuranverses().indexOf(String.valueOf(str));
+    indexOf = verse.toString().indexOf(String.valueOf(strss));
+
+    indexOftwo = verse.toString().indexOf(String.valueOf(currentara));
+
+    //   SetMousufSpan(ayahWord, indexv, verse, translations, wordlen, indexOf);
+
+    //   SetMousufSpan(ayahWord, indexv, verse, translations, wordlentwo, indexOftwo);
+    //    verse = new SpannableStringBuilder();
+    //todo error due to change quranverses from corpusexpand to qurans qurantext
+
+
+
+    if (indexOf != -1) {
+      //   verse = sifat.get(indexv).getCorpusSpnnableQuranverse();
+      //indexes.put(indexOf, indexOf + wordlen);
+      try {
+
+        verse.setSpan(sifaspansDark, indexOf, indexOf + wordlen, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+      //  verse.setSpan(new ForegroundColorSpan(BYELLOW), indexOf, indexOf + wordlen, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        SetMousufSpan(ayahWord, indexv, verse,translations, wordlen, indexOf);
+
+
+      } catch (IndexOutOfBoundsException e) {
+        System.out.println(e.getMessage());
+      }
+
+    }
+
+    if (indexOftwo != -1) {
+      //   verse = sifat.get(indexv).getCorpusSpnnableQuranverse();
+      //indexes.put(indexOf, indexOf + wordlen);
+      try {
+        verse.setSpan(sifaspansDark, indexOftwo, indexOftwo + wordlentwo, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+    //    verse.setSpan(new ForegroundColorSpan(BYELLOW), indexOftwo, indexOftwo + wordlentwo, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        SetMousufSpan(ayahWord, indexv, verse,translations, wordlen, indexOf);
+
+
+      } catch (IndexOutOfBoundsException e) {
+        System.out.println(e.getMessage());
+      }
+
+    }
+  }
+
+  private void setMainindexes(CorpusAyahWord ayahWord, int indexv, String prevaraone, String prevaratwo, String prevarathree, String
+          prevarafour, String prevarafive, String araone, String aratwo, String arathree, String
+                                      arafour, String arafive, SpannableString verse, String translations) {
+    SpannableStringBuilder str;
+    StringBuilder pprevarasb = new StringBuilder();
+
+    pprevarasb.append(prevaraone).append(prevaratwo).append(prevarathree).append(prevarafour).append(prevarafive).append(" ");
+
+    String prevarasb = prevaraone + prevaratwo + prevarathree + prevarafour + prevarafive + " " +
+            araone + aratwo + arathree + arafour + arafive;
+    str = new SpannableStringBuilder(prevarasb);
+
+    int wordlen = str.length();
+    int indexOf;
+    //  indexOf = ayahWord.get(index)getQuranverses().indexOf(String.valueOf(str));
+    indexOf = verse.toString().indexOf(String.valueOf(str));
+
+    //     SetMousufSpan(ayahWord, indexv, verse, translations, wordlen, indexOf);
+    //    verse = new SpannableStringBuilder();
+    //todo error due to change quranverses from corpusexpand to qurans qurantext
+    if (indexOf != -1) {
+      //   verse = sifat.get(indexv).getCorpusSpnnableQuranverse();
+      //indexes.put(indexOf, indexOf + wordlen);
+      try {
+        verse.setSpan(sifaspansDark, indexOf, indexOf + wordlen, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+     //   verse.setSpan(new ForegroundColorSpan(BYELLOW), indexOf, indexOf + wordlen, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        SetMousufSpan(ayahWord, indexv, verse,translations, wordlen, indexOf);
+
+
+      } catch (IndexOutOfBoundsException e) {
+        System.out.println(e.getMessage());
+      }
+
+      //   sifat.get(indexv).setCorpusSpnnableQuranverse(verse);
+      //   ayahWord.setSpannableverse(verse);
+
+
+    }
+  }
+
+
+  private void SetMousufSpan(CorpusAyahWord ayahWord, int indexv, SpannableString verse,
+                             String translations, int wordlen, int indexOf) {
+    MousufSifa mousufSifa = new MousufSifa();
+    int sid = getSuraid();
+    int vid = getAyahid();
+    int wid = ayahWord.getWord().get(indexv).getWordno();
+    //    mousufSifa.setVerse(verse);
+    mousufSifa.setStartindex(indexOf);
+    mousufSifa.setEndindex(indexOf + wordlen);
+
+    mousufSifa = new MousufSifa(sid, vid, wid, indexOf, indexOf + wordlen, verse, translations, "mousuuf", 0, "blank");
+    NEWmousufSifaArrayList.add(mousufSifa);
+  }
+
+
+
+
+  private class GetMousoofSifaValidation {
+    private final String araword;
+    private final String prevdetailsone;
+    private final String currentdetailsone;
+    private boolean caseone;
+    private boolean casetwo;
+    private boolean caseacc;
+    private boolean typeindef;
+    private boolean fcurrentFem;
+    private boolean fcurrentDual;
+    private boolean fcurrentSin;
+    private boolean fcurrentPlural;
+    private boolean mcurrentMas;
+    private boolean mcurrentDual;
+    private boolean mcurrentSin;
+    private boolean mcurrentPlural;
+    private boolean isgenderpresent;
+
+    public GetMousoofSifaValidation(String prevdetailsone, String currentdetailsone, String araword) {
+      this.prevdetailsone = prevdetailsone;
+      this.currentdetailsone = currentdetailsone;
+      this.araword = araword;
+    }
+
+
+    public boolean isCaseone() {
+      return caseone;
+    }
+
+    public boolean isCasetwo() {
+      return casetwo;
+    }
+
+    public boolean isCasethree() {
+      return caseacc;
+    }
+
+    public boolean isTypeindef() {
+      return typeindef;
+    }
+
+    public boolean isFcurrentFem() {
+      if (currentdetailsone.contains("|F|") || currentdetailsone.contains("|FP|") || currentdetailsone.contains("|FS")) {
+
+        ValidateBrokenPlurals vbp = new ValidateBrokenPlurals();
+        boolean broken = vbp.getBrokenPluralStatus(araword);
+        if (broken) {
+          setIsmausoofbrokenplural(true);
+          fcurrentFem = broken;
+        } else {
+          setIsmausoofbrokenplural(false);
+        }
+
+
+      } else {
+
+
+        fcurrentFem = prevdetailsone.contains("|F|") && currentdetailsone.contains("|F|");
+        fcurrentDual = prevdetailsone.contains("|FD|") && currentdetailsone.contains("|FD|");
+        fcurrentSin = (prevdetailsone.contains("|FS|") && currentdetailsone.contains("|FS|"));
+      }
+      return fcurrentFem;
+    }
+
+    public boolean isFcurrentDual() {
+      return fcurrentDual;
+    }
+
+    public boolean isFcurrentSin() {
+      return fcurrentSin;
+    }
+
+    public boolean isFcurrentPlural() {
+      return fcurrentPlural;
+    }
+
+    public boolean isMcurrentMas() {
+      return mcurrentMas;
+    }
+
+    public boolean isMcurrentDual() {
+      return mcurrentDual;
+    }
+
+    public boolean isMcurrentSin() {
+      return mcurrentSin;
+    }
+
+    public boolean isMcurrentPlural() {
+      mcurrentPlural = (prevdetailsone.contains("|MP|") && currentdetailsone.contains("|MP|") ||
+              (prevdetailsone.contains("|M|") && currentdetailsone.contains("|MP|")));
+      return mcurrentPlural;
+    }
+
+    public GetMousoofSifaValidation invoke() {
+      try {
+        caseone = prevdetailsone.contains("NOM") && currentdetailsone.contains("NOM");
+      } catch (NullPointerException e) {
+        System.out.println(e.getMessage());
+      }
+      casetwo = prevdetailsone.contains("GEN") && currentdetailsone.contains("GEN");
+      caseacc = prevdetailsone.contains("ACC") && currentdetailsone.contains("ACC");
+      if (prevdetailsone.contains("INDEF") && currentdetailsone.contains("INDEF")) {
+        typeindef = true;
+      } else if (!prevdetailsone.contains("INDEF") && !currentdetailsone.contains("INDEF")) {
+        typeindef = true;
+
+      } else if (ismausoofbrokenplural) {
+
+        typeindef = true;
+      } else {
+        typeindef = false;
+      }
+      //     typeindef = prevdetailsone.contains("INDEF") && currentdetailsone.contains("INDEF");
+
+
+      fcurrentFem = prevdetailsone.contains("|F|") && currentdetailsone.contains("|F|");
+      fcurrentDual = prevdetailsone.contains("|FD|") && currentdetailsone.contains("|FD|");
+      fcurrentSin = (prevdetailsone.contains("|FS|") && currentdetailsone.contains("|FS|") ||
+
+              (prevdetailsone.contains("|F|") && currentdetailsone.contains("|FS|") ||
+                      (prevdetailsone.contains("|FS|") && currentdetailsone.contains("|F|")
+
+                      )));
+      fcurrentPlural = prevdetailsone.contains("|FP|") && currentdetailsone.contains("|FP|");
+
+      mcurrentMas = prevdetailsone.contains("|M|") && currentdetailsone.contains("|M|");
+      mcurrentDual = prevdetailsone.contains("|MD|") && currentdetailsone.contains("|MD|");
+      mcurrentSin = (prevdetailsone.contains("|MS|") && currentdetailsone.contains("|MS|") ||
+              (prevdetailsone.contains("|M|") && currentdetailsone.contains("|MS|") ||
+
+
+                      (prevdetailsone.contains("|MS|") && currentdetailsone.contains("|M|"))));
+
+      return this;
+    }
+
+    public boolean isgenderpresent() {
+      if (prevdetailsone.contains("|F|") || currentdetailsone.contains("|F|") ||
+              prevdetailsone.contains("|FD|") && currentdetailsone.contains("|FD|") ||
+              prevdetailsone.contains("|FS|") && currentdetailsone.contains("|FS|") ||
+              prevdetailsone.contains("|FS|") && currentdetailsone.contains("|F|") ||
+              prevdetailsone.contains("|F|") && currentdetailsone.contains("|FS|") ||
+              prevdetailsone.contains("|FP|") && currentdetailsone.contains("|FP|") ||
+
+              prevdetailsone.contains("|M|") && currentdetailsone.contains("|M|") ||
+
+              prevdetailsone.contains("|MD|") && currentdetailsone.contains("|MD|") ||
+
+
+              prevdetailsone.contains("|MS|") && currentdetailsone.contains("|MS|") ||
+              prevdetailsone.contains("|M|") && currentdetailsone.contains("|MS|") ||
+
+
+              prevdetailsone.contains("|MS|") && currentdetailsone.contains("|M|")) {
+
+        isgenderpresent = true;
+      } else {
+        isgenderpresent = false;
+      }
+      return isgenderpresent;
+    }
+
+
+    private class ValidateBrokenPlurals {
+      final int ALIFHAMZAABOVE = 1571;
+
+      final int Fathatan = 1611;
+      final int Dammatan = 1612;
+      final int Kasratan = 1613;
+      final int Fatha = 1614;
+      final int Damma = 1615;
+      final int Kasra = 1616;
+      final int Shadda = 1617;
+      final int Sukun = 1618;
+      final int AlifKhanjareeya=1648;
+      final int Alif=1575;
+      final int Maddah=1619;
+
+
+      //FATHA/FATHA/ALIF/KASRA/DAMMA
+
+
+      final ArrayList<String> bp=new ArrayList<>();
+
+
+
+
+      public boolean getBrokenPluralStatus(String araword) {
+        boolean isbroken = false;
+        Character[]  quranword= new Character[10];
+        char[] chars = araword.toCharArray();
+        int counter=0;
+        for (Character ch : araword.toCharArray()) {
+
+          int castAscii = (int) ch;
+          if(castAscii==ALIFHAMZAABOVE ||castAscii==Alif ||castAscii==Damma
+                  ||castAscii==Fatha ||castAscii==Kasra ||castAscii==Shadda ||castAscii==Sukun
+                  ||castAscii==AlifKhanjareeya ||castAscii==Dammatan ||castAscii==Fathatan ||
+                  castAscii==Kasratan||castAscii==Maddah){
+            quranword[counter++]=ch;
+          }
+
+        }
+        String AFAALUNTWO = "أَفْعَٰلٌ";
+        bp.add(AFAALUNTWO);
+        String AFAALANNTWO = "أَفْعَٰلً";
+        bp.add(AFAALANNTWO);
+        String AFAALINNTWO = "أَفْعَٰلٍ";
+        bp.add(AFAALINNTWO);
+        String AYYAMINN = "أَيَّامٍ";
+        bp.add(AYYAMINN);
+        String AYYAMANN = "أَيَّامً";
+        bp.add(AYYAMANN);
+
+        String AYYAMUN = "أَيَّامٌ";
+        bp.add(AYYAMUN);
+        //ALIFHAMA,SUKUN,FATHA,ALIF,DAMMATTAN**
+        String AFAALUN = "أَفْعَالٌ";
+        bp.add(AFAALUN);
+        //DAMMA,SHADDA,FATHA,ALIF,DAMMATAN&&FATHATAN&&KASRATAN
+        String TULLABUN = "فُعَّالٌ";
+        bp.add(TULLABUN);
+        String TULLABANN = "فُعَّالً";
+        bp.add(TULLABANN);
+        String TULLABINN = "فُعَّالٍ";
+        bp.add(TULLABINN);
+
+        //KASRA//FATHA//ALIF/DAMMATAN&&FATHATHAN&KASRATAN
+        String RIJALUNN = "فِعَالٌ";
+        bp.add(RIJALUNN);
+        String RIJALANN = "فِعَالً";
+        bp.add(RIJALANN);
+        String RIJALINN = "فِعَالٍ";
+        bp.add(RIJALINN);
+
+        //ALIFHAMZAABOVE,FATHA,SUKUN,FATHA,DAMMATAN&FATHATAN&KASRATAN
+        String AQLAMUNN = "أَفْعَٰمٌ";
+        bp.add(AQLAMUNN);
+        String AQLAMANN = "أَفْعَٰمً";
+        bp.add(AQLAMANN);
+        String AQLAMINN = "أَفْعَٰمٍ";
+        bp.add(AQLAMINN);
+
+        //DAMMA/DAMMA/SUKUN/DAMMATAN&&FATHATHAN&KASRATAN
+        String QULUBUNN = "فُعُوْلٌ";
+        bp.add(QULUBUNN);
+        String QULUBANN = "فُعُوْلً";
+        bp.add(QULUBANN);
+
+        String QULUBINN = "فُعُوْلٍ";
+        bp.add(QULUBINN);
+
+
+        //KASRA/SUKUN/FATHA/DAMMATTAN&&FATHATHAN&KASRATAN
+        String FIYATUN = "فِعْلَةٌ";
+        bp.add(FIYATUN);
+        String FIYATANN = "فِعْلَةً";
+        bp.add(FIYATANN);
+        String FIYATINN = "فِعْلَةٍ";
+        bp.add(FIYATINN);
+
+
+        //DAMMA/DAMMA/DAMMTTAN&FATHATHAN&KASRATAN
+        String JUDUDUNN = "فُعُلٌ";
+        bp.add(JUDUDUNN);
+        String JUDUDANN = "فُعُلً";
+        bp.add(JUDUDANN);
+        String JUDUDINN = "فُعُلٍ";
+        bp.add(JUDUDINN);
+
+        //ALIFABOVEHAMZA,FATHA,SUKUN,KASRA,FATHA,DAMMATTAN&&
+        String ASILATUNN = "أَفْعِلَةٌ";
+        bp.add(ASILATUNN);
+        String ASILATANN = " أَفْعِلَةً";
+        bp.add(ASILATANN);
+        String ASILATINN = " أَفْعِلَةٍ";
+        bp.add(ASILATINN);
+
+        //ALIFHAMZA,SUKUN,DAMMA,DAMMATTAN**
+        String ASHURUNN = "أَفْعُلٌ";
+        bp.add(ASHURUNN);
+        String ASHURANN = "أَفْعُلً";
+        bp.add(ASHURANN);
+        String ASHRINN = "أَفْعُلٍ";
+        bp.add(ASHRINN);
+
+
+        //MAMNN);ON MIN ALSARAF
+        //MAMNOON MIN ALSARAF
+        //DAMMA/FATHA,ALIF,FATHA,DAMMA
+        String ULMAUU = "فُعَلاَءُ";
+        bp.add(ULMAUU);
+
+        //ALIFABOVEHAAZA/SUKUN/KASRA/ALIF/FATHA//DAMMA
+        String AGHNIYAUU = "أَفْعِلاَءُ";
+        bp.add(AGHNIYAUU);
+
+        String MAKATIBU = "مَفَاعِلُ";
+        bp.add(MAKATIBU);
+        //FATHA/FATHA/ALIF/KASRA/SUKUN/DAMMA
+        String MAFATIH = "مَفَاعِيْلُ";
+        bp.add(MAFATIH);
+        String AFAALANN = "أَفْعَالً";
+        bp.add(AFAALANN);
+        String AFAALINN = "أَفْعَالٍ";
+        bp.add(AFAALINN);
+
+
+
+        for (String pat : bp) {
+          Character[]  pattern= new Character[10];
+          counter=0;
+          for (Character ch : pat.toCharArray()) {
+
+            int castAscii = (int) ch;
+            if(castAscii==ALIFHAMZAABOVE ||castAscii==Alif ||castAscii==Damma
+                    ||castAscii==Fatha ||castAscii==Kasra ||castAscii==Shadda ||castAscii==Sukun
+                    ||castAscii==AlifKhanjareeya ||castAscii==Dammatan ||castAscii==Fathatan ||
+                    castAscii==Kasratan||castAscii==Maddah){
+              pattern[counter++]=ch;
+            }
+
+          }
+          boolean equals = Arrays.equals(quranword, pattern);
+          if(equals){
+            isbroken=true;
+            break;
+          }
+
+
+        }
+
+
+        return isbroken;
+      }
+    }
+  }
 }

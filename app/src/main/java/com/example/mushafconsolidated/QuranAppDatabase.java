@@ -98,6 +98,8 @@ public abstract class QuranAppDatabase extends RoomDatabase {
 
 
 
+
+
             quranAppDatabaseInstance=     Room.databaseBuilder(context, QuranAppDatabase.class, "qurangrammar.db")
 
                     .createFromFile(mainDatabase)
@@ -116,8 +118,8 @@ public abstract class QuranAppDatabase extends RoomDatabase {
 
 
         }
-     return     quranAppDatabaseInstance;
- //return quranAppDatabaseInstanceasset;
+    return     quranAppDatabaseInstance;
+// return quranAppDatabaseInstanceasset;
     }
 
 

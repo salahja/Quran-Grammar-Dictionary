@@ -1,5 +1,6 @@
 package com.example.mushafconsolidated.Entities;
 
+import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 
 public class MousufSifa {
@@ -11,7 +12,7 @@ public class MousufSifa {
     int startindex;
     int endindex;
     int wordfrom,wordto;
-    SpannableStringBuilder verse;
+    SpannableString verse;
     String translations;
     String phrasetype;
     int disconnected;
@@ -44,7 +45,7 @@ public class MousufSifa {
         this.comment = comment;
     }
 
-    public MousufSifa(int surah, int ayah, int wordno, int startindex, int endindex, SpannableStringBuilder verse, String translations, String phrasetype, int disconnected, String comment) {
+    public MousufSifa(int surah, int ayah, int wordno, int startindex, int endindex, SpannableString verse, String translations, String phrasetype, int disconnected, String comment) {
         this.surah = surah;
         this.ayah = ayah;
         this.wordno = wordno;
@@ -115,11 +116,11 @@ public class MousufSifa {
         this.endindex = endindex;
     }
 
-    public SpannableStringBuilder getVerse() {
+    public SpannableString getVerse() {
         return verse;
     }
 
-    public void setVerse(SpannableStringBuilder verse) {
+    public void setVerse(SpannableString verse) {
         this.verse = verse;
     }
 

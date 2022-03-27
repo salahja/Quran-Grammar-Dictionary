@@ -835,16 +835,17 @@ public class QuranGrammarAct extends BaseActivity implements PassdataInterface, 
             corpus.setShart(corpusayahWordArrayList, chapterno);
         }
 
-        if (mausoof) {
-
-
-           corpus.SetMousufSifaDB(corpusayahWordArrayList, chapterno);
-        }
         if (mudhaf) {
 
             corpus.setMudhafFromDB(corpusayahWordArrayList, chapterno);
 
         }
+        if (mausoof) {
+            corpus.SetMousufSifaDB(corpusayahWordArrayList, chapterno);
+           corpus.NewMAOUSOOFSIFA(corpusayahWordArrayList);
+
+        }
+
         if (harfnasb) {
 
             corpus.newnewHarfNasbDb(corpusayahWordArrayList, chapterno);
@@ -1159,7 +1160,7 @@ public class QuranGrammarAct extends BaseActivity implements PassdataInterface, 
             @Override
             public void onClick(View v) {
 
-                Toast.makeText(QuranGrammarAct.this, "You Clicked " , Toast.LENGTH_SHORT).show();
+             //   Toast.makeText(QuranGrammarAct.this, "You Clicked " , Toast.LENGTH_SHORT).show();
                 boolean colortag = shared.getBoolean("colortag", true);
                 boolean issentencesanalysis = shared.getBoolean("grammarsentence", true);
                 if (colortag) {
@@ -1224,7 +1225,7 @@ public class QuranGrammarAct extends BaseActivity implements PassdataInterface, 
                     popupMenuAction(menuItem.getItemId());
 
 
-                    Toast.makeText(QuranGrammarAct.this, "You Clicked " + menuItem.getTitle(), Toast.LENGTH_SHORT).show();
+              //      Toast.makeText(QuranGrammarAct.this, "You Clicked " + menuItem.getTitle(), Toast.LENGTH_SHORT).show();
                     return true;
                 }
 
