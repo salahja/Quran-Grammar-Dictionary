@@ -70,7 +70,7 @@ public class FlowAyahWordAdapter extends RecyclerView.Adapter<FlowAyahWordAdapte
     public static Object ItemViewAdapter;
     static boolean showTranslation;
     static boolean wordByWord;
-    int forntSize;
+    int fontSize;
     private final boolean issentence;
 
     private final SharedPreferences sharedPreferences;
@@ -130,7 +130,7 @@ public class FlowAyahWordAdapter extends RecyclerView.Adapter<FlowAyahWordAdapte
 
         issentence = sharedPreferences.getBoolean("grammarsentence", false);
 
-        forntSize = sharedPreferences.getInt("pref_font_arabic_key", 18);
+        fontSize = sharedPreferences.getInt("pref_font_arabic_key", 18);
 
 
         mItemClickListener = listener;
@@ -423,7 +423,7 @@ public class FlowAyahWordAdapter extends RecyclerView.Adapter<FlowAyahWordAdapte
     SpannableString quranverses = ayahWordArrayList.get(actualposition).getSpannableverse();
 
     holder.quran_textView.setText(quranverses);
-    holder.quran_textView.setTextSize(forntSize);
+    holder.quran_textView.setTextSize(fontSize);
     holder.quran_textView.setTypeface(custom_font);
 
     setChapterInfo(holder, ayahWord);
@@ -436,8 +436,8 @@ public class FlowAyahWordAdapter extends RecyclerView.Adapter<FlowAyahWordAdapte
 
     if (showTransliteration) {
         holder.quran_transliteration.setText(Html.fromHtml(entity.getTranslation(), Html.FROM_HTML_MODE_LEGACY));
-        holder.quran_transliteration.setTextSize(forntSize);
-        holder.quran_transliteration.setTextSize(forntSize);
+        holder.quran_transliteration.setTextSize(fontSize);
+        holder.quran_transliteration.setTextSize(fontSize);
         holder.quran_transliteration.setVisibility(View.VISIBLE);
 
 
@@ -445,8 +445,8 @@ public class FlowAyahWordAdapter extends RecyclerView.Adapter<FlowAyahWordAdapte
     if (showJalalayn) {
         //   holder.quran_jalalaynnote.setText(enjalalayn.getAuthor_name());
         holder.quran_jalalayn.setText(entity.getTranslation());
-        holder.quran_jalalayn.setTextSize(forntSize);
-        holder.quran_jalalayn.setTextSize(forntSize);
+        holder.quran_jalalayn.setTextSize(fontSize);
+        holder.quran_jalalayn.setTextSize(fontSize);
         holder.quran_jalalayn.setVisibility(View.VISIBLE);
         holder.quran_jalalaynnote.setVisibility(View.VISIBLE);
     }
@@ -455,39 +455,39 @@ public class FlowAyahWordAdapter extends RecyclerView.Adapter<FlowAyahWordAdapte
 
             holder.translate_textView.setText(entity.getTranslation());
 
-            holder.translate_textView.setTextSize(forntSize);
-            holder.translate_textView.setTextSize(forntSize);
+            holder.translate_textView.setTextSize(fontSize);
+            holder.translate_textView.setTextSize(fontSize);
             holder.translate_textView.setVisibility(View.VISIBLE);
             holder.translate_textViewnote.setVisibility(View.VISIBLE);
         }
         if (whichtranslation.equals("en_jalalayn")) {
             holder.translate_textView.setText(entity.getEn_jalalayn());
 
-            holder.translate_textView.setTextSize(forntSize);
-            holder.translate_textView.setTextSize(forntSize);
+            holder.translate_textView.setTextSize(fontSize);
+            holder.translate_textView.setTextSize(fontSize);
             holder.translate_textView.setVisibility(View.VISIBLE);
             holder.translate_textViewnote.setVisibility(View.VISIBLE);
         }
         if (whichtranslation.equals("ur_jalalayn")) {
             holder.translate_textView.setText(entity.getUr_jalalayn());
 
-            holder.translate_textView.setTextSize(forntSize);
-            holder.translate_textView.setTextSize(forntSize);
+            holder.translate_textView.setTextSize(fontSize);
+            holder.translate_textView.setTextSize(fontSize);
             holder.translate_textView.setVisibility(View.VISIBLE);
             holder.translate_textViewnote.setVisibility(View.VISIBLE);
         }
         if (whichtranslation.equals("ur_junagarhi")) {
             holder.translate_textView.setText(entity.getUr_junagarhi());
 
-            holder.translate_textView.setTextSize(forntSize);
-            holder.translate_textView.setTextSize(forntSize);
+            holder.translate_textView.setTextSize(fontSize);
+            holder.translate_textView.setTextSize(fontSize);
             holder.translate_textView.setVisibility(View.VISIBLE);
             holder.translate_textViewnote.setVisibility(View.VISIBLE);
         }
 
 
-        holder.translate_textView.setTextSize(forntSize);
-        holder.translate_textView.setTextSize(forntSize);
+        holder.translate_textView.setTextSize(fontSize);
+        holder.translate_textView.setTextSize(fontSize);
         holder.translate_textView.setVisibility(View.VISIBLE);
         holder.translate_textViewnote.setVisibility(View.VISIBLE);
 
@@ -499,7 +499,7 @@ public class FlowAyahWordAdapter extends RecyclerView.Adapter<FlowAyahWordAdapte
         holder.erab_textView.setText(entity.getErabspnabble());
         //   holder.erab_textView.setText(entity.getAr_irab_two());
         //     holder.erab_textView.setText(erabentity.getErabspnabble());
-        holder.erab_textView.setTextSize(forntSize);
+        holder.erab_textView.setTextSize(fontSize);
         holder.erab_textView.setTypeface(custom_font);
         holder.erab_textView.setVisibility(View.VISIBLE);
         holder.erab_textViewnote.setVisibility(View.VISIBLE);
@@ -549,7 +549,7 @@ if (SharedPref.themePreferences().equals("dark")) {
 
 
             //  arabic.setTextSize(18);
-            arabic.setTextSize(forntSize);
+            arabic.setTextSize(fontSize);
             arabic.setTypeface(custom_font);
             if (showWbwTranslation) {
                 if (wbw.equals("en")) {
@@ -570,7 +570,7 @@ if (SharedPref.themePreferences().equals("dark")) {
                 //  translation.setTextColor(context.getResources().getColor(R.color.neutral2));
             }
             //    translation.setTextSize(forntSize + 4);
-            translation.setTextSize(forntSize);
+            translation.setTextSize(fontSize);
             holder.flow_word_by_word.addView(view);
 
             view.setLongClickable(true);

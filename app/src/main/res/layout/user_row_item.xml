@@ -19,7 +19,7 @@
 
             android:text="@string/id_select_translations"
             android:layout_alignParentLeft="true"
-            android:textColor="@color/white"
+
             android:textSize="24.0sp" />
 
         <TextView
@@ -29,7 +29,7 @@
             android:layout_alignParentEnd="true"
             android:text="@string/id_select_translations"
 
-            android:textColor="@color/white"
+
             android:textSize="24.0sp" />
 
 

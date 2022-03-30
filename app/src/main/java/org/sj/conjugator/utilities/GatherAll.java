@@ -1488,18 +1488,29 @@ public class GatherAll {
 
         public ArrayList<ArrayList> buildAugmenteParticiples (String verbroot, String
         augmentedFormula){
+            char c1 = verbroot.charAt(0);
+            char c2 = verbroot.charAt(1);
+            char c3 = verbroot.charAt(2);
+            Character C1 = verbroot.charAt(0);
+            Character C2 = verbroot.charAt(1);
+            Character C3 = verbroot.charAt(2);
+            int aleph = verbroot.indexOf("ا");
+            int alephhamza=verbroot.indexOf("أ");
+            if(aleph!=-1){
+                verbroot=verbroot.replace("ا","ء");
+            }else
+                if(alephhamza!=-1){
+                  verbroot=verbroot.replace("أ","ء")  ;
+                }
+
             AugmentedTrilateralRoot augmentedRoot = SarfDictionary.getInstance().getAugmentedTrilateralRoot(verbroot, augmentedFormula);
             List ismfael;
             List ismmafool;
 
 
-            char c1 = verbroot.charAt(0);
-            char c2 = verbroot.charAt(1);
-            char c3 = verbroot.charAt(2);
+
             ArrayList<ArrayList> skabeer = new ArrayList<>();
-            Character C1 = verbroot.charAt(0);
-            Character C2 = verbroot.charAt(1);
-            Character C3 = verbroot.charAt(2);
+
             if (augmentedRoot != null) {
 
                 TrilateralKovRule rule = KovRulesManager.getInstance().getTrilateralKovRule(c1, c2, c3);

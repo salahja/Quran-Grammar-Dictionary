@@ -61,32 +61,32 @@ public class LughatWordDetailsAct extends BaseActivity {
     // Arrey of strings FOR TABS TITLES
     private final String[] arabicwordharfnasb = new String[]{"English lughat", "Urdu Lughat", "Harf "};
 
-    private final String[] vocabularytitles = new String[]{"Hans Weir", "Lane Lexicon", "English lughat", "Urdu Lughat"};
+    private final String[] vocabularytitles = new String[]{"Lane Lexicon", "Hans Weir", "English lughat", "Urdu Lughat"};
 
-    private final String[] thulathientitles = new String[]{"Hans Weir", "Lane Lexicon", "English lughat", "Urdu Lughat", "Verb Conjugaton", "Active/Passive PCPL", "N. Instrument", "N.Place/Time"};
-    private final String[] thulathientitlesmansub = new String[]{"Hans Weir", "Lane Lexicon", "English lughat", "Urdu Lughat", "Subjunctive",
+    private final String[] thulathientitles = new String[]{"Lane Lexicon", "Hans Weir",  "English lughat", "Urdu Lughat", "Verb Conjugaton", "Active/Passive PCPL", "N. Instrument", "N.Place/Time"};
+    private final String[] thulathientitlesmansub = new String[]{"Lane Lexicon", "Hans Weir", "English lughat", "Urdu Lughat", "Subjunctive",
             "Verb Conjugaton", "Active/Passive PCPL", "N. Instrument", "N.Place/Time"};
-    private final String[] mujarradparticple = new String[]{"Hans Weir", "Lane Lexicon", "English lughat", "Urdu Lughat", " ",
+    private final String[] mujarradparticple = new String[]{"Lane Lexicon", "Hans Weir",  "English lughat", "Urdu Lughat", " ",
             "Verb Conjugaton", "Active/Passive PCPL", "N. Instrument", "N.Place/Time"};
     private final String[] mazeedparticpletitle = new String[]
-            {"Hans Weir", "Lane Lexicon", "English lughat", "Urdu Lughat", " ", "Verb Conjugaton", "Active/Passive Participle"};
+            {"Lane Lexicon", "Hans Weir", "English lughat", "Urdu Lughat", " ", "Verb Conjugaton", "Active/Passive Participle"};
 
 
-    private final String[] thulathientitlesmajzoom = new String[]{"Hans Weir", "Lane Lexicon", "English lughat", "Urdu Lughat",
+    private final String[] thulathientitlesmajzoom = new String[]{"Lane Lexicon", "Hans Weir",   "English lughat", "Urdu Lughat",
             "Jussive", "Verb Conjugaton", "Active/Passive PCPL", "N. Instrument", "N.Place/Time"};
-    private final String[] ismmansubtitle = new String[]{"Hans Weir", "Lane Lexicon", "English lughat", "Urdu Lughat", ""};
-    private final String[] ismmarfutitle = new String[]{"Hans Weir", "Lane Lexicon", "English lughat", "Urdu Lughat", ""};
-    private final String[] ismgenetivetitle = new String[]{"Hans Weir", "Lane Lexicon", "English lughat", "Urdu Lughat", "Genitive"};
+    private final String[] ismmansubtitle = new String[]{"Lane Lexicon", "Hans Weir",   "English lughat", "Urdu Lughat", ""};
+    private final String[] ismmarfutitle = new String[]{"Lane Lexicon", "Hans Weir",  "English lughat", "Urdu Lughat", ""};
+    private final String[] ismgenetivetitle = new String[]{"Lane Lexicon", "Hans Weir",   "English lughat", "Urdu Lughat", "Genitive"};
     private final String[] thulathiartitles = new String[]{"قاموس هانز", "لين معجم", "English lughat", "Urdu Lughat", "صرف صغير", "تصريف الأفعال ", "لاسم الفاعل/الاسم المفعول", "الاسم الآلة", "الاسم الظرف"};
     private final String[] mazeedentitles = new String[]
-            {"Hans Weir", "Lane Lexicon", "English lughat", "Urdu Lughat", "Verb Conjugaton", "Active/Passive Participle"};
+            {"Lane Lexicon", "Hans Weir",  "English lughat", "Urdu Lughat", "Verb Conjugaton", "Active/Passive Participle"};
 
     private final String[] mazeedentitlesmajzoom = new String[]
-            {"Hans Weir", "Lane Lexicon", "English lughat", "Urdu Lughat", "Jussive", "Verb Conjugaton", "Active/Passive Participle"};
+            {"Lane Lexicon", "Hans Weir",   "English lughat", "Urdu Lughat", "Jussive", "Verb Conjugaton", "Active/Passive Participle"};
     private final String[] mazeedentitlesmansub = new String[]
-            {"Hans Weir", "Lane Lexicon", "English lughat", "Urdu Lughat", "Subjunctive", "Verb Conjugaton", "Active/Passive Participle"};
+            {"Lane Lexicon", "Hans Weir",  "English lughat", "Urdu Lughat", "Subjunctive", "Verb Conjugaton", "Active/Passive Participle"};
     private final String[] getMazeedentitles = new String[]
-            {"Hans Weir", "Lane Lexicon", "English lughat", "Urdu Lughat", "Verb Conjugaton", "Active/Passive Participle"};
+            {"Lane Lexicon", "Hans Weir",  "English lughat", "Urdu Lughat", "Verb Conjugaton", "Active/Passive Participle"};
 
     private final String[] mazeedartitles = new String[]{"قاموس هانز", "لين معجم", "English lughat", "Urdu Lughat", "صرف صغير", "تصريف الأفعال ", "لاسم الفاعل/الاسم المفعول"};
     private final String[] languages = new String[10];

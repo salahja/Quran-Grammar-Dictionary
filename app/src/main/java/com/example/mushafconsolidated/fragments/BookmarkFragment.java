@@ -2,6 +2,7 @@ package com.example.mushafconsolidated.fragments;
 
 
 import static com.example.Constant.AYAHNUMBER;
+import static com.example.Constant.AYAH_ID;
 import static com.example.Constant.CHAPTER;
 import static com.example.Constant.CHAPTERORPART;
 import static com.example.Constant.MUFRADATFRAGTAG;
@@ -160,7 +161,7 @@ public class BookmarkFragment extends Fragment implements AdapterView.OnItemClic
                 Intent readingintent = new Intent(getActivity(), QuranGrammarAct.class);
                 readingintent.putExtra(MUFRADATFRAGTAG, false);
                 readingintent.putExtra(CHAPTER, Integer.parseInt(bmark.getChapterno()));
-                readingintent.putExtra(AYAHNUMBER, Integer.parseInt(bmark.getVerseno()));
+                readingintent.putExtra(AYAH_ID, Integer.parseInt(bmark.getVerseno()));
                 readingintent.putExtra(CHAPTERORPART, true);
                 readingintent.putExtra(SURAH_ARABIC_NAME, bmark.getSurahname());
                 readingintent.putExtra(WBW, true);

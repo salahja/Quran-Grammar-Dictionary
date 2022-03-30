@@ -60,6 +60,7 @@ public class RootWordDisplayAdapter extends RecyclerView.Adapter<RootWordDisplay
     private ArrayList<ArrayList> ismfaelmafool;
     private boolean isnoun;
     ListView verblist;
+    Integer arabicFontsize;
     private ArrayAdapter<String> verwazanadapter;
     int rootcolor, weaknesscolor, wazancolor;
     private SpannableStringBuilder spannalbeShart;
@@ -121,6 +122,13 @@ public class RootWordDisplayAdapter extends RecyclerView.Adapter<RootWordDisplay
         String quranFont = sharedPreferences.getString("quranFont", "kitab.ttf");
         String theme = sharedPreferences.getString("theme", "dark");
 
+        String width = sharedPreferences.getString("width", "compactWidth");
+        if(width.equals("mediumWidth")||width.equals("expandedWidth")) {
+            arabicFontsize = sharedPreferences.getInt("pref_font_arabic_key",20);
+
+        }else{
+            arabicFontsize = 18;
+        }
         if (theme.equals("dark")) {
             //    holder.darkThemeBacground.setBackground(context.getResources().getDrawable(R.drawable.activatedbackgroundblack));
             holder.darkThemeBacground.setCardBackgroundColor(context.getResources().getColor(R.color.odd_item_bg_black));
@@ -144,6 +152,7 @@ public class RootWordDisplayAdapter extends RecyclerView.Adapter<RootWordDisplay
             if (!(worddetails.get("formnumber") == null)) {
                 holder.mazeedmeaning.setText(worddetails.get("formnumber"));
                 holder.mazeedmeaning.setVisibility(View.VISIBLE);
+                holder.mazeedmeaning.setTextSize(arabicFontsize);
             }
             verblist = new ListView(context);
             // ArrayAdapter<String> madapter = new ArrayAdapter<>(context, android.R.layout.simple_spinner_dropdown_item, wazannumberslist);
@@ -152,6 +161,7 @@ public class RootWordDisplayAdapter extends RecyclerView.Adapter<RootWordDisplay
                 holder.rdone.setText(wazannumberslist.get(position));
                 holder.rdone.setVisibility(View.VISIBLE);
                 holder.rdone.setChecked(true);
+                holder.rdone.setTextSize(arabicFontsize);
             }
             if (wazannumberslist.size() == 2) {
                 holder.rdone.setText(wazannumberslist.get(position));
@@ -159,6 +169,8 @@ public class RootWordDisplayAdapter extends RecyclerView.Adapter<RootWordDisplay
                 holder.rdone.setChecked(true);
                 holder.rdtwo.setText(wazannumberslist.get(position + 1));
                 holder.rdtwo.setVisibility(View.VISIBLE);
+                holder.rdtwo.setTextSize(arabicFontsize);
+                holder.rdone.setTextSize(arabicFontsize);
             }
             if (wazannumberslist.size() == 3) {
                 holder.rdone.setText(wazannumberslist.get(position));
@@ -168,6 +180,9 @@ public class RootWordDisplayAdapter extends RecyclerView.Adapter<RootWordDisplay
                 holder.rdtwo.setVisibility(View.VISIBLE);
                 holder.rdthree.setText(wazannumberslist.get(position + 2));
                 holder.rdthree.setVisibility(View.VISIBLE);
+                holder.rdthree.setTextSize(arabicFontsize);
+                holder.rdone.setTextSize(arabicFontsize);
+                holder.rdtwo.setTextSize(arabicFontsize);
             }
             if (wazannumberslist.size() == 4) {
                 holder.rdone.setText(wazannumberslist.get(position));
@@ -178,6 +193,12 @@ public class RootWordDisplayAdapter extends RecyclerView.Adapter<RootWordDisplay
 
                 holder.rdfour.setText(wazannumberslist.get(position + 3));
                 holder.rdfour.setVisibility(View.VISIBLE);
+                holder.rdfour.setTextSize(arabicFontsize);
+                holder.rdthree.setTextSize(arabicFontsize);
+                holder.rdone.setTextSize(arabicFontsize);
+                holder.rdtwo.setTextSize(arabicFontsize);
+                holder.rdfour.setTextSize(arabicFontsize);
+
             }
 
         }
@@ -230,6 +251,7 @@ public class RootWordDisplayAdapter extends RecyclerView.Adapter<RootWordDisplay
             if (spans.length > 0) {
                 holder.spannableverse.setText(spannable);
                 holder.spannableverse.setTypeface(mequran);
+                holder.spannableverse.setTextSize(arabicFontsize);
             }
         }
 
@@ -244,25 +266,28 @@ public class RootWordDisplayAdapter extends RecyclerView.Adapter<RootWordDisplay
             holder.mazeedmeaning.setText(vbdetail.get("formnumber"));
             //    holder.mazeedmeaning.setText(Html.fromHtml(vbdetail.get("mazeed")));
             holder.mazeedmeaning.setVisibility(View.VISIBLE);
+            holder.mazeedmeaning.setTextSize(arabicFontsize);
         }
 
         if (isnoun && !particples) {
             holder.verbconjugationbtn.setVisibility(GONE);
         }
 
-        int fontsize = SharedPref.SeekarabicFontsize();
+
 
         holder.translationView.setText(worddetails.get("translation"));
         // holder.wordView.setText(word.getWord());
         SpannableStringBuilder word = worddetails.get("word");
         //  String replace = word.toString().replace("\n", "<br/>").replace("\\n", "<br/>");
-
+        holder.translationView.setTextSize(arabicFontsize);
 
         //    holder.wordView.chipBackgroundColor = getColorStateList
         holder.wordView.setText(worddetails.get("word"));
         StringBuilder vb = new StringBuilder();
         StringBuilder pron = new StringBuilder();
         holder.lemma.setText(vbdetail.get("lemma"));
+        holder.wordView.setTextSize(arabicFontsize);
+        holder.lemma.setTextSize(arabicFontsize);
         worddetails.get("noun");
         worddetails.get("PRON");
         try {
@@ -282,12 +307,14 @@ public class RootWordDisplayAdapter extends RecyclerView.Adapter<RootWordDisplay
             holder.noundetails.setVisibility(View.VISIBLE);
 
             holder.noundetails.setText(worddetails.get("noun"));
+            holder.noundetails.setTextSize(arabicFontsize);
         }
         if (worddetails.get("PRON") != null) {
             holder.pronoundetails.setVisibility(View.VISIBLE);
             pron.append("Pronoun:");
             pron.append(worddetails.get("PRON"));
             holder.pronoundetails.setText(pron.toString());
+            holder.pronoundetails.setTextSize(arabicFontsize);
         }
 
         vb.append("V-");
@@ -309,25 +336,32 @@ public class RootWordDisplayAdapter extends RecyclerView.Adapter<RootWordDisplay
         if(vbdetail.get("verbmood")!=null){
             holder.moodrules.setVisibility(View.VISIBLE);
             holder.moodrules.setText(vbdetail.get("verbmood"));
+            holder.moodrules.setTextSize(arabicFontsize);
         }
 
         if (vb.length() > 2) {
             holder.verbdetails.setVisibility(View.VISIBLE);
             holder.verbdetails.setText(vb.toString());
+            holder.verbdetails.setTextSize(arabicFontsize);
         }
 
         holder.referenceView.setText(corpusexpand.get(0).getSurah() + ":" + corpusexpand.get(0).getAyah() + ":" + corpusexpand.get(0).getWordno());
         SpannableStringBuilder worddetail = this.worddetails.get("worddetails");
         holder.wdetailstv.setText(worddetail, TextView.BufferType.SPANNABLE);
+        holder.referenceView.setTextSize(arabicFontsize);
+        holder.wdetailstv.setTextSize(arabicFontsize);
+
         if (worddetails.get("lemma") != null || worddetails.get("lemma").length() != 0) {
             holder.lemma.setVisibility(View.VISIBLE);
             holder.lemma.setText(LEMMA + this.worddetails.get("lemma"));
+            holder.lemma.setTextSize(arabicFontsize);
         }
 
 
         if (worddetails.get("root") != null) {
 
             holder.rootView.setText(ROOTWORDSTRING + worddetails.get("root"));
+            holder.rootView.setTextSize(arabicFontsize);
         } else {
 
             //    holder.rootView.setText(ROOTWORDSTRING);
@@ -337,6 +371,8 @@ public class RootWordDisplayAdapter extends RecyclerView.Adapter<RootWordDisplay
         if (vbdetail.get("root") != null) {
 
             holder.rootView.setText(ROOTWORDSTRING + vbdetail.get("root"));
+            holder.rootView.setTextSize(arabicFontsize);
+
         } else {
 
             //      holder.rootView.setText(ROOTWORDSTRING);
@@ -351,7 +387,7 @@ public class RootWordDisplayAdapter extends RecyclerView.Adapter<RootWordDisplay
             //  final Typeface meqruans = Typeface.createFromAsset(DarkThemeApplication.getContext().getAssets(), SharedPref.arabicFontSelection());
 
 
-            Integer arabicFontsize = prefs.getInt("arabicFontSizeEntryArray", 20);
+          //  Integer arabicFontsize = prefs.getInt("arabicFontSizeEntryArray", 20);
 
             StringBuilder zarf = new StringBuilder();
             StringBuilder ismala = new StringBuilder();
@@ -406,6 +442,10 @@ public class RootWordDisplayAdapter extends RecyclerView.Adapter<RootWordDisplay
             holder.apfem.setText(array[1]);
             holder.ppmas.setText(array[2]);
             holder.ppfem.setText(array[3]);
+            holder.apmas.setTextSize(arabicFontsize);
+            holder.apfem.setTextSize(arabicFontsize);
+            holder.ppmas.setTextSize(arabicFontsize);
+            holder.ppfem.setTextSize(arabicFontsize);
 
 
         }
@@ -1060,6 +1100,7 @@ public class RootWordDisplayAdapter extends RecyclerView.Adapter<RootWordDisplay
                 //     verbOccurancebtn.setOnClickListener(this);
                 nounoccurancebtn.setOnClickListener(this);
                 mazeedmeaning.setOnClickListener(this);
+
 
             } else if (isnoun) {
                 //  verbOccurancebtn.setEnabled(false);

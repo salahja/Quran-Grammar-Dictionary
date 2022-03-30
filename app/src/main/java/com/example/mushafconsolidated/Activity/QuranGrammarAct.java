@@ -387,7 +387,7 @@ public class QuranGrammarAct extends BaseActivity implements PassdataInterface, 
         shart = shared.getBoolean("shart", true);
         kana = shared.getBoolean("kana", true);
 
-
+            getpreferences();
         Intent bundle = getIntent();
         if (!(bundle.getExtras() == null)) {
             Bundle bundles = getIntent().getExtras();

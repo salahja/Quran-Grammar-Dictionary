@@ -116,7 +116,8 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.MyViewHold
   }
 
   @Override
-  public int getItemCount() { return qurandictionaryFiltered.size();
+  public int getItemCount() {
+    return qurandictionaryFiltered.size();
   }
 
 

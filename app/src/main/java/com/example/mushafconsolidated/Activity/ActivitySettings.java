@@ -1,5 +1,12 @@
 package com.example.mushafconsolidated.Activity;
 
+import static com.example.Constant.AYAH_ID;
+import static com.example.Constant.CHAPTER;
+import static com.example.Constant.CHAPTERORPART;
+import static com.example.Constant.MUFRADATFRAGTAG;
+import static com.example.Constant.SURAH_ARABIC_NAME;
+import static com.example.Constant.WBW;
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -7,6 +14,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -44,7 +52,7 @@ public class ActivitySettings extends BaseActivity implements
 
         initView();
 
-    //    backa=findViewById(R.id.back);
+        //    backa=findViewById(R.id.back);
         if (savedInstanceState == null) {
             getSupportFragmentManager()
                     .beginTransaction()
@@ -60,15 +68,10 @@ public class ActivitySettings extends BaseActivity implements
         }
 
 
-
-
-
-
-
     }
 
     private void initView() {
-      //  setSupportActionBar(materialToolbar);
+        //  setSupportActionBar(materialToolbar);
 
 
     }
@@ -80,22 +83,37 @@ public class ActivitySettings extends BaseActivity implements
         // Save current activity title so we can set it again after a configuration change
         outState.putCharSequence(TITLE_TAG, getTitle());
     }
+
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-       // Intent intent = getIntent();
-     //   startActivity(intent);
-     //   finish();
-        Intent intents = new Intent(this, QuranGrammarAct.class);
-      //  Intent intents = new Intent(this, ReadingSurahPartActivity.class);
-        finish();
-        startActivity(intents);
+        // Intent intent = getIntent();
+        //   startActivity(intent);
+        //   finish();
+        //  Intent intents = new Intent(this, QuranGrammarAct.class);
+        //  Intent intents = new Intent(this, ReadingSurahPartActivity.class);
+        Intent readingintent = getIntent();
 
+
+        finish();
+        startActivity(readingintent);
 
 
     }
 
+    @NonNull
+    public Intent getIntent() {
+        SharedPreferences pref = getApplicationContext().getSharedPreferences("lastread", MODE_PRIVATE);
+        String surahname = pref.getString(SURAH_ARABIC_NAME, "");
 
+
+        Intent readingintent = new Intent(this, QuranGrammarAct.class);
+        readingintent.putExtra(MUFRADATFRAGTAG, false);
+        readingintent.putExtra(CHAPTER, pref.getInt(CHAPTER, 1));
+        readingintent.putExtra(AYAH_ID, pref.getInt(AYAH_ID, 1));
+        readingintent.putExtra(SURAH_ARABIC_NAME, surahname);
+        return readingintent;
+    }
 
 
     @Override
@@ -108,31 +126,30 @@ public class ActivitySettings extends BaseActivity implements
 
     @Override
     public boolean onPreferenceStartFragment(PreferenceFragmentCompat caller, Preference pref) {
-        if(pref.getKey().equals("quranFont")) {
+        if (pref.getKey().equals("quranFont")) {
 
             // Instantiate the new Fragment
 
-              FontQuranListDialogFragment item=new FontQuranListDialogFragment();
-        //    item.setdata(rootWordMeanings,wbwRootwords,grammarRootsCombined);
-        FragmentManager fragmentManager =  ActivitySettings.this.getSupportFragmentManager();
-        String sample="بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ";
+            FontQuranListDialogFragment item = new FontQuranListDialogFragment();
+            //    item.setdata(rootWordMeanings,wbwRootwords,grammarRootsCombined);
+            FragmentManager fragmentManager = ActivitySettings.this.getSupportFragmentManager();
+            String sample = "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ";
 
-      String data[] = {sample,sample,sample };
-        FragmentTransaction transactions = fragmentManager.beginTransaction().setCustomAnimations(R.anim.abc_slide_in_top, android.R.anim.fade_out);
-        transactions.show(item);
-        FontQuranListDialogFragment.newInstance(data).show(ActivitySettings.this.getSupportFragmentManager(), WordAnalysisBottomSheet.TAG);
-        setTitle(pref.getTitle());
-
-
+            String data[] = {sample, sample, sample};
+            FragmentTransaction transactions = fragmentManager.beginTransaction().setCustomAnimations(R.anim.abc_slide_in_top, android.R.anim.fade_out);
+            transactions.show(item);
+            FontQuranListDialogFragment.newInstance(data).show(ActivitySettings.this.getSupportFragmentManager(), WordAnalysisBottomSheet.TAG);
+            setTitle(pref.getTitle());
 
 
-        }else if(pref.getKey().equals("Exit")) {
-            Intent intents = new Intent(this, QuranGrammarAct.class);
-         //   Intent intent = getIntent();
+        } else if (pref.getKey().equals("Exit")) {
+            Intent readingintent = getIntent();
+
+            //   Intent intent = getIntent();
             //   Intent intents = new Intent(this, ReadingSurahPartActivity.class);
-    finish();
-    startActivity(intents);
-}
+            finish();
+            startActivity(readingintent);
+        }
 
         return true;
     }
@@ -143,17 +160,15 @@ public class ActivitySettings extends BaseActivity implements
         public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
             setPreferencesFromResource(R.xml.preferences, rootKey);
 
-            Preference button = (Preference)getPreferenceManager().findPreference("exitlink");
+            Preference button = (Preference) getPreferenceManager().findPreference("exitlink");
             if (button != null) {
                 button.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-
-
 
 
                     @Override
                     public boolean onPreferenceClick(Preference arg0) {
                         Intent intents = new Intent(getActivity(), QuranGrammarAct.class);
-                     //  finish();
+                        //  finish();
                         startActivity(intents);
 
                         return true;
@@ -171,7 +186,7 @@ public class ActivitySettings extends BaseActivity implements
                                 newValueInt = (Integer) newValue;
                             } catch (NumberFormatException nfe) {
                                 Log.e(TAG,
-                                        "SeekBarPreference is a Integer, but it caused a NumberFormatException" );
+                                        "SeekBarPreference is a Integer, but it caused a NumberFormatException");
                                 return false;
                             }
 
@@ -187,7 +202,7 @@ public class ActivitySettings extends BaseActivity implements
                             return true;
                         } else {
                             String objType = newValue.getClass().getName();
-                            Log.e(TAG, "SeekBarPreference is not a Integer, it is " +objType);
+                            Log.e(TAG, "SeekBarPreference is not a Integer, it is " + objType);
                             return false;
                         }
                     }
@@ -240,39 +255,38 @@ public class ActivitySettings extends BaseActivity implements
             ListPreference themePreference = findPreference("theme");
             if (themePreference != null) {
                 themePreference.setOnPreferenceChangeListener(
-                      new Preference.OnPreferenceChangeListener() {
-                          @Override
-                          public boolean onPreferenceChange(Preference preference, Object newValue) {
-                              String themeOption = (String) newValue;
+                        new Preference.OnPreferenceChangeListener() {
+                            @Override
+                            public boolean onPreferenceChange(Preference preference, Object newValue) {
+                                String themeOption = (String) newValue;
 
 
-                            //  ThemeHelper.applyTheme(themeOption);
-                              return true;
-                          }
+                                //  ThemeHelper.applyTheme(themeOption);
+                                return true;
+                            }
 
 
-                      });
+                        });
             }
-
 
 
         }
     }
 
-    public  class SelectQuranFronts extends PreferenceFragmentCompat {
+    public class SelectQuranFronts extends PreferenceFragmentCompat {
 
         @Override
         public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
             setPreferencesFromResource(R.xml.website_preferences, rootKey);
-            FontQuranListDialogFragment item=new FontQuranListDialogFragment();
+            FontQuranListDialogFragment item = new FontQuranListDialogFragment();
             //    item.setdata(rootWordMeanings,wbwRootwords,grammarRootsCombined);
-            FragmentManager fragmentManager =  ActivitySettings.this.getSupportFragmentManager();
+            FragmentManager fragmentManager = ActivitySettings.this.getSupportFragmentManager();
 
 
-           String data[] = {String.valueOf("surah_id") };
+            String data[] = {String.valueOf("surah_id")};
             FragmentTransaction transactions = fragmentManager.beginTransaction().setCustomAnimations(R.anim.abc_slide_in_top, android.R.anim.fade_out);
             transactions.show(item);
-       //     WordAnalysisBottomSheet.newInstance(data).show(ActivitySettings.this.getSupportFragmentManager(), WordAnalysisBottomSheet.TAG);
+            //     WordAnalysisBottomSheet.newInstance(data).show(ActivitySettings.this.getSupportFragmentManager(), WordAnalysisBottomSheet.TAG);
         }
     }
 
