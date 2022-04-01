@@ -12,6 +12,7 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Environment;
 import android.preference.PreferenceManager;
+import android.text.style.ForegroundColorSpan;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
@@ -21,10 +22,17 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.window.layout.WindowMetrics;
 import androidx.window.layout.WindowMetricsCalculator;
 
+import com.example.mushafconsolidated.FontQuranListDialogFragment;
+import com.example.mushafconsolidated.ParticleColorScheme;
 import com.example.mushafconsolidated.R;
+import com.example.mushafconsolidated.fragments.WordAnalysisBottomSheet;
+import com.example.utility.CorpusConstants;
+import com.example.utility.CorpusUtilityorig;
 
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -35,6 +43,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
+import java.util.ArrayList;
+import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.zip.ZipEntry;
@@ -193,7 +203,57 @@ public class MainActivity extends BaseActivity {
             Intent homeactivity = new Intent(MainActivity.this, QuranGrammarAct.class);
             //   Intent homeactivity = new Intent(MainActivity.this, ReadingSurahPartActivity.class);
             startActivity(homeactivity);
-            MainActivity.this.finish();
+             MainActivity.this.finish();
+
+/*
+
+            Map<String, ForegroundColorSpan> spanhash;
+            spanhash = CorpusUtilityorig.getStringForegroundColorSpanMap();
+            ArrayList<String> particle=new ArrayList();
+            particle.add("DET  determiner()");
+            particle.add("EMPH  Emphatic lām prefix(لام التوكيد) ");
+            particle.add("IMPV  Imperative lāmprefix(لام الامر)");
+            particle.add("PRP  Purpose lāmprefix(لام التعليل)");
+            particle.add("CONJ  Coordinating conjunction(حرف عطف)");
+            particle.add("SUB  	Subordinating conjunction(حرف مصدري)");
+            particle.add("ACC  	Accusative particle(حرف نصب)");
+            particle.add("AMD  	Amendment particle(حرف استدراك)	");
+            particle.add("ANS  	Answer particle	(حرف جواب)");
+            particle.add("AVR  	Aversion particle	(حرف ردع)");
+            particle.add("CAUS  Particle of cause	(حرف سببية)");
+            particle.add("CERT  Particle of certainty	(حرف تحقيق)");
+            particle.add("CIRC  Circumstantial particle	(حرف حال)");
+            particle.add("COM  	Comitative particle	(واو المعية)");
+            particle.add("COND  Conditional particle(حرف شرط)");
+            particle.add("EQ  	Equalization particle(حرف تسوية)");
+            particle.add("EXH  	Exhortation particle(حرف تحضيض)");
+            particle.add("EXL  	Explanation particle(حرف تفصيل)");
+            particle.add("EXP  	Exceptive particle	(أداة استثناء)");
+            particle.add("FUT  	Future particle	(حرف استقبال)");
+            particle.add("INC  	Inceptive particle	(حرف ابتداء)");
+            particle.add("INT  	Particle of interpretation(حرف تفسير)");
+            particle.add("INTG  Interogative particle	(حرف استفهام)");
+            particle.add("NEG  	Negative particle(حرف نفي)");
+            particle.add("PREV  Preventive particle	(حرف كاف)");
+            particle.add("PRO  	Prohibition particle(حرف نهي)");
+            particle.add("REM  	Resumption particle	(حرف استئنافية)");
+            particle.add("RES  	Restriction particle(أداة حصر)");
+            particle.add("RET  	Retraction particle	(حرف اضراب)");
+            particle.add("RSLT  Result particle(حرف واقع في جواب الشرط)");
+            particle.add("SUP  	Supplemental particle	(حرف زائد)");
+            particle.add("SUR  	Surprise particle	(حرف فجاءة)");
+            particle.add("VOC  	Vocative particle	(حرف نداء)");
+            particle.add("INL  	Quranic initials(	(حروف مقطعة	");
+
+            for (String part : particle) {
+                String[] split = part.split("\\s");
+                ForegroundColorSpan span = spanhash.get(split[0]);
+                System.out.println(span);
+
+            }
+ */
+
+
         }
     }
 

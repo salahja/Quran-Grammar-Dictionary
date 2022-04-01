@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "2301b28f1b997c1e577bbf7712712bb5",
+    "identityHash": "bd0b266a244d2d892afb0c69e4322849",
     "entities": [
       {
         "tableName": "rules",
@@ -1198,7 +1198,7 @@
       },
       {
         "tableName": "CorpusExpand",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`surah` INTEGER NOT NULL, `ayah` INTEGER NOT NULL, `wordno` INTEGER NOT NULL, `wordcount` INTEGER NOT NULL, `araone` TEXT, `aratwo` TEXT, `arathree` TEXT, `arafour` TEXT, `arafive` TEXT, `tagone` TEXT, `tagtwo` TEXT, `tagthree` TEXT, `tagfour` TEXT, `tagfive` TEXT, `rootaraone` TEXT, `rootaratwo` TEXT, `rootarathree` TEXT, `rootarafour` TEXT, `rootarafive` TEXT, `lemaraone` TEXT, `lemaratwo` TEXT, `lemrathree` TEXT, `lemarafour` TEXT, `lemarafive` TEXT, `lemma_b_one` TEXT, `form_one` TEXT, `form_two` TEXT, `form_three` TEXT, `form_four` TEXT, `form_five` TEXT, `detailsone` TEXT, `detailstwo` TEXT, `detailsthree` TEXT, `detailsfour` TEXT, `detailsfive` TEXT, `lemma_b_two` TEXT, `lemma_b_three` TEXT, `lemma_b_four` TEXT, `lemma_b_five` TEXT, `id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `juz` INTEGER NOT NULL)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`surah` INTEGER NOT NULL, `ayah` INTEGER NOT NULL, `wordno` INTEGER NOT NULL, `wordcount` INTEGER NOT NULL, `araone` TEXT, `aratwo` TEXT, `arathree` TEXT, `arafour` TEXT, `arafive` TEXT, `tagone` TEXT, `tagtwo` TEXT, `tagthree` TEXT, `tagfour` TEXT, `tagfive` TEXT, `rootaraone` TEXT, `rootaratwo` TEXT, `rootarathree` TEXT, `rootarafour` TEXT, `rootarafive` TEXT, `lemaraone` TEXT, `lemaratwo` TEXT, `lemarathree` TEXT, `lemarafour` TEXT, `lemarafive` TEXT, `lemma_b_one` TEXT, `form_one` TEXT, `form_two` TEXT, `form_three` TEXT, `form_four` TEXT, `form_five` TEXT, `detailsone` TEXT, `detailstwo` TEXT, `detailsthree` TEXT, `detailsfour` TEXT, `detailsfive` TEXT, `lemma_b_two` TEXT, `lemma_b_three` TEXT, `lemma_b_four` TEXT, `lemma_b_five` TEXT, `id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `juz` INTEGER NOT NULL)",
         "fields": [
           {
             "fieldPath": "surah",
@@ -1327,8 +1327,8 @@
             "notNull": false
           },
           {
-            "fieldPath": "lemrathree",
-            "columnName": "lemrathree",
+            "fieldPath": "lemarathree",
+            "columnName": "lemarathree",
             "affinity": "TEXT",
             "notNull": false
           },
@@ -1619,7 +1619,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '2301b28f1b997c1e577bbf7712712bb5')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'bd0b266a244d2d892afb0c69e4322849')"
     ]
   }
 }

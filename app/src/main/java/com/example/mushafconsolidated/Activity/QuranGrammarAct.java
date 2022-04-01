@@ -72,6 +72,7 @@ import com.example.mushafconsolidated.Entities.BookMarks;
 import com.example.mushafconsolidated.Entities.ChaptersAnaEntity;
 import com.example.mushafconsolidated.Entities.CorpusExpandWbwPOJO;
 import com.example.mushafconsolidated.Entities.QuranEntity;
+import com.example.mushafconsolidated.ParticleColorScheme;
 import com.example.mushafconsolidated.R;
 
 import com.example.mushafconsolidated.Utils;
@@ -193,8 +194,6 @@ public class QuranGrammarAct extends BaseActivity implements PassdataInterface, 
     public void setVerse_no(int verse_no) {
         this.verse_no = verse_no;
     }
-
-
 
 
     private int isMakkiMadani;
@@ -325,9 +324,10 @@ public class QuranGrammarAct extends BaseActivity implements PassdataInterface, 
             public void onItemSelected(int i) {
                 if (i == R.id.searchnav) {
                     chipNavigationBar.setVisibility(View.GONE);
-                    Intent searchintent = new Intent(QuranGrammarAct.this,SearchActivity. class);
+                    Intent searchintent = new Intent(QuranGrammarAct.this, SearchActivity.class);
                     startActivity(searchintent);
-                }  if (i == R.id.settingnav) {
+                }
+                if (i == R.id.settingnav) {
                     chipNavigationBar.setVisibility(View.GONE);
                     Intent intents = new Intent(QuranGrammarAct.this, ActivitySettings.class);
                     startActivity(intents);
@@ -361,12 +361,7 @@ public class QuranGrammarAct extends BaseActivity implements PassdataInterface, 
                     finish();
                     startActivity(conjugatorintent);
 
-                }
-
-
-
-
-                else if (i == R.id.bookmarksnav) {
+                } else if (i == R.id.bookmarksnav) {
                     chipNavigationBar.setVisibility(View.GONE);
                     BookmarkFragment bookmarkFragment = new BookmarkFragment();
 
@@ -387,7 +382,7 @@ public class QuranGrammarAct extends BaseActivity implements PassdataInterface, 
         shart = shared.getBoolean("shart", true);
         kana = shared.getBoolean("kana", true);
 
-            getpreferences();
+        getpreferences();
         Intent bundle = getIntent();
         if (!(bundle.getExtras() == null)) {
             Bundle bundles = getIntent().getExtras();
@@ -399,7 +394,7 @@ public class QuranGrammarAct extends BaseActivity implements PassdataInterface, 
             } else {
                 int chapter = bundle.getIntExtra(CHAPTER, 1);
 
-                Utils util=new Utils(this);
+                Utils util = new Utils(this);
                 ArrayList<ChaptersAnaEntity> list = util.getAllAnaChapters();
                 //    final boolean chapterorpartb = bundle.getBooleanExtra(CHAPTERORPART, true);
                 initView();
@@ -408,12 +403,12 @@ public class QuranGrammarAct extends BaseActivity implements PassdataInterface, 
                 setChapterno(chapter);
                 //  setChapterorpart(chapterorpartb);
 
-                setSurahArabicName(list.get(chapter-1).getAbjadname());
+                setSurahArabicName(list.get(chapter - 1).getAbjadname());
                 //   setChapterno( bundle.etIntExtra(SURAH_ID,2));
                 setVerse_no(bundle.getIntExtra(AYAH_ID, 1));
-                setVersescount(list.get(chapter-1).getVersescount());
-                setIsMakkiMadani(list.get(chapter-1).getIsmakki());
-                setRukucount(list.get(chapter-1).getRukucount());
+                setVersescount(list.get(chapter - 1).getVersescount());
+                setIsMakkiMadani(list.get(chapter - 1).getIsmakki());
+                setRukucount(list.get(chapter - 1).getRukucount());
 
                 //   setIsMakkiMadani(bundle.getIntExtra(MAKKI_MADANI, 1));
                 // setSuraharabicname(bundle.getStringExtra(SURAH_ARABIC_NAME));
@@ -459,9 +454,8 @@ public class QuranGrammarAct extends BaseActivity implements PassdataInterface, 
         SharedPreferences pref = getApplicationContext().getSharedPreferences("lastread", MODE_PRIVATE);
         chapterno = pref.getInt(CHAPTER, 1);
         verse_no = pref.getInt(AYAH_ID, 1);
-        surahname=pref.getString(SURAH_ARABIC_NAME,"");
+        surahname = pref.getString(SURAH_ARABIC_NAME, "");
         setSurahArabicName(surahname);
-
 
 
     }
@@ -768,7 +762,6 @@ public class QuranGrammarAct extends BaseActivity implements PassdataInterface, 
                     String ur = wbw.get(verseglobal).getUr();
 
 
-
                     word.setSurahId(wbw.get(verseglobal).getSurah());
                     word.setVerseId(wbw.get(verseglobal).getAyah());
                     word.setWordno(wbw.get(verseglobal).getWordno());
@@ -842,7 +835,7 @@ public class QuranGrammarAct extends BaseActivity implements PassdataInterface, 
         }
         if (mausoof) {
             corpus.SetMousufSifaDB(corpusayahWordArrayList, chapterno);
-           corpus.NewMAOUSOOFSIFA(corpusayahWordArrayList);
+            corpus.NewMAOUSOOFSIFA(corpusayahWordArrayList);
 
         }
 
@@ -877,9 +870,8 @@ public class QuranGrammarAct extends BaseActivity implements PassdataInterface, 
             header.add(getSurahArabicName());
 
 
-
             HightLightKeyWord();
-            flowAyahWordAdapter = new FlowAyahWordAdapter(header,  allofQuran, corpusayahWordArrayList, QuranGrammarAct.this, surah_id, surahArabicName, isMakkiMadani, listener);
+            flowAyahWordAdapter = new FlowAyahWordAdapter(header, allofQuran, corpusayahWordArrayList, QuranGrammarAct.this, surah_id, surahArabicName, isMakkiMadani, listener);
 
 
             flowAyahWordAdapter.addContext(QuranGrammarAct.this);
@@ -934,9 +926,9 @@ public class QuranGrammarAct extends BaseActivity implements PassdataInterface, 
 
 
             }
-        //    colorerab.get(0).setErabspnabble(str);
+            //    colorerab.get(0).setErabspnabble(str);
 
-        pojo.setErabspnabble(str);
+            pojo.setErabspnabble(str);
 
 
         }
@@ -966,20 +958,15 @@ public class QuranGrammarAct extends BaseActivity implements PassdataInterface, 
 
     @Override
     public void onItemClick(View view, int position) {
-
+        Object tag = view.getTag();
         View overflow = view.findViewById(R.id.ivActionOverflow);
         View jumptosurah = view.findViewById(R.id.jumpto);
         View bookmark = view.findViewById(R.id.bookmarkView);
+        View helpviewa = view.findViewById(R.id.ivHelp);
 
 
         View qurantext = view.findViewById(R.id.quran_textView);
-          if (overflow != null) {
-    popupMenu(overflow);
-     //  popupWindow(overflow);
-        }  else
-        if (overflow != null) {
-            //   popupMenu(overflow);
-            //  showPopup(overflow);
+        if (tag.equals("overflow_img")) {
             boolean colortag = shared.getBoolean("colortag", true);
             boolean issentencesanalysis = shared.getBoolean("grammarsentence", true);
 
@@ -989,6 +976,7 @@ public class QuranGrammarAct extends BaseActivity implements PassdataInterface, 
             View fopen = view.findViewById(R.id.fileopen);
             View bookmarkview = view.findViewById(R.id.bookmark);
             SwitchCompat colorized = view.findViewById(R.id.colorized);
+            View helpview = view.findViewById(R.id.help);
             //  SwitchCompat sentencesana = view.findViewById(R.id.sentences);
             //  View gotobookmarsk = view.findViewById(R.id.gotobookmarks);
 
@@ -1020,6 +1008,21 @@ public class QuranGrammarAct extends BaseActivity implements PassdataInterface, 
             dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation; //style id
 
             dialog.show();
+            helpview.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ParticleColorScheme item = new ParticleColorScheme();
+                    //    item.setdata(rootWordMeanings,wbwRootwords,grammarRootsCombined);
+                    FragmentManager fragmentManager = QuranGrammarAct.this.getSupportFragmentManager();
+                    String sample = "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ";
+
+                    String data[] = {sample, sample, sample};
+                    FragmentTransaction transactions = fragmentManager.beginTransaction().setCustomAnimations(R.anim.abc_slide_in_top, android.R.anim.fade_out);
+                    //   transactions.show(item);
+                    ParticleColorScheme.newInstance(data).show(QuranGrammarAct.this.getSupportFragmentManager(), WordAnalysisBottomSheet.TAG);
+
+                }
+            });
 
             fopen.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -1070,42 +1073,29 @@ public class QuranGrammarAct extends BaseActivity implements PassdataInterface, 
                     overridePendingTransition(android.R.anim.slide_out_right, android.R.anim.slide_in_left);
                 }
             });
-     /*
-            sentencesana.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    //colortag
 
-                    if (issentencesanalysis) {
-                        SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(newreadactivity.this).edit();
-                        //     SharedPreferences.Editor editor = getActivity().getSharedPreferences("properties", 0).edit();
-                        editor.putBoolean("grammarsentence", false);
+            System.out.println("check");
+        } else if (tag.equals("help_img")) {
+            System.out.println("check");
+            ParticleColorScheme item = new ParticleColorScheme();
+            //    item.setdata(rootWordMeanings,wbwRootwords,grammarRootsCombined);
+            FragmentManager fragmentManager = QuranGrammarAct.this.getSupportFragmentManager();
+            String sample = "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ";
 
-                        editor.apply();
-                    } else {
-                        SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(newreadactivity.this).edit();
-                        //     SharedPreferences.Editor editor = getActivity().getSharedPreferences("properties", 0).edit();
-                        editor.putBoolean("grammarsentence", true);
+            String data[] = {sample, sample, sample};
+            FragmentTransaction transactions = fragmentManager.beginTransaction().setCustomAnimations(R.anim.abc_slide_in_top, android.R.anim.fade_out);
+            //   transactions.show(item);
+            ParticleColorScheme.newInstance(data).show(QuranGrammarAct.this.getSupportFragmentManager(), WordAnalysisBottomSheet.TAG);
+        }
 
-                        editor.apply();
-
-                    }
-
-                    dialog.dismiss();
-                }
-            });
-      */
-
-        } else if (jumptosurah != null) {
-            initDialogComponents();
-
-        } else if (bookmark != null) {
-            bookMarkSelected();
-
-        } else if (qurantext != null) {
+        //   if (overflow != null) {
+        //  popupMenu(overflow);
+        //  popupWindow(overflow);
+        //    }  else
+       else if( tag.equals("qurantext")){
             QuranEntity word = null;
             if (position != 0) {
-                word = allofQuran.get(position-1);
+                word = allofQuran.get(position - 1);
             } else {
                 word = allofQuran.get(position);
 
@@ -1149,7 +1139,7 @@ public class QuranGrammarAct extends BaseActivity implements PassdataInterface, 
     private void popupWindow(View overflow) {
         LayoutInflater layoutInflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         final View popupView = layoutInflater.inflate(R.layout.popup_filter_layout, null);
-      SwitchCompat colorSwitch = popupView.findViewById(R.id.mySwitch);
+        SwitchCompat colorSwitch = popupView.findViewById(R.id.mySwitch);
         final View jumpto = popupView.findViewById(R.id.jumpto);
         View bookmarview = popupView.findViewById(R.id.bookmark);
         boolean colortag = shared.getBoolean("colortag", true);
@@ -1160,7 +1150,7 @@ public class QuranGrammarAct extends BaseActivity implements PassdataInterface, 
             @Override
             public void onClick(View v) {
 
-             //   Toast.makeText(QuranGrammarAct.this, "You Clicked " , Toast.LENGTH_SHORT).show();
+                //   Toast.makeText(QuranGrammarAct.this, "You Clicked " , Toast.LENGTH_SHORT).show();
                 boolean colortag = shared.getBoolean("colortag", true);
                 boolean issentencesanalysis = shared.getBoolean("grammarsentence", true);
                 if (colortag) {
@@ -1198,18 +1188,17 @@ public class QuranGrammarAct extends BaseActivity implements PassdataInterface, 
         popupWindow.showAsDropDown(overflow);
 
     }
+
     private void popupMenu(View overflow) {
 
         PopupMenu popupMenu = new PopupMenu(this, overflow);
         MenuInflater inflater = popupMenu.getMenuInflater();
         inflater.inflate(R.menu.popup_menu, popupMenu.getMenu());
-         SwitchCompat switcher;
+        SwitchCompat switcher;
         boolean isChecked = false;
         SwitchCompat colorSwitch = overflow.findViewById(R.id.colorized);
-     
+
         Object menuHelper;
-
-
 
 
         Class[] argTypes;
@@ -1225,7 +1214,7 @@ public class QuranGrammarAct extends BaseActivity implements PassdataInterface, 
                     popupMenuAction(menuItem.getItemId());
 
 
-              //      Toast.makeText(QuranGrammarAct.this, "You Clicked " + menuItem.getTitle(), Toast.LENGTH_SHORT).show();
+                    //      Toast.makeText(QuranGrammarAct.this, "You Clicked " + menuItem.getTitle(), Toast.LENGTH_SHORT).show();
                     return true;
                 }
 
@@ -1321,18 +1310,7 @@ public class QuranGrammarAct extends BaseActivity implements PassdataInterface, 
         verlayViewRecyclerView.setLayoutManager(linearLayoutManager);
 
 
-
-
-
-
-
-
         // bookmarkchip.setOnClickListener(v -> CheckStringLENGTHS());
-
-
-
-
-
 
 
         sheetBehavior = BottomSheetBehavior.from(layoutBottomSheet);

@@ -4,11 +4,15 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../../layout/custom_preview.xml" value="0.13854166666666667" />
+        <entry key="app/src/main/res/drawable-anydpi/ic_help.xml" value="1.25" />
         <entry key="app/src/main/res/drawable/activatedbackgroundbrown.xml" value="1.2821428571428573" />
         <entry key="app/src/main/res/drawable/apperance.xml" value="1.2821428571428573" />
         <entry key="app/src/main/res/drawable/ic_baseline_bookmark_add_24.xml" value="1.175" />
         <entry key="app/src/main/res/drawable/ic_baseline_collections_bookmark_36.xml" value="1.175" />
         <entry key="app/src/main/res/drawable/ic_baseline_history_pink_24.xml" value="1.2285714285714286" />
+        <entry key="app/src/main/res/drawable/ic_baseline_menu_book_24.xml" value="0.825" />
+        <entry key="app/src/main/res/drawable/ic_baseline_menu_book_64.xml" value="0.2" />
+        <entry key="app/src/main/res/drawable/ic_more_horiz_black_24dp.xml" value="1.25" />
         <entry key="app/src/main/res/drawable/search_box_bg.xml" value="1.2607142857142857" />
         <entry key="app/src/main/res/layout-sw600dp/fragment_grammarrule_detail.xml" value="0.1" />
         <entry key="app/src/main/res/layout-sw600dp/fragment_grammarrule_list.xml" value="0.159375" />
@@ -21,6 +25,8 @@
         <entry key="app/src/main/res/layout/activity_verb_conjugation.xml" value="0.939209726443769" />
         <entry key="app/src/main/res/layout/backupjumb_to_popup.xml" value="0.75" />
         <entry key="app/src/main/res/layout/bottom.xml" value="0.14" />
+        <entry key="app/src/main/res/layout/coloradapter.xml" value="1.457142857142857" />
+        <entry key="app/src/main/res/layout/colorschemelayout.xml" value="0.7816901408450704" />
         <entry key="app/src/main/res/layout/conjugator_bottom_menu.xml" value="0.1" />
         <entry key="app/src/main/res/layout/conjugator_key_activity_autocomplete.xml" value="0.1" />
         <entry key="app/src/main/res/layout/dictionary_layout.xml" value="1.1178571428571429" />
@@ -43,12 +49,14 @@
         <entry key="app/src/main/res/layout/list_group.xml" value="1.082142857142857" />
         <entry key="app/src/main/res/layout/list_surah_juz.xml" value="0.33" />
         <entry key="app/src/main/res/layout/mujarrad_bottom_fragment.xml" value="0.43214285714285716" />
-        <entry key="app/src/main/res/layout/new_fragment_reading.xml" value="0.43617021276595747" />
+        <entry key="app/src/main/res/layout/new_fragment_reading.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/new_shart_flow_row_ayah_word.xml" value="1.1392857142857142" />
         <entry key="app/src/main/res/layout/newsarfkabeercolumn.xml" value="0.43214285714285716" />
         <entry key="app/src/main/res/layout/orignalsurarowlinear.xml" value="0.1" />
         <entry key="app/src/main/res/layout/popup_filter_layout.xml" value="1.1392857142857142" />
         <entry key="app/src/main/res/layout/popup_layout.xml" value="0.25" />
         <entry key="app/src/main/res/layout/qaris_view_word_details.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/quran_imageview_row.xml" value="1.1392857142857142" />
         <entry key="app/src/main/res/layout/quran_list_dialog.xml" value="1.1714285714285715" />
         <entry key="app/src/main/res/layout/quran_tranlation_rows.xml" value="0.3326867119301649" />
         <entry key="app/src/main/res/layout/quranfonts_bottomsheet.xml" value="1.1714285714285715" />
@@ -95,7 +103,7 @@
   <component name="VisualizationToolProject">
     <option name="state">
       <ProjectState>
-        <option name="scale" value="0.5" />
+        <option name="scale" value="0.18" />
       </ProjectState>
     </option>
   </component>

@@ -201,7 +201,7 @@ public class Utils {
                 "       CorpusExpand.rootarafive,\n" +
                 "       CorpusExpand.lemaraone,\n" +
                 "       CorpusExpand.lemaratwo,\n" +
-                "       CorpusExpand.lemrathree,\n" +
+                "       CorpusExpand.lemarathree,\n" +
                 "       CorpusExpand.lemarafour,\n" +
                 "       CorpusExpand.lemarafive,\n" +
 
@@ -279,7 +279,7 @@ public class Utils {
                 "       CorpusExpand.rootarafive,\n" +
                 "       CorpusExpand.lemaraone,\n" +
                 "       CorpusExpand.lemaratwo,\n" +
-                "       CorpusExpand.lemrathree,\n" +
+                "       CorpusExpand.lemarathree,\n" +
                 "       CorpusExpand.lemarafour,\n" +
                 "       CorpusExpand.lemarafive,\n" +
 
@@ -485,7 +485,7 @@ public class Utils {
               "        corpusexpand.tagthree = \"V\" OR \n" +
               "        Corpusexpand.tagfour = \"V\" OR \n" +
               "        corpusexpand.tagfive = \"V\") AND \n" +
-              "       corpusexpand.lemaraone||corpusexpand.lemaratwo||corpusexpand.lemrathree||corpusexpand.lemarafour||corpusexpand.lemarafive=  \""
+              "       corpusexpand.lemaraone||corpusexpand.lemaratwo||corpusexpand.lemarathree||corpusexpand.lemarafour||corpusexpand.lemarafive=  \""
               + tid + "\""
               + "    AND   corpusexpand.surah = wbw.surah AND  corpusexpand.surah = verbcorpus.chapterno AND \n" +
               "       corpusexpand.ayah = wbw.ayah AND      corpusexpand.ayah = verbcorpus.verseno AND \n" +
@@ -540,7 +540,7 @@ public class Utils {
               "      FROM corpusexpand,nouncorpus,\n" +
               "       wbw,qurans\n" +
 
-              "    where  corpusexpand.lemaraone||corpusexpand.lemaratwo||corpusexpand.lemrathree||corpusexpand.lemarafour||corpusexpand.lemarafive=  \""
+              "    where  corpusexpand.lemaraone||corpusexpand.lemaratwo||corpusexpand.lemarathree||corpusexpand.lemarafour||corpusexpand.lemarafive=  \""
               + tid + "\""
               + "    AND   corpusexpand.surah = wbw.surah AND  corpusexpand.surah = nouncorpus.surah AND \n" +
               "       corpusexpand.ayah = wbw.ayah AND      corpusexpand.ayah = nouncorpus.ayah AND \n" +

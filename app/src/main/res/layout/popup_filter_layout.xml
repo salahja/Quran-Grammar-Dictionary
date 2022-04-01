@@ -9,6 +9,7 @@
 
     <androidx.appcompat.widget.SwitchCompat
         android:id="@+id/mySwitch"
+        android:textColor="@color/bg_black"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -20,6 +21,7 @@
         android:layout_below="@id/mySwitch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/bg_black"
         android:text="Jumpto"
         android:id="@+id/jumpto"
         android:icon="@drawable/ic_baseline_open_in_browser_36"
@@ -27,6 +29,7 @@
         />
 
     <TextView
+        android:textColor="@color/bg_black"
         android:layout_below="@id/jumpto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

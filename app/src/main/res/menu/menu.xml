@@ -12,7 +12,7 @@
         app:cnb_iconColor="#FF9800"/>
     <item
         android:id="@+id/surahnav"
-        android:icon="@drawable/ic_baseline_menu_book_24"
+        android:icon="@drawable/ic_surah_collection"
         android:title="Surah"
         app:cnb_iconColor="#FF9800"/>
 

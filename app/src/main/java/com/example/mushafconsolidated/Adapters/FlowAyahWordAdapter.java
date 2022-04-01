@@ -197,7 +197,7 @@ public class FlowAyahWordAdapter extends RecyclerView.Adapter<FlowAyahWordAdapte
 
     public class ItemViewAdapter extends RecyclerView.ViewHolder implements View.OnClickListener, OnLongClickListener {
         TextView tvSura, tvRukus, tvVerses;
-        ImageView ivSurahIcon, ivLocationmakki, ivLocationmadani;
+        ImageView ivSurahIcon, ivLocationmakki, ivLocationmadani,ivhelp,ivoverflow;
 
         public TextView verse_idTextView;
         public TextView quran_jalalayn;
@@ -235,11 +235,18 @@ public class FlowAyahWordAdapter extends RecyclerView.Adapter<FlowAyahWordAdapte
                 tvSura = (TextView) view.findViewById(R.id.tvSura);
                 ivBismillah = view.findViewById(R.id.ivBismillah);
 
+
             } else {
+                ivhelp=view.findViewById(R.id.ivHelp);
+                ivoverflow=view.findViewById(R.id.ivActionOverflow);
+                ivhelp.setOnClickListener(this);
+                ivoverflow.setOnClickListener(this);
+                ivhelp.setTag("help_img");
+                ivoverflow.setTag("overflow_img");
 
                 makkimadaniicon = view.findViewById(R.id.makkimadaniicon);
 
-                jumpto = view.findViewById(R.id.jumpto);
+            //    jumpto = view.findViewById(R.id.jumpto);
                 bismilla = view.findViewById(R.id.bismillah);
                 quran_transliterationnote = view.findViewById(R.id.quran_transliterationnote);
                 quran_jalalaynnote = view.findViewById(R.id.quran_jalalaynnote);
@@ -254,11 +261,13 @@ public class FlowAyahWordAdapter extends RecyclerView.Adapter<FlowAyahWordAdapte
                 translate_textView = view.findViewById(R.id.translate_textView);
                 erab_textView = view.findViewById(R.id.erab_textView);
                 quran_textView = view.findViewById(R.id.quran_textView);
-                bookmark = view.findViewById(R.id.bookmarkView);
+           //     bookmark = view.findViewById(R.id.bookmarkView);
                 expandImageButton = view.findViewById(R.id.expandImageButton);
                 quran_textView.setOnClickListener(this);
-                bookmark.setOnClickListener(this);
-                jumpto.setOnClickListener(this);
+                quran_textView.setTag("qurantext");
+            //    bookmark.setOnClickListener(this);
+             //   jumpto.setOnClickListener(this);
+
                 view.setOnClickListener(this);
                 view.setOnLongClickListener(this);
 
@@ -754,6 +763,7 @@ if (SharedPref.themePreferences().equals("dark")) {
         }
 
         holder.surah_info.setText(surahInfo);
+        holder.surah_info.setTextSize(fontSize);
         //  holder.surah_info.setTextColor(context.getResources().getColor(R.color.colorOnPrimary));
 
 

@@ -82,7 +82,7 @@ public class CorpusVerbCombined {
     private String rootarafive;
     private String  lemaraone     ;
     private String  lemaratwo     ;
-    private String  lemrathree    ;
+    private String lemarathree;
     private String  lemarafour    ;
     private String  lemarafive    ;
 
@@ -133,12 +133,12 @@ public class CorpusVerbCombined {
         this.lemaratwo = lemaratwo;
     }
 
-    public String getLemrathree() {
-        return lemrathree;
+    public String getLemarathree() {
+        return lemarathree;
     }
 
-    public void setLemrathree(String lemrathree) {
-        this.lemrathree = lemrathree;
+    public void setLemarathree(String lemarathree) {
+        this.lemarathree = lemarathree;
     }
 
     public String getLemarafour() {

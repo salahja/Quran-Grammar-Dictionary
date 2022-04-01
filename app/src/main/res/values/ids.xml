@@ -262,6 +262,7 @@
     <item name="grammarrule_detail_nav_container" type="id" />
     <item name="babnos" type="id" />
     <item name="moodrules" type="id" />
+    <item name="ivHelp" type="id" />
 
 
 </resources>

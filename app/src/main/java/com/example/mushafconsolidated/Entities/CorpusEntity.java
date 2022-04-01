@@ -37,7 +37,7 @@ public class CorpusEntity {
     private final String rootarafive;
     private final String lemaraone;
     private final String lemaratwo;
-    private final String lemrathree;
+    private final String lemarathree;
     private final String lemarafour;
     private final String lemarafive;
     private final String lemma_b_one;
@@ -62,7 +62,7 @@ public class CorpusEntity {
     @NonNull
     private int juz;
 
-    public CorpusEntity(int surah, int ayah, int wordno, int wordcount,  String araone, String aratwo, String arathree, String arafour, String arafive, String tagone, String tagtwo, String tagthree, String tagfour, String tagfive, String rootaraone, String rootaratwo, String rootarathree, String rootarafour, String rootarafive, String lemaraone, String lemaratwo, String lemrathree, String lemarafour, String lemarafive, String lemma_b_one, String form_one, String form_two, String form_three, String form_four, String form_five, String detailsone, String detailstwo, String detailsthree, String detailsfour, String detailsfive, String lemma_b_two, String lemma_b_three, String lemma_b_four, String lemma_b_five, int id, int juz) {
+    public CorpusEntity(int surah, int ayah, int wordno, int wordcount, String araone, String aratwo, String arathree, String arafour, String arafive, String tagone, String tagtwo, String tagthree, String tagfour, String tagfive, String rootaraone, String rootaratwo, String rootarathree, String rootarafour, String rootarafive, String lemaraone, String lemaratwo, String lemarathree, String lemarafour, String lemarafive, String lemma_b_one, String form_one, String form_two, String form_three, String form_four, String form_five, String detailsone, String detailstwo, String detailsthree, String detailsfour, String detailsfive, String lemma_b_two, String lemma_b_three, String lemma_b_four, String lemma_b_five, int id, int juz) {
         this.surah = surah;
         this.ayah = ayah;
         this.wordno = wordno;
@@ -85,7 +85,7 @@ public class CorpusEntity {
         this.rootarafive = rootarafive;
         this.lemaraone = lemaraone;
         this.lemaratwo = lemaratwo;
-        this.lemrathree = lemrathree;
+        this.lemarathree = lemarathree;
         this.lemarafour = lemarafour;
         this.lemarafive = lemarafive;
         this.lemma_b_one = lemma_b_one;
@@ -192,8 +192,8 @@ public class CorpusEntity {
         return lemaratwo;
     }
 
-    public String getLemrathree() {
-        return lemrathree;
+    public String getLemarathree() {
+        return lemarathree;
     }
 
     public String getLemarafour() {

@@ -416,7 +416,7 @@ public class CorpusUtilityorig {
   }
 
   @NonNull
-  private static Map<String, ForegroundColorSpan> getStringForegroundColorSpanMap() {
+  public static Map<String, ForegroundColorSpan> getStringForegroundColorSpanMap() {
     Map<String, ForegroundColorSpan> spanhash = new HashMap<>();
     SharedPreferences sharedPreferences =
           androidx.preference.PreferenceManager.getDefaultSharedPreferences(QuranGrammarApplication.getContext());
