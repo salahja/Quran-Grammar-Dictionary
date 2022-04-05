@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -68,8 +69,12 @@ public class ParticleColorScheme extends BottomSheetDialogFragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        final RecyclerView recyclerView = view.findViewById(R.id.colorrecview);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+      //  recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        GridLayoutManager mLayoutManager = new GridLayoutManager(getActivity(), 2);
+        // parentRecyclerView = view.findViewById(R.id.juzRecyclerView);
+        RecyclerView recyclerView = view.findViewById(R.id.colorrecview);
+        recyclerView.setLayoutManager(mLayoutManager);
         Map<String, ForegroundColorSpan> spanhash;
         spanhash = CorpusUtilityorig.getStringForegroundColorSpanMap();
         textView =  view.findViewById(R.id.Colortv);

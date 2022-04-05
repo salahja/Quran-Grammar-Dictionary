@@ -13,53 +13,49 @@
         android:layout_marginStart="2dp"
         android:layout_marginTop="5dp">
 
-
-        <ImageView
-            android:id="@id/bookmarkView"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:background="@drawable/border"
-            android:cropToPadding="true"
-            android:elevation="10dp"
-            android:padding="1dp"
-            android:scaleType="centerCrop"
-            android:visibility="gone"
-            app:srcCompat="@drawable/baseline_bookmarks_red_900_36dp" />
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/colorized"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="5dp"
+            android:layout_toEndOf="@+id/jumpto" />
 
         <ImageView
             android:id="@id/jumpto"
-            android:layout_width="50dp"
-
-            android:layout_height="50dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_gravity="center"
+
             android:layout_marginEnd="10dp"
-            android:layout_toEndOf="@+id/bookmarkView"
-            android:background="@drawable/border"
+            android:layout_toEndOf="@+id/bookmark"
+
+
             android:cropToPadding="true"
             android:elevation="10dp"
             android:padding="1dp"
             android:scaleType="centerCrop"
-            android:visibility="gone"
+            android:visibility="visible"
 
 
-            app:srcCompat="@drawable/ic_baseline_open_in_browser_36" />
+            app:srcCompat="@drawable/ic_baseline_open_in_browser_24" />
 
         <TextView
             android:id="@id/chaptername"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+
             android:layout_centerInParent="true"
-            android:layout_marginStart="20.0dip"
+            android:layout_marginStart="100dp"
             android:layout_toEndOf="@+id/jumpto"
             android:gravity="center_horizontal"
-            android:paddingStart="100dp"
             android:paddingTop="3.0dip"
             android:paddingEnd="5.0dip"
             android:paddingBottom="3.0dip"
             android:textSize="18.0sp" />
 
         <ImageView
+
             android:id="@id/ivActionOverflow"
             android:layout_width="40dp"
             android:layout_height="40.0dip"
@@ -68,7 +64,7 @@
             android:backgroundTint="@color/white"
             android:paddingStart="@dimen/space_2"
             android:scaleType="fitEnd"
-            android:visibility="visible"
+            android:visibility="gone"
             app:srcCompat="@drawable/ic_more_horiz_black_24dp" />
 
         <ImageView
@@ -84,6 +80,17 @@
             android:visibility="visible"
             app:srcCompat="@drawable/ic_baseline_help_24" />
 
+        <ImageView
+            android:id="@id/bookmark"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_toRightOf="@+id/ivHelp"
+
+            android:backgroundTint="@color/white"
+            android:paddingStart="@dimen/space_2"
+
+            android:visibility="visible"
+            app:srcCompat="@drawable/ic_baseline_bookmarks_24" />
 
     </RelativeLayout>
 </RelativeLayout>

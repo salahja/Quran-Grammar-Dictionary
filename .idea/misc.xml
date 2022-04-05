@@ -9,6 +9,7 @@
         <entry key="app/src/main/res/drawable/apperance.xml" value="1.2821428571428573" />
         <entry key="app/src/main/res/drawable/ic_baseline_bookmark_add_24.xml" value="1.175" />
         <entry key="app/src/main/res/drawable/ic_baseline_collections_bookmark_36.xml" value="1.175" />
+        <entry key="app/src/main/res/drawable/ic_baseline_help_24.xml" value="1.0928571428571427" />
         <entry key="app/src/main/res/drawable/ic_baseline_history_pink_24.xml" value="1.2285714285714286" />
         <entry key="app/src/main/res/drawable/ic_baseline_menu_book_24.xml" value="0.825" />
         <entry key="app/src/main/res/drawable/ic_baseline_menu_book_64.xml" value="0.2" />
@@ -56,7 +57,7 @@
         <entry key="app/src/main/res/layout/popup_filter_layout.xml" value="1.1392857142857142" />
         <entry key="app/src/main/res/layout/popup_layout.xml" value="0.25" />
         <entry key="app/src/main/res/layout/qaris_view_word_details.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/quran_imageview_row.xml" value="1.1392857142857142" />
+        <entry key="app/src/main/res/layout/quran_imageview_row.xml" value="0.67" />
         <entry key="app/src/main/res/layout/quran_list_dialog.xml" value="1.1714285714285715" />
         <entry key="app/src/main/res/layout/quran_tranlation_rows.xml" value="0.3326867119301649" />
         <entry key="app/src/main/res/layout/quranfonts_bottomsheet.xml" value="1.1714285714285715" />

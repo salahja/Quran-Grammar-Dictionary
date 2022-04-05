@@ -35,6 +35,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SwitchCompat;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
@@ -198,7 +199,7 @@ public class FlowAyahWordAdapter extends RecyclerView.Adapter<FlowAyahWordAdapte
     public class ItemViewAdapter extends RecyclerView.ViewHolder implements View.OnClickListener, OnLongClickListener {
         TextView tvSura, tvRukus, tvVerses;
         ImageView ivSurahIcon, ivLocationmakki, ivLocationmadani,ivhelp,ivoverflow;
-
+  SwitchCompat colorize;
         public TextView verse_idTextView;
         public TextView quran_jalalayn;
         public TextView quran_transliteration;
@@ -237,13 +238,23 @@ public class FlowAyahWordAdapter extends RecyclerView.Adapter<FlowAyahWordAdapte
 
 
             } else {
+                colorize=view.findViewById(R.id.colorized);
+                bookmark=view.findViewById(R.id.bookmark);
+              jumpto=view.findViewById(R.id.jumpto);
                 ivhelp=view.findViewById(R.id.ivHelp);
                 ivoverflow=view.findViewById(R.id.ivActionOverflow);
                 ivhelp.setOnClickListener(this);
                 ivoverflow.setOnClickListener(this);
+
+                jumpto.setOnClickListener(this);
+                bookmark.setOnClickListener(this);
                 ivhelp.setTag("help_img");
                 ivoverflow.setTag("overflow_img");
-
+                bookmark.setTag("bookmark");
+            //    colorize.setChecked(true);
+                colorize.setOnClickListener(this);
+                colorize.setTag("colorize");
+                jumpto.setTag("jumpto");
                 makkimadaniicon = view.findViewById(R.id.makkimadaniicon);
 
             //    jumpto = view.findViewById(R.id.jumpto);
