@@ -14,6 +14,7 @@ import static com.example.Constant.DeepPink;
 import static com.example.Constant.FORESTGREEN;
 import static com.example.Constant.GOLD;
 import static com.example.Constant.GREENDARK;
+import static com.example.Constant.IMPERATIVE;
 import static com.example.Constant.INDICATIVE;
 import static com.example.Constant.ISPARTICPLE;
 import static com.example.Constant.NOUNCASE;
@@ -140,7 +141,7 @@ public class WordAnalysisBottomSheet extends BottomSheetDialogFragment {
     HashMap<String, String> vbdetail = new HashMap<>();
     HashMap<String, SpannableStringBuilder> wordbdetail;
     boolean showGrammarFragments = false;
-    boolean isroot, isarabicword, quadrilateral, isnoun, ismujarradparticple;
+    boolean isroot, isarabicword, quadrilateral, isnoun, ismujarradparticple,isimperative;
     private SpannableStringBuilder spannable;
     private String themepreference;
     private boolean ismujarrad, ismazeed, isparticple;
@@ -285,6 +286,10 @@ public class WordAnalysisBottomSheet extends BottomSheetDialogFragment {
 
             }
             //if any true..good for verb conjugation
+         if(!vbdetail.isEmpty() && vbdetail.get("tense").contains("Imperative")){
+             isimperative=true;
+         }
+
             isarabicword = wordbdetail.get("arabicword") != null;
             ismujarrad = vbdetail.get("wazan") != null;
             ismazeed = vbdetail.get("form") != null;
@@ -892,6 +897,9 @@ public class WordAnalysisBottomSheet extends BottomSheetDialogFragment {
                             dataBundle.putString(VERBTYPE, "mazeed");
                         } else {
                             dataBundle.putString(VERBTYPE, "");
+                        }
+                        if (isimperative) {
+                            dataBundle.putBoolean(IMPERATIVE, true);
                         }
                         //     Intent intent = new Intent(getActivity(), WordDictionaryAct.class);
                         Intent intent = new Intent(getActivity(), LughatWordDetailsAct.class);

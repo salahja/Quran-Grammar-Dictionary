@@ -20,7 +20,7 @@
         <item>Urdu Junagarhi -Translation</item>
         <item>English Jalalayn -Tafsir</item>
         <item>Urdu Jalalayn- Tafsir</item>
-
+        <item>A.J.Arberry</item>
 
     </string-array>
     <string-array name="translation_values">
@@ -28,7 +28,7 @@
         <item>ur_junagarhi</item>
         <item>en_jalalayn</item>
         <item>ur_jalalayn</item>
-
+        <item>en_arberry</item>
     </string-array>
 
 

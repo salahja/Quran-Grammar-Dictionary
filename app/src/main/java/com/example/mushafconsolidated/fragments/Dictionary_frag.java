@@ -268,7 +268,13 @@ public class Dictionary_frag extends Fragment {
         recyclerView = view.findViewById(R.id.sarfrecview);
         WordLughatAdapter ska;
         LexiconAdapter lanesLexiconAdapter;
-        if (language.equals("genetivenoun")) {
+        if (language.equals("imperative")) {
+
+            ArrayList<GrammarRules> isimperative = utils.getGrammarRulesByRules("Imperative");
+            worddifinition.add(isimperative.get(0).getDetailsrules());
+            lanesLexiconAdapter = new LexiconAdapter(worddifinition, getContext(), language);
+            recyclerView.setAdapter(lanesLexiconAdapter);
+        } else   if (language.equals("genetivenoun")) {
 
             ArrayList<GrammarRules> ismmajroor = utils.getGrammarRulesByRules("genetivenoun");
             worddifinition.add(ismmajroor.get(0).getDetailsrules());

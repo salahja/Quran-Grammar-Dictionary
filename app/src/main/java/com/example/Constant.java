@@ -82,6 +82,7 @@ public class Constant {
     public static final String VERBTYPE ="verbtype";
    public static final String NOUNCASE="nouncase";
     public static final String ISPARTICPLE="particple";
+    public static final String IMPERATIVE="imperative";
     public static final String QURAN_VERB_WAZAN = "form";
     public static final String SARFKABEER="sarfkabeer";
     public static final String QURAN_VERB_ROOT = "root";

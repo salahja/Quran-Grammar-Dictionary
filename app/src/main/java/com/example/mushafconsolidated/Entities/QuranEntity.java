@@ -10,14 +10,13 @@ import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 
-
 @Entity(tableName = "qurans", foreignKeys = @ForeignKey(entity = ChaptersAnaEntity.class,
         parentColumns = "chapterid",
         childColumns = "surah",
         onDelete = ForeignKey.CASCADE))
 public class QuranEntity {
-     @PrimaryKey
-     @NonNull
+    @PrimaryKey
+    @NonNull
     private int docid;
     @NonNull
     private int surah;
@@ -30,47 +29,51 @@ public class QuranEntity {
     @NonNull
     private int has_prostration;
     @NonNull
-    private String  translation;
+    private String translation;
 
     @NonNull
     private String en_transliteration;
     @NonNull
-    private String en_jalalayn       ;
+    private String en_jalalayn;
     @NonNull
-    private String  ar_irab           ;
+    private String en_arberry;
     private String ar_irab_two;
-    @NonNull
-    private  String ur_jalalayn;
 
     @NonNull
-    public String getUr_junagarhi() {
-        return ur_junagarhi;
-    }
-
-    public void setUr_junagarhi(@NonNull String ur_junagarhi) {
-        this.ur_junagarhi = ur_junagarhi;
-    }
-
+    private String ur_jalalayn;
     @NonNull
-    private  String     ur_junagarhi;
-    @NonNull
-    public String getUr_jalalayn() {
-        return ur_jalalayn;
-    }
+    private String ur_junagarhi;
 
-    public void setUr_jalalayn(@NonNull String ur_jalalayn) {
-        this.ur_jalalayn = ur_jalalayn;
-    }
+    private String tafsir_kathir;
+
 
     @Ignore
     SpannableStringBuilder erabspnabble;
 
-    public SpannableStringBuilder getErabspnabble() {
-        return erabspnabble;
+    public QuranEntity(int docid, int surah, int ayah, @NonNull String qurantext, int passage_no, int has_prostration, @NonNull String translation, @NonNull String en_transliteration, @NonNull String en_jalalayn, @NonNull String en_arberry, String ar_irab_two, @NonNull String ur_jalalayn, @NonNull String ur_junagarhi, String tafsir_kathir) {
+        this.docid = docid;
+        this.surah = surah;
+        this.ayah = ayah;
+        this.qurantext = qurantext;
+        this.passage_no = passage_no;
+        this.has_prostration = has_prostration;
+        this.translation = translation;
+        this.en_transliteration = en_transliteration;
+        this.en_jalalayn = en_jalalayn;
+        this.en_arberry = en_arberry;
+        this.ar_irab_two = ar_irab_two;
+        this.ur_jalalayn = ur_jalalayn;
+        this.ur_junagarhi = ur_junagarhi;
+        this.tafsir_kathir = tafsir_kathir;
     }
 
-    public void setErabspnabble(SpannableStringBuilder erabspnabble) {
-        this.erabspnabble = erabspnabble;
+    @NonNull
+    public String getEn_arberry() {
+        return en_arberry;
+    }
+
+    public void setEn_arberry(@NonNull String en_arberry) {
+        this.en_arberry = en_arberry;
     }
 
     public int getDocid() {
@@ -149,14 +152,7 @@ public class QuranEntity {
         this.en_jalalayn = en_jalalayn;
     }
 
-    @NonNull
-    public String getAr_irab() {
-        return ar_irab;
-    }
 
-    public void setAr_irab(@NonNull String ar_irab) {
-        this.ar_irab = ar_irab;
-    }
 
     public String getAr_irab_two() {
         return ar_irab_two;
@@ -166,21 +162,37 @@ public class QuranEntity {
         this.ar_irab_two = ar_irab_two;
     }
 
+    @NonNull
+    public String getUr_jalalayn() {
+        return ur_jalalayn;
+    }
 
-    public QuranEntity(int docid, int surah, int ayah, @NonNull String qurantext, int passage_no, int has_prostration, @NonNull String translation, @NonNull String en_transliteration, @NonNull String en_jalalayn, @NonNull String ar_irab, String ar_irab_two,
-                      @NonNull String ur_jalalayn,String ur_junagarhi) {
-        this.docid = docid;
-        this.surah = surah;
-        this.ayah = ayah;
-        this.qurantext = qurantext;
-        this.passage_no = passage_no;
-        this.has_prostration = has_prostration;
-        this.translation = translation;
-        this.en_transliteration = en_transliteration;
-        this.en_jalalayn = en_jalalayn;
-        this.ar_irab = ar_irab;
-        this.ar_irab_two = ar_irab_two;
-        this.ur_jalalayn=ur_jalalayn;
-        this.ur_junagarhi=ur_junagarhi;
+    public void setUr_jalalayn(@NonNull String ur_jalalayn) {
+        this.ur_jalalayn = ur_jalalayn;
+    }
+
+    @NonNull
+    public String getUr_junagarhi() {
+        return ur_junagarhi;
+    }
+
+    public void setUr_junagarhi(@NonNull String ur_junagarhi) {
+        this.ur_junagarhi = ur_junagarhi;
+    }
+
+    public String getTafsir_kathir() {
+        return tafsir_kathir;
+    }
+
+    public void setTafsir_kathir(String tafsir_kathir) {
+        this.tafsir_kathir = tafsir_kathir;
+    }
+
+    public SpannableStringBuilder getErabspnabble() {
+        return erabspnabble;
+    }
+
+    public void setErabspnabble(SpannableStringBuilder erabspnabble) {
+        this.erabspnabble = erabspnabble;
     }
 }

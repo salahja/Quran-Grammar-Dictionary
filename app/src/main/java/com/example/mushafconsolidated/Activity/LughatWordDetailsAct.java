@@ -3,6 +3,7 @@ package com.example.mushafconsolidated.Activity;
 import static com.example.Constant.ACCUSATIVE;
 import static com.example.Constant.CONDITIONAL;
 import static com.example.Constant.DEMONSTRATIVE;
+import static com.example.Constant.IMPERATIVE;
 import static com.example.Constant.ISPARTICPLE;
 import static com.example.Constant.NOUNCASE;
 import static com.example.Constant.PREPOSITION;
@@ -51,7 +52,7 @@ public class LughatWordDetailsAct extends BaseActivity {
     private boolean isnoun;
     private boolean isHarf;
     private String nouncase;
-    private boolean isIsmMarfu, isIsmMansub, isIsmMajroor;
+    private boolean isIsmMarfu, isIsmMansub, isIsmMajroor, isimperative;
     private boolean isVerbMarfu;
     private boolean isparticple;
 
@@ -63,30 +64,37 @@ public class LughatWordDetailsAct extends BaseActivity {
 
     private final String[] vocabularytitles = new String[]{"Lane Lexicon", "Hans Weir", "English lughat", "Urdu Lughat"};
 
-    private final String[] thulathientitles = new String[]{"Lane Lexicon", "Hans Weir",  "English lughat", "Urdu Lughat", "Verb Conjugaton", "Active/Passive PCPL", "N. Instrument", "N.Place/Time"};
+    private final String[] thulathientitles = new String[]{"Lane Lexicon", "Hans Weir", "English lughat", "Urdu Lughat", "Verb Conjugaton", "Active/Passive PCPL", "N. Instrument", "N.Place/Time"};
     private final String[] thulathientitlesmansub = new String[]{"Lane Lexicon", "Hans Weir", "English lughat", "Urdu Lughat", "Subjunctive",
             "Verb Conjugaton", "Active/Passive PCPL", "N. Instrument", "N.Place/Time"};
-    private final String[] mujarradparticple = new String[]{"Lane Lexicon", "Hans Weir",  "English lughat", "Urdu Lughat", " ",
+    private final String[] mujarradparticple = new String[]{"Lane Lexicon", "Hans Weir", "English lughat", "Urdu Lughat", " ",
             "Verb Conjugaton", "Active/Passive PCPL", "N. Instrument", "N.Place/Time"};
     private final String[] mazeedparticpletitle = new String[]
             {"Lane Lexicon", "Hans Weir", "English lughat", "Urdu Lughat", " ", "Verb Conjugaton", "Active/Passive Participle"};
 
 
-    private final String[] thulathientitlesmajzoom = new String[]{"Lane Lexicon", "Hans Weir",   "English lughat", "Urdu Lughat",
+    private final String[] thulathientitlesmajzoom = new String[]{"Lane Lexicon", "Hans Weir", "English lughat", "Urdu Lughat",
             "Jussive", "Verb Conjugaton", "Active/Passive PCPL", "N. Instrument", "N.Place/Time"};
-    private final String[] ismmansubtitle = new String[]{"Lane Lexicon", "Hans Weir",   "English lughat", "Urdu Lughat", ""};
-    private final String[] ismmarfutitle = new String[]{"Lane Lexicon", "Hans Weir",  "English lughat", "Urdu Lughat", ""};
-    private final String[] ismgenetivetitle = new String[]{"Lane Lexicon", "Hans Weir",   "English lughat", "Urdu Lughat", "Genitive"};
+    private final String[] ismmansubtitle = new String[]{"Lane Lexicon", "Hans Weir", "English lughat", "Urdu Lughat", ""};
+    private final String[] ismmarfutitle = new String[]{"Lane Lexicon", "Hans Weir", "English lughat", "Urdu Lughat", ""};
+    private final String[] ismgenetivetitle = new String[]{"Lane Lexicon", "Hans Weir", "English lughat", "Urdu Lughat", "Genitive"};
     private final String[] thulathiartitles = new String[]{"قاموس هانز", "لين معجم", "English lughat", "Urdu Lughat", "صرف صغير", "تصريف الأفعال ", "لاسم الفاعل/الاسم المفعول", "الاسم الآلة", "الاسم الظرف"};
     private final String[] mazeedentitles = new String[]
-            {"Lane Lexicon", "Hans Weir",  "English lughat", "Urdu Lughat", "Verb Conjugaton", "Active/Passive Participle"};
+            {"Lane Lexicon", "Hans Weir", "English lughat", "Urdu Lughat", "Verb Conjugaton", "Active/Passive Participle"};
 
     private final String[] mazeedentitlesmajzoom = new String[]
-            {"Lane Lexicon", "Hans Weir",   "English lughat", "Urdu Lughat", "Jussive", "Verb Conjugaton", "Active/Passive Participle"};
+            {"Lane Lexicon", "Hans Weir", "English lughat", "Urdu Lughat", "Jussive", "Verb Conjugaton", "Active/Passive Participle"};
+
+    private final String[] mazeedimperative = new String[]
+            {"Lane Lexicon", "Hans Weir", "English lughat", "Urdu Lughat","Imperative", "Jussive", "Verb Conjugaton", "Active/Passive Participle"};
+    private final String[] mujarradimperative = new String[]{"Lane Lexicon", "Hans Weir", "English lughat", "Urdu Lughat", "Imperative","Jussive",
+            "Verb Conjugaton", "Active/Passive PCPL", "N. Instrument", "N.Place/Time"};
+
+
     private final String[] mazeedentitlesmansub = new String[]
-            {"Lane Lexicon", "Hans Weir",  "English lughat", "Urdu Lughat", "Subjunctive", "Verb Conjugaton", "Active/Passive Participle"};
+            {"Lane Lexicon", "Hans Weir", "English lughat", "Urdu Lughat", "Subjunctive", "Verb Conjugaton", "Active/Passive Participle"};
     private final String[] getMazeedentitles = new String[]
-            {"Lane Lexicon", "Hans Weir",  "English lughat", "Urdu Lughat", "Verb Conjugaton", "Active/Passive Participle"};
+            {"Lane Lexicon", "Hans Weir", "English lughat", "Urdu Lughat", "Verb Conjugaton", "Active/Passive Participle"};
 
     private final String[] mazeedartitles = new String[]{"قاموس هانز", "لين معجم", "English lughat", "Urdu Lughat", "صرف صغير", "تصريف الأفعال ", "لاسم الفاعل/الاسم المفعول"};
     private final String[] languages = new String[10];
@@ -152,7 +160,7 @@ public class LughatWordDetailsAct extends BaseActivity {
         verbmood = bundle.getString(VERBMOOD);
         verbtype = bundle.getString(VERBTYPE);
         arabicword = bundle.getString("arabicword");
-
+        isimperative = bundle.getBoolean(IMPERATIVE, false);
         isparticple = bundle.getBoolean(ISPARTICPLE, false);
         boolean isharfnasab = bundle.getBoolean(ACCUSATIVE, false);
         boolean isdem = bundle.getBoolean(DEMONSTRATIVE, false);
@@ -231,45 +239,61 @@ public class LughatWordDetailsAct extends BaseActivity {
 
         // Up to here, we have working scrollable pages
 
-        if (ismujarrad && isparticple && (isIsmMajroor||isIsmMansub||isIsmMarfu)) {
+
+        if (isimperative) {
             languages[0] = "lanes";
             languages[1] = "hans";
 
             languages[2] = "english";
             languages[3] = "urdu";
-            if(isIsmMajroor) {
+            languages[4] = "imperative";
+            languages[5] = "Jussive";
+            if(isAugmentedWazan) {
+                new TabLayoutMediator(tabLayout, viewPager, (tab, position) -> tab.setText(mazeedimperative[position])).attach();
+            }else if(ismujarrad){
+                new TabLayoutMediator(tabLayout, viewPager, (tab, position) -> tab.setText(mujarradimperative[position])).attach();
+
+            }
+
+        } else if (ismujarrad && isparticple && (isIsmMajroor || isIsmMansub || isIsmMarfu)) {
+            languages[0] = "lanes";
+            languages[1] = "hans";
+
+            languages[2] = "english";
+            languages[3] = "urdu";
+            if (isIsmMajroor) {
                 languages[4] = "genetivenoun";
                 mujarradparticple[4] = "Genitive.Noun";
-            }else if(isIsmMansub){
-            languages[4]    ="accusativenoun";
+            } else if (isIsmMansub) {
+                languages[4] = "accusativenoun";
                 mujarradparticple[4] = "Accusative.Noun";
-            }else if(isIsmMarfu){
-                languages[4]    ="nominativenoun";
+            } else if (isIsmMarfu) {
+                languages[4] = "nominativenoun";
                 mujarradparticple[4] = "Nominative.Noun";
             }
 
             new TabLayoutMediator(tabLayout, viewPager, (tab, position) -> tab.setText(mujarradparticple[position])).attach();
-        } else  if (isAugmentedWazan && isparticple && (isIsmMajroor||isIsmMansub||isIsmMarfu)) {
+        } else if (isAugmentedWazan && isparticple && (isIsmMajroor || isIsmMansub || isIsmMarfu)) {
             languages[0] = "lanes";
             languages[1] = "hans";
 
             languages[2] = "english";
             languages[3] = "urdu";
             languages[4] = "genetivenoun";
-            if(isIsmMajroor) {
+            if (isIsmMajroor) {
                 languages[4] = "genetivenoun";
                 mazeedparticpletitle[4] = "Genitive.Noun";
-            }else if(isIsmMansub){
-                languages[4]    ="accusativenoun";
+            } else if (isIsmMansub) {
+                languages[4] = "accusativenoun";
                 mazeedparticpletitle[4] = "Accusative.Noun";
-            }else if(isIsmMarfu){
-                languages[4]    ="nominativenoun";
+            } else if (isIsmMarfu) {
+                languages[4] = "nominativenoun";
                 mazeedparticpletitle[4] = "Nominative.Noun";
             }
             new TabLayoutMediator(tabLayout, viewPager, (tab, position) -> tab.setText(mazeedparticpletitle[position])).attach();
 
 
-        }   else if (isIsmMajroor||isIsmMansub||isIsmMarfu) {
+        } else if (isIsmMajroor || isIsmMansub || isIsmMarfu) {
             languages[0] = "lanes";
             languages[1] = "hans";
 
@@ -277,14 +301,14 @@ public class LughatWordDetailsAct extends BaseActivity {
             languages[3] = "urdu";
             languages[4] = "genetivenoun";
             mujarradparticple[4] = "Genitive";
-            if(isIsmMajroor) {
+            if (isIsmMajroor) {
                 languages[4] = "genetivenoun";
                 ismmansubtitle[4] = "Genitive.Noun";
-            }else if(isIsmMansub){
-                languages[4]    ="accusativenoun";
+            } else if (isIsmMansub) {
+                languages[4] = "accusativenoun";
                 ismmansubtitle[4] = "Accusative.Noun";
-            }else if(isIsmMarfu){
-                languages[4]    ="nominativenoun";
+            } else if (isIsmMarfu) {
+                languages[4] = "nominativenoun";
                 ismmansubtitle[4] = "Nominative.Noun";
             }
             new TabLayoutMediator(tabLayout, viewPager, (tab, position) -> tab.setText(ismmansubtitle[position])).attach();
@@ -305,7 +329,7 @@ public class LughatWordDetailsAct extends BaseActivity {
             languages[2] = "english";
             languages[3] = "urdu";
             languages[4] = "nominativenoun";
-              new TabLayoutMediator(tabLayout, viewPager, (tab, position) -> tab.setText(ismmarfutitle[position])).attach();
+            new TabLayoutMediator(tabLayout, viewPager, (tab, position) -> tab.setText(ismmarfutitle[position])).attach();
 
         } else if (ismujarrad) {
             if (SharedPref.getLanguage().equals("en") && verbmood.equals("Jussive")) {
@@ -333,12 +357,13 @@ public class LughatWordDetailsAct extends BaseActivity {
                 languages[2] = "english";
                 languages[3] = "urdu";
 
-              new TabLayoutMediator(tabLayout, viewPager, (tab, position) -> tab.setText(thulathientitles[position])).attach();
+                new TabLayoutMediator(tabLayout, viewPager, (tab, position) -> tab.setText(thulathientitles[position])).attach();
 
             }
 
 
-        } else if (isAugmentedWazan) {
+        }
+        else if (isAugmentedWazan) {
 
             if (SharedPref.getLanguage().equals("en") && verbmood.equals("Jussive")) {
                 languages[0] = "lanes";
@@ -348,7 +373,7 @@ public class LughatWordDetailsAct extends BaseActivity {
                 languages[3] = "urdu";
                 languages[4] = "Jussive";
 
-                   new TabLayoutMediator(tabLayout, viewPager, (tab, position) -> tab.setText(mazeedentitlesmajzoom[position])).attach();
+                new TabLayoutMediator(tabLayout, viewPager, (tab, position) -> tab.setText(mazeedentitlesmajzoom[position])).attach();
 
             } else if (SharedPref.getLanguage().equals("en") && verbmood.equals("Subjunctive")) {
                 languages[0] = "lanes";
@@ -357,11 +382,11 @@ public class LughatWordDetailsAct extends BaseActivity {
                 languages[2] = "english";
                 languages[3] = "urdu";
                 languages[4] = "Subjunctive";
-                    new TabLayoutMediator(tabLayout, viewPager, (tab, position) -> tab.setText(mazeedentitlesmansub[position])).attach();
+                new TabLayoutMediator(tabLayout, viewPager, (tab, position) -> tab.setText(mazeedentitlesmansub[position])).attach();
             } else {
 
 
-                    new TabLayoutMediator(tabLayout, viewPager, (tab, position) -> tab.setText(getMazeedentitles[position])).attach();
+                new TabLayoutMediator(tabLayout, viewPager, (tab, position) -> tab.setText(getMazeedentitles[position])).attach();
                 languages[0] = "lanes";
                 languages[1] = "hans";
 
@@ -409,7 +434,7 @@ public class LughatWordDetailsAct extends BaseActivity {
             languages[2] = "english";
             languages[3] = "urdu";
 
-        }else{
+        } else {
             Toast.makeText(this, "not found", Toast.LENGTH_SHORT).show();
             this.finish();
         }
@@ -454,23 +479,37 @@ public class LughatWordDetailsAct extends BaseActivity {
         public Fragment createFragment(int position) {
             // Hardcoded in this order, you'll want to use lists and make sure the titles match
 
-            if (isAugmentedWazan && isparticple && (isIsmMajroor||isIsmMansub||isIsmMarfu)) {
+
+          /*
+            if (isAugmentedWazan && isparticple && (isIsmMajroor || isIsmMansub || isIsmMarfu)) {
 
 
-            }else
-            if (ismujarrad && isparticple && (isIsmMajroor || isIsmMansub || isIsmMarfu)) {
+            } else
+           */
+           if (ismujarrad && isparticple && (isIsmMajroor || isIsmMansub || isIsmMarfu)) {
                 return getMujarradParticiple(position);
 
-            }else
-            if (ismujarrad && (isVerbMajzoom || isVerbMansub)) {
+            } else if (ismujarrad && (isVerbMajzoom || isVerbMansub)) {
                 return getMujarradMajzoomOrMansub(position);
 
 
-            } else if (ismujarrad && isVerbMarfu) {
+            } else if (ismujarrad && isVerbMarfu && !isimperative) {
                 return getMujarradMarfuu(position);
 
 
-            } else if (isAugmentedWazan && (isVerbMajzoom || isVerbMansub)) {
+            } else if (isAugmentedWazan && (isVerbMajzoom || isimperative)) {
+                return getMazeedMajzoomOrMarfuImp(position);
+
+
+            }else if (ismujarrad && (isVerbMajzoom || isimperative)) {
+               return getMujarradImperative(position);
+
+
+           }
+
+
+
+           else if (isAugmentedWazan && (isVerbMajzoom || isVerbMansub)) {
                 return getMazeedMajzoomOrMarfu(position);
 
 
@@ -757,6 +796,133 @@ public class LughatWordDetailsAct extends BaseActivity {
             return fragv.newInstance();
         }
 
+        private Fragment getMujarradImperative(int position) {
+            if (position == 0) {
+                //hanes
+                Dictionary_frag fragv = new Dictionary_frag(LughatWordDetailsAct.this, languages[0]);
+                fragv.setArguments(dataBundle);
+                return fragv.newInstance();
+            } else if (position == 1) {
+                //kabes
+                Dictionary_frag fragv = new Dictionary_frag(LughatWordDetailsAct.this, languages[1]);
+                fragv.setArguments(dataBundle);
+                return fragv.newInstance();
+            } else if (position == 2) {
+                //english
+                Dictionary_frag fragv = new Dictionary_frag(LughatWordDetailsAct.this, languages[2]);
+                fragv.setArguments(dataBundle);
+                return fragv.newInstance();
+            } else if (position == 3) {
+                //urudu
+                Dictionary_frag fragv = new Dictionary_frag(LughatWordDetailsAct.this, languages[3]);
+                fragv.setArguments(dataBundle);
+                return fragv.newInstance();
+
+
+            } else if (position == 4) {
+                //jussive/sujunnctive/marfu/mansub/majroor
+
+                Dictionary_frag fragv = new Dictionary_frag(LughatWordDetailsAct.this, languages[4]);
+                fragv.setArguments(dataBundle);
+                return fragv.newInstance();
+
+
+            }
+            else if (position == 5) {
+                // org.sj.conjugator.fragments.FragmentVerb fragv = new org.sj.conjugator.fragments.FragmentVerb();
+                Dictionary_frag fragv = new Dictionary_frag(LughatWordDetailsAct.this, languages[5]);
+                fragv.setArguments(dataBundle);
+                return fragv.newInstance();
+
+
+            }
+
+
+            else if (position == 6) {
+                org.sj.conjugator.fragments.FragmentVerb fragv = new org.sj.conjugator.fragments.FragmentVerb();
+                fragv.setArguments(dataBundle);
+                return fragv.newInstance();
+
+
+            } else if (position == 7) {
+                org.sj.conjugator.fragments.FragmentIsmfaelIsmMafools fragvs = new org.sj.conjugator.fragments.FragmentIsmfaelIsmMafools();
+                fragvs.setArguments(dataBundle);
+                return fragvs.newInstance();
+            }
+            else if (position == 8) {
+                org.sj.conjugator.fragments.FragmentIsmIsmAla fragvsi = new org.sj.conjugator.fragments.FragmentIsmIsmAla();
+                fragvsi.setArguments(dataBundle);
+                return fragvsi.newInstance();
+            } else if (position == 9) {
+                FragmentIsmZarf fragvsi = new FragmentIsmZarf();
+                fragvsi.setArguments(dataBundle);
+                return fragvsi.newInstance();
+            }
+
+
+            org.sj.conjugator.fragments.FragmentVerb fragv = new org.sj.conjugator.fragments.FragmentVerb();
+            fragv.setArguments(dataBundle);
+            return fragv.newInstance();
+        }
+        private Fragment getMazeedMajzoomOrMarfuImp(int position) {
+            if (position == 0) {
+                //hanes
+                Dictionary_frag fragv = new Dictionary_frag(LughatWordDetailsAct.this, languages[0]);
+                fragv.setArguments(dataBundle);
+                return fragv.newInstance();
+            } else if (position == 1) {
+                //kabes
+                Dictionary_frag fragv = new Dictionary_frag(LughatWordDetailsAct.this, languages[1]);
+                fragv.setArguments(dataBundle);
+                return fragv.newInstance();
+            } else if (position == 2) {
+                //english
+                Dictionary_frag fragv = new Dictionary_frag(LughatWordDetailsAct.this, languages[2]);
+                fragv.setArguments(dataBundle);
+                return fragv.newInstance();
+            } else if (position == 3) {
+                //urudu
+                Dictionary_frag fragv = new Dictionary_frag(LughatWordDetailsAct.this, languages[3]);
+                fragv.setArguments(dataBundle);
+                return fragv.newInstance();
+
+
+            } else if (position == 4) {
+                //jussive/sujunnctive/marfu/mansub/majroor
+
+                Dictionary_frag fragv = new Dictionary_frag(LughatWordDetailsAct.this, languages[4]);
+                fragv.setArguments(dataBundle);
+                return fragv.newInstance();
+
+
+            }
+            else if (position == 5) {
+                // org.sj.conjugator.fragments.FragmentVerb fragv = new org.sj.conjugator.fragments.FragmentVerb();
+                Dictionary_frag fragv = new Dictionary_frag(LughatWordDetailsAct.this, languages[5]);
+                fragv.setArguments(dataBundle);
+                return fragv.newInstance();
+
+
+            }
+
+
+            else if (position == 6) {
+                org.sj.conjugator.fragments.FragmentVerb fragv = new org.sj.conjugator.fragments.FragmentVerb();
+                fragv.setArguments(dataBundle);
+                return fragv.newInstance();
+
+
+            } else if (position == 7) {
+                org.sj.conjugator.fragments.FragmentIsmfaelIsmMafools fragvs = new org.sj.conjugator.fragments.FragmentIsmfaelIsmMafools();
+                fragvs.setArguments(dataBundle);
+                return fragvs.newInstance();
+            }
+
+            org.sj.conjugator.fragments.FragmentVerb fragv = new org.sj.conjugator.fragments.FragmentVerb();
+            fragv.setArguments(dataBundle);
+            return fragv.newInstance();
+        }
+
         private Fragment getMazeedMajzoomOrMarfu(int position) {
             if (position == 0) {
                 //hanes
@@ -808,11 +974,14 @@ public class LughatWordDetailsAct extends BaseActivity {
 
         @Override
         public int getItemCount() {
-
-            if (isAugmentedWazan && isparticple) {
+           if(isimperative && isAugmentedWazan){
+              return 8;
+           }else if(isimperative && ismujarrad){
+               return 10;
+           }
+          else  if (isAugmentedWazan && isparticple) {
                 return 7;
-            }else
-            if (ismujarrad && isparticple) {
+            } else if (ismujarrad && isparticple) {
                 return 9;
             } else if (isnoun) {
                 return NUM_PAGES_ISMMARFU;

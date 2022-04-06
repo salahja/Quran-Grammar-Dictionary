@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "bd0b266a244d2d892afb0c69e4322849",
+    "identityHash": "5002e3fb5639aea42522452bda28332b",
     "entities": [
       {
         "tableName": "rules",
@@ -1094,7 +1094,7 @@
       },
       {
         "tableName": "qurans",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`docid` INTEGER NOT NULL, `surah` INTEGER NOT NULL, `ayah` INTEGER NOT NULL, `qurantext` TEXT NOT NULL, `passage_no` INTEGER NOT NULL, `has_prostration` INTEGER NOT NULL, `translation` TEXT NOT NULL, `en_transliteration` TEXT NOT NULL, `en_jalalayn` TEXT NOT NULL, `ar_irab` TEXT NOT NULL, `ar_irab_two` TEXT, `ur_jalalayn` TEXT NOT NULL, `ur_junagarhi` TEXT NOT NULL, PRIMARY KEY(`docid`), FOREIGN KEY(`surah`) REFERENCES `chaptersana`(`chapterid`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`docid` INTEGER NOT NULL, `surah` INTEGER NOT NULL, `ayah` INTEGER NOT NULL, `qurantext` TEXT NOT NULL, `passage_no` INTEGER NOT NULL, `has_prostration` INTEGER NOT NULL, `translation` TEXT NOT NULL, `en_transliteration` TEXT NOT NULL, `en_jalalayn` TEXT NOT NULL, `en_arberry` TEXT NOT NULL, `ar_irab_two` TEXT, `ur_jalalayn` TEXT NOT NULL, `ur_junagarhi` TEXT NOT NULL, `tafsir_kathir` TEXT, PRIMARY KEY(`docid`), FOREIGN KEY(`surah`) REFERENCES `chaptersana`(`chapterid`) ON UPDATE NO ACTION ON DELETE CASCADE )",
         "fields": [
           {
             "fieldPath": "docid",
@@ -1151,8 +1151,8 @@
             "notNull": true
           },
           {
-            "fieldPath": "ar_irab",
-            "columnName": "ar_irab",
+            "fieldPath": "en_arberry",
+            "columnName": "en_arberry",
             "affinity": "TEXT",
             "notNull": true
           },
@@ -1173,6 +1173,12 @@
             "columnName": "ur_junagarhi",
             "affinity": "TEXT",
             "notNull": true
+          },
+          {
+            "fieldPath": "tafsir_kathir",
+            "columnName": "tafsir_kathir",
+            "affinity": "TEXT",
+            "notNull": false
           }
         ],
         "primaryKey": {
@@ -1619,7 +1625,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'bd0b266a244d2d892afb0c69e4322849')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '5002e3fb5639aea42522452bda28332b')"
     ]
   }
 }

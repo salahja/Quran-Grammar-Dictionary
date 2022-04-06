@@ -79,7 +79,7 @@ public class LexiconAdapter extends RecyclerView.Adapter<LexiconAdapter.ItemView
         holder.  wordDictionary.getSettings().setBuiltInZoomControls(true);
         holder.wordDictionary.getSettings().setSupportZoom(true);
 
-        if(language.equals("genetivenoun")||language.equals("accusativenoun")||language.equals("nominativenoun")||language.equals("accusative")||language.equals("preposition")||language.equals("conditonal")||language.equals("relative")
+        if(language.equals("imperative")||language.equals("genetivenoun")||language.equals("accusativenoun")||language.equals("nominativenoun")||language.equals("accusative")||language.equals("preposition")||language.equals("conditonal")||language.equals("relative")
                 ||language.equals("dem")||language.equals("Jussive")||language.equals("Subjunctive")){
            // webView.loadDataWithBaseURL(htmlData, "text/html", "utf-8", null);
 

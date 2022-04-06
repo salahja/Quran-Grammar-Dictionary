@@ -263,6 +263,8 @@
     <item name="babnos" type="id" />
     <item name="moodrules" type="id" />
     <item name="ivHelp" type="id" />
+    <item name="arrowforward" type="id" />
+    <item name="arrowback" type="id" />
 
 
 </resources>

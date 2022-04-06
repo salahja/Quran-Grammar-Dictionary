@@ -214,6 +214,10 @@
     <string name="title_grammarrulelist_list">grammarrule_detail</string>
     <string name="title_grammarrulelist_detail">grammarrule_list Detail</string>
     <string name="title_grammarrule_detail" />
-
+    <string name="prefs_show_kathir">showKathir</string>
+    <string name="arberry">A.J.Arberry</string>
+    <string name="ensahih">Sahee International</string>
+    <string name="enjalalayn">Jalalyan Tafseer</string>
+    <string name="urjunagadi">Junagarhi</string>
 
 </resources>
