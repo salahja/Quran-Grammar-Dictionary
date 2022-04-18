@@ -279,13 +279,13 @@ public class QuranMorphologyDetails {
 
             switch (person) {
                 case "1":
-                    sb.append("1st Person");
+                    sb.append("1st Person ");
                     break;
                 case "2":
-                    sb.append("2nd Person");
+                    sb.append("2nd Person ");
                     break;
                 case "3":
-                    sb.append("3rd Person");
+                    sb.append("3rd Person ");
                     break;
             }
             sb.append(" ");
@@ -612,7 +612,8 @@ public class QuranMorphologyDetails {
         return wordbdetail;
     }
 
-    private void getProperNounDetails(ArrayList<NounCorpus> corpusNoun, HashMap<String, SpannableStringBuilder> wordbdetail, StringBuilder sb) {
+    private void getProperNounDetails(ArrayList<NounCorpus> corpusNoun, HashMap<String, SpannableStringBuilder> wordbdetail, StringBuilder sbs) {
+     StringBuilder sb=new StringBuilder();
         if (corpusNoun.size() > 0) {
             if (corpusNoun.get(0).getTag().equals("PN") || corpusNoun.get(0).getTag().equals("ADJ")) {
                 String propone = corpusNoun.get(0).getPropone();
@@ -718,9 +719,12 @@ public class QuranMorphologyDetails {
         }
     }
 
-    private void getNdetails(ArrayList<NounCorpus> corpusNoun, HashMap<String, SpannableStringBuilder> wordbdetail, StringBuilder sb) {
+    void getNdetails(ArrayList<NounCorpus> corpusNoun, HashMap<String, SpannableStringBuilder> wordbdetail, StringBuilder sb) {
         if (corpusNoun.size() > 0) {
-            if (corpusNoun.get(0).getTag().equals("N")) {
+            if (corpusNoun.get(0).getTag().equals("N")||corpusNoun.get(0).getTag().equals("PN") ||
+                    corpusNoun.get(0).getTag().equals("VN") ||
+                    corpusNoun.get(0).getTag().equals("ADJ")){
+         //   if (corpusNoun.get(0).getTag().equals("N")) {
                 String propone = corpusNoun.get(0).getPropone();
                 String proptwo = corpusNoun.get(0).getProptwo();
 
@@ -733,7 +737,20 @@ public class QuranMorphologyDetails {
                 String gendernumber = corpusNoun.get(0).getGendernumber();
                 String type = corpusNoun.get(0).getType();
                 String cases = corpusNoun.get(0).getCases();
-                sb.append("Noun:");
+             //   sb.append("Noun:");
+              if(  corpusNoun.get(0).getTag().equals("N")){
+                    sb.append("Noun:".concat(" "));
+                }else  if(  corpusNoun.get(0).getTag().equals("ADJ")) {
+                    sb.append("Adjective:".concat(" "));
+                }else  if(  corpusNoun.get(0).getTag().equals("PN")) {
+                  sb.append("Porper Noun:".concat(" "));
+              }else  if(  corpusNoun.get(0).getTag().equals("VN")) {
+                  sb.append("Verbal Noun:".concat(" "));
+              }
+
+
+
+             //   sb.append(corpusNoun.get(0).getTag().concat(" "));
                 if (!cases.equals("null")) {
                     switch (cases) {
                         case "NOM":
@@ -791,7 +808,7 @@ public class QuranMorphologyDetails {
                 }
 
                 if (!form.equals("null")) {
-                    sb.append("(form").append(form).append(")");
+                    sb.append("(form").append(" ").append(form).append(")");
                 }
                 if (!propone.equals("null") && !proptwo.equals("null")) {
                     if (pcpl.equals("ACTPCPL")) {

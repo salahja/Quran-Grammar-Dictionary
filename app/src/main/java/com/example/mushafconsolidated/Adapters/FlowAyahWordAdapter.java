@@ -24,6 +24,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.text.Html;
 import android.text.SpannableString;
+import android.text.SpannableStringBuilder;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -45,6 +46,7 @@ import com.example.mushafconsolidated.Entities.NewCorpusExpandWbwPOJO;
 import com.example.mushafconsolidated.Entities.NounCorpus;
 import com.example.mushafconsolidated.Entities.QuranEntity;
 import com.example.mushafconsolidated.Entities.VerbCorpus;
+import com.example.mushafconsolidated.Entities.VerbWazan;
 import com.example.mushafconsolidated.R;
 import com.example.mushafconsolidated.Utils;
 import com.example.mushafconsolidated.fragments.QuranMorphologyDetails;
@@ -61,6 +63,7 @@ import com.example.utility.PreferenceUtil;
 import com.tooltip.Tooltip;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 //import com.example.mushafconsolidated.Entities.JoinVersesTranslationDataTranslation;
@@ -652,13 +655,36 @@ if (SharedPref.themePreferences().equals("dark")) {
                 @Override
                 public boolean onLongClick(View v) {
                     Utils utils = new Utils(getContext());
+                    //
+                    HashMap<String, String> vbdetail;
+                    ArrayList<NewCorpusExpandWbwPOJO> corpusSurahWords = utils.getCorpusWbwBySurahAyahWordid(word.getSurahId(), word.getVerseId(), word.getWordno());
+                    ArrayList<NounCorpus> corpusNounWords = utils.getQuranNouns(word.getSurahId(), word.getVerseId(), word.getWordno());
+                    ArrayList<VerbCorpus> verbCorpusRootWords = utils.getQuranRoot(word.getSurahId(), word.getVerseId(), word.getWordno());
+                    QuranMorphologyDetails ams = new QuranMorphologyDetails(corpusSurahWords, corpusNounWords, verbCorpusRootWords, getContext());
+
+               //     HashMap<String, SpannableStringBuilder> wordbdetail = ams.getWordDetails();
+                    if (verbCorpusRootWords.size() > 0 && verbCorpusRootWords.get(0).getTag().equals("V")) {
+                //    vbdetail = ams.getVerbDetails();
+
+                        System.out.printf("check");
+                    }
+
+
+                    //
+                    WordAnalysisBottomSheet wb=new WordAnalysisBottomSheet();
+                  
                     ArrayList<NewCorpusExpandWbwPOJO> corpusSurahWord = utils.getCorpusWbwBySurahAyahWordid(word.getSurahId(), word.getVerseId(), word.getWordno());
                     ArrayList<NounCorpus> corpusNounWord = utils.getQuranNouns(word.getSurahId(), word.getVerseId(), word.getWordno());
                     ArrayList<VerbCorpus> verbCorpusRootWord = utils.getQuranRoot(word.getSurahId(), word.getVerseId(), word.getWordno());
+                 //   QuranMorphologyDetails am = new QuranMorphologyDetails(corpusSurahWord, corpusNounWord, verbCorpusRootWord, getContext());
+                 //   ArrayList<NounCorpus> corpusNounWord = utils.getQuranNouns(chapterid, ayanumber, wordno);
+                  //  ArrayList<VerbCorpus> verbCorpusRootWord = utils.getQuranRoot(chapterid, ayanumber, wordno);
                     QuranMorphologyDetails am = new QuranMorphologyDetails(corpusSurahWord, corpusNounWord, verbCorpusRootWord, getContext());
-                    WordMorphologyDetails qm = new WordMorphologyDetails(word);
-                    //   String ws= String.valueOf(qm.getWorkBreakDown());
 
+
+                    WordMorphologyDetails qm = new WordMorphologyDetails(word,corpusNounWord,verbCorpusRootWord);
+                    //   String ws= String.valueOf(qm.getWorkBreakDown());
+                //    HashMap<String, SpannableStringBuilder> wordDetails = am.getWordDetails();
                     SpannableString workBreakDown = qm.getWorkBreakDown();
       /*
 

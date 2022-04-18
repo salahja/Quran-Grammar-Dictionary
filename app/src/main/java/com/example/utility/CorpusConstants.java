@@ -38,7 +38,7 @@ public interface CorpusConstants {
                 INDEF = "Indefinite(نكرة)",
                 DEF = " Definite(معرفة) ",
                 NOM = "Nominative(مرفوع)",
-                ACC = "Accusative(حرف نصب)",
+                ACC = "Accusative( نصب)",
                 GEN = " Genitive(نكرة)",
                 T = "Time Adverb(ظرف زمان)",
                 LOC = "Location Adverb(ظرف مكان)";
@@ -112,14 +112,14 @@ public interface CorpusConstants {
     }
     interface png {
 
-        String one = "First person",
-                two = "Second Person",
-                three = "Third Person",
-                M = "Masculine",
-                F = "Feminine",
-                S = "Singular",
-                P = "Plural",
-                D = "Dual";
+        String one = "First person ",
+                two = "Second Person ",
+                three = "Third Person ",
+                M = "Masculine ",
+                F = "Feminine ",
+                S = "Singular ",
+                P = "Plural ",
+                D = "Dual ";
     }
 
     interface thulathi {

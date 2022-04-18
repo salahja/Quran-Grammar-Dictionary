@@ -268,7 +268,8 @@ public class CorpusUtilityorig {
     } else if (tagcounter == 2) {
 
 
-      str = new SpannableString(aratwo.trim() + araone.trim());
+    //  str = new SpannableString(aratwo.trim() + araone.trim());
+      str = new SpannableString(aratwo.concat(" ") + araone);
       str.setSpan(spanhash.get(tagtwo), 0, aratwo.trim().length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
       str.setSpan(spanhash.get(tagone), aratwo.length(), araone.length() + aratwo.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
@@ -276,7 +277,8 @@ public class CorpusUtilityorig {
      
       spanhash.get(tagone);
 
-      str = new SpannableString(arathree.trim() + aratwo.trim() + araone.trim());
+   //   str = new SpannableString(arathree.trim() + aratwo.trim() + araone.trim());
+      str = new SpannableString(arathree.concat(" ")+ aratwo.concat(" ") + araone);
 
 
       str.setSpan(spanhash.get(tagthree), 0, arathree.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
@@ -286,8 +288,8 @@ public class CorpusUtilityorig {
 
     } else if (tagcounter == 4) {
 
-      str = new SpannableString(arafour.trim() + arathree.trim() + aratwo.trim() + araone.trim());
-
+    //  str = new SpannableString(arafour.trim() + arathree.trim() + aratwo.trim() + araone.trim());
+      str = new SpannableString(arafour.concat(" ")+arathree.concat(" ")+ aratwo.concat(" ") + araone);
       str.setSpan(spanhash.get(tagfour), 0, arafour.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
       str.setSpan(spanhash.get(tagthree), arafour.length(), arathree.length()+arafour.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
       str.setSpan(spanhash.get(tagtwo), arathree.length()+arafour.length(), aratwo.length() + arathree.length()+arafour.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
