@@ -48,6 +48,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.mushafconsolidated.Activity.MainActivity" />
         </activity>
+
+
         <activity
             android:name=".Activity.SearchActivity"
             android:parentActivityName=".Activity.MainActivity"
@@ -64,6 +66,18 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.mushafconsolidated.Activity.MainActivity" />
         </activity>
+
+        <activity
+            android:name=".Activity.SearchKeyBoardAct"
+            android:parentActivityName=".Activity.MainActivity"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.mushafconsolidated.Activity.MainActivity" />
+        </activity>
+
+
+
         <activity
             android:name=".Activity.LughatWordDetailsAct"
             android:label="@string/title_activity_verb_conjugation"

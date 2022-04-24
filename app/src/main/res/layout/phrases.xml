@@ -105,106 +105,30 @@
 
                         android:textSize="16.0sp" />
 
-                    <TextView
-                        android:id="@id/arabicword"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="15.0dip"
-                        android:layout_marginRight="15dp"
-                        android:layout_toEndOf="@id/chapterverse"
-                        android:layout_weight="1"
-                        android:lines="1"
+
+                    <com.example.utility.FlowLayout
+                       android:layout_below="@+id/ayah"
+
+                        android:elevation="8dp"
                         android:text="Word"
-
-                        android:textSize="16.0sp"
-
-                        android:visibility="gone" />
-
-                    <TextView
-                        android:id="@id/meaning"
-                        android:layout_width="wrap_content"
+                        android:backgroundTint="@color/OrangeRed"
+                        android:id="@+id/flow_word_by_word"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="15.0dip"
-                        android:layout_marginRight="15dp"
-                        android:layout_toEndOf="@id/arabicword"
-                        android:layout_weight="1"
-                        android:text="Word"
+                        android:visibility="visible" />
 
 
-                        android:textSize="16.0sp"
-
-                        android:visibility="gone" />
-
-                    <TextView
-                        android:id="@id/wazan"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="top"
-                        android:layout_marginTop="15.0dip"
-                        android:layout_marginRight="15dp"
-                        android:layout_toEndOf="@id/meaning"
-                        android:layout_weight="1"
-                        android:text="Word"
-
-                        android:textSize="16.0sp"
-
-                        android:visibility="gone" />
-
-                    <TextView
-                        android:id="@id/gendernumber"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="top"
-                        android:layout_marginTop="15.0dip"
-                        android:layout_marginRight="15dp"
-                        android:layout_toEndOf="@id/wazan"
-                        android:layout_weight="1"
-                        android:lines="1"
-                        android:text="Word"
-
-                        android:textSize="16.0sp"
-                        android:visibility="gone" />
-
-                    <TextView
-                        android:id="@id/cases"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="top"
-                        android:layout_marginTop="15.0dip"
-                        android:layout_marginRight="15dp"
-                        android:layout_toEndOf="@id/gendernumber"
-                        android:layout_weight="1"
-                        android:lines="1"
-                        android:text="Word"
-
-                        android:textSize="16.0sp"
-                        android:visibility="gone" />
 
 
-                    <TextView
-                        android:id="@id/participles"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="top"
-                        android:layout_marginLeft="15dp"
-                        android:layout_marginTop="15.0dip"
-                        android:layout_toEndOf="@id/cases"
-                        android:layout_weight="1"
-                        android:lines="1"
-                        android:text="Word"
 
-                        android:textSize="16.0sp"
-                        android:visibility="gone" />
 
-                    <ImageView
-                        android:id="@+id/more"
-                        android:layout_width="30dp"
-                        android:layout_height="40dp"
-                        android:layout_alignParentEnd="true"
-                        android:layout_marginLeft="15dp"
-                        android:layout_toEndOf="@id/participles"
-                        android:src="@drawable/ic_more"
-                        android:visibility="gone" />
+
+
+
+
+
+
+
 
                     <TextView
                         android:id="@id/ayah"
@@ -218,7 +142,7 @@
 
 
                         android:textSize="16.0sp"
-                        android:visibility="visible" />
+                        android:visibility="gone" />
 
                     <TextView
                         android:id="@id/translation"

@@ -7,15 +7,19 @@ import android.util.Log;
 
 import androidx.sqlite.db.SimpleSQLiteQuery;
 
+import com.example.mushafconsolidated.Entities.BadalErabNotesEnt;
 import com.example.mushafconsolidated.Entities.BookMarks;
 import com.example.mushafconsolidated.Entities.ChaptersAnaEntity;
 import com.example.mushafconsolidated.Entities.CorpusExpandWbwPOJO;
 import com.example.mushafconsolidated.Entities.CorpusNounWbwOccurance;
 import com.example.mushafconsolidated.Entities.CorpusVerbWbwOccurance;
 import com.example.mushafconsolidated.Entities.GrammarRules;
+import com.example.mushafconsolidated.Entities.HalEnt;
 import com.example.mushafconsolidated.Entities.KanaPOJO;
+import com.example.mushafconsolidated.Entities.LiajlihiEnt;
+import com.example.mushafconsolidated.Entities.MafoolBihi;
+import com.example.mushafconsolidated.Entities.MafoolMutlaqEnt;
 import com.example.mushafconsolidated.Entities.MudhafPOJO;
-import com.example.mushafconsolidated.Entities.NasbPOJO;
 import com.example.mushafconsolidated.Entities.NewCorpusExpandWbwPOJO;
 import com.example.mushafconsolidated.Entities.NewKanaEntity;
 import com.example.mushafconsolidated.Entities.NewMudhafEntity;
@@ -27,6 +31,9 @@ import com.example.mushafconsolidated.Entities.QuranEntity;
 import com.example.mushafconsolidated.Entities.ShartPOJO;
 import com.example.mushafconsolidated.Entities.SifaEntity;
 import com.example.mushafconsolidated.Entities.SifaPOJO;
+import com.example.mushafconsolidated.Entities.TameezEnt;
+import com.example.mushafconsolidated.Entities.TameezPOJO;
+import com.example.mushafconsolidated.Entities.TameezPojoList;
 import com.example.mushafconsolidated.Entities.VerbCorpus;
 import com.example.mushafconsolidated.Entities.VerbCorpusBreakup;
 import com.example.mushafconsolidated.Entities.hanslexicon;
@@ -34,7 +41,6 @@ import com.example.mushafconsolidated.Entities.lanelexicon;
 import com.example.mushafconsolidated.Entities.lughat;
 import com.example.mushafconsolidated.Entities.qurandictionary;
 import com.example.mushafconsolidated.Entities.wbwentity;
-import com.example.mushafconsolidated.model.wordbyword;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -142,7 +148,10 @@ public class Utils {
         return database.QuranDao().getQuranVersesBySurah(id);
 
     }
+    public static List<QuranEntity> getQuran( ) {
+        return database.QuranDao().getAllQuran();
 
+    }
 
     public void insertBookMark(BookMarks entity) {
         //    database.BookMarkDao().deleteAllBookMakrs();
@@ -332,6 +341,64 @@ public class Utils {
         //  List<Book> result = booksDao.getBooks(query);
 
         return (ArrayList<NewCorpusExpandWbwPOJO>) database.RawDao().getNewCorpusWbw(query);
+    }
+
+    public ArrayList<CorpusExpandWbwPOJO> getCorpusWbwBySurahForTameez(int tid) {
+
+
+        String sqlverb = "SELECT CorpusExpand.rootaraone || rootaratwo || rootarathree || rootarafour || rootarafive AS root_a,\n" +
+                "       CorpusExpand.surah,\n" +
+                "       CorpusExpand.ayah,\n" +
+                "       CorpusExpand.wordno,\n" +
+                "       CorpusExpand.wordcount,\n" +
+                "       Qurans.translation,\n" +
+
+                "       CorpusExpand.araone,\n" +
+                "       CorpusExpand.aratwo,\n" +
+                "       CorpusExpand.arathree,\n" +
+                "       CorpusExpand.arafour,\n" +
+                "       CorpusExpand.arafive,\n" +
+                "       CorpusExpand.tagone,\n" +
+                "       CorpusExpand.tagtwo,\n" +
+                "       CorpusExpand.tagthree,\n" +
+                "       CorpusExpand.tagfour,\n" +
+                "       CorpusExpand.tagfive,\n" +
+                "       CorpusExpand.detailsone,\n" +
+                "       CorpusExpand.detailstwo,\n" +
+                "       CorpusExpand.detailsthree,\n" +
+                "       CorpusExpand.detailsfour,\n" +
+                "       CorpusExpand.detailsfive,\n" +
+                "       wbw.en,\n" +
+                "       wbw.bn,\n" +
+                "       wbw.[in],\n" +
+                "       wbw.ur,\n" +
+                "       qurans.qurantext\n" +
+                "  FROM corpusexpand,\n" +
+                "       qurans,\n"+
+                "       wbw,\n"+
+                "       tameez\n" +
+                " WHERE CorpusExpand.surah == \""
+                + tid + "\""
+                + "AND \n" +
+                "       corpusexpand.surah = wbw.surah AND \n" +
+                "       corpusexpand.ayah = wbw.ayah AND \n" +
+                "       corpusexpand.wordno = wbw.wordno AND\n" +
+                "       corpusexpand.surah = qurans.surah AND \n" +
+                "       corpusexpand.ayah = qurans.ayah AND \n" +
+                "       corpusexpand.surah = tameez.surah AND \n" +
+                "       corpusexpand.ayah = tameez.ayah  \n" +
+
+                " ORDER BY corpusexpand.surah,\n" +
+                "          corpusexpand.ayah";
+
+
+
+
+
+        SimpleSQLiteQuery query = new SimpleSQLiteQuery(sqlverb);
+        //  List<Book> result = booksDao.getBooks(query);
+
+        return (ArrayList<CorpusExpandWbwPOJO>) database.RawDao().getCorpusWbwfortameez(query);
     }
     public ArrayList<CorpusExpandWbwPOJO> getCorpusWbwBySurah(int tid) {
 
@@ -662,7 +729,17 @@ public class Utils {
         return (ArrayList<ShartPOJO>) database.RawDao().getShart(query);
     }
 
+    public ArrayList<TameezPojoList> getTameez() {
 
+        String sqlverb="select tameez.surah,tameez.ayah,tameez.wordno,tameez.word \n" +
+                "                 ,qurans.qurantext,qurans.translation from tameez,qurans where tameez.surah=qurans.surah and  \n" +
+                "               tameez.ayah=qurans.ayah  order by tameez.surah,tameez.ayah";
+//     "shart.ayah=qurans.ayah and shart.sharttype=\"laula\" order by shart.surah";
+        SimpleSQLiteQuery query = new SimpleSQLiteQuery(sqlverb);
+        //  List<Book> result = booksDao.getBooks(query);
+
+        return (ArrayList<TameezPojoList>) database.RawDao().getTameez(query);
+    }
     public ArrayList<KanaPOJO> getKanaPojo() {
 
         String sqlverb="select newkana.surah,newkana.ayah,newkana.indexstart,newkana.indexend,newkana.khabarstart,newkana.khabarend,\n" +
@@ -675,6 +752,7 @@ public class Utils {
 
         return (ArrayList<KanaPOJO>) database.RawDao().getKana(query);
     }
+
 
 
     public ArrayList<SifaEntity> getSifabySurah(int id) {
@@ -777,6 +855,11 @@ public class Utils {
     }
 
 
+
+
+
+
+
     public  ArrayList<GrammarRules> getGrammarRules() {
         return (ArrayList<GrammarRules>) database.grammarRulesDao().getGrammarRules();
 
@@ -787,7 +870,105 @@ public class Utils {
 
     }
 
+    public  ArrayList<TameezEnt> getTameezWord(int surah,int ayah,int wordno) {
+        return (ArrayList<TameezEnt>) database.tameezDao().getTameezWord(surah,ayah,wordno);
+
+    }
+    public  ArrayList<TameezEnt> getTameezall() {
+        return (ArrayList<TameezEnt>) database.tameezDao().getall();
+
+    }
+    public  ArrayList<TameezEnt> getTameezsurah(int surah) {
+        return (ArrayList<TameezEnt>) database.tameezDao().getTameezSurah(surah);
+
+    }
+
+
+    public  ArrayList<TameezPOJO> gettameezverses() {
+        String sql="SELECT surah,COUNT(ayah) as versescount FROM tameez group by surah order BY surah,ayah";
+
+        SimpleSQLiteQuery query = new SimpleSQLiteQuery(sql);
+        //  List<Book> result = booksDao.getBooks(query);
+
+        return (ArrayList<TameezPOJO>) database.RawDao().gettameezversescount(query);
+
+    }
+
+
+
+    public  ArrayList<LiajlihiEnt> getMafoolLiajlihi(int surah, int ayah, int wordno) {
+        return (ArrayList<LiajlihiEnt>) database.liajlihiDao().getMafoolLiajlihi(surah,ayah,wordno);
+
+    }
+    public  ArrayList<LiajlihiEnt> getMafoolLiajlihisurah(int surah) {
+        return (ArrayList<LiajlihiEnt>) database.liajlihiDao().getMafoolLiajlihisurah(surah);
+
+    }
+    public  ArrayList<MafoolBihi> getMafoolbihiId(int surah, int ayah,int wordno) {
+        return (ArrayList<MafoolBihi>) database.MafoolBihiDao().getMafoolbihi(surah,ayah,wordno);
+
+    }
+
+    public  ArrayList<MafoolBihi> getMafoolbihiword(int surah, int ayah,int wordno) {
+        return (ArrayList<MafoolBihi>) database.MafoolBihiDao().getMafoolbihi(surah,ayah,wordno);
+
+    }
+    public int updateMafoolword(int wordn,int id) {
+        int updatemafoolrslt= database.MafoolBihiDao().updateMafoolWord(wordn,id);
+
+        return updatemafoolrslt;
+    }
+
+    public  ArrayList<MafoolBihi> getMafoolbihiquran() {
+        return (ArrayList<MafoolBihi>) database.MafoolBihiDao().getMafoolbihiq();
+
+    }
+
+    public  ArrayList<MafoolBihi> getMafoolBySurah(int surah) {
+        return (ArrayList<MafoolBihi>) database.MafoolBihiDao().getBySurah(surah);
+
+    }
+
+
+
+
+    public  ArrayList<HalEnt> getHaliaErab(int surah,int ayah) {
+        return (ArrayList<HalEnt>) database.HaliyaDao().getHaliya( surah,ayah);
+
+    }
+    public  ArrayList<HalEnt> getHaliaErabBysurah(int surah ) {
+        return (ArrayList<HalEnt>) database.HaliyaDao().getHaliyaSurah( surah);
+
+    }
+
+
+
+    public  ArrayList<BadalErabNotesEnt> getBadalErabSA(int surah, int ayah) {
+        return (ArrayList<BadalErabNotesEnt>) database.BadalErabNotesDao().getBadalNotesSurahAyah( surah,ayah);
+
+    }
+    public  ArrayList<BadalErabNotesEnt> getBadalrabSurah(int surah  ) {
+        return (ArrayList<BadalErabNotesEnt>) database.BadalErabNotesDao().getBadalNotesSurah( surah);
+
+    }
+
+
+
+    public  ArrayList<MafoolMutlaqEnt> getMafoolMutlaqword(int surah, int ayah, int wordno) {
+        return (ArrayList<MafoolMutlaqEnt>) database.MafoolMutlaqEntDao().getMafoolbihiword(surah,ayah,wordno);
+
+    }
+
+    public  ArrayList<MafoolMutlaqEnt> getMutlaqsurah(int surah) {
+        return (ArrayList<MafoolMutlaqEnt>) database.MafoolMutlaqEntDao().getMutlaqsurah(surah);
+
+    }
+
+
+
 }
+
+
 
 
 

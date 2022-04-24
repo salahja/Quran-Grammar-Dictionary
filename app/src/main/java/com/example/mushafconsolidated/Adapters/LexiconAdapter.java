@@ -105,6 +105,7 @@ public class LexiconAdapter extends RecyclerView.Adapter<LexiconAdapter.ItemView
 
 
             holder. wordDictionary.loadDataWithBaseURL(null, data.toString(), "text/html", "utf-8", null);
+
             holder.  wordDictionary.getSettings().setBuiltInZoomControls(true);
 
         }else  if(language.equals("hans")) {

@@ -15,6 +15,16 @@ public class CorpusWbwWord {
     private String translate;
     private String translateEn;
     private String translateBn;
+    private String rootword;
+
+    public String getRootword() {
+        return rootword;
+    }
+
+    public void setRootword(String rootword) {
+        this.rootword = rootword;
+    }
+
 
     public String getTranslationUrdu() {
         return translationUrdu;

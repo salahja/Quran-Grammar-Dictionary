@@ -58,6 +58,7 @@
     <string name="id_chapters">Chapters</string>
     <string name="id_juzzs">Juz</string>
     <string name="prefs_show_translitration">showtransliterationKey</string>
+    <string name="prefs_show_root">showrootkey</string>
     <string name="prefs_show_en_jalalayn">showEnglishJalalayn</string>
 
     <string name="seek_title">English Font Selection</string>

@@ -20,6 +20,20 @@ import java.util.Map;
 
 public class Constant {
 
+    public final static String BIHIHEADER="مفعول  به".concat("\n");
+    public final static String HALHEADER="حالية/حال/في محل".concat("\n");
+    public final static String AJLIHIHEADER="مفعول لأجله " .concat("\n");
+    public final static String MUTLAQHEADER="فعولا  مطلق" .concat("\n");
+    public final static String BADALHEADER="بدل" .concat("\n");;
+    public final static String TAMEEZHEADER="تمييز" .concat("\n");;
+
+    public final static String BIHI ="مفعول  به";
+    public final static String HAL ="حالية/حال/في محل";
+    public final static String AJLIHI ="مفعول لأجله " ;
+    public final static String MUTLAQ ="فعولا  مطلق" ;
+    public final static String BADAL ="بدل" ;;
+    public final static String TAMEEZ ="تمييز" ;;
+
     public final static String FATHA = "a";
     public final static String KASARA = "i";
     public final static String DHUMMA = "u";

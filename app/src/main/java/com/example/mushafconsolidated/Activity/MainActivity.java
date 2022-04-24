@@ -203,7 +203,7 @@ public class MainActivity extends BaseActivity {
             Intent homeactivity = new Intent(MainActivity.this, QuranGrammarAct.class);
             //   Intent homeactivity = new Intent(MainActivity.this, ReadingSurahPartActivity.class);
             startActivity(homeactivity);
-             MainActivity.this.finish();
+        //     MainActivity.this.finish();
 
 /*
 

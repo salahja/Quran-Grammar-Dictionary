@@ -85,6 +85,7 @@
     <color name="teal300">#4DB6AC</color>
     <color name="teal400">#26A69A</color>
     <color name="teal600">#00897B</color>
+    <color name="teal900">#30CCA9</color>
     <color name="orange100">#FFE0B2</color>
     <color name="orange400">#FFA726</color>
     <color name="steelemetal">#797979</color>
@@ -121,6 +122,7 @@
     <color name="RoyalBlue">#4169E1</color>
     <color name="Lime">#00FF00</color>
     <color name="DarkGreen">#006400</color>
+    <color name="redhot">#D93375</color>
 
     <color name="black_overlay">#66000000</color>
     <color name="accent_material_dark">@color/material_deep_teal_200</color>

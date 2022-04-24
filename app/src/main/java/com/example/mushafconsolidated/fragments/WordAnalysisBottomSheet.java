@@ -48,11 +48,9 @@ import static Utility.ArabicLiterals.Kasra;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.text.Html;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -67,12 +65,13 @@ import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.mushafconsolidated.Activity.ActivitySettings;
 import com.example.mushafconsolidated.Activity.LughatWordDetailsAct;
-import com.example.mushafconsolidated.Activity.WordDictionaryAct;
 import com.example.mushafconsolidated.Activity.WordOccuranceAct;
 import com.example.mushafconsolidated.Adapters.RootWordDisplayAdapter;
-import com.example.mushafconsolidated.Adapters.SentenceRootWordDisplayAdapter;
+import com.example.mushafconsolidated.Entities.HalEnt;
+import com.example.mushafconsolidated.Entities.LiajlihiEnt;
+import com.example.mushafconsolidated.Entities.MafoolBihi;
+
 import com.example.mushafconsolidated.Entities.NewCorpusExpandWbwPOJO;
 import com.example.mushafconsolidated.Entities.NewKanaEntity;
 import com.example.mushafconsolidated.Entities.NewMudhafEntity;
@@ -80,23 +79,19 @@ import com.example.mushafconsolidated.Entities.NewNasbEntity;
 import com.example.mushafconsolidated.Entities.NewShartEntity;
 import com.example.mushafconsolidated.Entities.NounCorpus;
 import com.example.mushafconsolidated.Entities.SifaEntity;
+import com.example.mushafconsolidated.Entities.TameezEnt;
 import com.example.mushafconsolidated.Entities.VerbCorpus;
 import com.example.mushafconsolidated.Entities.VerbWazan;
 import com.example.mushafconsolidated.Entities.lughat;
 import com.example.mushafconsolidated.Entities.wbwentity;
-import com.example.mushafconsolidated.FontQuranListDialogFragment;
 import com.example.mushafconsolidated.R;
 import com.example.mushafconsolidated.Utils;
 import com.example.mushafconsolidated.VerbFormsDialogFrag;
-import com.example.mushafconsolidated.intrface.OnItemClickListener;
-import com.example.mushafconsolidated.model.SarfSagheerPOJO;
 import com.example.utility.QuranGrammarApplication;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.android.material.button.MaterialButton;
-import com.tooltip.Tooltip;
 
 import org.sj.conjugator.activity.ConjugatorTabsActivity;
-import org.sj.conjugator.fragments.RulesMujarradVerbList;
 import org.sj.conjugator.fragments.SarfSagheer;
 import org.sj.conjugator.utilities.GatherAll;
 
@@ -274,6 +269,13 @@ public class WordAnalysisBottomSheet extends BottomSheetDialogFragment {
         ex.execute(() -> {
 
             getActivity().runOnUiThread(() -> dialog.show());
+            ArrayList<HalEnt> HaliaSentence=     utils.getHaliaErab(chapterid,ayanumber);
+
+            ArrayList<TameezEnt> tameez = utils.getTameezWord(chapterid, ayanumber, wordno);
+            ArrayList<MafoolBihi> mafoolbihi = utils.getMafoolbihiword(chapterid, ayanumber, wordno);
+
+            ArrayList<TameezEnt> tameezWord = utils.getTameezWord(chapterid, ayanumber, wordno);
+            ArrayList<LiajlihiEnt> liajlihiEntArrayList = utils.getMafoolLiajlihi(chapterid, ayanumber, wordno);
             corpusSurahWord = utils.getCorpusWbwBySurahAyahWordid(chapterid, ayanumber, wordno);
             ArrayList<NounCorpus> corpusNounWord = utils.getQuranNouns(chapterid, ayanumber, wordno);
             ArrayList<VerbCorpus> verbCorpusRootWord = utils.getQuranRoot(chapterid, ayanumber, wordno);
@@ -289,6 +291,19 @@ public class WordAnalysisBottomSheet extends BottomSheetDialogFragment {
          if(!vbdetail.isEmpty() && vbdetail.get("tense").contains("Imperative")){
              isimperative=true;
          }
+           if(!tameezWord.isEmpty()){
+               wordbdetail.put("tameez", SpannableStringBuilder.valueOf("yes"));
+           }
+
+            if(!liajlihiEntArrayList.isEmpty()){
+                wordbdetail.put("liajlihi", SpannableStringBuilder.valueOf("yes"));
+            }
+            if(!mafoolbihi.isEmpty()){
+                wordbdetail.put("mafoolbihi", SpannableStringBuilder.valueOf("yes"));
+
+            }
+
+
 
             isarabicword = wordbdetail.get("arabicword") != null;
             ismujarrad = vbdetail.get("wazan") != null;
@@ -621,7 +636,7 @@ public class WordAnalysisBottomSheet extends BottomSheetDialogFragment {
                 } else {
 
 
-                    rwAdapter.setRootWordsAndMeanings(isVerb(), wazannumberslist, spannable,
+                    rwAdapter.setRootWordsAndMeanings(HaliaSentence,tameez,mafoolbihi,isVerb(), wazannumberslist, spannable,
                             isNoun(), ismfaelmafool, isParticiples(),
                             isIsverbconjugaton(), corpusSurahWord, wordbdetail, vbdetail,
                             isMazeedSarfSagheer(), isThulathiSarfSagheer(), sarfSagheerList, getActivity());

@@ -20,6 +20,7 @@
         android:maxLines="1"
         android:elevation="8dp"
         android:id="@+id/flow_word_by_word"
+
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:visibility="visible" />
@@ -51,6 +52,10 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:visibility="visible" />
 
+    <include layout="@layout/erabcollapsabletwo"
+        android:visibility="visible"/>
+    <include layout="@layout/katheercollapsable"
+        android:visibility="visible"/>
     <include layout="@layout/quran_tranlation_rows"
         android:visibility="visible"/>
 

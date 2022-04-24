@@ -25,7 +25,7 @@ import java.util.HashMap;
 public class WordMorphologyDetails extends QuranMorphologyDetails {
 
 
-    private  ArrayList<VerbCorpus> verbCorpusRootWord;
+    private ArrayList<VerbCorpus> verbCorpusRootWord;
     private ArrayList<NounCorpus> corpusNounWord;
     private CorpusWbwWord word;
 
@@ -36,13 +36,13 @@ public class WordMorphologyDetails extends QuranMorphologyDetails {
 
     public WordMorphologyDetails(CorpusWbwWord word, ArrayList<NounCorpus> corpusNounWord, ArrayList<VerbCorpus> verbCorpusRootWord) {
         this.word = word;
-        this.corpusNounWord=corpusNounWord;
-        this.verbCorpusRootWord=verbCorpusRootWord;
+        this.corpusNounWord = corpusNounWord;
+        this.verbCorpusRootWord = verbCorpusRootWord;
     }
 
     public WordMorphologyDetails(CorpusWbwWord word, ArrayList<NounCorpus> corpusNounWord) {
         this.word = word;
-        this.corpusNounWord=corpusNounWord;
+        this.corpusNounWord = corpusNounWord;
 
 
     }
@@ -61,8 +61,7 @@ public class WordMorphologyDetails extends QuranMorphologyDetails {
             String tagone = word.getTagone();
 
             String expandTagsone = expandTags(tagone);
-            if(tagone.equals("N"))
-            {
+            if (tagone.equals("N")) {
                 expandTagsone = getNounDetails(expandTagsone, word.getDetailsone());
             }
             if (tagone.equals("V")) {
@@ -82,8 +81,10 @@ public class WordMorphologyDetails extends QuranMorphologyDetails {
             String tagtwo = word.getTagtwo();
             String tagone = word.getTagone();
             String expandTagsone = expandTags(tagone);
-            boolean tagnounone = tagone.equals("N") || tagone.equals("ADJ")|| tagone.equals("PN");;
-            boolean tagnountwo = tagtwo.equals("N") || tagtwo.equals("ADJ")|| tagtwo.equals("PN");;
+            boolean tagnounone = tagone.equals("N") || tagone.equals("ADJ") || tagone.equals("PN");
+            ;
+            boolean tagnountwo = tagtwo.equals("N") || tagtwo.equals("ADJ") || tagtwo.equals("PN");
+            ;
             String expandTagstwo = expandTags(tagtwo);
             if (tagnounone) {
 
@@ -117,9 +118,12 @@ public class WordMorphologyDetails extends QuranMorphologyDetails {
             String tagtwo = word.getTagtwo();
             String tagone = word.getTagone();
             String tagthree = word.getTagthree();
-            boolean tagnounone = tagone.equals("N") || tagone.equals("ADJ")|| tagone.equals("PN");;
-            boolean tagnountwo = tagtwo.equals("N") || tagtwo.equals("ADJ")|| tagtwo.equals("PN");;
-            boolean tagnounthree = tagthree.equals("N") || tagthree.equals("ADJ")|| tagthree.equals("PN");;
+            boolean tagnounone = tagone.equals("N") || tagone.equals("ADJ") || tagone.equals("PN");
+            ;
+            boolean tagnountwo = tagtwo.equals("N") || tagtwo.equals("ADJ") || tagtwo.equals("PN");
+            ;
+            boolean tagnounthree = tagthree.equals("N") || tagthree.equals("ADJ") || tagthree.equals("PN");
+            ;
             if (tagnounone) {
 
                 expandTagsone = getNounDetails(expandTagsone, word.getDetailsone());
@@ -128,8 +132,7 @@ public class WordMorphologyDetails extends QuranMorphologyDetails {
 
                 expandTagstwo = getNounDetails(expandTagstwo, word.getDetailstwo());
 
-            }
-            else if (tagnounthree) {
+            } else if (tagnounthree) {
 
                 expandTagsthree = getNounDetails(expandTagsthree, word.getDetailsthree());
 
@@ -172,10 +175,14 @@ public class WordMorphologyDetails extends QuranMorphologyDetails {
             String tagone = word.getTagone();
             String tagthree = word.getTagthree();
             String tagfour = word.getTagfour();
-            boolean tagnounone = tagone.equals("N") || tagone.equals("ADJ")|| tagone.equals("PN");;
-            boolean tagnountwo = tagtwo.equals("N") || tagtwo.equals("ADJ")|| tagtwo.equals("PN");;
-            boolean tagnounthree = tagthree.equals("N") || tagthree.equals("ADJ")|| tagthree.equals("PN");;
-            boolean tagnounfour = tagfour.equals("N") || tagfour.equals("ADJ")|| tagfour.equals("PN");;
+            boolean tagnounone = tagone.equals("N") || tagone.equals("ADJ") || tagone.equals("PN");
+            ;
+            boolean tagnountwo = tagtwo.equals("N") || tagtwo.equals("ADJ") || tagtwo.equals("PN");
+            ;
+            boolean tagnounthree = tagthree.equals("N") || tagthree.equals("ADJ") || tagthree.equals("PN");
+            ;
+            boolean tagnounfour = tagfour.equals("N") || tagfour.equals("ADJ") || tagfour.equals("PN");
+            ;
             if (tagnounone) {
 
                 expandTagsone = getNounDetails(expandTagsone, word.getDetailsone());
@@ -184,8 +191,7 @@ public class WordMorphologyDetails extends QuranMorphologyDetails {
 
                 expandTagstwo = getNounDetails(expandTagstwo, word.getDetailstwo());
                 expandTagstwo.concat(" ");
-            }
-            else if (tagnounthree) {
+            } else if (tagnounthree) {
 
                 expandTagsthree = getNounDetails(expandTagsthree, word.getDetailsthree());
                 expandTagsthree.concat(" ");
@@ -193,8 +199,6 @@ public class WordMorphologyDetails extends QuranMorphologyDetails {
 
                 expandTagsfour = getNounDetails(expandTagsfour, word.getDetailsfour());
             }
-
-
 
 
             if (word.getTagone().equals("V")) {
@@ -279,25 +283,26 @@ public class WordMorphologyDetails extends QuranMorphologyDetails {
     }
 
     private String getNounDetails(String expandTagsone, String wordetails) {
-        expandTagsone="";
+        expandTagsone = "";
         String[] split = wordetails.split("\\|");
         String s = split[split.length - 1];
 
         HashMap<String, SpannableStringBuilder> wordbdetail = new HashMap<>();
-        StringBuilder sb=new StringBuilder();
+        StringBuilder sb = new StringBuilder();
 
-           getNdetails(corpusNounWord,wordbdetail,sb);
+        getNdetails(corpusNounWord, wordbdetail, sb);
         StringBuilder genderNumberdetails1 = getGenderNumberdetails(corpusNounWord.get(0).getGendernumber());
-  if(wordbdetail.get("noun")!=null){
+        if (wordbdetail.get("noun") != null) {
 
-      expandTagsone=expandTagsone.concat(String.valueOf(wordbdetail.get("noun")));
-      expandTagsone=expandTagsone.concat("Root:-").concat(  corpusNounWord.get(0).getRoot_a());
-  }
-     //   expandTagsone = expandTagsone.concat(genderNumberdetails1.toString());
+            expandTagsone = expandTagsone.concat(String.valueOf(wordbdetail.get("noun")));
+            expandTagsone = expandTagsone.concat("Root:-").concat(corpusNounWord.get(0).getRoot_a());
+        }
+        //   expandTagsone = expandTagsone.concat(genderNumberdetails1.toString());
 
 
         return expandTagsone;
     }
+
     @NonNull
     private String getVerbDetails(String expandTagsone, String wordetails) {
         String[] split = wordetails.split("\\|");
@@ -325,8 +330,8 @@ public class WordMorphologyDetails extends QuranMorphologyDetails {
             expandTagsone = expandTagsone.concat(PASS);
         }
 
-     //   expandTagsone.concat(verbCorpusRootWord.get(0).getRoot_a());
-        expandTagsone=expandTagsone.concat("Root:-").concat(verbCorpusRootWord.get(0).getRoot_a());
+        //   expandTagsone.concat(verbCorpusRootWord.get(0).getRoot_a());
+        expandTagsone = expandTagsone.concat("Root:-").concat(verbCorpusRootWord.get(0).getRoot_a());
         return expandTagsone;
     }
 

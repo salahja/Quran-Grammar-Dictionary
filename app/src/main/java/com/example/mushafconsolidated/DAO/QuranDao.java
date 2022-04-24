@@ -17,7 +17,8 @@ public interface QuranDao {
     @Query("SELECT * FROM qurans where surah=:surahid")
     List<QuranEntity> getTranslation(int surahid);
 
-
+    @Query("SELECT * FROM qurans order by surah,ayah")
+    List<QuranEntity> getAllQuran();
 
     @Query("SELECT * FROM qurans where surah=:surahid and ayah=:ayahid")
     List<QuranEntity> getsurahayahVerses(int surahid,int ayahid);

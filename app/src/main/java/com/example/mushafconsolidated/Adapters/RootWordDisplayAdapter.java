@@ -3,12 +3,17 @@ package com.example.mushafconsolidated.Adapters;
 
 import static android.view.View.GONE;
 
+import static com.example.utility.CorpusUtilityorig.getStringForegroundColorSpanMap;
+
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.text.SpannableStringBuilder;
+import android.text.Spanned;
+import android.text.TextUtils;
 import android.text.TextUtils.TruncateAt;
+import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,7 +32,10 @@ import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.Constant;
+import com.example.mushafconsolidated.Entities.HalEnt;
+import com.example.mushafconsolidated.Entities.MafoolBihi;
 import com.example.mushafconsolidated.Entities.NewCorpusExpandWbwPOJO;
+import com.example.mushafconsolidated.Entities.TameezEnt;
 import com.example.mushafconsolidated.Entities.lughat;
 import com.example.mushafconsolidated.R;
 import com.example.mushafconsolidated.intrface.OnItemClickListener;
@@ -41,6 +49,7 @@ import org.sj.conjugator.fragments.SarfSagheer;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 public class RootWordDisplayAdapter extends RecyclerView.Adapter<RootWordDisplayAdapter.ItemViewAdapter> {
     private static final String TAG = "VerseDisplayAdapter";
@@ -71,6 +80,10 @@ public class RootWordDisplayAdapter extends RecyclerView.Adapter<RootWordDisplay
     private ArrayList<String> wazannumberslist;
     private boolean isverb;
     private SarfSagheer sagheer;
+    private ArrayList<MafoolBihi> mafoolbihi ;
+    private ArrayList<TameezEnt> tameez;
+    private ArrayList<HalEnt> haliaSentence;
+
 
     public boolean isSarfSagheerMazeed() {
         return isSarfSagheerMazeed;
@@ -123,10 +136,10 @@ public class RootWordDisplayAdapter extends RecyclerView.Adapter<RootWordDisplay
         String theme = sharedPreferences.getString("theme", "dark");
 
         String width = sharedPreferences.getString("width", "compactWidth");
-        if(width.equals("mediumWidth")||width.equals("expandedWidth")) {
-            arabicFontsize = sharedPreferences.getInt("pref_font_arabic_key",20);
+        if (width.equals("mediumWidth") || width.equals("expandedWidth")) {
+            arabicFontsize = sharedPreferences.getInt("pref_font_arabic_key", 20);
 
-        }else{
+        } else {
             arabicFontsize = 18;
         }
         if (theme.equals("dark")) {
@@ -252,6 +265,11 @@ public class RootWordDisplayAdapter extends RecyclerView.Adapter<RootWordDisplay
                 holder.spannableverse.setText(spannable);
                 holder.spannableverse.setTypeface(mequran);
                 holder.spannableverse.setTextSize(arabicFontsize);
+            }else if(spannable!=null){
+                holder.spannableverse.setText(spannable);
+                holder.spannableverse.setTypeface(mequran);
+                holder.spannableverse.setTextSize(arabicFontsize);
+
             }
         }
 
@@ -274,7 +292,6 @@ public class RootWordDisplayAdapter extends RecyclerView.Adapter<RootWordDisplay
         }
 
 
-
         holder.translationView.setText(worddetails.get("translation"));
         // holder.wordView.setText(word.getWord());
         SpannableStringBuilder word = worddetails.get("word");
@@ -282,6 +299,74 @@ public class RootWordDisplayAdapter extends RecyclerView.Adapter<RootWordDisplay
         holder.translationView.setTextSize(arabicFontsize);
 
         //    holder.wordView.chipBackgroundColor = getColorStateList
+        SpannableStringBuilder mafoolbihiverb = new SpannableStringBuilder();
+        SpannableStringBuilder objectpronoun = new SpannableStringBuilder();
+        SpannableStringBuilder tameezword = new SpannableStringBuilder();
+        SpannableStringBuilder ajlihiword = new SpannableStringBuilder();
+        if(!tameez.isEmpty()){
+            mafoolbihiverb.append("(").append("تمييز").append(")");
+
+            mafoolbihiverb.append(tameez.get(0).getWord());
+
+
+
+        }
+       // if (worddetails.get("liajlihi") != null) {
+          //  ajlihiword.append("(").append("مفعول لأجله").append(")");
+
+     //   }
+        CharSequence charSequence = "";
+        if (worddetails.get("mafoolbihi") != null) {
+            Map<String, ForegroundColorSpan> spanhash = getStringForegroundColorSpanMap();  
+         //   mafoolbihiverb.append(mafoolbihi.get(0).getWord());
+            boolean b = mafoolbihi.get(0).getObjectpronoun() == null;
+            if(!b){
+                mafoolbihiverb.append(mafoolbihi.get(0).getWord());
+
+                objectpronoun= SpannableStringBuilder.valueOf(mafoolbihi.get(0).getObjectpronoun());
+                objectpronoun.append("(").append("مفعول به").append(")");
+                mafoolbihiverb.setSpan(spanhash.get("V"), 0, mafoolbihiverb.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                objectpronoun.setSpan(spanhash.get("PRON"), 0, objectpronoun.length(),
+                        Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                  charSequence = TextUtils.concat(mafoolbihiverb, " ", objectpronoun);
+               
+
+            }else{
+                mafoolbihiverb.append(mafoolbihi.get(0).getWord());
+                mafoolbihiverb.append("(").append("مفعول به").append(")");
+                mafoolbihiverb.setSpan(spanhash.get("N"), 0, mafoolbihiverb.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+                charSequence = TextUtils.concat(mafoolbihiverb );
+                
+            }
+        }
+
+
+
+
+
+
+
+        if(!haliaSentence.isEmpty()){
+            holder.haliaSentence.setText(haliaSentence.get(0).getText());
+            holder.haliaSentence.setVisibility(View.VISIBLE);
+            holder.haliaSentence.setTextSize(arabicFontsize) ;
+            holder.haliaSentence.setTypeface(mequran);
+            holder.haliaSentence.setEllipsize(TruncateAt.MARQUEE);
+        }
+   
+       // mafoolword.setSpan(spanhash.get("PRON"));
+     
+//holder.mafoolat.setText(Html.fromHtml(word1.toString(), Html.FROM_HTML_MODE_LEGACY));
+        if (mafoolbihiverb.length() != 0){
+            holder.mafoolat.setText(charSequence);
+         holder.mafoolat.setTextSize(arabicFontsize);
+            holder.mafoolat.setVisibility(View.VISIBLE);
+            holder.mafoolat.setTypeface(mequran);
+            holder.mafoolat.setEllipsize(TruncateAt.MARQUEE);
+
+    }
+//holder.mafoolat.setText(word1);;
         holder.wordView.setText(worddetails.get("word"));
         StringBuilder vb = new StringBuilder();
         StringBuilder pron = new StringBuilder();
@@ -944,10 +1029,16 @@ public class RootWordDisplayAdapter extends RecyclerView.Adapter<RootWordDisplay
     }
 
 
-    public void setRootWordsAndMeanings(boolean verb, ArrayList<String> wazannumberslist,
+    public void setRootWordsAndMeanings( ArrayList<HalEnt> haliaSentence, ArrayList<TameezEnt> tameez, ArrayList<MafoolBihi> mafoolbihi, boolean verb, ArrayList<String> wazannumberslist,
                                         SpannableStringBuilder spannableStringBuilder,
 
                                         boolean noun, ArrayList<ArrayList> ismfaelmafool, boolean participles, boolean isverbconjugation, ArrayList<NewCorpusExpandWbwPOJO> corpusSurahWord, HashMap<String, SpannableStringBuilder> wordbdetail, HashMap<String, String> vbdetail, boolean isSarfSagheer, boolean isSarfSagheerThulahi, ArrayList<SarfSagheer> sarfsagheer, Context context) {
+
+
+
+        this.haliaSentence=haliaSentence;
+     this.tameez=tameez;
+       this.mafoolbihi=mafoolbihi;
         this.isverb = verb;
         this.wazannumberslist = wazannumberslist;
         this.spannable = spannableStringBuilder;
@@ -982,10 +1073,11 @@ public class RootWordDisplayAdapter extends RecyclerView.Adapter<RootWordDisplay
         final TextView pronoundetails;
         final TextView translationView, mazeedmeaning;
         final TextView rootView, quranverseShart, spannableverse;
-        final Chip wordView;
+        public Chip wordView;
         final TextView babname, rootword, wazan, ismzarfheader, ismalaheader, masdaro, masdart, babno, babdetails;
-        final TextView weaknessname, weaknesstype;
+        final TextView weaknessname, weaknesstype,mafoolat;
         MaterialCardView darkThemeBacground;
+        public TextView haliaSentence;
         //  ListView list;
         RadioGroup radioGroup;
         RadioButton rdone, rdtwo, rdthree, rdfour;
@@ -1031,6 +1123,7 @@ public class RootWordDisplayAdapter extends RecyclerView.Adapter<RootWordDisplay
 
         public ItemViewAdapter(View view) {
             super(view);
+
             moodrules= itemView.findViewById(R.id.moodrules);
             mazeedmeaning = itemView.findViewById(R.id.mazeedmeaning);
             darkThemeBacground = itemView.findViewById(R.id.grammar);
@@ -1064,6 +1157,8 @@ public class RootWordDisplayAdapter extends RecyclerView.Adapter<RootWordDisplay
             dismissview = view.findViewById(R.id.dismissView);
 
             referenceView = view.findViewById(R.id.referenceView);
+            mafoolat=view.findViewById(R.id.mafoolat);
+            haliaSentence=view.findViewById(R.id.haliya);
             wordView = view.findViewById(R.id.wordView);
             translationView = view.findViewById(R.id.translationView);
             rootView = view.findViewById(R.id.rootView);

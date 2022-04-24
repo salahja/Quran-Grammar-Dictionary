@@ -20,6 +20,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mushafconsolidated.Entities.ShartPOJO;
+import com.example.mushafconsolidated.Entities.TameezEnt;
 import com.example.mushafconsolidated.R;
 import com.example.mushafconsolidated.intrface.OnItemClickListener;
 import com.example.utility.FlowLayout;
@@ -31,11 +32,14 @@ public class ShartAdapter extends RecyclerView.Adapter<ShartAdapter.ItemViewAdap
     private static final String TAG = "VerseDisplayAdapter";
     private static final String ROOTWORDSTRING = "Root Word:-";
     private static final String LEMMA = "Lemma/Derivative-";
+
     private Activity activity;
     OnItemClickListener mItemClickListener;
     private Context context;
     private boolean conjugate;
     private Integer fontSizeTranslation;
+
+
 
     public int getForm() {
         return form;

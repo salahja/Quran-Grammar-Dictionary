@@ -4,21 +4,28 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../../layout/custom_preview.xml" value="0.13854166666666667" />
+        <entry key="../../../Android/Sdk/platforms/android-31/data/res/layout/my_simple_list_item.xml" value="1.1714285714285715" />
+        <entry key="../../../Android/Sdk/platforms/android-31/data/res/layout/simple_list_item_1.xml" value="1.1714285714285715" />
         <entry key="app/src/main/res/drawable-anydpi/ic_help.xml" value="1.25" />
         <entry key="app/src/main/res/drawable/activatedbackgroundbrown.xml" value="1.2821428571428573" />
         <entry key="app/src/main/res/drawable/apperance.xml" value="1.2821428571428573" />
+        <entry key="app/src/main/res/drawable/baseline_build_black_36dp.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.17" />
         <entry key="app/src/main/res/drawable/ic_baseline_bookmark_add_24.xml" value="1.175" />
         <entry key="app/src/main/res/drawable/ic_baseline_collections_bookmark_36.xml" value="1.175" />
         <entry key="app/src/main/res/drawable/ic_baseline_help_24.xml" value="1.0928571428571427" />
         <entry key="app/src/main/res/drawable/ic_baseline_history_pink_24.xml" value="1.2285714285714286" />
         <entry key="app/src/main/res/drawable/ic_baseline_menu_book_24.xml" value="0.825" />
         <entry key="app/src/main/res/drawable/ic_baseline_menu_book_64.xml" value="0.2" />
+        <entry key="app/src/main/res/drawable/ic_baseline_text_fields_24.xml" value="0.1145" />
+        <entry key="app/src/main/res/drawable/ic_drawing.xml" value="0.33" />
         <entry key="app/src/main/res/drawable/ic_drop_down.xml" value="0.182" />
         <entry key="app/src/main/res/drawable/ic_more_horiz_black_24dp.xml" value="1.25" />
         <entry key="app/src/main/res/drawable/search_box_bg.xml" value="1.2607142857142857" />
         <entry key="app/src/main/res/layout-sw600dp/fragment_grammarrule_detail.xml" value="0.1" />
         <entry key="app/src/main/res/layout-sw600dp/fragment_grammarrule_list.xml" value="0.159375" />
         <entry key="app/src/main/res/layout/acon_key_activity_edittext.xml" value="0.11071428571428571" />
+        <entry key="app/src/main/res/layout/activity_color_picker.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_fixedtab.xml" value="0.34576271186440677" />
         <entry key="app/src/main/res/layout/activity_grammarrule_detail.xml" value="1.457142857142857" />
         <entry key="app/src/main/res/layout/activity_main2.xml" value="0.5458937198067633" />
@@ -30,13 +37,21 @@
         <entry key="app/src/main/res/layout/coloradapter.xml" value="1.457142857142857" />
         <entry key="app/src/main/res/layout/colorschemelayout.xml" value="0.7816901408450704" />
         <entry key="app/src/main/res/layout/conjugator_bottom_menu.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/conjugator_key_activity_autocomplete.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/conjugator_key_activity_autocomplete.xml" value="0.25" />
         <entry key="app/src/main/res/layout/dictionary_layout.xml" value="1.1178571428571429" />
+        <entry key="app/src/main/res/layout/download.xml" value="0.1" />
         <entry key="app/src/main/res/layout/enlish_lughat.xml" value="0.675" />
+        <entry key="app/src/main/res/layout/erabcollapsable.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/erabcollapsableorig.xml" value="0.15" />
+        <entry key="app/src/main/res/layout/erabcollapsabletwo.xml" value="0.1046875" />
+        <entry key="app/src/main/res/layout/erabnotescollapsable.xml" value="0.15" />
         <entry key="app/src/main/res/layout/expand_list.xml" value="0.24866310160427807" />
+        <entry key="app/src/main/res/layout/flow_word_by_word.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_color_picker.xml" value="0.41785714285714287" />
         <entry key="app/src/main/res/layout/fragment_grammarrule_detail.xml" value="0.5501222493887531" />
         <entry key="app/src/main/res/layout/fragment_grammarrule_list.xml" value="0.7286063569682152" />
         <entry key="app/src/main/res/layout/fragment_reading.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fullerabcollapsable.xml" value="0.1" />
         <entry key="app/src/main/res/layout/grammarrule_list_content.xml" value="1.0642857142857143" />
         <entry key="app/src/main/res/layout/grammarrulelist_list_content.xml" value="1.457142857142857" />
         <entry key="app/src/main/res/layout/ismalacolumkabeer.xml" value="0.67" />
@@ -45,31 +60,39 @@
         <entry key="app/src/main/res/layout/ismfaelmafoolsktraditional.xml" value="0.7928571428571428" />
         <entry key="app/src/main/res/layout/ismzarfcolumnkabeer.xml" value="0.43214285714285716" />
         <entry key="app/src/main/res/layout/ismzarfkbtraditional.xml" value="0.15" />
+        <entry key="app/src/main/res/layout/katheercollapsable.xml" value="0.18" />
         <entry key="app/src/main/res/layout/layout_loading_dialog.xml" value="0.6285714285714286" />
         <entry key="app/src/main/res/layout/layout_loading_verblist.xml" value="1.0161290322580645" />
         <entry key="app/src/main/res/layout/list_grammar_item.xml" value="1.082142857142857" />
         <entry key="app/src/main/res/layout/list_group.xml" value="1.082142857142857" />
         <entry key="app/src/main/res/layout/list_surah_juz.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/managecollapsable.xml" value="0.18" />
         <entry key="app/src/main/res/layout/mujarrad_bottom_fragment.xml" value="0.43214285714285716" />
+        <entry key="app/src/main/res/layout/my_simple_list_item.xml" value="1.1714285714285715" />
         <entry key="app/src/main/res/layout/new_fragment_reading.xml" value="0.33" />
         <entry key="app/src/main/res/layout/new_shart_flow_row_ayah_word.xml" value="1.1392857142857142" />
         <entry key="app/src/main/res/layout/newsarfkabeercolumn.xml" value="0.43214285714285716" />
         <entry key="app/src/main/res/layout/orignalsurarowlinear.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/origphrases.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/phrases.xml" value="0.1" />
         <entry key="app/src/main/res/layout/popup_filter_layout.xml" value="1.1392857142857142" />
         <entry key="app/src/main/res/layout/popup_layout.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/qaris_view_word_details.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/qaris_view_word_details.xml" value="0.18" />
         <entry key="app/src/main/res/layout/quran_imageview_row.xml" value="0.67" />
+        <entry key="app/src/main/res/layout/quran_imageview_row_orig.xml" value="1.4357142857142857" />
         <entry key="app/src/main/res/layout/quran_list_dialog.xml" value="1.1714285714285715" />
         <entry key="app/src/main/res/layout/quran_top_menu_items.xml" value="1.1071428571428572" />
-        <entry key="app/src/main/res/layout/quran_tranlation_rows.xml" value="1.5" />
+        <entry key="app/src/main/res/layout/quran_tranlation_rows.xml" value="0.1" />
         <entry key="app/src/main/res/layout/quranfonts_bottomsheet.xml" value="1.1714285714285715" />
         <entry key="app/src/main/res/layout/quranfontselection.xml" value="0.775" />
+        <entry key="app/src/main/res/layout/reccylerview.xml" value="0.25" />
         <entry key="app/src/main/res/layout/refactacon_key_activity_autocomplete.xml" value="0.1" />
         <entry key="app/src/main/res/layout/round_arabic_keyboard.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/row_ayah_word.xml" value="1.225" />
+        <entry key="app/src/main/res/layout/row_ayah_word.xml" value="0.18" />
         <entry key="app/src/main/res/layout/rules.xml" value="0.5" />
         <entry key="app/src/main/res/layout/sarfkabeerheader.xml" value="1.1714285714285715" />
         <entry key="app/src/main/res/layout/sarfsagheerheader.xml" value="1.0642857142857143" />
+        <entry key="app/src/main/res/layout/search_key_activity_autocomplete.xml" value="0.25" />
         <entry key="app/src/main/res/layout/search_main.xml" value="0.48509485094850946" />
         <entry key="app/src/main/res/layout/sentence_word_details.xml" value="0.4714285714285714" />
         <entry key="app/src/main/res/layout/settting_pref.xml" value="0.14285714285714285" />
@@ -84,7 +107,8 @@
         <entry key="app/src/main/res/layout/verbscolumnkabeer.xml" value="0.25" />
         <entry key="app/src/main/res/layout/webview.xml" value="1.1714285714285715" />
         <entry key="app/src/main/res/layout/word_analysis_item.xml" value="1.082142857142857" />
-        <entry key="app/src/main/res/layout/wordbottomsheetismfaelmafoolsktraditional.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/word_by_word.xml" value="0.2597402597402597" />
+        <entry key="app/src/main/res/layout/wordbottomsheetismfaelmafoolsktraditional.xml" value="0.25" />
         <entry key="app/src/main/res/menu/fragment_menu_items.xml" value="1.0642857142857143" />
         <entry key="app/src/main/res/menu/main.xml" value="0.6214285714285714" />
         <entry key="app/src/main/res/menu/menu.xml" value="0.67" />
@@ -106,7 +130,7 @@
   <component name="VisualizationToolProject">
     <option name="state">
       <ProjectState>
-        <option name="scale" value="0.18" />
+        <option name="scale" value="0.1" />
       </ProjectState>
     </option>
   </component>

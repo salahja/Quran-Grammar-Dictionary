@@ -37,7 +37,11 @@
         android:title="Functions"
         app:iconSpaceReserved="true" />
 
-
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="@string/prefs_show_root"
+        android:title="Show Root"
+        app:icon="@drawable/ic_baseline_text_fields_24" />
 
     <SwitchPreference
         android:defaultValue="false"

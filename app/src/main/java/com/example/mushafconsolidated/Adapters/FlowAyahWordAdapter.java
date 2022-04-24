@@ -2,12 +2,26 @@ package com.example.mushafconsolidated.Adapters;
 
 
 import static android.content.Context.MODE_PRIVATE;
+import static com.example.Constant.AJLIHI;
+import static com.example.Constant.AJLIHIHEADER;
 import static com.example.Constant.AYAHNUMBER;
 import static com.example.Constant.AYAH_ID;
+import static com.example.Constant.BADAL;
+import static com.example.Constant.BADALHEADER;
+import static com.example.Constant.BIHI;
+import static com.example.Constant.BIHIHEADER;
+
 import static com.example.Constant.CHAPTER;
+import static com.example.Constant.HAL;
+import static com.example.Constant.HALHEADER;
+import static com.example.Constant.MUTLAQ;
+import static com.example.Constant.MUTLAQHEADER;
 import static com.example.Constant.SURAH_ARABIC_NAME;
 import static com.example.Constant.SURAH_ID;
+import static com.example.Constant.TAMEEZ;
+import static com.example.Constant.TAMEEZHEADER;
 import static com.example.Constant.WORDNUMBER;
+import static com.example.utility.CorpusUtilityorig.getStringForegroundColorSpanMap;
 import static com.example.utility.QuranGrammarApplication.getContext;
 
 import android.app.Dialog;
@@ -25,6 +39,10 @@ import android.preference.PreferenceManager;
 import android.text.Html;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
+import android.text.Spanned;
+import android.text.TextUtils;
+import android.text.style.ForegroundColorSpan;
+import android.text.style.RelativeSizeSpan;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,19 +55,24 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
+import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.Group;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.transition.AutoTransition;
+import androidx.transition.TransitionManager;
 
 import com.example.mushafconsolidated.Config;
-import com.example.mushafconsolidated.Entities.NewCorpusExpandWbwPOJO;
+import com.example.mushafconsolidated.Entities.BadalErabNotesEnt;
+import com.example.mushafconsolidated.Entities.HalEnt;
+import com.example.mushafconsolidated.Entities.LiajlihiEnt;
+import com.example.mushafconsolidated.Entities.MafoolBihi;
+import com.example.mushafconsolidated.Entities.MafoolMutlaqEnt;
 import com.example.mushafconsolidated.Entities.NounCorpus;
 import com.example.mushafconsolidated.Entities.QuranEntity;
+import com.example.mushafconsolidated.Entities.TameezEnt;
 import com.example.mushafconsolidated.Entities.VerbCorpus;
-import com.example.mushafconsolidated.Entities.VerbWazan;
 import com.example.mushafconsolidated.R;
 import com.example.mushafconsolidated.Utils;
-import com.example.mushafconsolidated.fragments.QuranMorphologyDetails;
 import com.example.mushafconsolidated.fragments.SentenceAnalysisBottomSheet;
 import com.example.mushafconsolidated.fragments.WordAnalysisBottomSheet;
 import com.example.mushafconsolidated.fragments.WordMorphologyDetails;
@@ -59,42 +82,42 @@ import com.example.mushafconsolidated.model.CorpusWbwWord;
 import com.example.utility.AnimationUtility;
 import com.example.utility.CorpusUtilityorig;
 import com.example.utility.FlowLayout;
-import com.example.utility.PreferenceUtil;
+
+import com.google.android.material.card.MaterialCardView;
 import com.tooltip.Tooltip;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 //import com.example.mushafconsolidated.Entities.JoinVersesTranslationDataTranslation;
 //public class CustomAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements OnItemClickListenerOnLong {
 public class FlowAyahWordAdapter extends RecyclerView.Adapter<FlowAyahWordAdapter.ItemViewAdapter> implements OnItemClickListenerOnLong {
     private static final int TYPE_HEADER = 0;
     private static final int TYPE_ITEM = 1;
-    public static Object ItemViewAdapter;
-    static boolean showTranslation;
-    static boolean wordByWord;
-    int arabicfontSize,translationfontsize;
-    private final boolean issentence;
 
-    private final SharedPreferences sharedPreferences;
+
+    private final ArrayList<MafoolBihi> mafoolBihis;
+    private final ArrayList<HalEnt> jumlahaliya;
+    private final ArrayList<TameezEnt> tameezEnts;
+    private final ArrayList<BadalErabNotesEnt> badalErabNotesEnt;
+    private final ArrayList<LiajlihiEnt> liajlihient;
+    private final ArrayList<MafoolMutlaqEnt> mutlaqent;
+    int arabicfontSize, translationfontsize;
+    private final boolean issentence;
 
     OnItemClickListenerOnLong mItemClickListener;
 
-    static int fontSizeArabic;
-    static int fontSizeTranslation;
-
-    static Typeface corpusTypeface;
-
     public Context context;
     final long surah_id;
-    private ArrayList<CorpusAyahWord> ayahWordArrayList;
+    private final ArrayList<CorpusAyahWord> ayahWordArrayList;
     private final List<QuranEntity> allofQuran;
 
     public int adapterposition;
-    private OnItemClickListenerOnLong onclicklistner;
-    private ArrayList<String> header;
+
+    private final ArrayList<String> header;
     private String isNightmode;
+    private int headercolor;
 
     public int getAdapterposition() {
         return adapterposition;
@@ -104,21 +127,24 @@ public class FlowAyahWordAdapter extends RecyclerView.Adapter<FlowAyahWordAdapte
         this.adapterposition = adapterposition;
     }
 
-    PreferenceUtil pref;
-    private String SurahName;
-    private int isMakkiMadani;
-    public TextView arabic;
+
+    private final String SurahName;
+    private final int isMakkiMadani;
+    public TextView arabic, rootword ;
 
 
-    public void setItemClickListener(View.OnClickListener clickListener) {
-        //   private final List<QuranEntity> translations;
-        //  privviewate final List<QuranEntity> erab;
-    }
-
-    public FlowAyahWordAdapter(ArrayList<String> header, List<QuranEntity> allofQuran,
+    public FlowAyahWordAdapter(ArrayList<MafoolMutlaqEnt> mutlaqent, ArrayList<TameezEnt> tameezEnts, ArrayList<BadalErabNotesEnt> badalErabNotesEnt, ArrayList<LiajlihiEnt> liajlihient, ArrayList<HalEnt> jumlahaliya, ArrayList<MafoolBihi> mafoolBihis, ArrayList<String> header, List<QuranEntity> allofQuran,
 
 
                                ArrayList<CorpusAyahWord> ayahWordArrayList, Context context, long surah_id, String surahName, int ismakki, OnItemClickListenerOnLong listener) {
+
+        this.mutlaqent = mutlaqent;
+        this.tameezEnts = tameezEnts;
+        this.badalErabNotesEnt = badalErabNotesEnt;
+        this.liajlihient = liajlihient;
+
+        this.jumlahaliya = jumlahaliya;
+        this.mafoolBihis = mafoolBihis;
         this.header = header;
         this.allofQuran = allofQuran;
 
@@ -127,7 +153,7 @@ public class FlowAyahWordAdapter extends RecyclerView.Adapter<FlowAyahWordAdapte
         this.surah_id = surah_id;
         this.SurahName = surahName;
         this.isMakkiMadani = ismakki;
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
         //   showTranslation =
         //        sharedPreferences.getBoolean(Config.SHOW_TRANSLATION, Config.defaultShowTranslation);
         sharedPreferences.getBoolean(Config.SHOW_Erab, Config.defaultShowErab);
@@ -135,7 +161,7 @@ public class FlowAyahWordAdapter extends RecyclerView.Adapter<FlowAyahWordAdapte
         issentence = sharedPreferences.getBoolean("grammarsentence", false);
 
         arabicfontSize = sharedPreferences.getInt("pref_font_arabic_key", 18);
-        translationfontsize=sharedPreferences.getInt("pref_font_englsh_key", 18);
+        translationfontsize = sharedPreferences.getInt("pref_font_englsh_key", 18);
 
         mItemClickListener = listener;
 
@@ -148,23 +174,18 @@ public class FlowAyahWordAdapter extends RecyclerView.Adapter<FlowAyahWordAdapte
     }
 
 
-    public void SetOnItemClickListener(final OnItemClickListenerOnLong mItemClickListener) {
-        this.mItemClickListener = mItemClickListener;
-    }
-
-
     @Override
     public int getItemViewType(int position) {
         if (position == 0) {
             return TYPE_HEADER;
-        }else {
+        } else {
             return TYPE_ITEM;
         }
     }
 
     @Override
     public int getItemCount() {
-        return ayahWordArrayList.size()+1;
+        return ayahWordArrayList.size() + 1;
         //     return  quran.size();
     }
 
@@ -172,7 +193,7 @@ public class FlowAyahWordAdapter extends RecyclerView.Adapter<FlowAyahWordAdapte
     public long getItemId(int position) {
 
         CorpusAyahWord ayahWord = ayahWordArrayList.get(position);
-      long itemId = 0;
+        long itemId = 0;
 
         for (CorpusWbwWord word : ayahWord.getWord()) {
             itemId = word.getVerseId();
@@ -201,29 +222,34 @@ public class FlowAyahWordAdapter extends RecyclerView.Adapter<FlowAyahWordAdapte
 
     public class ItemViewAdapter extends RecyclerView.ViewHolder implements View.OnClickListener, OnLongClickListener {
         TextView tvSura, tvRukus, tvVerses;
-        ImageView ivSurahIcon, ivLocationmakki, ivLocationmadani,ivhelp,ivoverflow,arrowforward,arrowback;
-  SwitchCompat colorize;
-        public TextView verse_idTextView;
-        public TextView quran_jalalayn,kathir_translation, kathir_note;
+        ImageView ivSurahIcon, ivLocationmakki, ivLocationmadani, ivhelp, ivoverflow, arrowforward, arrowback;
+        SwitchCompat colorize;
+
+        public TextView quran_jalalayn, kathir_translation;
         public TextView quran_transliteration;
         //  public   com.nex3z.flowlayout.FlowLayout  flow_word_by_word;
         com.example.utility.FlowLayout flow_word_by_word;
 
         public TextView translate_textView;
 
+        //   public TextView erab_textView;
         public TextView erab_textView;
-        public TextView surah_info;
+        public TextView surah_info, mafoolbihi;
         public TextView bismilla;
-        public TextView quran_textView;
+        public TextView quran_textView, erab_notes;
         public TextView quran_transliterationnote;
         public TextView quran_jalalaynnote;
         public TextView erab_textViewnote;
         public TextView translate_textViewnote;
         public ImageView bookmark, jumpto, makkimadaniicon;
-        public ImageView expandImageButton, ivBismillah,erabexpand;
-
-        // public MaterialCardView cardview;
-        public FlowLayout cardview;
+        public ImageView expandImageButton, ivBismillah, erabexpand, erab_notes_expand;
+     //   RelativeLayout colllayout;
+        CardView erabnotescardView,kahteercardview;
+        ImageView mafoolatarow,showkatheer;
+        Group hiddenGroup,card_group;
+        MaterialCardView base_cardview;
+       //  public MaterialCardView cardview;
+        //public FlowLayout cardview;
 
 
         ItemViewAdapter(View view, int viewType) {
@@ -241,24 +267,25 @@ public class FlowAyahWordAdapter extends RecyclerView.Adapter<FlowAyahWordAdapte
 
 
             } else {
-                kathir_note =view.findViewById(R.id.kathir_note);
-                kathir_translation=view.findViewById(R.id.kathir_textview);
-                arrowforward=view.findViewById(R.id.arrowforward);
-                arrowback=view.findViewById(R.id.arrowback);
-                colorize=view.findViewById(R.id.colorized);
-                bookmark=view.findViewById(R.id.bookmark);
-              jumpto=view.findViewById(R.id.jumpto);
-                ivhelp=view.findViewById(R.id.ivHelp);
-                ivoverflow=view.findViewById(R.id.ivActionOverflow);
+
+           //     kathir_note = view.findViewById(R.id.kathir_note);
+                kathir_translation = view.findViewById(R.id.katheer_textview);
+                arrowforward = view.findViewById(R.id.arrowforward);
+                arrowback = view.findViewById(R.id.arrowback);
+                colorize = view.findViewById(R.id.colorized);
+                bookmark = view.findViewById(R.id.bookmark);
+                jumpto = view.findViewById(R.id.jumpto);
+                ivhelp = view.findViewById(R.id.ivHelp);
+                ivoverflow = view.findViewById(R.id.ivActionOverflow);
                 ivhelp.setOnClickListener(this);
                 ivoverflow.setOnClickListener(this);
-
+           //     colllayout=view.findViewById(R.id.erablayout);
                 jumpto.setOnClickListener(this);
                 bookmark.setOnClickListener(this);
                 ivhelp.setTag("help_img");
                 ivoverflow.setTag("overflow_img");
                 bookmark.setTag("bookmark");
-            //    colorize.setChecked(true);
+                //    colorize.setChecked(true);
                 colorize.setOnClickListener(this);
                 colorize.setTag("colorize");
                 jumpto.setTag("jumpto");
@@ -268,7 +295,7 @@ public class FlowAyahWordAdapter extends RecyclerView.Adapter<FlowAyahWordAdapte
                 arrowforward.setTag("arrowforward");
                 makkimadaniicon = view.findViewById(R.id.makkimadaniicon);
 
-            //    jumpto = view.findViewById(R.id.jumpto);
+                //    jumpto = view.findViewById(R.id.jumpto);
                 bismilla = view.findViewById(R.id.bismillah);
                 quran_transliterationnote = view.findViewById(R.id.quran_transliterationnote);
                 quran_jalalaynnote = view.findViewById(R.id.quran_jalalaynnote);
@@ -282,57 +309,119 @@ public class FlowAyahWordAdapter extends RecyclerView.Adapter<FlowAyahWordAdapte
                 flow_word_by_word = view.findViewById(R.id.flow_word_by_word);
                 translate_textView = view.findViewById(R.id.translate_textView);
                 erab_textView = view.findViewById(R.id.erab_textView);
+                //     erab_textView.setTextIsSelectable(true);
                 quran_textView = view.findViewById(R.id.quran_textView);
-           //     bookmark = view.findViewById(R.id.bookmarkView);
-                erabexpand= view.findViewById(R.id.erabexpand);
+                erab_notes = view.findViewById(R.id.erab_notes);
+                //     bookmark = view.findViewById(R.id.bookmarkView);
+                erabexpand = view.findViewById(R.id.erabexpand);
+                erab_notes_expand = view.findViewById(R.id.erab_img);
                 expandImageButton = view.findViewById(R.id.expandImageButton);
                 quran_textView.setOnClickListener(this);
                 quran_textView.setTag("qurantext");
-            //    bookmark.setOnClickListener(this);
-             //   jumpto.setOnClickListener(this);
+                erab_notes_expand.setOnClickListener(this);
+                erab_notes_expand.setTag("erab_notes");
+
+                erabnotescardView = view.findViewById(R.id.base_cardview);
+                kahteercardview=view.findViewById(R.id.katheer_base_cardview);
+                mafoolatarow = view.findViewById(R.id.show);
+                showkatheer=    view.findViewById(R.id.showkatheer);
+                hiddenGroup = view.findViewById(R.id.card_group);
+                card_group=view.findViewById(R.id.katheer_card_group);
+                mafoolatarow.setOnClickListener(this);
+                mafoolbihi = view.findViewById(R.id.directobject);
+                //    hal=view.findViewById(R.id.hal);
+                //     badal=view.findViewById(R.id.badal);
+                //   tameez=view.findViewById(R.id.tameez);
+                // liajlihi=view.findViewById(R.id.ajlihi);
+                base_cardview = view.findViewById(R.id.base_cardview);
+                //    bookmark.setOnClickListener(this);
+                //   jumpto.setOnClickListener(this);
 
                 view.setOnClickListener(this);
                 view.setOnLongClickListener(this);
                 SharedPreferences shared = androidx.preference.PreferenceManager.getDefaultSharedPreferences(getContext());
                 boolean colortag = shared.getBoolean("colortag", true);
-                if(colortag){
-                    colorize.setChecked(true);
-                }else {
-                    colorize.setChecked(false);
+                colorize.setChecked(colortag);
 
-                }
+// Gets the layout params that will allow you to resize the layout
+              //  ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) colllayout.getLayoutParams();
+// Changes the height and width to the specified *pixels*
+             //   params.height = 100;
+            //    params.width = 600;
 
+             //   colllayout.setLayoutParams(params);
+
+                mafoolatarow.setOnClickListener(view1 -> {
+                    TransitionManager.beginDelayedTransition(erabnotescardView, new AutoTransition());
+
+                    if (hiddenGroup.getVisibility() == View.VISIBLE) {
+                        hiddenGroup.setVisibility(View.GONE);
+                     //   params.width = 100;
+                     //   colllayout.setLayoutParams(params);
+                        mafoolatarow.setImageResource(android.R.drawable.arrow_down_float);
+                    } else {
+                   //     colllayout.setLayoutParams(params);
+                        hiddenGroup.setVisibility(View.VISIBLE);
+                        mafoolatarow.setImageResource(android.R.drawable.arrow_up_float);
+                    }
+                });
+
+                showkatheer.setOnClickListener(view1 -> {
+                    TransitionManager.beginDelayedTransition(erabnotescardView, new AutoTransition());
+
+                    if (card_group.getVisibility() == View.VISIBLE) {
+                        card_group.setVisibility(View.GONE);
+                        //   params.width = 100;
+                        //   colllayout.setLayoutParams(params);
+                        showkatheer.setImageResource(android.R.drawable.arrow_down_float);
+                    } else {
+                        //     colllayout.setLayoutParams(params);
+                        card_group.setVisibility(View.VISIBLE);
+                        showkatheer.setImageResource(android.R.drawable.arrow_up_float);
+                    }
+                });
+
+
+                erab_notes_expand.setOnClickListener(view1 -> {
+
+
+
+
+                    if (erab_notes.getVisibility() == View.GONE) {
+                        erab_notes.setVisibility(View.VISIBLE);
+
+                        //  AnimationUtility.slide_down(context, erabexpand);
+                        erab_notes_expand.setImageResource(android.R.drawable.arrow_up_float);
+                        //   AnimationUtility.AnimateArrow(90.0f, erab_notes_expand);
+                    } else {
+
+                        erab_notes.setVisibility(View.GONE);
+                        erab_notes_expand.setImageResource(android.R.drawable.arrow_down_float);//
+                        //  AnimationUtility.AnimateArrow(0.0f, erab_notes_expand);
+                        //   Fader.slide_down(context,expandImageButton);
+                    }
+
+
+                });
                 erabexpand.setOnClickListener(view1 -> {
 
-                    final int visibility = erab_textView.getVisibility();
 
-                    AnimationUtility.slide_down(context, erabexpand);
-                    if (erab_textView.getVisibility() == View.GONE)
+
+
+                    if (erab_textView.getVisibility() == View.GONE) {
                         erab_textView.setVisibility(View.VISIBLE);
-                    else {
+                        //  AnimationUtility.slide_down(context, erabexpand);
+                        AnimationUtility.AnimateArrow(90.0f, erabexpand);
+                    } else {
                         erab_textView.setVisibility(View.GONE);
-                        AnimationUtility.AnimateArrow(-90.0f, erabexpand);
-                        //    Fader.slide_down(context,expandImageButton);
+                        AnimationUtility.AnimateArrow(0.0f, erabexpand);
+                        //   Fader.slide_down(context,expandImageButton);
                     }
 
 
                 });
 
-                expandImageButton.setOnClickListener(view1 -> {
 
-                    final int visibility = kathir_translation.getVisibility();
-
-                    AnimationUtility.slide_down(context, expandImageButton);
-                    if (kathir_translation.getVisibility() == View.GONE)
-                        kathir_translation.setVisibility(View.VISIBLE);
-                    else {
-                        kathir_translation.setVisibility(View.GONE);
-                        AnimationUtility.AnimateArrow(-90.0f, expandImageButton);
-                        //    Fader.slide_down(context,expandImageButton);
-                    }
-
-
-                });
 
                 flow_word_by_word.setOnClickListener(view1 -> {
 
@@ -383,7 +472,7 @@ public class FlowAyahWordAdapter extends RecyclerView.Adapter<FlowAyahWordAdapte
         }
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.M)
+
     @Override
     public void onBindViewHolder(ItemViewAdapter holder, int position) {
         SharedPreferences sharedPreferences =
@@ -394,7 +483,7 @@ public class FlowAyahWordAdapter extends RecyclerView.Adapter<FlowAyahWordAdapte
 
         Typeface custom_font = Typeface.createFromAsset(context.getAssets(),
                 arabic_font_selection);
-
+        boolean showrootkey = sharedPreferences.getBoolean("showrootkey", true);
         boolean showErab = sharedPreferences.getBoolean("showErabKey", true);
         boolean showWordColor = sharedPreferences.getBoolean("colortag", true);
 
@@ -405,14 +494,13 @@ public class FlowAyahWordAdapter extends RecyclerView.Adapter<FlowAyahWordAdapte
         boolean showKathir = sharedPreferences.getBoolean("showKathir", false);
 
 
-
         String whichtranslation = sharedPreferences.getString("selecttranslation", "en_sahih");
         if (getItemViewType(position) == 0) {
 
             TypedArray imgs = this.context.getResources().obtainTypedArray(R.array.sura_imgs);
             // You have to set your header items values with the help of model class and you can modify as per your needs
-            holder.tvRukus.setText("Ruku's :" + header.get(0));
-            holder.tvVerses.setText("Aya's :" + header.get(1));
+            holder.tvRukus.setText(String.format("Ruku's :%s", header.get(0)));
+            holder.tvVerses.setText(String.format("Aya's :%s", header.get(1)));
             holder.tvSura.setText(header.get(3));
             String chapterno = header.get(2);
             int tauba = Integer.parseInt(chapterno);
@@ -432,9 +520,9 @@ public class FlowAyahWordAdapter extends RecyclerView.Adapter<FlowAyahWordAdapte
 
             holder.ivSurahIcon.setImageDrawable(drawable);
 
-
+       
             if (isNightmode.equals("dark") || isNightmode.equals("blue")) {
-
+                headercolor = Color.YELLOW;
                 holder.ivLocationmakki.setColorFilter(Color.CYAN);
                 holder.ivSurahIcon.setColorFilter(Color.CYAN);
 
@@ -442,144 +530,361 @@ public class FlowAyahWordAdapter extends RecyclerView.Adapter<FlowAyahWordAdapte
 
 
             } else {
+                headercolor = Color.BLUE;
                 holder.ivLocationmakki.setColorFilter(Color.BLACK);
                 holder.ivSurahIcon.setColorFilter(Color.BLACK);
                 holder.ivLocationmadani.setColorFilter(Color.BLACK);
             }
 
 
-
         } else {
 
 
-          displayAyats(holder, position-1, sharedPreferences, custom_font, showErab, showWordColor, showTransliteration, showJalalayn, showTranslation, showWordByword, whichtranslation,showKathir);
+            displayAyats(showrootkey, holder, position - 1, sharedPreferences, custom_font, showErab, showWordColor, showTransliteration, showJalalayn, showTranslation, showWordByword, whichtranslation, showKathir);
 
         }
 
     }
 
-  private void displayAyats(FlowAyahWordAdapter.ItemViewAdapter holder, int position, SharedPreferences sharedPreferences, Typeface custom_font, boolean showErab, boolean showWordColor, boolean showTransliteration, boolean showJalalayn, boolean showTranslation, boolean showWordByword, String whichtranslation,boolean showKathir) {
-    //   holder.flowwbw.setBackgroundColor(R.style.Theme_DarkBlue);
+    private void displayAyats(boolean showrootkey, FlowAyahWordAdapter.ItemViewAdapter holder, int position, SharedPreferences sharedPreferences, Typeface custom_font, boolean showErab, boolean showWordColor, boolean showTransliteration, boolean showJalalayn, boolean showTranslation, boolean showWordByword, String whichtranslation, boolean showKathir) {
+        //   holder.flowwbw.setBackgroundColor(R.style.Theme_DarkBlue);
 
 
-    QuranEntity entity = null;
-    QuranEntity erabentity = null;
-    String wbw = sharedPreferences.getString("wbw", String.valueOf(Context.MODE_PRIVATE));
-    int actualposition = position;
-    try {
-        entity = allofQuran.get(actualposition);
-    } catch (IndexOutOfBoundsException e) {
-        System.out.println("check");
-    }
+        QuranEntity entity = null;
+
+        String wbw = sharedPreferences.getString("wbw", String.valueOf(Context.MODE_PRIVATE));
+        try {
+            entity = allofQuran.get(position);
+
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("check");
+        }
+        MafoolBihi mafoolBihi = null;
+        try {
+              mafoolBihi = mafoolBihis.get(position);
+        }catch (IndexOutOfBoundsException e){
+            System.out.println(e.getMessage());
+        }
+
+        final CorpusAyahWord ayahWord = ayahWordArrayList.get(position);
+        if (null != entity) {
+            storepreferences(entity);
+        }
+        SpannableString quranverses = ayahWordArrayList.get(position).getSpannableverse();
+
+        holder.quran_textView.setText(quranverses);
+        holder.quran_textView.setTextSize(arabicfontSize);
+        holder.quran_textView.setTypeface(custom_font);
 
 
-    final CorpusAyahWord ayahWord = ayahWordArrayList.get(actualposition);
-    if (null != entity) {
-        storepreferences(entity);
-    }
-    SpannableString quranverses = ayahWordArrayList.get(actualposition).getSpannableverse();
+        holder.base_cardview.setVisibility(View.GONE);
+        SpannableStringBuilder mf = new    SpannableStringBuilder();
 
-    holder.quran_textView.setText(quranverses);
-    holder.quran_textView.setTextSize(arabicfontSize);
-    holder.quran_textView.setTypeface(custom_font);
-
-    setChapterInfo(holder, ayahWord);
-
-    setAdapterposition(actualposition);
-
-
-    wordBywordWithTranslation(holder, custom_font, showWordColor, wbw, ayahWord, showWordByword);
+        StringBuilder halsb = new StringBuilder();
+        StringBuilder tameezsb = new StringBuilder();
+        StringBuilder badalsb = new StringBuilder();
+        StringBuilder ajlihisb = new StringBuilder();
+        StringBuilder mutlaqsb = new StringBuilder();
+        holder.mafoolbihi.setVisibility(View.GONE);
+        //  holder.tameez.setVisibility(View.GONE);
+        // holder.badal.setVisibility(View.GONE);
+        // holder.liajlihi.setVisibility(View.GONE);
+        holder.base_cardview.setVisibility(View.GONE);
 
 
-      if(showKathir){
-          holder.kathir_translation.setText(Html.fromHtml(entity.getTafsir_kathir(), Html.FROM_HTML_MODE_LEGACY));
+        Map<String, ForegroundColorSpan> spanhash = getStringForegroundColorSpanMap();
+        CharSequence mfcharSequence = "";
+        SpannableStringBuilder mfspan = new SpannableStringBuilder();
 
-          holder.kathir_translation.setTextSize(translationfontsize);
-          holder.kathir_translation.setTextSize(translationfontsize);
-       //   holder.kathir_translation.setVisibility(View.VISIBLE);
-          holder.kathir_note.setVisibility(View.VISIBLE);
+        if(mafoolBihi!=null &&mafoolBihi.getAyah()==entity.getAyah()){
+            setUpMafoolbihistring(mf);
+        }
+        //   finalstring.setSpan(FORESTGREEN,indexOfbihi, HAL.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
-      }
-    if (showTransliteration) {
-        holder.quran_transliteration.setText(Html.fromHtml(entity.getTranslation(), Html.FROM_HTML_MODE_LEGACY));
-        holder.quran_transliteration.setTextSize(translationfontsize);
-        holder.quran_transliteration.setTextSize(translationfontsize);
-        holder.quran_transliteration.setVisibility(View.VISIBLE);
+        for (MafoolBihi ent : mafoolBihis) {
+
+            assert entity != null;
+            if (ent.getAyah() == entity.getAyah()) {
+                boolean b = ent.getObjectpronoun() == null;
+                if(!b){
+                    SpannableStringBuilder mafoolbihiverb = new SpannableStringBuilder();
+                    SpannableStringBuilder objectpronoun = new SpannableStringBuilder();
+                    mafoolbihiverb.append(ent.getWord()).append(" ");
+
+                    objectpronoun= SpannableStringBuilder.valueOf(ent.getObjectpronoun());
+                 //   objectpronoun.append("(").append("مفعول به").append(")");
+                    ForegroundColorSpan colorSpan = spanhash.get("V");
+                    ForegroundColorSpan proncolospan = spanhash.get("PRON");
+                    mafoolbihiverb.setSpan(new ForegroundColorSpan(colorSpan.getForegroundColor()), 0, mafoolbihiverb.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    objectpronoun.setSpan(new ForegroundColorSpan(proncolospan.getForegroundColor()), 0, objectpronoun.length(),
+                            Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    mfcharSequence = TextUtils.concat(mafoolbihiverb, " ", objectpronoun);
+
+                    mf.append(mfcharSequence).append("\n");
 
 
-    }
-    if (showJalalayn) {
-        //   holder.quran_jalalaynnote.setText(enjalalayn.getAuthor_name());
-        holder.quran_jalalayn.setText(entity.getEn_jalalayn());
-        holder.quran_jalalayn.setTextSize(translationfontsize);
-        holder.quran_jalalayn.setTextSize(translationfontsize);
-        holder.quran_jalalayn.setVisibility(View.VISIBLE);
-        holder.quran_jalalaynnote.setVisibility(View.VISIBLE);
-    }
-    if (showTranslation) {
+                }else{
+                    SpannableStringBuilder mafoolbihiverb = new SpannableStringBuilder();
+                    SpannableStringBuilder objectpronoun = new SpannableStringBuilder();
+                    mafoolbihiverb.append(ent.getWord()).append(" ");
+              //      mafoolbihiverb.append("(").append("مفعول به").append(")");
+                    mafoolbihiverb.setSpan(spanhash.get("N"), 0, mafoolbihiverb.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
-        if (whichtranslation.equals("en_arberry")) {
+                    mfcharSequence = TextUtils.concat(mafoolbihiverb );
+                    mf.append(mfcharSequence).append("\n");
+                }
 
-            holder.translate_textView.setText(entity.getEn_arberry());
-            holder.translate_textViewnote.setText(R.string.arberry);
+            //    mf.append(ent.getWord().trim()).append("\n");
+
+
+            }
+
+
+        }
+
+
+        //   if(!jumlahaliya.isEmpty()) {
+        for (HalEnt ent : jumlahaliya) {
+
+            if (entity != null && ent.getAyah() == entity.getAyah()) {
+
+                halsb.append(ent.getText().trim()).append("\n");
+
+
+            }
+
+        }
+
+
+        for (TameezEnt ent : tameezEnts) {
+
+
+            if (entity != null && ent.getAyah() == entity.getAyah()) {
+
+                tameezsb.append(ent.getWord().trim()).append("\n");
+
+
+            }
+        }
+
+        for (LiajlihiEnt ent : liajlihient) {
+
+            if (entity != null && ent.getAyah() == entity.getAyah()) {
+
+                ajlihisb.append(ent.getWord().trim()).append("\n");
+
+
+            }
+        }
+
+        for (BadalErabNotesEnt ent : badalErabNotesEnt) {
+
+            if (entity != null && ent.getAyah() == entity.getAyah()) {
+
+                badalsb.append(ent.getText().trim()).append("\n");
+
+
+            }
+        }
+        for (MafoolMutlaqEnt ent : mutlaqent) {
+            if (entity != null && ent.getAyah() == entity.getAyah()) {
+
+                mutlaqsb.append(ent.getWord().trim()).append("\n");
+
+
+            }
+        }
+
+        //CharSequence charSequence = TextUtils.concat(harfspannble, " ", khabarofversespannable, " ", harfismspannable);
+
+        SpannableStringBuilder halspan = new SpannableStringBuilder();
+        SpannableStringBuilder tameezspan = new SpannableStringBuilder();
+        SpannableStringBuilder badalspan = new SpannableStringBuilder();
+        SpannableStringBuilder mutlaqspan = new SpannableStringBuilder();
+        SpannableStringBuilder ajlihispan = new SpannableStringBuilder();
+
+        if (!halsb.toString().isEmpty()) {
+            halsb.insert(0, HALHEADER);
+            halspan = SpannableStringBuilder.valueOf(SpannableString.valueOf(halsb.toString()));
+            int indexOfbihi1 = halspan.toString().indexOf(HAL);
+            halspan.setSpan(new ForegroundColorSpan(headercolor), indexOfbihi1, HAL.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            halspan.setSpan(new RelativeSizeSpan(1f), indexOfbihi1, HAL.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            halspan.setSpan(Typeface.DEFAULT_BOLD, indexOfbihi1, HAL.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+        }
+        if (!tameezsb.toString().isEmpty()) {
+            tameezsb.insert(0, TAMEEZHEADER);
+
+            tameezspan = SpannableStringBuilder.valueOf(SpannableString.valueOf(tameezsb.toString()));
+            int indexOfbihi2 = tameezspan.toString().indexOf(TAMEEZ);
+            tameezspan.setSpan(new ForegroundColorSpan(headercolor), indexOfbihi2, TAMEEZ.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            tameezspan.setSpan(new RelativeSizeSpan(1f), indexOfbihi2, TAMEEZ.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            tameezspan.setSpan(Typeface.DEFAULT_BOLD, indexOfbihi2, TAMEEZ.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+        }
+        if (!ajlihisb.toString().isEmpty()) {
+            ajlihisb.insert(0, AJLIHIHEADER);
+            ajlihispan = SpannableStringBuilder.valueOf(SpannableString.valueOf(ajlihisb.toString()));
+            int indexOfbihi3 = ajlihispan.toString().indexOf(AJLIHI);
+            ajlihispan.setSpan(new ForegroundColorSpan(headercolor), indexOfbihi3, AJLIHI.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            ajlihispan.setSpan(new RelativeSizeSpan(1f), indexOfbihi3, AJLIHI.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            ajlihispan.setSpan(Typeface.DEFAULT_BOLD, indexOfbihi3, AJLIHI.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        }
+        if (!badalsb.toString().isEmpty()) {
+            badalsb.insert(0, BADALHEADER);
+            //  if(finalstring!=null) {
+
+            //  }
+            badalspan = SpannableStringBuilder.valueOf(SpannableString.valueOf(badalsb.toString()));
+            int indexOfbihi4 = badalspan.toString().indexOf(BADAL);
+            badalspan.setSpan(new ForegroundColorSpan(headercolor), indexOfbihi4, BADAL.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            badalspan.setSpan(new RelativeSizeSpan(1f), indexOfbihi4, BADAL.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            badalspan.setSpan(Typeface.DEFAULT_BOLD, indexOfbihi4, BADAL.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        }
+        if (!mutlaqsb.toString().isEmpty()) {
+            mutlaqsb.insert(0, MUTLAQHEADER);
+            mutlaqspan = SpannableStringBuilder.valueOf(SpannableString.valueOf(mutlaqsb.toString()));
+            int indexOfbihi5 = mutlaqspan.toString().indexOf(MUTLAQ);
+            mutlaqspan.setSpan(new ForegroundColorSpan(headercolor), indexOfbihi5, MUTLAQ.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            mutlaqspan.setSpan(new RelativeSizeSpan(1f), indexOfbihi5, MUTLAQ.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            mutlaqspan.setSpan(Typeface.DEFAULT_BOLD, indexOfbihi5, MUTLAQ.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        }
+        CharSequence charSequence = TextUtils.concat(mf, " ", halspan, " ", tameezspan, " "
+                , ajlihispan, " ", badalspan, " ", mutlaqspan);
+        if (charSequence.toString().length() >15) {
+
+            holder.mafoolbihi.setText(charSequence);
+            holder.mafoolbihi.setGravity(Gravity.CENTER);
+
+            holder.base_cardview.setVisibility(View.VISIBLE);
+            holder.mafoolbihi.setTextSize(arabicfontSize - 5);
+            holder.mafoolbihi.setTypeface(custom_font);
+
+        } else {
+            holder.erabnotescardView.setVisibility(View.GONE);
+            holder.mafoolbihi.setVisibility(View.GONE);
+        }
+
+
+        setChapterInfo(holder, ayahWord);
+
+        setAdapterposition(position);
+
+
+        wordBywordWithTranslation(showrootkey, holder, custom_font, showWordColor, wbw, ayahWord, showWordByword);
+
+
+        if (showKathir) {
+         //   holder.expandImageButton.setVisibility(View.VISIBLE);
+            if (entity != null) {
+                holder.kathir_translation.setText(Html.fromHtml(entity.getTafsir_kathir(), Html.FROM_HTML_MODE_LEGACY));
+            }
+
+            holder.kathir_translation.setTextSize(translationfontsize);
+            holder.kathir_translation.setTextSize(translationfontsize);
+            //   holder.kathir_translation.setVisibility(View.VISIBLE);
+           // holder.kathir_note.setVisibility(View.VISIBLE);
+
+        }
+        else{
+            holder.kahteercardview.setVisibility(View.GONE);
+        }
+        if (showTransliteration) {
+            if (entity != null) {
+                holder.quran_transliteration.setText(Html.fromHtml(entity.getTranslation(), Html.FROM_HTML_MODE_LEGACY));
+            }
+            holder.quran_transliteration.setTextSize(translationfontsize);
+            holder.quran_transliteration.setTextSize(translationfontsize);
+            holder.quran_transliteration.setVisibility(View.VISIBLE);
+
+
+        }
+        if (showJalalayn) {
+            //   holder.quran_jalalaynnote.setText(enjalalayn.getAuthor_name());
+            if (entity != null) {
+                holder.quran_jalalayn.setText(entity.getEn_jalalayn());
+            }
+            holder.quran_jalalayn.setTextSize(translationfontsize);
+            holder.quran_jalalayn.setTextSize(translationfontsize);
+            holder.quran_jalalayn.setVisibility(View.VISIBLE);
+            holder.quran_jalalaynnote.setVisibility(View.VISIBLE);
+        }
+        if (showTranslation) {
+
+            if (whichtranslation.equals("en_arberry")) {
+
+                if (entity != null) {
+                    holder.translate_textView.setText(entity.getEn_arberry());
+                }
+                holder.translate_textViewnote.setText(R.string.arberry);
+                holder.translate_textView.setTextSize(translationfontsize);
+                holder.translate_textView.setTextSize(translationfontsize);
+                holder.translate_textView.setVisibility(View.VISIBLE);
+                holder.translate_textViewnote.setVisibility(View.VISIBLE);
+            }
+            if (whichtranslation.equals("en_sahih")) {
+
+
+                if (entity != null) {
+                    holder.translate_textView.setText(entity.getTranslation());
+                }
+                holder.translate_textViewnote.setText(R.string.ensahih);
+                holder.translate_textView.setTextSize(translationfontsize);
+                holder.translate_textView.setTextSize(translationfontsize);
+                holder.translate_textView.setVisibility(View.VISIBLE);
+                holder.translate_textViewnote.setVisibility(View.VISIBLE);
+            }
+            if (whichtranslation.equals("en_jalalayn")) {
+                if (entity != null) {
+                    holder.translate_textView.setText(entity.getEn_jalalayn());
+                }
+                holder.translate_textViewnote.setText(R.string.enjalalayn);
+                holder.translate_textView.setTextSize(translationfontsize);
+                holder.translate_textView.setTextSize(translationfontsize);
+                holder.translate_textView.setVisibility(View.VISIBLE);
+                holder.translate_textViewnote.setVisibility(View.VISIBLE);
+            }
+            if (whichtranslation.equals("ur_jalalayn")) {
+                if (entity != null) {
+                    holder.translate_textView.setText(entity.getUr_jalalayn());
+                }
+                holder.translate_textViewnote.setText(R.string.enjalalayn);
+                holder.translate_textView.setTextSize(translationfontsize);
+                holder.translate_textView.setTextSize(translationfontsize);
+                holder.translate_textView.setVisibility(View.VISIBLE);
+                holder.translate_textViewnote.setVisibility(View.VISIBLE);
+            }
+            if (whichtranslation.equals("ur_junagarhi")) {
+                if (entity != null) {
+                    holder.translate_textView.setText(entity.getUr_junagarhi());
+                }
+                holder.translate_textViewnote.setText(R.string.urjunagadi);
+                holder.translate_textView.setTextSize(translationfontsize);
+                holder.translate_textView.setTextSize(translationfontsize);
+                holder.translate_textView.setVisibility(View.VISIBLE);
+                holder.translate_textViewnote.setVisibility(View.VISIBLE);
+            }
+
+
             holder.translate_textView.setTextSize(translationfontsize);
             holder.translate_textView.setTextSize(translationfontsize);
             holder.translate_textView.setVisibility(View.VISIBLE);
             holder.translate_textViewnote.setVisibility(View.VISIBLE);
-        }
-        if (whichtranslation.equals("en_sahih")) {
 
-
-            holder.translate_textView.setText(entity.getTranslation());
-            holder.translate_textViewnote.setText(R.string.ensahih);
-            holder.translate_textView.setTextSize(translationfontsize);
-            holder.translate_textView.setTextSize(translationfontsize);
-            holder.translate_textView.setVisibility(View.VISIBLE);
-            holder.translate_textViewnote.setVisibility(View.VISIBLE);
-        }
-        if (whichtranslation.equals("en_jalalayn")) {
-            holder.translate_textView.setText(entity.getEn_jalalayn());
-            holder.translate_textViewnote.setText(R.string.enjalalayn);
-            holder.translate_textView.setTextSize(translationfontsize);
-            holder.translate_textView.setTextSize(translationfontsize);
-            holder.translate_textView.setVisibility(View.VISIBLE);
-            holder.translate_textViewnote.setVisibility(View.VISIBLE);
-        }
-        if (whichtranslation.equals("ur_jalalayn")) {
-            holder.translate_textView.setText(entity.getUr_jalalayn());
-            holder.translate_textViewnote.setText(R.string.enjalalayn);
-            holder.translate_textView.setTextSize(translationfontsize);
-            holder.translate_textView.setTextSize(translationfontsize);
-            holder.translate_textView.setVisibility(View.VISIBLE);
-            holder.translate_textViewnote.setVisibility(View.VISIBLE);
-        }
-        if (whichtranslation.equals("ur_junagarhi")) {
-            holder.translate_textView.setText(entity.getUr_junagarhi());
-            holder.translate_textViewnote.setText(R.string.urjunagadi);
-            holder.translate_textView.setTextSize(translationfontsize);
-            holder.translate_textView.setTextSize(translationfontsize);
-            holder.translate_textView.setVisibility(View.VISIBLE);
-            holder.translate_textViewnote.setVisibility(View.VISIBLE);
         }
 
 
-        holder.translate_textView.setTextSize(translationfontsize);
-        holder.translate_textView.setTextSize(translationfontsize);
-        holder.translate_textView.setVisibility(View.VISIBLE);
-        holder.translate_textViewnote.setVisibility(View.VISIBLE);
-
-    }
-
-
-    if (showErab) {
-
-        holder.erab_textView.setText(entity.getErabspnabble());
-        //   holder.erab_textView.setText(entity.getAr_irab_two());
-        //     holder.erab_textView.setText(erabentity.getErabspnabble());
-        holder.erab_textView.setTextSize(translationfontsize);
-        holder.erab_textView.setTypeface(custom_font);
-   //     holder.erab_textView.setVisibility(View.VISIBLE);
-        holder.erab_textViewnote.setVisibility(View.VISIBLE);
+        if (showErab) {
+            holder.erabexpand.setVisibility(View.VISIBLE);
+            if (entity != null) {
+                holder.erab_textView.setText(entity.getErabspnabble());
+            }
+            //   holder.erab_textView.setText(entity.getAr_irab_two());
+            //     holder.erab_textView.setText(erabentity.getErabspnabble());
+            holder.erab_textView.setTextSize(translationfontsize);
+            holder.erab_textView.setTypeface(custom_font);
+            //     holder.erab_textView.setVisibility(View.VISIBLE);
+            holder.erab_textViewnote.setVisibility(View.VISIBLE);
 
 
 /*
@@ -592,10 +897,25 @@ if (SharedPref.themePreferences().equals("dark")) {
 }
 */
 
+        }
+        else{
+            holder.erabexpand.setVisibility(View.GONE);
+        }
     }
-  }
 
-  private void wordBywordWithTranslation(ItemViewAdapter holder, Typeface custom_font, boolean showWordColor, String wbw, CorpusAyahWord ayahWord, boolean showWbwTranslation) {
+    private void setUpMafoolbihistring(SpannableStringBuilder mf) {
+        SpannableStringBuilder mfspan;
+        mf.append(BIHIHEADER);
+
+        mfspan = SpannableStringBuilder.valueOf(SpannableString.valueOf(mf.toString()));
+        int indexOfbihi = mfspan.toString().indexOf(BIHI);
+        mfspan.setSpan(new ForegroundColorSpan(headercolor), indexOfbihi, BIHI.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        mfspan.setSpan(new RelativeSizeSpan(1f), indexOfbihi, BIHI.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        mfspan.setSpan(Typeface.DEFAULT_BOLD, indexOfbihi, BIHI.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        mfspan.append("\n");
+    }
+
+    private void wordBywordWithTranslation(boolean showrootkey, ItemViewAdapter holder, Typeface custom_font, boolean showWordColor, String wbw, CorpusAyahWord ayahWord, boolean showWbwTranslation) {
         final LayoutInflater inflater =
                 (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         holder.flow_word_by_word.removeAllViews();
@@ -605,13 +925,33 @@ if (SharedPref.themePreferences().equals("dark")) {
 
             //   final TextView arabic = view.findViewById(R.id.word_arabic_textView);
             arabic = view.findViewById(R.id.word_arabic_textView);
+            rootword = view.findViewById(R.id.root_word);
+         //   wordno = view.findViewById(R.id.wordno);
             final TextView translation = view.findViewById(R.id.word_trans_textView);
-
+            SpannableString spannedroot = null;
+            StringBuilder sb = new StringBuilder();
+            sb.append(word.getWordno());
+            //  wordno.setText(sb.toString());
+            //   wordno.setTextSize(arabicfontSize);
+            //   wordno.setVisibility(View.VISIBLE);
+            if (showrootkey) {
+                if (!word.getRootword().isEmpty()) {
+                    spannedroot = getSpannedRoots(word);
+                    rootword.setText(spannedroot);
+                    rootword.setTextSize(arabicfontSize);
+                    rootword.setVisibility(View.VISIBLE);
+                } else {
+                    spannedroot = SpannableString.valueOf(word.getRootword());
+                    rootword.setText(spannedroot);
+                    rootword.setTextSize(arabicfontSize);
+                    rootword.setVisibility(View.VISIBLE);
+                }
+            }
             if (showWordColor) {
 
-                SpannableString spannedword = null;
+                SpannableString spannedword;
 
-
+                word.getRootword();
                 spannedword = getSpannedWords(word);
                 //   arabic.setText(fixArabic(String.valueOf(spannedword)));
                 spannedword.toString().replaceAll(" ", "");
@@ -624,25 +964,31 @@ if (SharedPref.themePreferences().equals("dark")) {
                 arabic.setText(word.getWordsAr());
             }
 
-
+            rootword.setText(spannedroot);
+            rootword.setTextSize(arabicfontSize);
             //  arabic.setTextSize(18);
             arabic.setTextSize(arabicfontSize);
             arabic.setTypeface(custom_font);
             if (showWbwTranslation) {
-                if (wbw.equals("en")) {
-                    translation.setText(word.getTranslateEn());
-                    translation.setPaintFlags(translation.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
-                } else if (wbw.equals("bn")) {
-                    translation.setText(word.getTranslateBn());
-                    translation.setPaintFlags(translation.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+                switch (wbw) {
+                    case "en":
+                        translation.setText(word.getTranslateEn());
+                        translation.setPaintFlags(translation.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+                        break;
+                    case "bn":
+                        translation.setText(word.getTranslateBn());
+                        translation.setPaintFlags(translation.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 
-                } else if (wbw.equals("in")) {
+                        break;
+                    case "in":
 
-                    translation.setText(word.getTranslateIndo());
-                    translation.setPaintFlags(translation.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
-                } else if (wbw.equals("ur")) {
-                    translation.setText(word.getTranslationUrdu());
-                    translation.setPaintFlags(translation.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+                        translation.setText(word.getTranslateIndo());
+                        translation.setPaintFlags(translation.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+                        break;
+                    case "ur":
+                        translation.setText(word.getTranslationUrdu());
+                        translation.setPaintFlags(translation.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+                        break;
                 }
                 //  translation.setTextColor(context.getResources().getColor(R.color.neutral2));
             }
@@ -656,35 +1002,35 @@ if (SharedPref.themePreferences().equals("dark")) {
                 public boolean onLongClick(View v) {
                     Utils utils = new Utils(getContext());
                     //
-                    HashMap<String, String> vbdetail;
-                    ArrayList<NewCorpusExpandWbwPOJO> corpusSurahWords = utils.getCorpusWbwBySurahAyahWordid(word.getSurahId(), word.getVerseId(), word.getWordno());
-                    ArrayList<NounCorpus> corpusNounWords = utils.getQuranNouns(word.getSurahId(), word.getVerseId(), word.getWordno());
+                  //  HashMap<String, String> vbdetail;
+               //     ArrayList<NewCorpusExpandWbwPOJO> corpusSurahWords = utils.getCorpusWbwBySurahAyahWordid(word.getSurahId(), word.getVerseId(), word.getWordno());
+               //     ArrayList<NounCorpus> corpusNounWords = utils.getQuranNouns(word.getSurahId(), word.getVerseId(), word.getWordno());
                     ArrayList<VerbCorpus> verbCorpusRootWords = utils.getQuranRoot(word.getSurahId(), word.getVerseId(), word.getWordno());
-                    QuranMorphologyDetails ams = new QuranMorphologyDetails(corpusSurahWords, corpusNounWords, verbCorpusRootWords, getContext());
+                  //  QuranMorphologyDetails ams = new QuranMorphologyDetails(corpusSurahWords, corpusNounWords, verbCorpusRootWords, getContext());
 
-               //     HashMap<String, SpannableStringBuilder> wordbdetail = ams.getWordDetails();
+                    //     HashMap<String, SpannableStringBuilder> wordbdetail = ams.getWordDetails();
                     if (verbCorpusRootWords.size() > 0 && verbCorpusRootWords.get(0).getTag().equals("V")) {
-                //    vbdetail = ams.getVerbDetails();
+                        //    vbdetail = ams.getVerbDetails();
 
                         System.out.printf("check");
                     }
 
 
                     //
-                    WordAnalysisBottomSheet wb=new WordAnalysisBottomSheet();
-                  
-                    ArrayList<NewCorpusExpandWbwPOJO> corpusSurahWord = utils.getCorpusWbwBySurahAyahWordid(word.getSurahId(), word.getVerseId(), word.getWordno());
+             //       WordAnalysisBottomSheet wb = new WordAnalysisBottomSheet();
+
+                  //  ArrayList<NewCorpusExpandWbwPOJO> corpusSurahWord = utils.getCorpusWbwBySurahAyahWordid(word.getSurahId(), word.getVerseId(), word.getWordno());
                     ArrayList<NounCorpus> corpusNounWord = utils.getQuranNouns(word.getSurahId(), word.getVerseId(), word.getWordno());
                     ArrayList<VerbCorpus> verbCorpusRootWord = utils.getQuranRoot(word.getSurahId(), word.getVerseId(), word.getWordno());
-                 //   QuranMorphologyDetails am = new QuranMorphologyDetails(corpusSurahWord, corpusNounWord, verbCorpusRootWord, getContext());
-                 //   ArrayList<NounCorpus> corpusNounWord = utils.getQuranNouns(chapterid, ayanumber, wordno);
-                  //  ArrayList<VerbCorpus> verbCorpusRootWord = utils.getQuranRoot(chapterid, ayanumber, wordno);
-                    QuranMorphologyDetails am = new QuranMorphologyDetails(corpusSurahWord, corpusNounWord, verbCorpusRootWord, getContext());
+                    //   QuranMorphologyDetails am = new QuranMorphologyDetails(corpusSurahWord, corpusNounWord, verbCorpusRootWord, getContext());
+                    //   ArrayList<NounCorpus> corpusNounWord = utils.getQuranNouns(chapterid, ayanumber, wordno);
+                    //  ArrayList<VerbCorpus> verbCorpusRootWord = utils.getQuranRoot(chapterid, ayanumber, wordno);
+              //      QuranMorphologyDetails am = new QuranMorphologyDetails(corpusSurahWord, corpusNounWord, verbCorpusRootWord, getContext());
 
 
-                    WordMorphologyDetails qm = new WordMorphologyDetails(word,corpusNounWord,verbCorpusRootWord);
+                    WordMorphologyDetails qm = new WordMorphologyDetails(word, corpusNounWord, verbCorpusRootWord);
                     //   String ws= String.valueOf(qm.getWorkBreakDown());
-                //    HashMap<String, SpannableStringBuilder> wordDetails = am.getWordDetails();
+                    //    HashMap<String, SpannableStringBuilder> wordDetails = am.getWordDetails();
                     SpannableString workBreakDown = qm.getWorkBreakDown();
       /*
 
@@ -730,15 +1076,15 @@ if (SharedPref.themePreferences().equals("dark")) {
                 }
             });
             view.setOnClickListener(new View.OnClickListener() {
-                @RequiresApi(api = Build.VERSION_CODES.N)
+
                 @Override
                 public void onClick(View view) {
                     final Dialog dialog = new Dialog(context);
                     //      dialog.setContentView(R.layout.corpus_layout);
 
 
-                    dialog.setTitle(fixArabic(word.getWordsAr()));
-
+                    //    dialog.setTitle(fixArabic(word.getWordsAr()));
+                    dialog.setTitle(word.getWordsAr());
 
                     Bundle dataBundle = new Bundle();
                     dataBundle.putInt(SURAH_ID, word.getSurahId());
@@ -756,22 +1102,22 @@ if (SharedPref.themePreferences().equals("dark")) {
                     if (issentence) {
                         SentenceAnalysisBottomSheet item = new SentenceAnalysisBottomSheet();
                         //    item.setdata(rootWordMeanings,wbwRootwords,grammarRootsCombined);
-                        FragmentManager fragmentManager = ((AppCompatActivity) context).getSupportFragmentManager();
+                  //      FragmentManager fragmentManager = ((AppCompatActivity) context).getSupportFragmentManager();
 
                         item.setArguments(dataBundle);
                         String[] data = {String.valueOf(word.getSurahId()), String.valueOf(word.getVerseId()), word.getTranslateEn(), String.valueOf((word.getWordno()))};
-                        FragmentTransaction transactions = fragmentManager.beginTransaction().setCustomAnimations(R.anim.abc_slide_in_top, android.R.anim.fade_out);
+                   //     FragmentTransaction transactions = fragmentManager.beginTransaction().setCustomAnimations(R.anim.abc_slide_in_top, android.R.anim.fade_out);
                         //   transactions.show(item);
                         SentenceAnalysisBottomSheet.newInstance(data).show(((AppCompatActivity) context).getSupportFragmentManager(), SentenceAnalysisBottomSheet.TAG);
 
                     } else {
                         WordAnalysisBottomSheet item = new WordAnalysisBottomSheet();
                         //    item.setdata(rootWordMeanings,wbwRootwords,grammarRootsCombined);
-                        FragmentManager fragmentManager = ((AppCompatActivity) context).getSupportFragmentManager();
+                    //    FragmentManager fragmentManager = ((AppCompatActivity) context).getSupportFragmentManager();
 
                         item.setArguments(dataBundle);
                         String[] data = {String.valueOf(word.getSurahId()), String.valueOf(word.getVerseId()), word.getTranslateEn(), String.valueOf((word.getWordno())), SurahName};
-                        FragmentTransaction transactions = fragmentManager.beginTransaction().setCustomAnimations(R.anim.abc_slide_in_top, android.R.anim.fade_out);
+                      //  FragmentTransaction transactions = fragmentManager.beginTransaction().setCustomAnimations(R.anim.abc_slide_in_top, android.R.anim.fade_out);
                         //   transactions.show(item);
                         WordAnalysisBottomSheet.newInstance(data).show(((AppCompatActivity) context).getSupportFragmentManager(), WordAnalysisBottomSheet.TAG);
 
@@ -789,17 +1135,29 @@ if (SharedPref.themePreferences().equals("dark")) {
     }
 
 
+    private SpannableString getSpannedRoots(CorpusWbwWord corpus) {
+
+        boolean b = corpus.getVerseId() == 20 && (corpus.getWordno() == 2 || corpus.getWordno() == 9);
+        if (b) {
+            System.out.println("check");
+        }
+
+
+        return CorpusUtilityorig.ColorizeRootword(corpus.getTagone(), corpus.getTagtwo(), corpus.getTagthree(), corpus.getTagfour(), corpus.getTagfive(),
+                corpus.getRootword());
+    }
+
+
     private SpannableString getSpannedWords(CorpusWbwWord corpus) {
 
         boolean b = corpus.getVerseId() == 20 && (corpus.getWordno() == 2 || corpus.getWordno() == 9);
         if (b) {
             System.out.println("check");
         }
-        SpannableString spannableStringBuilder = CorpusUtilityorig.NewSetWordSpan(corpus.getTagone(), corpus.getTagtwo(), corpus.getTagthree(), corpus.getTagfour(), corpus.getTagfive(),
+
+
+        return CorpusUtilityorig.NewSetWordSpan(corpus.getTagone(), corpus.getTagtwo(), corpus.getTagthree(), corpus.getTagfour(), corpus.getTagfive(),
                 corpus.getAraone(), corpus.getAratwo(), corpus.getArathree(), corpus.getArafour(), corpus.getArafive());
-
-
-        return spannableStringBuilder;
     }
 
 
@@ -860,28 +1218,6 @@ if (SharedPref.themePreferences().equals("dark")) {
 
     }
 
-
-    private String fixArabic(String s) {
-        // Add sukun on mem | nun
-        s = s.replaceAll("\u0000", "");
-        s = s.replaceAll("([\u0645\u0646])([ \u0627-\u064A]|$)", "$1\u0652$2");
-        // Tatweel + Hamza Above (joining chairless hamza) => Yeh With Hamza Above
-        s = s.replaceAll("\u0640\u0654", "\u0626");
-        return s;
-    }
-
-    private int getStringInt(SharedPreferences sp, String key, int defValue) {
-        return Integer.parseInt(sp.getString(key, Integer.toString(defValue)));
-    }
-
-
-    public void setListener(OnItemClickListenerOnLong listener) {
-
-        mItemClickListener = listener;
-    }
-
-    public void getItem(int position) {
-    }
 
     @Override
     public void onItemClick(View v, int position) {

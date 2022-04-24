@@ -125,6 +125,13 @@ public class ConjugatorAct extends BaseActivity implements View.OnClickListener 
 
 
     @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+
+    }
+
+    @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
 
@@ -144,7 +151,8 @@ public class ConjugatorAct extends BaseActivity implements View.OnClickListener 
 
     callButton.setOnClickListener(view -> {
       ConjugatorAct.super.finish();
-
+        super.onBackPressed();
+      /*
         HashMap<String, String> map = CorpusUtilityorig.getpreferences();
         Bundle dataBundle=new Bundle();
         map.get(SURAH_ARABIC_NAME);
@@ -156,6 +164,7 @@ public class ConjugatorAct extends BaseActivity implements View.OnClickListener 
         intent.putExtras(dataBundle);
         finish();
         startActivity(intent);
+       */
 
      //  Snackbar.make(viewById, "Call button clicked", Snackbar.LENGTH_SHORT).show();
     });

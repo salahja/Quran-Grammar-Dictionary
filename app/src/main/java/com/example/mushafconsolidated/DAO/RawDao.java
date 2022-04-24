@@ -2,10 +2,9 @@ package com.example.mushafconsolidated.DAO;
 
 import androidx.room.Dao;
 import androidx.room.RawQuery;
+import androidx.sqlite.db.SimpleSQLiteQuery;
 import androidx.sqlite.db.SupportSQLiteQuery;
 
-import com.example.mushafconsolidated.Entities.BookMarks;
-import com.example.mushafconsolidated.Entities.CorpusEntity;
 import com.example.mushafconsolidated.Entities.CorpusExpandWbwPOJO;
 import com.example.mushafconsolidated.Entities.CorpusNounWbwGrouping;
 import com.example.mushafconsolidated.Entities.CorpusNounWbwOccurance;
@@ -18,6 +17,9 @@ import com.example.mushafconsolidated.Entities.NounCorpusBreakup;
 import com.example.mushafconsolidated.Entities.ShartPOJO;
 import com.example.mushafconsolidated.Entities.SifaEntityPojo;
 import com.example.mushafconsolidated.Entities.SifaPOJO;
+import com.example.mushafconsolidated.Entities.TameezEnt;
+import com.example.mushafconsolidated.Entities.TameezPOJO;
+import com.example.mushafconsolidated.Entities.TameezPojoList;
 import com.example.mushafconsolidated.Entities.VerbCorpusBreakup;
 
 
@@ -47,7 +49,8 @@ public interface RawDao {
     @RawQuery
     List<ShartPOJO> getShart(SupportSQLiteQuery query);
 
-
+    @RawQuery
+    List<TameezPojoList> getTameez(SupportSQLiteQuery query);
 
     @RawQuery
     List<MudhafPOJO> getMudhaf(SupportSQLiteQuery query);
@@ -72,9 +75,10 @@ public interface RawDao {
 
     @RawQuery
     List<CorpusVerbWbwOccurance> getVerbOccuranceBreakVerses(SupportSQLiteQuery query);
-
-
-
+    @RawQuery
+    List<TameezPOJO> gettameezversescount(SupportSQLiteQuery query);
+    @RawQuery
+    List<CorpusExpandWbwPOJO> getCorpusWbwfortameez(SupportSQLiteQuery query);
 
 
 }
