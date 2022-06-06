@@ -27,9 +27,11 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.window.layout.WindowMetrics;
 import androidx.window.layout.WindowMetricsCalculator;
 
+import com.example.mushafconsolidated.Entities.QuranEntity;
 import com.example.mushafconsolidated.FontQuranListDialogFragment;
 import com.example.mushafconsolidated.ParticleColorScheme;
 import com.example.mushafconsolidated.R;
+import com.example.mushafconsolidated.Utils;
 import com.example.mushafconsolidated.fragments.WordAnalysisBottomSheet;
 import com.example.utility.CorpusConstants;
 import com.example.utility.CorpusUtilityorig;
@@ -44,11 +46,14 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
+
+
 
 
 public class MainActivity extends BaseActivity {
@@ -108,6 +113,8 @@ public class MainActivity extends BaseActivity {
             }
 
         }
+
+
 
 
         //  PreferenceManager.setDefaultValues(this, R.xml.preferences, false);

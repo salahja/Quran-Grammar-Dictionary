@@ -2,6 +2,7 @@ package com.example.mushafconsolidated.Adapters;
 
 
 import static android.view.View.GONE;
+import static android.view.View.TEXT_ALIGNMENT_CENTER;
 
 import static com.example.utility.CorpusUtilityorig.getStringForegroundColorSpanMap;
 
@@ -529,6 +530,7 @@ public class RootWordDisplayAdapter extends RecyclerView.Adapter<RootWordDisplay
             holder.ppfem.setText(array[3]);
             holder.apmas.setTextSize(arabicFontsize);
             holder.apfem.setTextSize(arabicFontsize);
+            holder.apfem.setGravity(TEXT_ALIGNMENT_CENTER);
             holder.ppmas.setTextSize(arabicFontsize);
             holder.ppfem.setTextSize(arabicFontsize);
 
@@ -1120,10 +1122,11 @@ public class RootWordDisplayAdapter extends RecyclerView.Adapter<RootWordDisplay
         public final TextView wordDictionary,moodrules;
         public final Chip triroot, paradigm, rootdetails, verb;
         ConstraintLayout expandable;
+        MaterialCardView ifverborpart;
 
         public ItemViewAdapter(View view) {
             super(view);
-
+            ifverborpart=view.findViewById(R.id.ifverborpart);
             moodrules= itemView.findViewById(R.id.moodrules);
             mazeedmeaning = itemView.findViewById(R.id.mazeedmeaning);
             darkThemeBacground = itemView.findViewById(R.id.grammar);
@@ -1191,7 +1194,8 @@ public class RootWordDisplayAdapter extends RecyclerView.Adapter<RootWordDisplay
             spannableverse.setOnClickListener(this);
             wordView.setOnClickListener(this);
             if (isverbconjugation || particples) {
-                verbconjugationbtn.setOnClickListener(this);
+                ifverborpart.setVisibility(View.VISIBLE);
+                 verbconjugationbtn.setOnClickListener(this);
                 //     verbOccurancebtn.setOnClickListener(this);
                 nounoccurancebtn.setOnClickListener(this);
                 mazeedmeaning.setOnClickListener(this);

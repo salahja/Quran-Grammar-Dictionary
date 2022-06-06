@@ -21,7 +21,7 @@ public interface HaliyaDao {
 
 
 
-    @Query("SELECT * FROM jumlahaliy where surah=:surah ")
+    @Query("SELECT * FROM jumlahaliy where surah=:surah and status=1")
     List<HalEnt> getHaliyaSurah(int surah);
 }
 

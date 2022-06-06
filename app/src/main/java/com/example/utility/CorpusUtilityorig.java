@@ -908,11 +908,13 @@ public class CorpusUtilityorig {
                 FrameSpan frameshartharf = new FrameSpan(GREEN, 2, RECKT);
                 FrameSpan frameshart = new FrameSpan(CYAN, 2f, RECKT);
                 FrameSpan framejawabshart = new FrameSpan(YELLOW, 2f, RECKT);
+
+                corpusayahWordArrayList.get(shart.getSurah());
          //       boolean iscolored = true;
                 try {
                     spannableString = SpannableString.valueOf(corpusayahWordArrayList.get(shart.getAyah() - 1).getSpannableverse());
                 } catch (ArrayIndexOutOfBoundsException e) {
-                    //    System.out.println(corpusayahWordArrayList.get(shart.getAyah()));
+                    System.out.println(shart.getSurah()+" "+shart.getAyah() );
                 }
                 BackgroundColorSpan spanDark = new BackgroundColorSpan(BBLUE);
 

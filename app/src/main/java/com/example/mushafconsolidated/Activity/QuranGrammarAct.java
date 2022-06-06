@@ -980,6 +980,8 @@ public class QuranGrammarAct extends BaseActivity implements PassdataInterface, 
         shart.add("ولو حرف شرط غير جازم");
         shart.add("حرف شرط غير جازم");
         shart.add("اللام واقعة في جواب لو");
+        shart.add("حرف شرط جازم");
+        shart.add("الشرطية");
 
 
         String mudhafilahistr = "مضاف إليه";
@@ -1181,8 +1183,14 @@ public class QuranGrammarAct extends BaseActivity implements PassdataInterface, 
     @Override
     public void onItemClick(View view, int position) {
         Object tag = view.getTag();
+        QuranEntity quranEntity;
         View overflow = view.findViewById(R.id.ivActionOverflow);
-        QuranEntity quranEntity = allofQuran.get(position);
+        try{
+              quranEntity = allofQuran.get(position);
+        }catch (IndexOutOfBoundsException e){
+              quranEntity = allofQuran.get(position-1);
+        }
+
 
 
        SwitchCompat colorsentence = view.findViewById(R.id.colorized);

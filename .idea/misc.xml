@@ -74,10 +74,11 @@
         <entry key="app/src/main/res/layout/newsarfkabeercolumn.xml" value="0.43214285714285716" />
         <entry key="app/src/main/res/layout/orignalsurarowlinear.xml" value="0.1" />
         <entry key="app/src/main/res/layout/origphrases.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/participles.xml" value="0.18" />
         <entry key="app/src/main/res/layout/phrases.xml" value="0.1" />
         <entry key="app/src/main/res/layout/popup_filter_layout.xml" value="1.1392857142857142" />
         <entry key="app/src/main/res/layout/popup_layout.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/qaris_view_word_details.xml" value="0.18" />
+        <entry key="app/src/main/res/layout/qaris_view_word_details.xml" value="0.1" />
         <entry key="app/src/main/res/layout/quran_imageview_row.xml" value="0.67" />
         <entry key="app/src/main/res/layout/quran_imageview_row_orig.xml" value="1.4357142857142857" />
         <entry key="app/src/main/res/layout/quran_list_dialog.xml" value="1.1714285714285715" />
@@ -87,6 +88,7 @@
         <entry key="app/src/main/res/layout/quranfontselection.xml" value="0.775" />
         <entry key="app/src/main/res/layout/reccylerview.xml" value="0.25" />
         <entry key="app/src/main/res/layout/refactacon_key_activity_autocomplete.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/root_dialog_fragment.xml" value="0.16" />
         <entry key="app/src/main/res/layout/round_arabic_keyboard.xml" value="0.1" />
         <entry key="app/src/main/res/layout/row_ayah_word.xml" value="0.18" />
         <entry key="app/src/main/res/layout/rules.xml" value="0.5" />
@@ -108,7 +110,7 @@
         <entry key="app/src/main/res/layout/webview.xml" value="1.1714285714285715" />
         <entry key="app/src/main/res/layout/word_analysis_item.xml" value="1.082142857142857" />
         <entry key="app/src/main/res/layout/word_by_word.xml" value="0.2597402597402597" />
-        <entry key="app/src/main/res/layout/wordbottomsheetismfaelmafoolsktraditional.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/wordbottomsheetismfaelmafoolsktraditional.xml" value="0.1" />
         <entry key="app/src/main/res/menu/fragment_menu_items.xml" value="1.0642857142857143" />
         <entry key="app/src/main/res/menu/main.xml" value="0.6214285714285714" />
         <entry key="app/src/main/res/menu/menu.xml" value="0.67" />
@@ -130,7 +132,7 @@
   <component name="VisualizationToolProject">
     <option name="state">
       <ProjectState>
-        <option name="scale" value="0.1" />
+        <option name="scale" value="0.22" />
       </ProjectState>
     </option>
   </component>

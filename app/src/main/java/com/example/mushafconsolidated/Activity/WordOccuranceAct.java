@@ -68,7 +68,7 @@ import com.example.mushafconsolidated.fragments.WordAnalysisBottomSheet;
 import com.example.utility.CorpusUtilityorig;
 import com.example.utility.QuranGrammarApplication;
 import com.google.android.material.appbar.MaterialToolbar;
-import com.tonyodev.fetch2.Fetch;
+
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -112,7 +112,7 @@ public class WordOccuranceAct extends BaseActivity {
   private MenuItem jumpto;
   private static final int REQUEST_WRITE_STORAGE = 112;
   private static final int REQUEST_WRITE_Settings = 113;
-  private Fetch fetch;
+
   TextView link;
   private ProgressBar progressBar1;
   private File childfile;

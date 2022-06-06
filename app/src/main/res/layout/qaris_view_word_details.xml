@@ -20,17 +20,15 @@
         app:layout_behavior="@string/bottom_sheet_behavior" />
 
 
-
-
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
+        android:layout_height="match_parent">
+
         <RelativeLayout
-            android:background="@color/secondaryColor"
             android:id="@+id/topPanel"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="@color/secondaryColor">
 
             <com.google.android.material.card.MaterialCardView
 
@@ -87,13 +85,13 @@
 
                     <TextView
 
-                        android:textColor="@color/neutral0"
                         android:id="@id/quranverseShart"
                         android:layout_width="wrap_content"
-
                         android:layout_height="wrap_content"
+
                         android:layout_marginTop="15.0dip"
                         android:ellipsize="start"
+                        android:textColor="@color/neutral0"
 
 
                         android:textSize="24.0sp" />
@@ -122,50 +120,48 @@
                         android:textSize="24.0sp" />
 
                     <com.google.android.material.chip.Chip
-                        app:chipCornerRadius="8dp"
-
-
-
-
-                        app:chipStrokeColor="@color/red500"
-
                         android:id="@id/wordView"
+
+
                         android:layout_width="wrap_content"
+
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15.0dip"
+                        android:elevation="8dp"
                         android:lines="1"
                         android:onClick="onClick"
                         android:textSize="24.0sp"
                         android:tooltipText="Click for Vocabulary"
-                        android:elevation="8dp"
+                        app:chipCornerRadius="8dp"
+                        app:chipIcon="@drawable/ic_baseline_translate_24"
 
-                        app:chipIcon="@drawable/ic_baseline_translate_24" />
+                        app:chipStrokeColor="@color/red500" />
 
 
                     <TextView
                         android:id="@id/mafoolat"
-                        android:hint="مفعول:"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15.0dip"
                         android:elevation="8dp"
+                        android:hint="مفعول:"
 
-                         android:visibility="gone"
                         android:textSize="24.0sp"
-
+                        android:visibility="gone"
 
 
                         app:chipIcon="@drawable/ic_baseline_translate_24" />
+
                     <TextView
                         android:id="@id/haliya"
-                        android:hint="حالية:"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15.0dip"
                         android:elevation="8dp"
+                        android:hint="حالية:"
 
                         android:textSize="24.0sp"
-                       android:visibility="gone"
+                        android:visibility="gone"
 
 
                         app:chipIcon="@drawable/ic_baseline_translate_24" />
@@ -177,9 +173,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
                         android:layout_marginTop="15.0dip"
-                        android:textAlignment="center"
                         android:lines="1"
                         android:text="Word"
+                        android:textAlignment="center"
 
 
                         android:textSize="18.0sp" />
@@ -206,6 +202,7 @@
 
 
                         android:visibility="visible" />
+
                     <TextView
 
                         android:id="@id/moodrules"
@@ -261,18 +258,19 @@
                         android:text="Root Word"
 
                         android:textSize="20.0sp" />
+
                     <com.google.android.material.chip.Chip
                         android:id="@id/mazeedmeaning"
-                        android:elevation="8dp"
-                        android:onClick="onClick"
-                        android:visibility="gone"
-                        app:chipIcon="@drawable/ic_baseline_expand_24"
-                        android:tooltipText="Click for Vocabulary"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15.0dip"
+                        android:elevation="8dp"
                         android:lines="1"
-                        android:textSize="24.0sp" />
+                        android:onClick="onClick"
+                        android:textSize="24.0sp"
+                        android:tooltipText="Click for Vocabulary"
+                        android:visibility="gone"
+                        app:chipIcon="@drawable/ic_baseline_expand_24" />
 
                     <RadioGroup
                         android:id="@+id/rdgroup"
@@ -336,15 +334,15 @@
 
                         <com.google.android.material.button.MaterialButton
                             android:id="@id/wordoccurance"
-                            android:visibility="visible"
                             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerHorizontal="true"
-
                             android:layout_gravity="center_horizontal"
+
                             android:text="Word Occurancer"
                             android:textSize="18.0sp"
+                            android:visibility="visible"
                             app:elevation="8dp"
                             app:icon="@drawable/ic_action_jump"
                             app:rippleColor="@color/red500"
@@ -375,7 +373,8 @@
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
-
+             android:visibility="gone"
+                android:id="@+id/ifverborpart"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_below="@+id/grammar">
@@ -391,10 +390,10 @@
 
 
                     <TableRow
-android:layout_weight="1"
-
                         android:layout_width="fill_parent"
+
                         android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:gravity="center_vertical"
                         android:weightSum="1.0">
 
@@ -447,9 +446,9 @@ android:layout_weight="1"
                     </TableRow>
 
                     <TableRow
-android:layout_weight="1"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:gravity="center_vertical"
                         android:weightSum="1.0">
 
@@ -533,9 +532,9 @@ android:layout_weight="1"
 
 
                     <TableRow
-android:layout_weight="1"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:gravity="center_vertical"
                         android:weightSum="1.0">
 
@@ -604,10 +603,10 @@ android:layout_weight="1"
                     </TableRow>
 
                     <TableRow
-android:layout_weight="1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5.0dip">
+                        android:layout_marginTop="5.0dip"
+                        android:layout_weight="1">
 
                         <RelativeLayout
                             android:layout_width="wrap_content"
@@ -647,10 +646,10 @@ android:layout_weight="1"
                     </TableRow>
 
                     <TableRow
-android:layout_weight="1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5.0dip">
+                        android:layout_marginTop="5.0dip"
+                        android:layout_weight="1">
 
                         <RelativeLayout
                             android:layout_width="wrap_content"
@@ -683,16 +682,16 @@ android:layout_weight="1"
                                 android:gravity="center|end"
                                 android:paddingStart="5.0dip"
                                 android:paddingEnd="3.0dip"
-                                android:text="اِسْم الْظَرفْ"
+
 
                                 android:textSize="20dp" />
                         </RelativeLayout>
                     </TableRow>
 
                     <TableRow
-android:layout_weight="1"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:gravity="center_vertical"
                         android:weightSum="1.0">
 
@@ -737,9 +736,9 @@ android:layout_weight="1"
                     </TableRow>
 
                     <TableRow
-android:layout_weight="1"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:gravity="center_vertical"
                         android:weightSum="1.0">
 
@@ -755,9 +754,9 @@ android:layout_weight="1"
                     </TableRow>
 
                     <TableRow
-android:layout_weight="1"
                         android:layout_width="fill_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
 
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -790,8 +789,6 @@ android:layout_weight="1"
 
         </RelativeLayout>
     </androidx.core.widget.NestedScrollView>
-
-
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

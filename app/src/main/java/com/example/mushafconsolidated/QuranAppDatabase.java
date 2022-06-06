@@ -90,6 +90,7 @@ public abstract class QuranAppDatabase extends RoomDatabase {
 
 
 
+/*
 
  quranAppDatabaseInstanceasset = Room.databaseBuilder(context, QuranAppDatabase.class, "qurangrammar.db")
                   .createFromAsset("databases/qurangrammar.db")
@@ -99,6 +100,7 @@ public abstract class QuranAppDatabase extends RoomDatabase {
               //   .openHelperFactory(factory)
                      .build();
 
+ */
 
 
 

@@ -36,7 +36,7 @@
 
     <item
         android:id="@+id/grammar"
-        android:icon="@drawable/ic_bubble_big"
+        android:icon="@drawable/ic_baseline_open_in_browser_24"
 
         android:title="Grammar"
         app:cnb_iconColor="#4CAF50"/>

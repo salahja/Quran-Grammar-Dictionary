@@ -45,6 +45,7 @@ import static Utility.ArabicLiterals.Damma;
 import static Utility.ArabicLiterals.Fatha;
 import static Utility.ArabicLiterals.Kasra;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -59,6 +60,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.preference.PreferenceManager;
@@ -113,7 +115,7 @@ import database.entity.MujarradVerbs;
  *     ItemListDialogFragment.newInstance(30).show(getSupportFragmentManager(), "dialog");
  * </pre>
  */
-public class WordAnalysisBottomSheet extends BottomSheetDialogFragment {
+public class WordAnalysisBottomSheet extends DialogFragment {
 
     public static final String TAG = "bottom";
     // TODO: Customize parameter argument names
@@ -233,6 +235,7 @@ public class WordAnalysisBottomSheet extends BottomSheetDialogFragment {
     public void setThulathiSarfSagheer(boolean thulathiSarfSagheer) {
         isThulathiSarfSagheer = thulathiSarfSagheer;
     }
+
 
     @Nullable
     @Override
